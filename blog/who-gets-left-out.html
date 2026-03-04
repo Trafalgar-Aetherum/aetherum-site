@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Gets Left Out? — Aetherum Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* ── INFOGRAPHIC ── */
+  .infographic {
+    margin: 64px 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .infographic-header {
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .infographic-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .infographic-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tier {
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid transparent;
+  }
+
+  .tier-wall {
+    background: rgba(15,60,140,0.2);
+    border-color: rgba(40,100,220,0.25);
+  }
+
+  .tier-gap {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  .tier-cu {
+    background: rgba(247,147,26,0.07);
+    border-color: rgba(247,147,26,0.28);
+  }
+
+  .tier-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .icon-w { background: rgba(40,100,220,0.18); }
+  .icon-g { background: rgba(255,255,255,0.04); }
+  .icon-c { background: rgba(247,147,26,0.14); }
+
+  .tier-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .lbl-w { color: rgba(100,160,255,0.7); }
+  .lbl-g { color: rgba(255,255,255,0.28); }
+  .lbl-c { color: rgba(247,147,26,0.7); }
+
+  .tier-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+  }
+
+  .tier-sub {
+    font-size: 12.5px;
+    color: var(--gray2);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  .tier-badge {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  .bdg-w { color: var(--blue-light); }
+  .bdg-g { color: rgba(255,255,255,0.15); }
+  .bdg-c { color: var(--orange); }
+
+  .tier-badge-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    text-align: right;
+    margin-top: 1px;
+  }
+
+  .arrow-row {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 8px;
+    opacity: 0.25;
+  }
+
+  .arrow-ln {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, rgba(247,147,26,0.8), transparent);
+  }
+
+  .aeth-pill {
+    margin-left: auto;
+    background: rgba(247,147,26,0.1);
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">← Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Industry Analysis</span>
+      <span class="hero-date">March 4, 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      WHO GETS<br><span class="accent">LEFT OUT?</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Citi just made Bitcoin bankable for institutional clients. The 130 million Americans banking at credit unions aren't on that list. Not yet.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Founder & CEO · Aetherum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num blue">$30T</div>
+    <div class="stat-desc">Citi's wealth management platform now integrating Bitcoin</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">130M</div>
+    <div class="stat-desc">Americans banking at credit unions with no equivalent access</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">5,000+</div>
+    <div class="stat-desc">Credit unions in the U.S. with no crypto infrastructure today</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    On February 26, 2026, Nisha Surendran — Citi's head of digital asset custody — stood at the Strategy World forum and said something that should have made every credit union executive stop what they were doing.
+  </p>
+
+  <p>
+    <strong>"Later this year, Citi will be launching our infrastructure that integrates Bitcoin into traditional finance."</strong>
+  </p>
+
+  <p>
+    Bitcoin custody. Same reporting workflows as equities and bonds. Cross-margining between digital and traditional assets. Instructions via SWIFT or API. The whole thing wrapped in institutional-grade compliance and tax frameworks that Citi has spent decades building.
+  </p>
+
+  <p>
+    This isn't a pilot. It isn't a press release. It's operational infrastructure — years in development — going live in 2026 for Citi's institutional clients.
+  </p>
+
+  <div class="pullquote">
+    <p>"The question is no longer whether Bitcoin belongs in financial infrastructure. It's who gets left out."</p>
+  </div>
+
+  <h2>THE <span class="acc">SIGNALS</span> WERE THERE</h2>
+
+  <p>
+    Citi isn't alone. Morgan Stanley — which oversees roughly $8 trillion in assets — has filed for Bitcoin, Ethereum, and Solana exchange-traded products and is rolling out spot crypto trading on E*TRADE. JPMorgan's Kinexys processes $2 billion per day in tokenized deposit settlement. The New York Stock Exchange is building a 24/7 blockchain-based trading venue for tokenized stocks.
+  </p>
+
+  <p>
+    <strong>Wall Street has decided.</strong> Digital assets are infrastructure now, not an experiment. The institutions that moved first didn't wait for perfect regulatory clarity — they moved because the operational advantages compounded over time. Every quarter on the sidelines widens a gap that gets harder to close.
+  </p>
+
+  <p>
+    And now, with the passage of the GENIUS Act providing clearer regulatory guardrails, the window for everyone else is open — but it won't stay open forever.
+  </p>
+
+  <h2>THE GAP <span class="acc">NO ONE IS TALKING ABOUT</span></h2>
+
+  <p>
+    Look at any institutional tokenization landscape map today and you'll see BlackRock, JPMorgan, BNY Mellon, Fireblocks, Coinbase Custody. You'll see the entire apparatus of Wall Street moving in one direction.
+  </p>
+
+  <p>
+    What you won't see: a single solution built for the 5,000+ credit unions that serve 130 million Americans.
+  </p>
+
+  <p>
+    These aren't fringe institutions. Credit unions hold over $2 trillion in assets. Their members are the same people watching Bitcoin headlines, holding crypto on Coinbase, and asking themselves why their trusted financial institution can't offer what a tech company can.
+  </p>
+
+  <!-- INFOGRAPHIC -->
+  <div class="infographic">
+    <div class="infographic-header">
+      <span class="infographic-title">The Infrastructure Gap — 2026</span>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;">Aetherum Analysis</span>
+    </div>
+    <div class="infographic-body">
+
+      <div class="tier tier-wall">
+        <div class="tier-icon icon-w">🏦</div>
+        <div>
+          <div class="tier-label lbl-w">Wall Street</div>
+          <div class="tier-name">Citigroup, JPMorgan, Morgan Stanley</div>
+          <div class="tier-sub">Institutional Bitcoin custody live in 2026 · Cross-margin with traditional assets</div>
+        </div>
+        <div style="margin-left:auto;text-align:right;flex-shrink:0">
+          <div class="tier-badge bdg-w">$30T+</div>
+          <div class="tier-badge-sub">AUM addressed</div>
+        </div>
+      </div>
+
+      <div class="arrow-row"><div class="arrow-ln"></div><span style="color:rgba(247,147,26,0.5);font-size:12px;">↓</span></div>
+
+      <div class="tier tier-gap">
+        <div class="tier-icon icon-g">⚡</div>
+        <div>
+          <div class="tier-label lbl-g">The Gap</div>
+          <div class="tier-name">Community Banks & Credit Unions</div>
+          <div class="tier-sub">No compliant infrastructure · Members asking · Fintechs filling the void</div>
+        </div>
+        <div class="aeth-pill">Aetherum</div>
+      </div>
+
+      <div class="arrow-row" style="transform:scaleX(-1)"><div class="arrow-ln"></div><span style="color:rgba(247,147,26,0.5);font-size:12px;">↓</span></div>
+
+      <div class="tier tier-cu">
+        <div class="tier-icon icon-c">🤝</div>
+        <div>
+          <div class="tier-label lbl-c">Main Street</div>
+          <div class="tier-name">130M Credit Union Members</div>
+          <div class="tier-sub">Hold crypto · Want USD liquidity · Trust their CU · Have no compliant option</div>
+        </div>
+        <div style="margin-left:auto;text-align:right;flex-shrink:0">
+          <div class="tier-badge bdg-c">5,000+</div>
+          <div class="tier-badge-sub">credit unions</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <h2>WHY <span class="acc">IT MATTERS</span> NOW</h2>
+
+  <p>
+    The member demand is already there. Credit union members who hold crypto don't want to move their financial lives to a neobank or an exchange. They want their trusted institution — the one that knows their name, that they've banked with for decades — to meet them where they are.
+  </p>
+
+  <p>
+    When Citi launches Bitcoin custody for its institutional clients, those clients' employees, family members, and neighbors will notice. The question they'll bring to their credit union is simple: <strong>why can't you do this?</strong>
+  </p>
+
+  <p>
+    Credit unions are member-owned. Their entire value proposition is built on being the alternative to big banks — more trust, more alignment, more community. If their members can get Bitcoin services from Citi but not from their local CU, that proposition starts to erode.
+  </p>
+
+  <div class="pullquote">
+    <p>"The institutions that moved first didn't wait for perfect regulatory clarity. They moved because the operational advantages compounded over time."</p>
+  </div>
+
+  <h2>WHAT WE'RE <span class="acc">BUILDING</span></h2>
+
+  <p>
+    Aetherum is B2B infrastructure — built specifically for credit unions and community banks that want to offer crypto-collateralized lending without overhauling their existing systems, hiring a blockchain team, or taking on custody risk.
+  </p>
+
+  <p>
+    Our model is different from what you'll see on any institutional tokenization landscape map. Each credit union owns its members' assets directly through its own institutional custody account. Aetherum is purely the software and API orchestration layer — the compliance stack, the risk assessment engine, the integration glue. The CU owns the relationship. The member owns the asset.
+  </p>
+
+  <p>
+    <strong>Members keep their crypto exposure. No taxable event. They get USD liquidity. They stay with the institution they trust.</strong> Credit unions open a new revenue stream, attract younger members, and offer something their competitors can't yet match.
+  </p>
+
+  <p>
+    Citi just validated the thesis at the top of the market. The infrastructure gap in the middle is where we operate.
+  </p>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">YOUR MEMBERS ARE READY</div>
+    <div class="cta-sub">See how Aetherum brings institutional-grade crypto infrastructure to community financial institutions — without the complexity.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Schedule a Conversation</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">© 2026 Aetherum · aetherum.ai</div>
+</footer>
+
+</body>
+</html>
