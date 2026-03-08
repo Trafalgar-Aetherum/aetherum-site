@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why We're Moving Into RWA Tokenization — Aetherum Blog</title>
+<meta name="description" content="Real-world asset tokenization is coming to credit unions. Here's why Aetherum is building the infrastructure to make it happen — starting with the members who need it most.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* ── BULLET LIST ── */
+  .article ul {
+    list-style: none;
+    margin: 0 0 28px 0;
+    padding: 0;
+  }
+
+  .article ul li {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .article ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  .article ul li strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-title { font-size: clamp(48px, 12vw, 80px); }
+    .stat-banner { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 24px; }
+    .stat-item:last-child { border-bottom: none; }
+    .article { padding: 48px 24px; }
+    .pullquote { margin: 40px 0; padding: 32px 24px; }
+    .cta-block { padding: 40px 24px; }
+    .cta-title { font-size: 36px; }
+    footer { padding: 28px 24px; flex-direction: column; gap: 12px; }
+    .scroll-hint { left: 24px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">RWA Tokenization</span>
+      <span class="hero-date">March 8, 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      WHY WE'RE MOVING INTO<br><span class="accent">RWA TOKENIZATION</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Real-world asset tokenization is coming to credit unions. We started with crypto-backed lending. Now we're building the infrastructure for everything else.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Founder & CEO &middot; Aetherum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">$33B</div>
+    <div class="stat-desc">Tokenized asset market size in 2025 — and growing fast</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">140M</div>
+    <div class="stat-desc">Americans served by credit unions with no access to compliant tokenization</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">ERC-3643</div>
+    <div class="stat-desc">The only token standard recognized for compliant, regulated tokenization</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    There's a version of finance that works better for regular people. Not just the wealthy, not just institutions &mdash; everyone. That's the version we're building toward at Aetherum.
+  </p>
+
+  <p>
+    We started with a specific problem: credit union members own crypto, and right now they have two choices when they need liquidity. Sell the crypto and trigger a tax event. Or go somewhere outside their trusted financial institution and deal with an unfamiliar lender. Neither is a good option. So we built the infrastructure to give credit unions a third one: crypto-backed loans through the institution their members already trust.
+  </p>
+
+  <p>
+    That's where Aetherum began. But it's not where we're stopping.
+  </p>
+
+  <h2>WHAT ARE <span class="acc">REAL-WORLD ASSETS</span>, AND WHY DO THEY MATTER HERE?</h2>
+
+  <p>
+    A real-world asset &mdash; or RWA &mdash; is exactly what it sounds like. It's a real thing: a piece of real estate, a share in a fund, a loan participation, a bond. What RWA tokenization does is put a digital representation of that asset on a blockchain, governed by rules encoded directly into the token itself.
+  </p>
+
+  <p>
+    This isn't theoretical. BlackRock has tokenized assets. JP Morgan has tokenized assets. The tokenized asset market crossed $33 billion in 2025, and that number is growing fast.
+  </p>
+
+  <p>
+    But most of that activity has happened in institutional channels &mdash; hedge funds, private equity, sovereign wealth vehicles. The credit union ecosystem, which serves 140 million Americans and is almost entirely untouched by compliant tokenization, has been left out.
+  </p>
+
+  <div class="pullquote">
+    <p>"The credit union ecosystem serves 140 million Americans and is almost entirely untouched by compliant tokenization. We think that's a problem worth solving."</p>
+  </div>
+
+  <h2>THE COMPLIANCE PROBLEM HAS BEEN <span class="acc">SOLVED</span></h2>
+
+  <p>
+    For a long time, the barrier to RWA tokenization wasn't the technology. It was compliance. How do you make sure only eligible investors can hold a token? How do you enforce transfer restrictions? How do you ensure that when someone sells a tokenized asset, the transaction follows securities law automatically, without relying on a human to check it?
+  </p>
+
+  <p>
+    The answer is a token standard called ERC-3643. It's the only token standard officially recognized by the Ethereum community for compliant tokenization. It bakes compliance rules directly into the token itself &mdash; meaning a transfer can only happen when both the investor rules and the offering rules are satisfied. <strong>The token enforces the law. Not a person, not a process &mdash; the token.</strong>
+  </p>
+
+  <p>
+    This is the standard we're building on at Aetherum. It's the same infrastructure used by major financial institutions globally. And it integrates cleanly with the KYC and identity verification we already have in place through our existing partner stack.
+  </p>
+
+  <h2>WHY THIS <span class="acc">WORKS</span> FOR CREDIT UNIONS</h2>
+
+  <p>
+    Credit unions are member-owned cooperatives. They don't exist to maximize profit &mdash; they exist to serve their members. That structure makes them uniquely suited for this moment.
+  </p>
+
+  <p>
+    A credit union that adopts RWA tokenization can do things that weren't possible before:
+  </p>
+
+  <ul>
+    <li><strong>Tokenize loan participations.</strong> A credit union with a healthy loan portfolio can tokenize portions of it &mdash; letting other institutions hold fractional interests in those loans. That creates a new source of liquidity without selling the whole loan.</li>
+    <li><strong>Offer tokenized investment products to members.</strong> Members who are accredited investors could hold tokenized fund shares through their credit union account &mdash; the same place they do their banking. No new app, no new relationship, no new onboarding.</li>
+    <li><strong>Use tokenized assets as loan collateral.</strong> This is the most direct connection to what we already do. A member with a tokenized real estate interest or fund participation could use it as collateral for a loan, the same way they use Bitcoin or Ethereum today on our platform.</li>
+  </ul>
+
+  <p>
+    In every case, the credit union stays in control. They know their members, they've already done the KYC, they already hold the relationship. The technology just lets them do more with it.
+  </p>
+
+  <h2>THE MEMBER IS ALWAYS <span class="acc">THE POINT</span></h2>
+
+  <p>
+    We talk a lot about infrastructure, standards, and compliance. But it's worth being direct about who this is actually for.
+  </p>
+
+  <p>
+    It's for the credit union member in their 40s who has been paying into a whole life insurance policy for fifteen years and would like to borrow against it without cashing it out. It's for the member who inherited a fractional real estate interest and would like to access liquidity without a six-month sale process. It's for the younger member who is building wealth in non-traditional ways and wants a financial institution that keeps up.
+  </p>
+
+  <div class="pullquote">
+    <p>"The gap between where those members are and what their financial institution can offer them is the gap we're closing. First with crypto. Now with everything else."</p>
+  </div>
+
+  <h2>WHAT WE'RE <span class="acc">BUILDING</span></h2>
+
+  <p>
+    We have a working demo of the RWA module inside the Aetherum platform today. Members can see tokenized assets alongside their crypto holdings. The compliance framework &mdash; the rules that determine who can hold what, and under what conditions &mdash; is built on ERC-3643.
+  </p>
+
+  <p>
+    Phase one of the real build, on testnet, is next. Production follows after we close our current funding round.
+  </p>
+
+  <p>
+    The roadmap from here is straightforward: testnet integration, then production, then the first credit union goes live with real tokenized collateral. Every step is built on the same infrastructure philosophy we've applied to the rest of the platform &mdash; integrate best-in-class partners, orchestrate them through our backend, give credit unions one clean interface to all of it.
+  </p>
+
+  <p>
+    <strong>The technology to give 140 million credit union members access to the tokenized economy already exists. We're just connecting the last few wires.</strong>
+  </p>
+
+  <p style="font-style: italic; color: var(--gray2); font-size: 16px; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 28px;">
+    Aetherum is building the crypto-collateralized lending infrastructure layer for US credit unions. Our live MVP is at <a href="https://test-app.aetherum.ai" style="color: var(--orange); text-decoration: none;">test-app.aetherum.ai</a>. If you work at a credit union or want to learn more about what we're building, we'd love to hear from you.
+  </p>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">THE TOKENIZED ECONOMY IS HERE</div>
+    <div class="cta-sub">See how Aetherum brings compliant RWA tokenization to community financial institutions &mdash; built on the same infrastructure your members already trust.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Schedule a Conversation</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+</footer>
+
+</body>
+</html>
