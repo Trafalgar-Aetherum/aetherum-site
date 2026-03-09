@@ -1,5 +1,11 @@
 {
   "rewrites": [
+    { "source": "/deck", "destination": "/deck.html" },
     { "source": "/investor", "destination": "/investor.html" }
+  ],
+  "routes": [
+    { "src": "/deck", "dest": "/deck.html" },
+    { "src": "/investor", "dest": "/investor.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
