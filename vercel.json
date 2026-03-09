@@ -1,7 +1,3 @@
 {
-  "routes": [
-    { "src": "/deck", "dest": "/deck/index.html" },
-    { "src": "/deck/(.*)", "dest": "/deck/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "cleanUrls": true
 }
