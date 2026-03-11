@@ -103,6 +103,21 @@
     transform: translateY(-1px);
   }
 
+  .nav-cta-ghost {
+    border: 1px solid var(--copper) !important;
+    color: var(--copper) !important;
+    background: transparent !important;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .nav-cta-ghost:hover {
+    background: rgba(191,141,72,0.15) !important;
+    transform: translateY(-1px);
+  }
+
   .mobile-toggle {
     display: none;
     background: none;
@@ -837,6 +852,7 @@
     <li><a href="#dacs">DACS</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="mailto:demo@aetherum.ai">Contact</a></li>
+    <li><a href="https://test-app.aetherum.ai/login" class="nav-cta-ghost">Sign In</a></li>
     <li><a href="https://calendly.com/jbailey-aetherum/30min" class="nav-cta">Request Demo →</a></li>
   </ul>
 </nav>
