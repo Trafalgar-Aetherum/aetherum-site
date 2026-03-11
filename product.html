@@ -263,17 +263,20 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-brand">Aetherum</div>
+  <a href="/" class="nav-brand">Aetherum</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#platform">Platform</a></li>
-    <li><a href="#dacs">DACS</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#platform">Platform</a></li>
+    <li><a href="/#dacs">DACS</a></li>
+    <li><a href="/#blog">Blog</a></li>
+    <li><a href="mailto:hello@aetherum.ai">Contact</a></li>
     <li><a href="https://test-app.aetherum.ai/login" class="btn btn-signin">Sign In</a></li>
     <li><a href="https://calendly.com/jbailey-aetherum/30min" class="btn btn-primary">Request Demo</a></li>
   </ul>
 </nav>
+
+<!-- CONTENT -->
+<div id="product-sheet">
 
 <!-- HERO -->
 <section class="hero" id="about">
@@ -374,6 +377,8 @@
   </div>
 </section>
 
+</div><!-- /product-sheet -->
+
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
@@ -386,7 +391,7 @@
     const btn = document.querySelector('[onclick="downloadPDF()"]');
     btn.textContent = 'Generating…';
     btn.disabled = true;
-    const el = document.body;
+    const el = document.getElementById('product-sheet');
     const opt = {
       margin:       0,
       filename:     'Aetherum-Product-Overview.pdf',
