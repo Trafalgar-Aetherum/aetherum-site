@@ -251,6 +251,11 @@
     }
     footer a { color: var(--accent); }
 
+    /* PDF GRID OVERRIDES */
+    #product-sheet .feature-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+    #product-sheet .pillar-grid { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; }
+    #product-sheet .bottom-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav { flex-wrap: wrap; gap: .75rem; }
@@ -284,7 +289,7 @@
   <p>Aetherum empowers credit unions to offer secure, compliant crypto-backed loans — unlocking new revenue streams while managing digital asset risk with our proprietary DACS framework.</p>
   <div class="hero-buttons">
     <a href="https://calendly.com/jbailey-aetherum/30min" class="btn btn-primary">Schedule a Demo</a>
-    <button class="btn btn-outline" onclick="downloadPDF()">Download PDF</button>
+    <button id="download-btn" class="btn btn-outline" onclick="downloadPDF()">Download PDF</button>
   </div>
 </section>
 
@@ -292,7 +297,7 @@
 <section id="platform">
   <h2 class="section-title">Platform Overview</h2>
   <p class="section-sub">End-to-end infrastructure for digital asset lending, risk scoring, and tokenization.</p>
-  <div class="cards">
+  <div class="cards feature-grid">
     <div class="card">
       <div class="card-icon">🔐</div>
       <h3>Crypto-Backed Lending</h3>
@@ -316,7 +321,7 @@
 <section id="dacs">
   <h2 class="section-title">DACS — Digital Asset Credit Score</h2>
   <p class="section-sub">Five on-chain pillars that quantify borrower trustworthiness beyond traditional credit metrics.</p>
-  <div class="pillars">
+  <div class="pillars pillar-grid">
     <div class="pillar">
       <div class="pillar-num">1</div>
       <h4>Wallet Age</h4>
@@ -347,7 +352,7 @@
 
 <!-- THREE COLUMN BOTTOM -->
 <section>
-  <div class="three-col">
+  <div class="three-col bottom-grid">
     <div class="col-block">
       <h3>How It Works</h3>
       <ol>
@@ -371,7 +376,7 @@
       <h3>Get In Touch</h3>
       <p>Ready to bring crypto-backed lending to your credit union?</p>
       <p><a href="https://calendly.com/jbailey-aetherum/30min">Schedule a 30-minute demo →</a></p>
-      <p style="margin-top:.75rem;">Email: <a href="mailto:info@aetherum.ai">info@aetherum.ai</a></p>
+      <p style="margin-top:.75rem;">Email: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
       <p>Web: <a href="https://aetherum.ai">aetherum.ai</a></p>
     </div>
   </div>
@@ -383,25 +388,31 @@
 <footer>
   <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
   <p>DACS (Digital Asset Credit Score) is a proprietary risk-assessment framework developed by Aetherum. It is not a consumer credit score and is not reported to credit bureaus.</p>
-  <p>Contact: <a href="mailto:info@aetherum.ai">info@aetherum.ai</a></p>
+  <p>Contact: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
 </footer>
 
 <script>
   function downloadPDF() {
-    const btn = document.querySelector('[onclick="downloadPDF()"]');
-    btn.textContent = 'Generating…';
-    btn.disabled = true;
     const el = document.getElementById('product-sheet');
+    el.style.width = '800px';
+    el.style.maxWidth = '800px';
+    el.style.fontSize = '11px';
+    const btn = document.getElementById('download-btn');
+    btn.style.display = 'none';
+
     const opt = {
-      margin:       0,
-      filename:     'Aetherum-Product-Overview.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, backgroundColor: '#0b1120' },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      margin: 0.3,
+      filename: 'Aetherum_Product_Overview.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 1.5, useCORS: true, backgroundColor: '#0b1120', windowWidth: 800 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
+
     html2pdf().set(opt).from(el).save().then(() => {
-      btn.textContent = 'Download PDF';
-      btn.disabled = false;
+      el.style.width = '';
+      el.style.maxWidth = '';
+      el.style.fontSize = '';
+      btn.style.display = '';
     });
   }
 </script>
