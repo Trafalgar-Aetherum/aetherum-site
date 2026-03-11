@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aetherum — Crypto-Backed Lending for Credit Unions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0b1120;
+      --bg-card: #131b2e;
+      --accent: #c8893e;
+      --accent-hover: #daa050;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .nav-brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-block;
+      padding: .6rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-signin {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-signin:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 auto 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; }
+    .section-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FEATURE CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: var(--accent); }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: .5rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: .9rem;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(200,137,62,.15);
+      color: var(--accent);
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    /* DACS PILLARS */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.25rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .pillar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .pillar-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: .35rem;
+    }
+    .pillar h4 {
+      font-size: .95rem;
+      margin-bottom: .35rem;
+    }
+    .pillar p {
+      color: var(--text-muted);
+      font-size: .8rem;
+    }
+
+    /* THREE COL */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .col-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .col-block h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .col-block p, .col-block li {
+      color: var(--text-muted);
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+    .col-block ol, .col-block ul {
+      padding-left: 1.25rem;
+    }
+    .col-block a {
+      color: var(--accent);
+    }
+    .col-block a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: .8rem;
+      line-height: 1.8;
+    }
+    footer a { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { flex-wrap: wrap; gap: .75rem; }
+      .nav-links { flex-wrap: wrap; gap: .75rem; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Aetherum</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#dacs">DACS</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://test-app.aetherum.ai/login" class="btn btn-signin">Sign In</a></li>
+    <li><a href="https://calendly.com/jbailey-aetherum/30min" class="btn btn-primary">Request Demo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <h1>Crypto-Backed Lending <span>for Credit Unions</span></h1>
+  <p>Aetherum empowers credit unions to offer secure, compliant crypto-backed loans — unlocking new revenue streams while managing digital asset risk with our proprietary DACS framework.</p>
+  <div class="hero-buttons">
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="btn btn-primary">Schedule a Demo</a>
+    <button class="btn btn-outline" onclick="downloadPDF()">Download PDF</button>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="platform">
+  <h2 class="section-title">Platform Overview</h2>
+  <p class="section-sub">End-to-end infrastructure for digital asset lending, risk scoring, and tokenization.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔐</div>
+      <h3>Crypto-Backed Lending</h3>
+      <p>Enable members to borrow against Bitcoin, Ethereum, and other digital assets with automated LTV monitoring, margin calls, and liquidation safeguards — all within your existing core banking system.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>DACS Risk Assessment</h3>
+      <p>Our Digital Asset Credit Score analyzes on-chain behavior across five pillars to deliver a comprehensive borrower risk profile purpose-built for crypto collateral.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🪙</div>
+      <span class="badge">Coming Soon</span>
+      <h3>RWA Tokenization</h3>
+      <p>Tokenize real-world assets like real estate, receivables, and treasury instruments to expand collateral options and create new secondary-market liquidity for credit unions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DACS -->
+<section id="dacs">
+  <h2 class="section-title">DACS — Digital Asset Credit Score</h2>
+  <p class="section-sub">Five on-chain pillars that quantify borrower trustworthiness beyond traditional credit metrics.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">1</div>
+      <h4>Wallet Age</h4>
+      <p>Longevity of on-chain presence signals commitment and experience.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">2</div>
+      <h4>Diversification</h4>
+      <p>Portfolio spread across assets reduces single-point-of-failure risk.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">3</div>
+      <h4>On-Chain Activity</h4>
+      <p>Transaction frequency and patterns demonstrate active asset management.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">4</div>
+      <h4>Volatility</h4>
+      <p>Historical price stability of held assets informs collateral resilience.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">5</div>
+      <h4>TAM Bonus</h4>
+      <p>Total addressable market weighting rewards high-utility, widely-adopted assets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE COLUMN BOTTOM -->
+<section>
+  <div class="three-col">
+    <div class="col-block">
+      <h3>How It Works</h3>
+      <ol>
+        <li>Member deposits crypto collateral into a secure, insured custodial wallet.</li>
+        <li>DACS engine scores the borrower and sets LTV, rate, and margin thresholds.</li>
+        <li>Credit union issues the loan using existing infrastructure — Aetherum handles the rest.</li>
+        <li>Automated monitoring manages margin calls, top-ups, and liquidation if needed.</li>
+      </ol>
+    </div>
+    <div class="col-block">
+      <h3>Revenue Model</h3>
+      <ul>
+        <li>Platform licensing fee (annual SaaS)</li>
+        <li>Per-loan origination fee</li>
+        <li>DACS API access for third-party integrations</li>
+        <li>RWA tokenization service fees (coming soon)</li>
+      </ul>
+      <p style="margin-top:1rem;">Credit unions keep 100% of loan interest income.</p>
+    </div>
+    <div class="col-block" id="contact">
+      <h3>Get In Touch</h3>
+      <p>Ready to bring crypto-backed lending to your credit union?</p>
+      <p><a href="https://calendly.com/jbailey-aetherum/30min">Schedule a 30-minute demo →</a></p>
+      <p style="margin-top:.75rem;">Email: <a href="mailto:info@aetherum.ai">info@aetherum.ai</a></p>
+      <p>Web: <a href="https://aetherum.ai">aetherum.ai</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
+  <p>DACS (Digital Asset Credit Score) is a proprietary risk-assessment framework developed by Aetherum. It is not a consumer credit score and is not reported to credit bureaus.</p>
+  <p>Contact: <a href="mailto:info@aetherum.ai">info@aetherum.ai</a></p>
+</footer>
+
+<script>
+  function downloadPDF() {
+    const btn = document.querySelector('[onclick="downloadPDF()"]');
+    btn.textContent = 'Generating…';
+    btn.disabled = true;
+    const el = document.body;
+    const opt = {
+      margin:       0,
+      filename:     'Aetherum-Product-Overview.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, backgroundColor: '#0b1120' },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(el).save().then(() => {
+      btn.textContent = 'Download PDF';
+      btn.disabled = false;
+    });
+  }
+</script>
+
+</body>
+</html>
