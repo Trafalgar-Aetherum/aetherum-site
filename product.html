@@ -253,7 +253,7 @@
 
     /* PDF GRID OVERRIDES */
     #product-sheet .feature-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
-    #product-sheet .pillar-grid { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; }
+    #product-sheet .pillar-grid { display: grid !important; grid-template-columns: repeat(6, 1fr) !important; }
     #product-sheet .bottom-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
 
     /* RESPONSIVE */
@@ -304,7 +304,13 @@
     <div class="card">
       <div class="card-icon">📊</div>
       <h3>DACS Risk Assessment</h3>
-      <p>Our Digital Asset Credit Score analyzes on-chain behavior across five pillars to deliver a comprehensive borrower risk profile purpose-built for crypto collateral.</p>
+      <p>Our Digital Asset Credit Score analyzes on-chain behavior across six pillars to deliver a comprehensive borrower risk profile purpose-built for crypto collateral.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <span class="badge">Tax Intelligence</span>
+      <h3>Tax-Position Score &amp; Collateral Optimizer</h3>
+      <p>Aetherum's TPSOE engine scores the tax efficiency of each collateral position and ranks pledge assets to minimize member tax liability. The Collateral Optimizer selects the optimal set for any loan request — a feature no D2C competitor offers institutions.</p>
     </div>
     <div class="card">
       <div class="card-icon">🪙</div>
@@ -318,7 +324,7 @@
 <!-- DACS -->
 <section id="dacs">
   <h2 class="section-title">DACS — Digital Asset Credit Score</h2>
-  <p class="section-sub">Five on-chain pillars that quantify borrower trustworthiness beyond traditional credit metrics.</p>
+  <p class="section-sub">Six on-chain pillars that quantify borrower trustworthiness beyond traditional credit metrics.</p>
   <div class="pillars pillar-grid">
     <div class="pillar">
       <div class="pillar-num">1</div>
@@ -342,8 +348,13 @@
     </div>
     <div class="pillar">
       <div class="pillar-num">5</div>
+      <h4>Tax-Position Score (TPSOE)</h4>
+      <p>Patent-pending sixth pillar. Scores the borrower's embedded tax liability and collateral tax efficiency — ranking pledge assets to minimize tax cost at liquidation.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">6</div>
       <h4>TAM Bonus</h4>
-      <p>Total addressable market weighting rewards high-utility, widely-adopted assets.</p>
+      <p>Traditional asset weighting rewards borrowers with verified brokerage holdings via Plaid, enhancing the overall risk profile.</p>
     </div>
   </div>
 </section>
@@ -354,7 +365,7 @@
     <div class="col-block">
       <h3>How It Works</h3>
       <ol>
-        <li>Member deposits crypto collateral into a secure, insured custodial wallet.</li>
+        <li>Member deposits crypto collateral into a BitGo institutional custody wallet — held directly by the credit union, never by Aetherum.</li>
         <li>DACS engine scores the borrower and sets LTV, rate, and margin thresholds.</li>
         <li>Credit union issues the loan using existing infrastructure — Aetherum handles the rest.</li>
         <li>Automated monitoring manages margin calls, top-ups, and liquidation if needed.</li>
@@ -363,10 +374,10 @@
     <div class="col-block">
       <h3>Revenue Model</h3>
       <ul>
-        <li>Platform licensing fee (annual SaaS)</li>
-        <li>Per-loan origination fee</li>
-        <li>DACS API access for third-party integrations</li>
-        <li>RWA tokenization service fees (coming soon)</li>
+        <li>Platform fee: $500–$1,500 per loan originated</li>
+        <li>Transaction fee: 0.5–1% on crypto collateral transactions</li>
+        <li>SaaS license: $50K–$150K/year per credit union</li>
+        <li>Tax Intelligence Module: $10K–$25K/year premium add-on per CU</li>
       </ul>
       <p style="margin-top:1rem;">Credit unions keep 100% of loan interest income.</p>
     </div>
@@ -385,7 +396,7 @@
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
-  <p>DACS (Digital Asset Credit Score) is a proprietary risk-assessment framework developed by Aetherum. It is not a consumer credit score and is not reported to credit bureaus.</p>
+  <p>DACS (Digital Asset Credit Score) is a patent-pending risk-assessment framework (Provisional #63/897,067) developed by Aetherum. It is not a consumer credit score and is not reported to credit bureaus.</p>
   <p>Contact: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
 </footer>
 
