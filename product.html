@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -287,7 +286,7 @@
   <p>Aetherum empowers credit unions to offer secure, compliant crypto-backed loans — unlocking new revenue streams while managing digital asset risk with our proprietary DACS framework.</p>
   <div class="hero-buttons">
     <a href="https://calendly.com/jbailey-aetherum/30min" class="btn btn-primary">Schedule a Demo</a>
-    <button id="download-btn" class="btn btn-outline" onclick="downloadPDF()">Download PDF</button>
+    <a href="/product-overview.pdf" download="Aetherum_Product_Overview.pdf" class="btn btn-outline">Download PDF</a>
   </div>
 </section>
 
@@ -400,31 +399,6 @@
   <p>Contact: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
 </footer>
 
-<script>
-  function downloadPDF() {
-    const el = document.getElementById('product-sheet');
-    el.style.width = '800px';
-    el.style.maxWidth = '800px';
-    el.style.fontSize = '11px';
-    const btn = document.getElementById('download-btn');
-    btn.style.display = 'none';
-
-    const opt = {
-      margin: 0.3,
-      filename: 'Aetherum_Product_Overview.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 1.5, useCORS: true, backgroundColor: '#0b1120', windowWidth: 800 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(el).save().then(() => {
-      el.style.width = '';
-      el.style.maxWidth = '';
-      el.style.fontSize = '';
-      btn.style.display = '';
-    });
-  }
-</script>
 
 </body>
 </html>
