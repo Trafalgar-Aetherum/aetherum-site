@@ -1,594 +1,855 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>'Crypto Banks' Are Back — But They're Not What You Might Think | Aetherum</title>
-  <meta name="description" content="11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know before their members start asking." />
-  <meta property="og:title" content="'Crypto Banks' Are Back — But They're Not What You Might Think" />
-  <meta property="og:description" content="11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://aetherum.ai/blog/crypto-banks-are-back.html" />
-  <link rel="icon" href="/favicon.ico" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>'Crypto Banks' Are Back — But They're Not What You Might Think — Aetherum Blog</title>
+<meta name="description" content="11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know before their members start asking." />
+<meta property="og:title" content="'Crypto Banks' Are Back — But They're Not What You Might Think" />
+<meta property="og:description" content="11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/crypto-banks-are-back.html" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-    :root {
-      --ink: #1a1a18;
-      --ink-muted: #5a5a55;
-      --ink-faint: #9a9a94;
-      --surface: #faf9f6;
-      --surface-raised: #ffffff;
-      --border: rgba(26,26,24,0.12);
-      --border-strong: rgba(26,26,24,0.22);
-      --teal: #1D9E75;
-      --teal-light: #E1F5EE;
-      --teal-dark: #0F6E56;
-      --red: #D85A30;
-      --red-light: #FAECE7;
-      --red-dark: #993C1D;
-    }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    html { font-size: 17px; scroll-behavior: smooth; }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
 
-    body {
-      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-      background: var(--surface);
-      color: var(--ink);
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 
-    /* ── Nav ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--surface);
-      border-bottom: 0.5px solid var(--border);
-      padding: 0 2rem;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    .nav-back {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.15s;
-    }
-    .nav-back:hover { color: var(--teal); }
-    .nav-back::before { content: '←'; }
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
 
-    /* ── Article layout ── */
-    .article-wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem 5rem;
-    }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
 
-    /* ── Kicker ── */
-    .kicker {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 1.25rem;
-    }
-    .kicker::after {
-      content: '';
-      flex: 1;
-      height: 0.5px;
-      background: var(--border);
-    }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
 
-    /* ── Headline ── */
-    h1.headline {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.13;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-    }
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
 
-    /* ── Subhead / deck ── */
-    .deck {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1.125rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink-muted);
-      line-height: 1.6;
-      margin-bottom: 2.25rem;
-      padding-bottom: 2.25rem;
-      border-bottom: 0.5px solid var(--border);
-    }
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
 
-    /* ── Stats row ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-    .stat-cell {
-      background: var(--surface-raised);
-      padding: 1.1rem 0.75rem;
-      text-align: center;
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--ink);
-      margin-bottom: 5px;
-    }
-    .stat-num.accent { color: var(--teal); }
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
 
-    /* ── Body ── */
-    .body p { margin-bottom: 1.2rem; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-    /* ── Section label ── */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-top: 2.75rem;
-      margin-bottom: 1rem;
-    }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
 
-    /* ── Charter grid ── */
-    .charter-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px;
-      margin-bottom: 2.5rem;
-    }
-    .charter-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.65rem 0.9rem;
-      background: var(--surface-raised);
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-    }
-    .charter-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--ink-faint);
-      min-width: 42px;
-      flex-shrink: 0;
-    }
-    .charter-name {
-      font-family: 'Source Serif 4', serif;
-      font-size: 14px;
-      flex: 1;
-      color: var(--ink);
-    }
-    .badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .badge-approved { background: var(--teal-light); color: var(--teal-dark); }
-    .badge-pending  { background: #f0ede8; color: var(--ink-faint); }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
 
-    /* ── Can / Cannot ── */
-    .can-cannot {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 1.25rem 0 2.5rem;
-    }
-    .can-box, .cannot-box {
-      padding: 1.35rem 1.25rem;
-      border: 0.5px solid var(--border);
-      border-radius: 0 10px 10px 0;
-      background: var(--surface-raised);
-    }
-    .can-box   { border-left: 3px solid var(--teal); }
-    .cannot-box{ border-left: 3px solid var(--red); }
-    .box-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.85rem;
-    }
-    .can-box   .box-title { color: var(--teal-dark); }
-    .cannot-box .box-title { color: var(--red-dark); }
-    .cap-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .cap-list li {
-      font-family: 'Source Serif 4', serif;
-      font-size: 13.5px;
-      line-height: 1.4;
-      color: var(--ink);
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-    }
-    .cap-icon { flex-shrink: 0; margin-top: 1px; font-style: normal; }
-    .cap-icon.yes { color: var(--teal); }
-    .cap-icon.no  { color: var(--red); }
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
 
-    /* ── Pullquote ── */
-    .pullquote {
-      margin: 2.75rem 0;
-      padding: 1.5rem 1.75rem;
-      background: #f0ede8;
-      border-left: 3px solid var(--border-strong);
-      border-radius: 0 10px 10px 0;
-    }
-    .pullquote p {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.175rem;
-      line-height: 1.6;
-      color: var(--ink);
-      margin-bottom: 0.85rem;
-    }
-    .pullquote cite {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      font-style: normal;
-    }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
 
-    /* ── Reality box ── */
-    .reality-box {
-      margin: 2.5rem 0;
-      padding: 1.5rem 1.5rem;
-      border: 0.5px solid var(--border-strong);
-      border-radius: 10px;
-      background: var(--surface-raised);
-    }
-    .reality-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 0.75rem;
-    }
-    .reality-box p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 15.5px;
-      line-height: 1.7;
-      color: var(--ink);
-    }
-    .reality-box strong {
-      font-weight: 400;
-      border-bottom: 1.5px solid var(--ink);
-    }
+  .hero-title .accent { color: var(--orange); }
 
-    /* ── Closing ── */
-    .closing {
-      margin-top: 2.75rem;
-      padding-top: 2rem;
-      border-top: 0.5px solid var(--border);
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--ink-muted);
-      line-height: 1.7;
-    }
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
 
-    /* ── Tags ── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 2.25rem;
-    }
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--ink-faint);
-      background: #f0ede8;
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-      padding: 4px 11px;
-      text-decoration: none;
-    }
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-    /* ── CTA ── */
-    .cta-block {
-      margin-top: 3.5rem;
-      padding: 2rem 1.75rem;
-      background: var(--ink);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .cta-block p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.55;
-      flex: 1;
-      min-width: 200px;
-    }
-    .cta-block strong { color: #fff; font-weight: 400; }
-    .cta-btn {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--ink);
-      background: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: opacity 0.15s;
-      flex-shrink: 0;
-    }
-    .cta-btn:hover { opacity: 0.88; }
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
 
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.07em;
-      color: var(--ink-faint);
-      border-top: 0.5px solid var(--border);
-      margin-top: 2rem;
-    }
-    footer a { color: var(--ink-faint); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
 
-    /* ── Responsive ── */
-    @media (max-width: 580px) {
-      nav { padding: 0 1rem; }
-      .article-wrap { padding: 2rem 1.25rem 4rem; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .charter-grid { grid-template-columns: 1fr; }
-      .can-cannot { grid-template-columns: 1fr; }
-      .cta-block { flex-direction: column; text-align: center; }
-    }
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
 
-    /* ── Fade-in on load ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .article-wrap { animation: fadeUp 0.5s ease both; }
-  </style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray2);
+    font-style: normal;
+  }
+
+  /* ── INFOGRAPHIC ── */
+  .infographic {
+    margin: 64px 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .infographic-header {
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .infographic-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .infographic-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .charter-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .charter-item.approved {
+    border-color: rgba(40,100,220,0.25);
+    background: rgba(15,60,140,0.12);
+  }
+
+  .charter-item.pending {
+    border-color: rgba(247,147,26,0.2);
+    background: rgba(247,147,26,0.04);
+  }
+
+  .charter-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    min-width: 50px;
+    flex-shrink: 0;
+  }
+
+  .charter-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    flex: 1;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-approved {
+    background: rgba(40,100,220,0.15);
+    color: var(--blue-light);
+    border: 1px solid rgba(40,100,220,0.3);
+  }
+
+  .badge-pending {
+    background: rgba(247,147,26,0.1);
+    color: var(--orange);
+    border: 1px solid rgba(247,147,26,0.25);
+  }
+
+  /* ── CAN / CANNOT ── */
+  .can-cannot {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  .can-box, .cannot-box {
+    padding: 32px 28px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .can-box {
+    border-left: 3px solid var(--blue-light);
+  }
+
+  .cannot-box {
+    border-left: 3px solid #D85A30;
+  }
+
+  .box-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .can-box .box-title { color: var(--blue-light); }
+  .cannot-box .box-title { color: #D85A30; }
+
+  .cap-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cap-list li {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--gray1);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .cap-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-style: normal;
+  }
+
+  .cap-icon.yes { color: var(--blue-light); }
+  .cap-icon.no  { color: #D85A30; }
+
+  /* ── REALITY BOX ── */
+  .reality-box {
+    margin: 48px 0;
+    padding: 36px 40px;
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 16px;
+    background: rgba(247,147,26,0.04);
+  }
+
+  .reality-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .reality-box p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--gray1);
+  }
+
+  .reality-box strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--copper-light); }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">Aetherum</a>
-    <a href="/blog" class="nav-back">All Posts</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
 
-  <main>
-    <article class="article-wrap">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
 
-      <div class="kicker">Digital Assets · Banking · March 2026</div>
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Digital Assets &middot; Banking</span>
+      <span class="hero-date">March 2026</span>
+    </div>
 
-      <h1 class="headline">'Crypto Banks' Are Back — But They're Not What You Might Think</h1>
+    <h1 class="hero-title">
+      'CRYPTO BANKS'<br><span class="accent">ARE BACK</span>
+    </h1>
 
-      <p class="deck">The competition has arrived. And this time, it's coming from inside your members' wallets — with a federal charter to prove it.</p>
+    <p class="hero-subtitle">
+      The competition has arrived. And this time, it's coming from inside your members' wallets &mdash; with a federal charter to prove it.
+    </p>
 
-      <div class="stats-row">
-        <div class="stat-cell">
-          <div class="stat-num accent">8</div>
-          <div class="stat-label">Approved</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">5+</div>
-          <div class="stat-label">Pending</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">~$2T</div>
-          <div class="stat-label">Trust Custody</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-num">Apr 1</div>
-          <div class="stat-label">OCC Rule Live</div>
-        </div>
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Founder & CEO &middot; Aetherum</div>
       </div>
+    </div>
+  </div>
 
-      <div class="body">
-        <p>11 companies. 83 days. One federal regulator. The Office of the Comptroller of the Currency just approved Crypto.com for a national trust bank charter. That sounds like a headline. It's actually the eighth approval in a wave that started last December.</p>
-        <p>Here's what happened.</p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">8</div>
+    <div class="stat-desc">OCC national trust bank charters approved since December</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">5+</div>
+    <div class="stat-desc">Additional applications currently pending review</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">~$2T</div>
+    <div class="stat-desc">Assets held in custody across OCC-supervised national trust banks</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">Apr 1</div>
+    <div class="stat-desc">OCC rule clarifying digital asset custody activities takes effect</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    11 companies. 83 days. One federal regulator. The Office of the Comptroller of the Currency just approved Crypto.com for a national trust bank charter. That sounds like a headline. It's actually the eighth approval in a wave that started last December.
+  </p>
+
+  <p>
+    Here's what happened.
+  </p>
+
+  <h2>THE <span class="acc">CHARTER WAVE</span></h2>
+
+  <!-- CHARTER GRID INFOGRAPHIC -->
+  <div class="infographic">
+    <div class="infographic-header">
+      <span class="infographic-title">OCC National Trust Bank Charters &mdash; 2025&ndash;2026</span>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;">Aetherum Analysis</span>
+    </div>
+    <div class="infographic-body">
+      <div class="charter-item approved">
+        <span class="charter-date">Dec 12</span>
+        <span class="charter-name">Circle</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="section-label">The Charter Wave</div>
-
-      <div class="charter-grid">
-        <div class="charter-item">
-          <span class="charter-date">Dec 12</span>
-          <span class="charter-name">Circle</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Dec 12</span>
-          <span class="charter-name">Ripple</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Dec 12</span>
-          <span class="charter-name">BitGo</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Dec 12</span>
-          <span class="charter-name">Fidelity Digital Assets</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Dec 12</span>
-          <span class="charter-name">Paxos</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Feb</span>
-          <span class="charter-name">Bridge (Stripe)</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Feb</span>
-          <span class="charter-name">Protego Trust</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Feb 20</span>
-          <span class="charter-name">Crypto.com</span>
-          <span class="badge badge-approved">Approved</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Feb 18</span>
-          <span class="charter-name">Morgan Stanley</span>
-          <span class="badge badge-pending">Pending</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Feb 24</span>
-          <span class="charter-name">Payoneer</span>
-          <span class="badge badge-pending">Pending</span>
-        </div>
-        <div class="charter-item">
-          <span class="charter-date">Mar 4</span>
-          <span class="charter-name">Zerohash</span>
-          <span class="badge badge-pending">Pending</span>
-        </div>
+      <div class="charter-item approved">
+        <span class="charter-date">Dec 12</span>
+        <span class="charter-name">Ripple</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="section-label">What a National Trust Bank Can Actually Do</div>
-
-      <div class="body">
-        <p>A national trust bank is not a regular bank. It can't take deposits. It can't make loans. It can't issue credit cards. Understanding this distinction matters — especially for your members.</p>
+      <div class="charter-item approved">
+        <span class="charter-date">Dec 12</span>
+        <span class="charter-name">BitGo</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="can-cannot">
-        <div class="can-box">
-          <div class="box-title">What it can do</div>
-          <ul class="cap-list">
-            <li><span class="cap-icon yes">✓</span> Custody digital assets and USD under federal oversight</li>
-            <li><span class="cap-icon yes">✓</span> Trade settlement for institutional clients</li>
-            <li><span class="cap-icon yes">✓</span> Blockchain staking services</li>
-            <li><span class="cap-icon yes">✓</span> Riskless principal trading</li>
-            <li><span class="cap-icon yes">✓</span> Operate across all 50 states under one regulator</li>
-          </ul>
-        </div>
-        <div class="cannot-box">
-          <div class="box-title">What it cannot do</div>
-          <ul class="cap-list">
-            <li><span class="cap-icon no">✕</span> Accept consumer deposits</li>
-            <li><span class="cap-icon no">✕</span> Make commercial loans</li>
-            <li><span class="cap-icon no">✕</span> Issue credit cards</li>
-            <li><span class="cap-icon no">✕</span> Access FDIC insurance</li>
-            <li><span class="cap-icon no">✕</span> Operate without OCC oversight</li>
-          </ul>
-        </div>
+      <div class="charter-item approved">
+        <span class="charter-date">Dec 12</span>
+        <span class="charter-name">Fidelity Digital Assets</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="section-label">The Crypto.com Details</div>
-
-      <div class="body">
-        <p>Crypto.com's entity — Foris DAX National Trust Bank, headquartered in Chicago — will target institutional investors, asset managers, corporate treasuries, and ETF sponsors.</p>
-        <p>The conditions are not trivial: $15M minimum Tier 1 capital, 180 days of operating expenses held in liquid assets, OCC approval for every senior hire for the first three years, and 60 days written notice before any deviation from the business plan.</p>
-        <p>This isn't "move fast and break things." This is move deliberately — under a federal microscope.</p>
+      <div class="charter-item approved">
+        <span class="charter-date">Dec 12</span>
+        <span class="charter-name">Paxos</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <blockquote class="pullquote">
-        <p>"A major step closer to meeting leading institutions' needs for a one-stop-shop qualified custodian under a gold standard of federal oversight."</p>
-        <cite>— Kris Marszalek, CEO, Crypto.com</cite>
-      </blockquote>
-
-      <div class="reality-box">
-        <div class="reality-label">The Reality Check</div>
-        <p>Only <strong>one company</strong> — Anchorage Digital Bank — has made it from conditional approval to fully operational status. Everyone else is still in the pre-opening gauntlet. Conditional approval doesn't end the regulatory process. <strong>It begins a different, more demanding one.</strong></p>
+      <div class="charter-item approved">
+        <span class="charter-date">Feb</span>
+        <span class="charter-name">Bridge (Stripe)</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="section-label">Why Credit Unions Should Be Paying Attention</div>
-
-      <div class="body">
-        <p>On April 1st, the OCC's new rule takes effect — formally clarifying that national trust banks can engage in non-fiduciary custody, staking, and digital asset activities. The regulatory runway is now paved.</p>
-        <p>These are not fringe players making noise. Circle, Fidelity, Ripple, and now Stripe-backed Bridge are building federally chartered infrastructure for the same digital assets your members already hold.</p>
-        <p>The question isn't whether crypto custody is going federal. It already is. The question is what your institution does before your members start asking why their credit union isn't part of it.</p>
-        <p>For advisors and institutions watching this space: the $3.2 trillion digital asset market isn't waiting for anyone to catch up. The infrastructure is being built. The charters are being issued. The only real question left is who owns the relationship with your members when the dust settles.</p>
+      <div class="charter-item approved">
+        <span class="charter-date">Feb</span>
+        <span class="charter-name">Protego Trust</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <p class="closing">The OCC supervises roughly 60 national trust banks holding nearly $2 trillion in custody. Crypto is the next wave — and the first eight ships have already left port.</p>
-
-      <div class="tags">
-        <span class="tag">#DigitalAssets</span>
-        <span class="tag">#OCC</span>
-        <span class="tag">#Banking</span>
-        <span class="tag">#CreditUnions</span>
-        <span class="tag">#Fintech</span>
-        <span class="tag">#Crypto</span>
-        <span class="tag">#Custody</span>
-        <span class="tag">#Tokenization</span>
+      <div class="charter-item approved">
+        <span class="charter-date">Feb 20</span>
+        <span class="charter-name">Crypto.com</span>
+        <span class="badge badge-approved">Approved</span>
       </div>
-
-      <div class="cta-block">
-        <p>We're building the infrastructure that lets your credit union be part of this — <strong>without taking on the charter yourself.</strong></p>
-        <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Book a 30-min call →</a>
+      <div class="charter-item pending">
+        <span class="charter-date">Feb 18</span>
+        <span class="charter-name">Morgan Stanley</span>
+        <span class="badge badge-pending">Pending</span>
       </div>
+      <div class="charter-item pending">
+        <span class="charter-date">Feb 24</span>
+        <span class="charter-name">Payoneer</span>
+        <span class="badge badge-pending">Pending</span>
+      </div>
+      <div class="charter-item pending">
+        <span class="charter-date">Mar 4</span>
+        <span class="charter-name">Zerohash</span>
+        <span class="badge badge-pending">Pending</span>
+      </div>
+    </div>
+  </div>
 
-    </article>
-  </main>
+  <h2>WHAT A NATIONAL TRUST BANK <span class="acc">CAN ACTUALLY DO</span></h2>
 
-  <footer>
-    <p>© 2026 Aetherum, Inc. &nbsp;·&nbsp; <a href="/terms.html">Terms</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/blog">Blog</a></p>
-  </footer>
+  <p>
+    A national trust bank is not a regular bank. It can't take deposits. It can't make loans. It can't issue credit cards. Understanding this distinction matters &mdash; especially for your members.
+  </p>
+
+  <div class="can-cannot">
+    <div class="can-box">
+      <div class="box-title">What it can do</div>
+      <ul class="cap-list">
+        <li><span class="cap-icon yes">&#10003;</span> Custody digital assets and USD under federal oversight</li>
+        <li><span class="cap-icon yes">&#10003;</span> Trade settlement for institutional clients</li>
+        <li><span class="cap-icon yes">&#10003;</span> Blockchain staking services</li>
+        <li><span class="cap-icon yes">&#10003;</span> Riskless principal trading</li>
+        <li><span class="cap-icon yes">&#10003;</span> Operate across all 50 states under one regulator</li>
+      </ul>
+    </div>
+    <div class="cannot-box">
+      <div class="box-title">What it cannot do</div>
+      <ul class="cap-list">
+        <li><span class="cap-icon no">&#10005;</span> Accept consumer deposits</li>
+        <li><span class="cap-icon no">&#10005;</span> Make commercial loans</li>
+        <li><span class="cap-icon no">&#10005;</span> Issue credit cards</li>
+        <li><span class="cap-icon no">&#10005;</span> Access FDIC insurance</li>
+        <li><span class="cap-icon no">&#10005;</span> Operate without OCC oversight</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>THE <span class="acc">CRYPTO.COM</span> DETAILS</h2>
+
+  <p>
+    Crypto.com's entity &mdash; Foris DAX National Trust Bank, headquartered in Chicago &mdash; will target institutional investors, asset managers, corporate treasuries, and ETF sponsors.
+  </p>
+
+  <p>
+    The conditions are not trivial: <strong>$15M minimum Tier 1 capital, 180 days of operating expenses held in liquid assets, OCC approval for every senior hire for the first three years, and 60 days written notice before any deviation from the business plan.</strong>
+  </p>
+
+  <p>
+    This isn't "move fast and break things." This is move deliberately &mdash; under a federal microscope.
+  </p>
+
+  <div class="pullquote">
+    <p>"A major step closer to meeting leading institutions' needs for a one-stop-shop qualified custodian under a gold standard of federal oversight."</p>
+    <cite>&mdash; Kris Marszalek, CEO, Crypto.com</cite>
+  </div>
+
+  <div class="reality-box">
+    <div class="reality-label">The Reality Check</div>
+    <p>Only <strong>one company</strong> &mdash; Anchorage Digital Bank &mdash; has made it from conditional approval to fully operational status. Everyone else is still in the pre-opening gauntlet. Conditional approval doesn't end the regulatory process. <strong>It begins a different, more demanding one.</strong></p>
+  </div>
+
+  <h2>WHY CREDIT UNIONS <span class="acc">SHOULD BE PAYING ATTENTION</span></h2>
+
+  <p>
+    On April 1st, the OCC's new rule takes effect &mdash; formally clarifying that national trust banks can engage in non-fiduciary custody, staking, and digital asset activities. The regulatory runway is now paved.
+  </p>
+
+  <p>
+    These are not fringe players making noise. Circle, Fidelity, Ripple, and now Stripe-backed Bridge are building federally chartered infrastructure for the same digital assets your members already hold.
+  </p>
+
+  <p>
+    The question isn't whether crypto custody is going federal. It already is. <strong>The question is what your institution does before your members start asking why their credit union isn't part of it.</strong>
+  </p>
+
+  <p>
+    For advisors and institutions watching this space: the $3.2 trillion digital asset market isn't waiting for anyone to catch up. The infrastructure is being built. The charters are being issued. The only real question left is who owns the relationship with your members when the dust settles.
+  </p>
+
+  <div class="pullquote">
+    <p>"The OCC supervises roughly 60 national trust banks holding nearly $2 trillion in custody. Crypto is the next wave &mdash; and the first eight ships have already left port."</p>
+  </div>
+
+  <div class="tags">
+    <span class="tag">#DigitalAssets</span>
+    <span class="tag">#OCC</span>
+    <span class="tag">#Banking</span>
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#Fintech</span>
+    <span class="tag">#Crypto</span>
+    <span class="tag">#Custody</span>
+    <span class="tag">#Tokenization</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">YOUR MEMBERS ARE ASKING</div>
+    <div class="cta-sub">We're building the infrastructure that lets your credit union be part of this &mdash; without taking on the charter yourself.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Book a 30-min Call</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div style="font-size:13px;color:var(--text-muted)"><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a> &middot; <a href="/help">Help</a></div>
+</footer>
 
 </body>
 </html>
