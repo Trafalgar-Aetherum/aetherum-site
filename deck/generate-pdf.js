@@ -50,26 +50,43 @@ const SECTIONS = [
     if (nav) nav.style.display = 'none';
   });
 
-  // Force every section to exactly one viewport height so each is one "slide"
-  await page.evaluate((vh) => {
-    document.querySelectorAll('section').forEach(sec => {
-      sec.style.minHeight = vh + 'px';
-      sec.style.maxHeight = vh + 'px';
-      sec.style.height = vh + 'px';
-      sec.style.overflow = 'hidden';
-    });
-    // Hide footer so it doesn't bleed into the last section
+  // Hide everything except the section being captured
+  await page.evaluate(() => {
+    // Hide footer permanently
     const footer = document.querySelector('footer');
     if (footer) footer.style.display = 'none';
-  }, VIEWPORT.height);
+    // Hide all sections initially
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.display = 'none';
+    });
+  });
 
-  // Screenshot each section at exactly the viewport size
+  // Screenshot each section by making it position:fixed filling the viewport
   const screenshots = [];
   for (const selector of SECTIONS) {
-    // Scroll section to the top of the viewport
     await page.evaluate((sel) => {
+      // Reset scroll
+      window.scrollTo(0, 0);
+
+      // Hide all sections
+      document.querySelectorAll('section').forEach(sec => {
+        sec.style.display = 'none';
+      });
+
+      // Show and pin the target section to fill the viewport exactly
       const el = document.querySelector(sel);
-      if (el) window.scrollTo(0, el.offsetTop);
+      if (el) {
+        el.style.display = 'flex';
+        el.style.position = 'fixed';
+        el.style.top = '0';
+        el.style.left = '0';
+        el.style.width = '100vw';
+        el.style.height = '100vh';
+        el.style.minHeight = '100vh';
+        el.style.maxHeight = '100vh';
+        el.style.overflow = 'hidden';
+        el.style.zIndex = '9999';
+      }
     }, selector);
 
     // Wait for repaint
@@ -78,6 +95,23 @@ const SECTIONS = [
     const buf = await page.screenshot({ type: 'png' });
     screenshots.push(buf);
     console.log(`  captured ${selector}`);
+
+    // Restore the section so it doesn't interfere with the next capture
+    await page.evaluate((sel) => {
+      const el = document.querySelector(sel);
+      if (el) {
+        el.style.display = 'none';
+        el.style.position = '';
+        el.style.top = '';
+        el.style.left = '';
+        el.style.width = '';
+        el.style.height = '';
+        el.style.minHeight = '';
+        el.style.maxHeight = '';
+        el.style.overflow = '';
+        el.style.zIndex = '';
+      }
+    }, selector);
   }
 
   // Build a temporary HTML page with each screenshot as a full-bleed page
