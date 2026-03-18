@@ -680,9 +680,7 @@
   footer a:hover { color: var(--copper-light); }
 
   @media print {
-    nav, header, [class*="nav"], [class*="header"],
-    .scroll-indicator, [class*="scroll"],
-    #download-btn, [class*="download"] {
+    nav, .nav, #nav, header {
       display: none !important;
     }
 
@@ -695,44 +693,46 @@
     }
 
     html, body {
-      background: #000 !important;
       height: auto !important;
       overflow: visible !important;
+      background: #000 !important;
     }
 
-    section, [class*="section"], .slide, [class*="slide"],
-    .panel, [class*="panel"] {
+    /* Collapse ALL sections — no fixed heights */
+    #hero, #problem, #solution, #market, #traction, #revenue, #team, #ask {
       min-height: 0 !important;
       height: auto !important;
       max-height: none !important;
       overflow: visible !important;
-      padding: 32px 48px !important;
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Hero gets its own page */
+    #hero {
       page-break-after: always;
       break-after: page;
     }
 
-    /* Keep card grids together — don't break inside grid containers */
-    [class*="grid"], [class*="cards"], [class*="features"],
-    [class*="traction"], [class*="team"], [class*="revenue"] {
+    /* Keep solution grid together */
+    .solution-grid {
       page-break-inside: avoid !important;
       break-inside: avoid !important;
-      display: block !important;
+      display: grid !important;
     }
 
-    /* Individual cards stay together */
-    [class*="card"], [class*="item"], [class*="row"],
-    [class*="member"], [class*="advisor"] {
+    /* Keep ask section together */
+    .ask-inner {
       page-break-inside: avoid !important;
       break-inside: avoid !important;
-      display: block !important;
-      margin-bottom: 16px !important;
     }
 
-    /* Hero section — don't force a full page */
-    section:first-of-type {
-      page-break-after: always;
-      break-after: page;
-      min-height: 0 !important;
+    /* Keep container blocks together */
+    .container {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
     }
   }
 </style>
