@@ -678,6 +678,44 @@
   }
   footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
   footer a:hover { color: var(--copper-light); }
+
+  @media print {
+    /* Hide nav and UI chrome */
+    nav, header, [class*="nav"], [class*="header"],
+    .scroll-indicator, [class*="scroll"],
+    #download-btn, [class*="download"] {
+      display: none !important;
+    }
+
+    /* Collapse full-screen section heights */
+    section, [class*="section"], .slide, [class*="slide"],
+    .panel, [class*="panel"] {
+      min-height: 0 !important;
+      height: auto !important;
+      page-break-inside: avoid;
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+
+    /* Prevent mid-card and mid-bio page breaks */
+    .card, [class*="card"], .team-member, [class*="team"],
+    .advisor, [class*="advisor"], li {
+      page-break-inside: avoid;
+    }
+
+    /* Remove scroll-based animations */
+    * {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
+    body {
+      background: #000 !important;
+    }
+  }
 </style>
 </head>
 <body>
