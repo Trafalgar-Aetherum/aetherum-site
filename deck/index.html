@@ -680,30 +680,12 @@
   footer a:hover { color: var(--copper-light); }
 
   @media print {
-    /* Hide nav and UI chrome */
     nav, header, [class*="nav"], [class*="header"],
     .scroll-indicator, [class*="scroll"],
     #download-btn, [class*="download"] {
       display: none !important;
     }
 
-    /* Collapse full-screen section heights */
-    section, [class*="section"], .slide, [class*="slide"],
-    .panel, [class*="panel"] {
-      min-height: 0 !important;
-      height: auto !important;
-      page-break-inside: avoid;
-      padding-top: 48px !important;
-      padding-bottom: 48px !important;
-    }
-
-    /* Prevent mid-card and mid-bio page breaks */
-    .card, [class*="card"], .team-member, [class*="team"],
-    .advisor, [class*="advisor"], li {
-      page-break-inside: avoid;
-    }
-
-    /* Remove scroll-based animations */
     * {
       animation: none !important;
       transition: none !important;
@@ -712,8 +694,45 @@
       visibility: visible !important;
     }
 
-    body {
+    html, body {
       background: #000 !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    section, [class*="section"], .slide, [class*="slide"],
+    .panel, [class*="panel"] {
+      min-height: 0 !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      padding: 32px 48px !important;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Keep card grids together — don't break inside grid containers */
+    [class*="grid"], [class*="cards"], [class*="features"],
+    [class*="traction"], [class*="team"], [class*="revenue"] {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      display: block !important;
+    }
+
+    /* Individual cards stay together */
+    [class*="card"], [class*="item"], [class*="row"],
+    [class*="member"], [class*="advisor"] {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      display: block !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* Hero section — don't force a full page */
+    section:first-of-type {
+      page-break-after: always;
+      break-after: page;
+      min-height: 0 !important;
     }
   }
 </style>
