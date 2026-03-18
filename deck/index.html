@@ -698,39 +698,41 @@
       background: #000 !important;
     }
 
-    /* Collapse ALL sections — no fixed heights */
     #hero, #problem, #solution, #market, #traction, #revenue, #team, #ask {
       min-height: 0 !important;
       height: auto !important;
       max-height: none !important;
       overflow: visible !important;
-      padding-top: 48px !important;
-      padding-bottom: 48px !important;
-      page-break-inside: avoid;
-      break-inside: avoid;
+      padding-top: 40px !important;
+      padding-bottom: 40px !important;
     }
 
-    /* Hero gets its own page */
     #hero {
       page-break-after: always;
       break-after: page;
     }
 
-    /* Keep solution grid together */
-    .solution-grid {
+    /* The key fix: keep fade-in label+heading glued to its sibling content grid */
+    .fade-in {
       page-break-inside: avoid !important;
       break-inside: avoid !important;
-      display: grid !important;
+      page-break-after: avoid !important;
+      break-after: avoid !important;
     }
 
-    /* Keep ask section together */
-    .ask-inner {
-      page-break-inside: avoid !important;
-      break-inside: avoid !important;
-    }
-
-    /* Keep container blocks together */
+    /* Keep the container (which holds fade-in label AND content grid) together */
     .container {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    /* Individual cards and rows never break */
+    .solution-card, .traction-row, .team-card, .advisor-card {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    .solution-grid, .traction-items {
       page-break-inside: avoid !important;
       break-inside: avoid !important;
     }
