@@ -1,191 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The GENIUS Act's Compliance Burden Is a Credit Union Advantage | Aetherum</title>
-  <meta name="description" content="The OCC's proposed GENIUS Act rules impose custody segregation, operational backstops, and monthly audited disclosures. For credit unions, that's not a burden — it's home turf." />
-  <meta property="og:title" content="The GENIUS Act's Compliance Burden Is a Credit Union Advantage" />
-  <meta property="og:description" content="As the regulatory cost of crypto services rises, regulated institutions gain structural ground. Here's how credit unions can play offense." />
-  <meta property="og:type" content="article" />
-  <link rel="canonical" href="https://aetherum.ai/blog/genius-act-custody-moat/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --color-bg: #ffffff; --color-text: #111827; --color-muted: #6b7280;
-      --color-accent: #0d9488; --color-accent-light: #f0fdfa; --color-accent-mid: #ccfbf1;
-      --color-border: #e5e7eb; --color-surface: #f9fafb;
-      --font: 'Inter', -apple-system, sans-serif; --content-width: 720px;
-    }
-    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); line-height: 1.75; font-size: 17px; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--color-text); text-decoration: none; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a { color: var(--color-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--color-text); }
-    .hero { max-width: var(--content-width); margin: 0 auto; padding: 4rem 2rem 2.5rem; }
-    .breadcrumb { font-size: 0.8rem; color: var(--color-muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.4rem; }
-    .breadcrumb a { color: var(--color-muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--color-accent); }
-    .category-tag { display: inline-block; background: var(--color-accent-light); color: var(--color-accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border-radius: 20px; margin-bottom: 1.25rem; }
-    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1.25rem; color: var(--color-text); }
-    .hero-subtitle { font-size: 1.1rem; color: var(--color-muted); line-height: 1.65; margin-bottom: 2rem; max-width: 600px; }
-    .meta { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: var(--color-muted); padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-    .meta-dot { color: var(--color-border); }
-    article { max-width: var(--content-width); margin: 0 auto; padding: 2.5rem 2rem 5rem; }
-    article p { margin-bottom: 1.5rem; color: #1f2937; }
-    article h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin: 2.75rem 0 1rem; color: var(--color-text); }
-    article ul { padding-left: 1.5rem; margin-bottom: 1.5rem; }
-    article li { margin-bottom: 0.6rem; color: #1f2937; }
-    .pullquote { border-left: 3px solid var(--color-accent); padding: 1rem 1.5rem; margin: 2.5rem 0; background: var(--color-accent-light); border-radius: 0 8px 8px 0; }
-    .pullquote p { font-size: 1.05rem; font-weight: 600; color: var(--color-accent); margin: 0; line-height: 1.6; }
-    .compare-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 0.9rem; }
-    .compare-table th { background: var(--color-surface); padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); border-bottom: 2px solid var(--color-border); }
-    .compare-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--color-border); vertical-align: top; line-height: 1.5; color: #1f2937; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table .req-col { font-weight: 600; color: var(--color-text); min-width: 200px; }
-    .tag-yes { display: inline-block; background: var(--color-accent-mid); color: var(--color-accent); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; }
-    .tag-no { display: inline-block; background: #fee2e2; color: #dc2626; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; }
-    .highlight-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.75rem 2rem; margin: 2.5rem 0; }
-    .highlight-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-text); }
-    .highlight-box ul { padding-left: 1.25rem; margin: 0; }
-    .highlight-box li { margin-bottom: 0.5rem; font-size: 0.95rem; }
-    .cta-block { background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%); border-radius: 16px; padding: 2.5rem; margin: 3rem 0 0; color: white; text-align: center; }
-    .cta-block h3 { color: white; font-size: 1.3rem; margin-top: 0; margin-bottom: 0.75rem; }
-    .cta-block p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 0.95rem; }
-    .cta-btn { display: inline-block; background: white; color: var(--color-accent); font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; transition: opacity 0.15s; }
-    .cta-btn:hover { opacity: 0.9; }
-    .source-note { font-size: 0.8rem; color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; margin-top: 3rem; }
-    .source-note a { color: var(--color-muted); }
-    .source-note a:hover { color: var(--color-accent); }
-    footer { border-top: 1px solid var(--color-border); padding: 2.5rem 2rem; text-align: center; font-size: 0.85rem; color: var(--color-muted); }
-    footer a { color: var(--color-muted); text-decoration: none; }
-    footer a:hover { color: var(--color-accent); }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    @media (max-width: 640px) { .compare-table { font-size: 0.82rem; } .compare-table th, .compare-table td { padding: 0.65rem 0.75rem; } .nav-links { display: none; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The GENIUS Act's Compliance Burden Is a Credit Union Advantage — Aetherum Blog</title>
+<meta name="description" content="The OCC's proposed GENIUS Act rules impose custody segregation, operational backstops, and monthly audited disclosures. For credit unions, that's not a burden — it's home turf." />
+<meta property="og:title" content="The GENIUS Act's Compliance Burden Is a Credit Union Advantage" />
+<meta property="og:description" content="As the regulatory cost of crypto services rises, regulated institutions gain structural ground. Here's how credit unions can play offense." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/genius-act-custody-moat/" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="canonical" href="https://aetherum.ai/blog/genius-act-custody-moat/" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* ── COMPARE TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    font-size: 14px;
+  }
+
+  .compare-table th {
+    background: var(--bg2);
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    color: var(--gray1);
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table .req-col {
+    font-weight: 400;
+    color: var(--white);
+    min-width: 200px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+  }
+
+  .tag-yes {
+    display: inline-block;
+    background: rgba(40,100,220,0.15);
+    color: var(--blue-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(40,100,220,0.3);
+    margin-right: 8px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    margin: 48px 0;
+    padding: 36px 40px;
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 16px;
+    background: rgba(247,147,26,0.04);
+  }
+
+  .highlight-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  .highlight-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .highlight-box li {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray1);
+    font-weight: 300;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .highlight-box li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  .highlight-box li strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── SOURCE NOTE ── */
+  .source-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    margin-top: 48px;
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+  }
+
+  .source-note a {
+    color: var(--gray2);
+    transition: color 0.2s;
+  }
+
+  .source-note a:hover {
+    color: var(--orange);
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  footer a { color: var(--gray2); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 120px 24px 60px; }
+    .hero-title { font-size: clamp(48px, 12vw, 80px); }
+    .stat-banner { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { padding: 24px 28px; }
+    .article { padding: 48px 24px; }
+    .pullquote { margin: 40px 0; padding: 28px 24px; }
+    .compare-table { font-size: 12px; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+    .cta-block { padding: 36px 24px; }
+    .cta-title { font-size: 36px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 16px 24px; }
+    .stat-banner { grid-template-columns: 1fr; }
+    .highlight-box { padding: 24px 20px; }
+  }
+</style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="nav-logo">Aetherum</a>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/deck">Deck</a></li>
-      <li><a href="https://calendly.com/jbailey-aetherum/30min" target="_blank" rel="noopener">Book a Demo</a></li>
-    </ul>
-  </nav>
-  <div class="hero">
-    <div class="breadcrumb">
-      <a href="/">Home</a> › <a href="/blog">Blog</a> › The GENIUS Act's Compliance Burden Is a Credit Union Advantage
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Regulation &middot; Policy</span>
+      <span class="hero-date">March 19, 2026 &middot; 5 min read</span>
     </div>
-    <div class="category-tag">Regulation &amp; Policy</div>
-    <h1>The GENIUS Act's Compliance Burden Is a Credit Union Advantage</h1>
-    <p class="hero-subtitle">The OCC's proposed rules for crypto services are demanding — monthly audited disclosures, exclusive custody controls, a full year of operating expenses in liquid reserves. For fintechs, that's a steep climb. For credit unions, it's Tuesday.</p>
-    <div class="meta">
-      <span>Aetherum Team</span>
-      <span class="meta-dot">·</span>
-      <span>March 19, 2026</span>
-      <span class="meta-dot">·</span>
-      <span>5 min read</span>
+
+    <h1 class="hero-title">
+      THE GENIUS ACT'S<br><span class="accent">COMPLIANCE MOAT</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      The OCC's proposed rules for crypto services are demanding &mdash; monthly audited disclosures, exclusive custody controls, a full year of operating expenses in liquid reserves. For fintechs, that's a steep climb. For credit unions, it's Tuesday.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">A</div>
+      <div class="byline-text">
+        <div class="byline-name">Aetherum Team</div>
+        <div class="byline-role">Aetherum</div>
+      </div>
     </div>
   </div>
 
-  <article>
-    <p>There's a running assumption in the crypto industry that regulation is a headwind — something to be delayed, minimized, or worked around. The GENIUS Act's proposed implementing rules from the OCC suggest the opposite dynamic is playing out for traditional financial institutions.</p>
-    <p>When Arnold &amp; Porter's banking regulatory team analyzed the OCC's 376-page proposed rulemaking, their conclusion was pointed: the framework integrates stablecoin issuance into federal banking supervision "while preserving the novel features of blockchain-based infrastructure." Translation — this looks like banking regulation now, and that means banks and credit unions have a structural head start.</p>
-    <p>For credit unions evaluating whether to offer crypto-collateralized lending services, this framing matters. The compliance cost barrier that will keep many fintechs out of this market is the same infrastructure that credit unions have been building and maintaining for decades.</p>
-    <h2>What the Rules Actually Require — and Why It's Familiar</h2>
-    <p>Let's walk through the most demanding provisions of the OCC's proposal and look at them through a credit union lens.</p>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>GENIUS Act Requirement</th>
-          <th>For a Fintech</th>
-          <th>For a Credit Union</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="req-col">Monthly reserve disclosures, audited by a registered accounting firm</td>
-          <td>Requires new audit relationships, disclosure infrastructure, public reporting cadence</td>
-          <td><span class="tag-yes">FAMILIAR</span> Already files NCUA Call Reports; auditor relationships exist</td>
-        </tr>
-        <tr>
-          <td class="req-col">Exclusive custody control — custodian holds private keys, no third party retains unilateral transfer capability</td>
-          <td>Requires new key management architecture and contractual delineation with technology partners</td>
-          <td><span class="tag-yes">FAMILIAR</span> Member asset custody and segregation already core to operations</td>
-        </tr>
-        <tr>
-          <td class="req-col">Operational backstop — one full year of operating expenses in highly liquid assets</td>
-          <td>Ties up meaningful capital for early-stage operators; may not have existing liquidity buffers</td>
-          <td><span class="tag-yes">FAMILIAR</span> Liquidity management and NCUA capital requirements already embedded</td>
-        </tr>
-        <tr>
-          <td class="req-col">Board accountability and independent oversight for stablecoin-related activities</td>
-          <td>Requires building governance structures from scratch</td>
-          <td><span class="tag-yes">FAMILIAR</span> Elected boards, supervisory committees, and examiner relationships already in place</td>
-        </tr>
-        <tr>
-          <td class="req-col">Weekly confidential data reports and annual full-scope examinations</td>
-          <td>New reporting infrastructure; unfamiliar examiner relationship</td>
-          <td><span class="tag-yes">FAMILIAR</span> Regular NCUA examination cycle; internal reporting infrastructure exists</td>
-        </tr>
-        <tr>
-          <td class="req-col">BSA/AML compliance, OFAC sanctions, and suspicious activity monitoring</td>
-          <td>Must build or procure — often the biggest compliance gap for crypto-native firms</td>
-          <td><span class="tag-yes">FAMILIAR</span> BSA Officer, SAR filing, OFAC screening already standard</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>The pattern is consistent. What the GENIUS Act imposes as new requirements on stablecoin issuers are, in most cases, slightly novel expressions of obligations credit unions already carry. The learning curve is real, but the foundation is already there.</p>
-    <h2>The Custody Provision Is the Most Important Clause Nobody Is Talking About</h2>
-    <p>Deep in the Arnold &amp; Porter analysis is a custody provision that should be required reading for any credit union evaluating crypto services. The OCC's proposal establishes three core custody principles for any institution handling payment stablecoins or related reserve assets:</p>
-    <div class="highlight-box">
-      <h3>OCC Proposed Custody Framework — Three Core Principles</h3>
-      <ul>
-        <li><strong>Exclusive control:</strong> The custodian must demonstrate it holds exclusive control over private keys. No other party — including the customer — retains unilateral transfer capability.</li>
-        <li><strong>Segregation:</strong> Customer assets must be clearly separated from the custodian's proprietary assets and protected from creditor claims. Accurate reconciliation of on-chain balances with internal ledgers required on a timely basis.</li>
-        <li><strong>Third-party accountability:</strong> Even when sub-custodians or technology providers perform safekeeping functions, the primary custodian bears ultimate responsibility for oversight of those relationships.</li>
-      </ul>
-    </div>
-    <p>This framework has a direct implication for how crypto lending infrastructure should be architected. It points toward a model where the regulated institution — the credit union — sits at the center of the custody relationship, with technology providers operating as service layers underneath, not as principals.</p>
-    <div class="pullquote">
-      <p>"The institution is accountable. The technology is infrastructure. That's exactly how crypto-collateralized lending should work for credit unions — and it's the only model that holds up under the GENIUS Act framework."</p>
-    </div>
-    <p>Any architecture that places custody control at a third-party fintech layer, rather than at the credit union itself, creates regulatory and liability exposure under the proposed rules. The practical implication: credit unions evaluating crypto lending vendors should be asking hard questions about where custody actually lives in the proposed technology stack.</p>
-    <h2>The Barrier to Entry Is Rising — and That's Good for Credit Unions</h2>
-    <p>Today, consumer-facing crypto lending products are dominated by lightly regulated entities operating in jurisdictions with minimal oversight. The GENIUS Act changes the competitive calculus dramatically. The compliance costs embedded in the proposed rules — audited monthly disclosures, tiered capital requirements, operational backstops, annual examinations — represent a meaningful barrier to entry that will reshape the market over the next 18 months.</p>
-    <p>Firms that have been offering crypto-collateralized loans without robust compliance infrastructure will face a choice: invest heavily to meet the new standards, or exit the market. Those that remain will look increasingly like regulated financial institutions — because the rules will require it.</p>
-    <p>Credit unions start that race ahead. Not because they know more about crypto, but because they already have what the rules require: examiner relationships, audit infrastructure, BSA programs, board governance, and member-first custody obligations. The technical crypto knowledge is the learnable part. The compliance architecture is the hard part — and credit unions already have it.</p>
-    <h2>The Window Is Now</h2>
-    <p>The OCC comment period closes May 1, 2026. Final rules are expected by July 18, 2026. The GENIUS Act takes effect no later than January 18, 2027, with the NCUA's parallel rulemaking setting credit union-specific requirements.</p>
-    <p>Credit unions that want to be positioned when the rules are final need to be building vendor relationships, evaluating infrastructure architecture, and educating boards now — not after the comment period closes and the market moves.</p>
-    <p>The compliance burden is real. So is the advantage it creates for institutions that are already built for it.</p>
-    <div class="cta-block">
-      <h3>Aetherum is built for the regulatory moment credit unions are entering.</h3>
-      <p>Purpose-built crypto lending infrastructure with institutional-grade custody architecture, compliance infrastructure, and a proprietary risk assessment model designed for the credit union regulatory environment.</p>
-      <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn" target="_blank" rel="noopener">Book a 30-Minute Demo →</a>
-    </div>
-    <div class="source-note">
-      <p>Analysis informed by Arnold &amp; Porter's advisory on the OCC's proposed GENIUS Act rulemaking (March 9, 2026) and the OCC's Notice of Proposed Rulemaking published March 2, 2026 in the Federal Register (91 FR 10202). Comment period closes May 1, 2026. <a href="https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-3.html" target="_blank" rel="noopener">View the OCC bulletin →</a></p>
-    </div>
-  </article>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/deck">Investor Deck</a>
-      <a href="/legal/terms">Terms</a>
-      <a href="/legal/privacy">Privacy</a>
-      <a href="/legal/disclaimers">Disclaimers</a>
-    </div>
-    <p>© 2026 Aetherum Inc. All rights reserved.</p>
-  </footer>
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">376</div>
+    <div class="stat-desc">Pages in the OCC's proposed GENIUS Act rulemaking</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">6</div>
+    <div class="stat-desc">Major compliance requirements credit unions already meet</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">May 1</div>
+    <div class="stat-desc">OCC comment period deadline for proposed rules</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">Jan '27</div>
+    <div class="stat-desc">GENIUS Act takes effect no later than January 18, 2027</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    There's a running assumption in the crypto industry that regulation is a headwind &mdash; something to be delayed, minimized, or worked around. The GENIUS Act's proposed implementing rules from the OCC suggest the opposite dynamic is playing out for traditional financial institutions.
+  </p>
+
+  <p>
+    When Arnold &amp; Porter's banking regulatory team analyzed the OCC's 376-page proposed rulemaking, their conclusion was pointed: the framework integrates stablecoin issuance into federal banking supervision <strong>"while preserving the novel features of blockchain-based infrastructure."</strong> Translation &mdash; this looks like banking regulation now, and that means banks and credit unions have a structural head start.
+  </p>
+
+  <p>
+    For credit unions evaluating whether to offer crypto-collateralized lending services, this framing matters. The compliance cost barrier that will keep many fintechs out of this market is the same infrastructure that credit unions have been building and maintaining for decades.
+  </p>
+
+  <h2>WHAT THE RULES <span class="acc">ACTUALLY REQUIRE</span></h2>
+
+  <p>Let's walk through the most demanding provisions of the OCC's proposal and look at them through a credit union lens.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>GENIUS Act Requirement</th>
+        <th>For a Fintech</th>
+        <th>For a Credit Union</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="req-col">Monthly reserve disclosures, audited by a registered accounting firm</td>
+        <td>Requires new audit relationships, disclosure infrastructure, public reporting cadence</td>
+        <td><span class="tag-yes">Familiar</span> Already files NCUA Call Reports; auditor relationships exist</td>
+      </tr>
+      <tr>
+        <td class="req-col">Exclusive custody control &mdash; custodian holds private keys, no third party retains unilateral transfer capability</td>
+        <td>Requires new key management architecture and contractual delineation with technology partners</td>
+        <td><span class="tag-yes">Familiar</span> Member asset custody and segregation already core to operations</td>
+      </tr>
+      <tr>
+        <td class="req-col">Operational backstop &mdash; one full year of operating expenses in highly liquid assets</td>
+        <td>Ties up meaningful capital for early-stage operators; may not have existing liquidity buffers</td>
+        <td><span class="tag-yes">Familiar</span> Liquidity management and NCUA capital requirements already embedded</td>
+      </tr>
+      <tr>
+        <td class="req-col">Board accountability and independent oversight for stablecoin-related activities</td>
+        <td>Requires building governance structures from scratch</td>
+        <td><span class="tag-yes">Familiar</span> Elected boards, supervisory committees, and examiner relationships already in place</td>
+      </tr>
+      <tr>
+        <td class="req-col">Weekly confidential data reports and annual full-scope examinations</td>
+        <td>New reporting infrastructure; unfamiliar examiner relationship</td>
+        <td><span class="tag-yes">Familiar</span> Regular NCUA examination cycle; internal reporting infrastructure exists</td>
+      </tr>
+      <tr>
+        <td class="req-col">BSA/AML compliance, OFAC sanctions, and suspicious activity monitoring</td>
+        <td>Must build or procure &mdash; often the biggest compliance gap for crypto-native firms</td>
+        <td><span class="tag-yes">Familiar</span> BSA Officer, SAR filing, OFAC screening already standard</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The pattern is consistent. What the GENIUS Act imposes as new requirements on stablecoin issuers are, in most cases, slightly novel expressions of obligations credit unions already carry. <strong>The learning curve is real, but the foundation is already there.</strong>
+  </p>
+
+  <h2>THE CUSTODY PROVISION <span class="acc">NOBODY IS TALKING ABOUT</span></h2>
+
+  <p>
+    Deep in the Arnold &amp; Porter analysis is a custody provision that should be required reading for any credit union evaluating crypto services. The OCC's proposal establishes three core custody principles for any institution handling payment stablecoins or related reserve assets:
+  </p>
+
+  <div class="highlight-box">
+    <h3>OCC Proposed Custody Framework &mdash; Three Core Principles</h3>
+    <ul>
+      <li><strong>Exclusive control:</strong> The custodian must demonstrate it holds exclusive control over private keys. No other party &mdash; including the customer &mdash; retains unilateral transfer capability.</li>
+      <li><strong>Segregation:</strong> Customer assets must be clearly separated from the custodian's proprietary assets and protected from creditor claims. Accurate reconciliation of on-chain balances with internal ledgers required on a timely basis.</li>
+      <li><strong>Third-party accountability:</strong> Even when sub-custodians or technology providers perform safekeeping functions, the primary custodian bears ultimate responsibility for oversight of those relationships.</li>
+    </ul>
+  </div>
+
+  <p>
+    This framework has a direct implication for how crypto lending infrastructure should be architected. It points toward a model where the regulated institution &mdash; the credit union &mdash; sits at the center of the custody relationship, with technology providers operating as service layers underneath, not as principals.
+  </p>
+
+  <div class="pullquote">
+    <p>"The institution is accountable. The technology is infrastructure. That's exactly how crypto-collateralized lending should work for credit unions &mdash; and it's the only model that holds up under the GENIUS Act framework."</p>
+  </div>
+
+  <p>
+    Any architecture that places custody control at a third-party fintech layer, rather than at the credit union itself, creates regulatory and liability exposure under the proposed rules. <strong>The practical implication: credit unions evaluating crypto lending vendors should be asking hard questions about where custody actually lives in the proposed technology stack.</strong>
+  </p>
+
+  <h2>THE BARRIER IS <span class="acc">RISING</span></h2>
+
+  <p>
+    Today, consumer-facing crypto lending products are dominated by lightly regulated entities operating in jurisdictions with minimal oversight. The GENIUS Act changes the competitive calculus dramatically. The compliance costs embedded in the proposed rules &mdash; audited monthly disclosures, tiered capital requirements, operational backstops, annual examinations &mdash; represent a meaningful barrier to entry that will reshape the market over the next 18 months.
+  </p>
+
+  <p>
+    Firms that have been offering crypto-collateralized loans without robust compliance infrastructure will face a choice: invest heavily to meet the new standards, or exit the market. Those that remain will look increasingly like regulated financial institutions &mdash; because the rules will require it.
+  </p>
+
+  <p>
+    Credit unions start that race ahead. Not because they know more about crypto, but because they already have what the rules require: <strong>examiner relationships, audit infrastructure, BSA programs, board governance, and member-first custody obligations.</strong> The technical crypto knowledge is the learnable part. The compliance architecture is the hard part &mdash; and credit unions already have it.
+  </p>
+
+  <h2>THE WINDOW <span class="acc">IS NOW</span></h2>
+
+  <p>
+    The OCC comment period closes May 1, 2026. Final rules are expected by July 18, 2026. The GENIUS Act takes effect no later than January 18, 2027, with the NCUA's parallel rulemaking setting credit union-specific requirements.
+  </p>
+
+  <p>
+    Credit unions that want to be positioned when the rules are final need to be building vendor relationships, evaluating infrastructure architecture, and educating boards now &mdash; not after the comment period closes and the market moves.
+  </p>
+
+  <p>
+    <strong>The compliance burden is real. So is the advantage it creates for institutions that are already built for it.</strong>
+  </p>
+
+  <div class="tags">
+    <span class="tag">#GENIUSAct</span>
+    <span class="tag">#Compliance</span>
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#Custody</span>
+    <span class="tag">#OCC</span>
+    <span class="tag">#Stablecoins</span>
+    <span class="tag">#DigitalAssets</span>
+    <span class="tag">#Regulation</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">BUILT FOR THIS MOMENT</div>
+    <div class="cta-sub">Purpose-built crypto lending infrastructure with institutional-grade custody architecture, compliance infrastructure, and a proprietary risk assessment model designed for the credit union regulatory environment.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn" target="_blank" rel="noopener">Book a 30-min Call</a>
+  </div>
+
+  <div class="source-note">
+    <p>Analysis informed by Arnold &amp; Porter's advisory on the OCC's proposed GENIUS Act rulemaking (March 9, 2026) and the OCC's Notice of Proposed Rulemaking published March 2, 2026 in the Federal Register (91 FR 10202). Comment period closes May 1, 2026. <a href="https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-3.html" target="_blank" rel="noopener">View the OCC bulletin &rarr;</a></p>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div style="font-size:13px;color:var(--gray2)"><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a> &middot; <a href="/help">Help</a></div>
+</footer>
 
 </body>
 </html>
