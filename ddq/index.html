@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aetherum — DDQ Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #03060F; --navy-mid: #080F1F; --navy-card: #0C1526;
+  --orange: #F7931A; --orange-glow: rgba(247,147,26,0.10); --orange-border: rgba(247,147,26,0.22);
+  --white: #EEF0F4; --muted: #6B7A96; --border: rgba(255,255,255,0.06);
+  --green: #22C55E; --red: #EF4444; --amber: #F59E0B;
+}
+html,body { height:100%; background:var(--navy); color:var(--white); font-family:'DM Mono',monospace; font-size:13px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.app { display:grid; grid-template-rows:52px 1fr; grid-template-columns:272px 1fr; height:100vh; overflow:hidden; }
+
+/* HEADER */
+header { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; padding:0 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); position:relative; z-index:10; }
+header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0.35; }
+.logo { display:flex; align-items:center; gap:10px; }
+.logo-hex { width:24px; height:24px; background:var(--orange); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); }
+.logo-name { font-family:'Fraunces',serif; font-size:15px; font-weight:600; letter-spacing:0.03em; }
+.logo-module { font-size:10px; color:var(--orange); letter-spacing:0.14em; text-transform:uppercase; margin-left:2px; opacity:0.8; }
+.header-right { display:flex; align-items:center; gap:14px; }
+.status-pill { display:flex; align-items:center; gap:6px; padding:3px 10px; border-radius:20px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.2); font-size:10px; color:var(--green); letter-spacing:0.08em; }
+.status-dot { width:5px; height:5px; border-radius:50%; background:var(--green); animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+.endpoint-txt { font-size:10px; color:var(--muted); }
+
+/* SIDEBAR */
+.sidebar { background:var(--navy-mid); border-right:1px solid var(--border); display:flex; flex-direction:column; overflow:hidden; }
+.sidebar-top { padding:14px; border-bottom:1px solid var(--border); }
+.s-label { font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.quick-q { display:block; width:100%; padding:7px 9px; margin-bottom:5px; background:var(--navy-card); border:1px solid var(--border); border-radius:5px; color:var(--muted); font-family:'DM Mono',monospace; font-size:11px; text-align:left; cursor:pointer; transition:all 0.14s; line-height:1.4; }
+.quick-q:hover { border-color:var(--orange-border); color:var(--white); background:var(--orange-glow); }
+.kb-scroll { flex:1; overflow-y:auto; padding:14px; }
+.kb-scroll::-webkit-scrollbar { width:3px; }
+.kb-scroll::-webkit-scrollbar-thumb { background:var(--border); }
+.cat-group { margin-bottom:16px; }
+.cat-label { font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid var(--orange-border); display:flex; align-items:center; gap:6px; }
+.cat-count { background:var(--orange-glow); border:1px solid var(--orange-border); border-radius:10px; padding:1px 5px; font-size:9px; color:var(--orange); }
+.kb-item { padding:5px 8px; border-radius:4px; cursor:pointer; font-size:11px; color:var(--muted); transition:all 0.14s; line-height:1.4; margin-bottom:2px; }
+.kb-item:hover { background:var(--orange-glow); color:var(--white); }
+
+/* MAIN */
+.main { display:flex; flex-direction:column; overflow:hidden; }
+.input-panel { padding:18px 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); }
+.input-label { font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.input-row { display:flex; gap:10px; }
+.question-box { flex:1; background:var(--navy); border:1px solid var(--border); border-radius:6px; padding:10px 13px; color:var(--white); font-family:'DM Mono',monospace; font-size:13px; resize:vertical; min-height:86px; transition:border-color 0.2s; outline:none; line-height:1.6; }
+.question-box::placeholder { color:var(--muted); }
+.question-box:focus { border-color:var(--orange-border); box-shadow:0 0 0 3px var(--orange-glow); }
+.btn-col { display:flex; flex-direction:column; gap:7px; }
+.ask-btn { background:var(--orange); color:var(--navy); border:none; border-radius:6px; padding:0 18px; height:44px; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.14s; white-space:nowrap; min-width:108px; }
+.ask-btn:hover { opacity:0.88; transform:translateY(-1px); }
+.ask-btn:active { transform:none; }
+.ask-btn:disabled { opacity:0.35; cursor:not-allowed; transform:none; }
+.clear-btn { background:transparent; color:var(--muted); border:1px solid var(--border); border-radius:6px; padding:0 18px; height:36px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:all 0.14s; }
+.clear-btn:hover { color:var(--white); border-color:rgba(255,255,255,0.12); }
+.hint { font-size:10px; color:var(--muted); margin-top:8px; }
+
+/* RESULTS */
+.results { flex:1; overflow-y:auto; padding:18px 20px; display:flex; flex-direction:column; gap:14px; }
+.results::-webkit-scrollbar { width:4px; }
+.results::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+.empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--muted); text-align:center; padding:40px; }
+.empty-hex { width:50px; height:50px; background:var(--orange-glow); border:1px solid var(--orange-border); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); margin-bottom:4px; }
+.empty-title { font-family:'Fraunces',serif; font-size:18px; color:var(--white); font-weight:300; }
+.empty-sub { font-size:12px; line-height:1.75; max-width:360px; }
+
+/* LOADING */
+.loading-card { background:var(--navy-card); border:1px solid var(--border); border-radius:8px; padding:18px; display:flex; align-items:center; gap:13px; }
+.spinner { width:18px; height:18px; border-radius:50%; border:2px solid var(--border); border-top-color:var(--orange); animation:spin 0.8s linear infinite; flex-shrink:0; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading-text { font-size:12px; color:var(--muted); }
+
+/* RESULT CARD */
+.result-card { background:var(--navy-card); border:1px solid var(--border); border-radius:8px; overflow:hidden; animation:fadeUp 0.28s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.result-card.flagged { border-left:3px solid var(--amber); }
+.result-header { padding:12px 16px; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.result-q { font-size:12px; color:var(--muted); line-height:1.5; flex:1; }
+.result-q strong { color:var(--white); font-weight:500; }
+.copy-btn { background:transparent; border:1px solid var(--border); border-radius:4px; padding:3px 10px; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; cursor:pointer; transition:all 0.14s; letter-spacing:0.06em; flex-shrink:0; }
+.copy-btn:hover { border-color:var(--orange-border); color:var(--orange); }
+.copy-btn.copied { border-color:var(--green); color:var(--green); }
+.result-body { padding:16px; }
+.answer-text { font-size:13px; line-height:1.8; color:var(--white); white-space:pre-wrap; }
+.result-footer { padding:10px 16px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
+.source-tag { display:inline-flex; align-items:center; gap:5px; padding:3px 8px; border-radius:4px; background:var(--orange-glow); border:1px solid var(--orange-border); font-size:10px; color:var(--orange); }
+.source-tag::before { content:'◆'; font-size:7px; }
+.compliance-tag { width:100%; padding:8px 10px; border-radius:4px; background:rgba(245,158,11,0.07); border:1px solid rgba(245,158,11,0.18); font-size:11px; color:var(--amber); line-height:1.5; display:flex; gap:8px; }
+.compliance-tag::before { content:'⚠'; flex-shrink:0; }
+
+/* ERROR */
+.error-card { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.18); border-radius:8px; padding:13px 16px; font-size:12px; color:var(--red); display:flex; gap:10px; align-items:flex-start; }
+.error-card::before { content:'✕'; flex-shrink:0; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <span class="logo-name">Aetherum</span>
+      <span class="logo-module">DDQ Engine</span>
+    </div>
+    <div class="header-right">
+      <span class="endpoint-txt" id="ep-display"></span>
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        <span>Live</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="s-label">Quick questions</div>
+      <button class="quick-q" onclick="setQ('Who holds the crypto assets and controls the private keys?')">Who holds the crypto / private keys?</button>
+      <button class="quick-q" onclick="setQ('How do you handle BSA/AML compliance and transaction monitoring?')">BSA / AML compliance?</button>
+      <button class="quick-q" onclick="setQ('What is your risk assessment model and how does it work?')">Risk assessment model?</button>
+      <button class="quick-q" onclick="setQ('Where is member data stored and how is it protected?')">Data storage & security?</button>
+      <button class="quick-q" onclick="setQ('What is your regulatory status with the NCUA?')">Regulatory / NCUA status?</button>
+      <button class="quick-q" onclick="setQ('Do you have any patents or proprietary intellectual property?')">Patents & IP?</button>
+      <button class="quick-q" onclick="setQ('Can you process ACH transfers or move money on behalf of members?')">Payments / ACH capability?</button>
+    </div>
+    <div class="kb-scroll" id="kb-list">
+      <div class="s-label">Knowledge base</div>
+      <div style="color:var(--muted);font-size:11px;">Loading...</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="input-panel">
+      <div class="input-label">Ask a DDQ / security review question</div>
+      <div class="input-row">
+        <textarea class="question-box" id="q-input" placeholder="Paste a security question from a CU IT or risk team here..." onkeydown="handleKey(event)"></textarea>
+        <div class="btn-col">
+          <button class="ask-btn" id="ask-btn" onclick="ask()">Ask →</button>
+          <button class="clear-btn" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+      <div class="hint">Cmd+Enter to submit</div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="empty" id="empty-state">
+        <div class="empty-hex"></div>
+        <div class="empty-title">DDQ Engine ready</div>
+        <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+const API = 'https://aetherum-backend-production.up.railway.app';
+let token = null;
+
+document.getElementById('ep-display').textContent = API.replace('https://','');
+
+async function init() {
+  try {
+    const r = await fetch(`${API}/auth/login`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email:'carol.williams@aetherum-demo.com', password:'DemoPass123!' })
+    });
+    const d = await r.json();
+    token = d.token || d.access_token || d.accessToken;
+  } catch(e) {}
+  loadKb();
+}
+
+async function loadKb() {
+  try {
+    const h = {'Content-Type':'application/json'};
+    if(token) h['Authorization'] = `Bearer ${token}`;
+    const r = await fetch(`${API}/ddq/kb`, {headers:h});
+    const entries = await r.json();
+    renderKb(entries);
+  } catch(e) {
+    document.getElementById('kb-list').innerHTML = '<div class="s-label">Knowledge base</div><div style="color:var(--muted);font-size:11px;">Could not load.</div>';
+  }
+}
+
+const CAT_LABELS = {
+  custody:'Custody', risk_model:'Risk Model', compliance:'Compliance',
+  data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
+  blockchain:'Blockchain', company:'Company'
+};
+
+function renderKb(entries) {
+  const cats = {};
+  entries.forEach(e => { if(!cats[e.category]) cats[e.category]=[]; cats[e.category].push(e); });
+  let html = '<div class="s-label">Knowledge base</div>';
+  Object.entries(cats).forEach(([cat, items]) => {
+    html += `<div class="cat-group"><div class="cat-label">${CAT_LABELS[cat]||cat}<span class="cat-count">${items.length}</span></div>`;
+    items.forEach(it => {
+      const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
+      html += `<div class="kb-item" onclick="setQ('${q}?')">${it.title}</div>`;
+    });
+    html += '</div>';
+  });
+  document.getElementById('kb-list').innerHTML = html;
+}
+
+function setQ(q) {
+  document.getElementById('q-input').value = q;
+  document.getElementById('q-input').focus();
+}
+
+function handleKey(e) {
+  if(e.key==='Enter' && (e.metaKey||e.ctrlKey)) ask();
+}
+
+async function ask() {
+  const q = document.getElementById('q-input').value.trim();
+  if(!q) return;
+
+  const btn = document.getElementById('ask-btn');
+  btn.disabled = true; btn.textContent = '...';
+  document.getElementById('empty-state').style.display = 'none';
+
+  const lid = 'l'+Date.now();
+  const lel = document.createElement('div');
+  lel.className = 'loading-card'; lel.id = lid;
+  lel.innerHTML = `<div class="spinner"></div><div class="loading-text">Searching knowledge base and generating answer...</div>`;
+  document.getElementById('results').prepend(lel);
+
+  try {
+    const h = {'Content-Type':'application/json'};
+    if(token) h['Authorization'] = `Bearer ${token}`;
+    const r = await fetch(`${API}/ddq/ask`, {
+      method:'POST', headers:h,
+      body: JSON.stringify({ question: q })
+    });
+    const data = await r.json();
+    document.getElementById(lid)?.remove();
+    if(!r.ok) throw new Error(data.message||'Server error');
+    renderResult(q, data);
+    document.getElementById('q-input').value = '';
+  } catch(e) {
+    document.getElementById(lid)?.remove();
+    const el = document.createElement('div');
+    el.className = 'error-card';
+    el.textContent = e.message||'Request failed.';
+    document.getElementById('results').prepend(el);
+  }
+
+  btn.disabled = false; btn.textContent = 'Ask →';
+}
+
+function renderResult(question, data) {
+  const hasC = data.compliance_notes && data.compliance_notes.length > 0;
+  const card = document.createElement('div');
+  card.className = 'result-card' + (hasC ? ' flagged' : '');
+  const cid = 'c'+Date.now();
+
+  const srcs = (data.sources||[]).map(s=>`<span class="source-tag">${esc(s)}</span>`).join('');
+  const comp = hasC ? data.compliance_notes.map(n=>`<div class="compliance-tag">${esc(n)}</div>`).join('') : '';
+  const footer = (srcs||comp) ? `<div class="result-footer">${srcs}${comp}</div>` : '';
+
+  card.innerHTML = `
+    <div class="result-header">
+      <div class="result-q"><strong>Q:</strong> ${esc(question)}</div>
+      <button class="copy-btn" id="${cid}" onclick="copyText('${cid}',\`${escJs(data.answer)}\`)">Copy</button>
+    </div>
+    <div class="result-body"><div class="answer-text">${esc(data.answer)}</div></div>
+    ${footer}
+  `;
+  document.getElementById('results').prepend(card);
+}
+
+function copyText(id, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const b = document.getElementById(id);
+    b.textContent = 'Copied!'; b.classList.add('copied');
+    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+  });
+}
+
+function clearAll() {
+  document.getElementById('results').innerHTML = `
+    <div class="empty" id="empty-state">
+      <div class="empty-hex"></div>
+      <div class="empty-title">DDQ Engine ready</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture.</div>
+    </div>`;
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escJs(s) { return String(s).replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$'); }
+
+init();
+</script>
+</body>
+</html>
