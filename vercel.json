@@ -1,3 +1,9 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/deck", "dest": "/deck.html" },
+    { "src": "/product", "dest": "/product.html" },
+    { "src": "/blog/(.*)", "dest": "/blog/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
