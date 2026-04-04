@@ -1,21 +1,21 @@
 [
   {
+    "slug": "/blog/bitcoin-backed-loans-no-capital-gains/",
+    "title": "Why Bitcoin-Backed Loans Don't Trigger Capital Gains — And Why That's Your Killer Feature",
+    "excerpt": "Your members are holding billions in unrealized crypto gains. The reason they haven't come to you for liquidity isn't distrust — it's taxes. Here's the strategic case for CU lending officers.",
+    "date": "April 3, 2026",
+    "readTime": "8 min read",
+    "icon": "₿",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/why-we-build/",
     "title": "Why We Build",
     "excerpt": "We didn't set out to disrupt credit unions. We set out to make sure they don't get left behind.",
     "date": "April 3, 2026",
     "readTime": "4 min read",
     "icon": "🏗️",
-    "isNew": true,
-    "featured": true
-  },
-  {
-    "slug": "/blog/bitcoin-backed-loans-no-capital-gains/",
-    "title": "Bitcoin-Backed Loans: Keep Your Crypto, Skip the Capital Gains",
-    "excerpt": "How crypto-collateralized loans let your members access liquidity without triggering a taxable event — and why credit unions are the right institution to offer them.",
-    "date": "April 3, 2026",
-    "readTime": "5 min read",
-    "icon": "₿",
     "isNew": true,
     "featured": false
   },

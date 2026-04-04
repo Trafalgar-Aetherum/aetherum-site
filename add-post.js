@@ -63,6 +63,13 @@ if (!slug || !title || !excerpt) {
 // ── Update posts.json ────────────────────────────────────────────────────────
 const posts = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
 
+// Remove any existing entry with the same slug (deduplicates on re-run)
+const existing = posts.findIndex(p => p.slug === slug);
+if (existing !== -1) {
+  posts.splice(existing, 1);
+  console.log(`  Removed existing entry for ${slug}`);
+}
+
 // If --featured, unflag all existing featured posts
 if (featured) {
   posts.forEach(p => { p.featured = false; });
