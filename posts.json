@@ -50,7 +50,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/crypto-banks-are-back.html",
+    "slug": "/blog/crypto-banks-are-back/",
     "title": "'Crypto Banks' Are Back — But They're Not What You Might Think",
     "excerpt": "11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know before their members start asking.",
     "date": "March 2026",
@@ -70,7 +70,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/when-nasdaq-calls-crypto-infrastructure-ready.html",
+    "slug": "/blog/when-nasdaq-calls-crypto-infrastructure-ready/",
     "title": "When Nasdaq Calls Crypto Infrastructure \"Ready,\" It's Time to Pay Attention",
     "excerpt": "Nasdaq and Kraken just announced a partnership to tokenize equities on blockchain rails. Here's what it means for credit unions building digital asset infrastructure.",
     "date": "March 10, 2026",
@@ -80,7 +80,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/why-were-moving-into-rwa-tokenization.html",
+    "slug": "/blog/why-were-moving-into-rwa-tokenization/",
     "title": "Why We're Moving Into Real-World Asset Tokenization — And Why It Starts with Credit Union Members",
     "excerpt": "The tokenized asset market crossed $33 billion in 2025. BlackRock and JP Morgan are already in. But the credit union ecosystem has been left out.",
     "date": "",
@@ -90,7 +90,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/who-gets-left-out.html",
+    "slug": "/blog/who-gets-left-out/",
     "title": "Citi Moves Into Bitcoin. Who Gets Left Out?",
     "excerpt": "When the world's largest banks move into digital assets, the gap between institutional and community finance widens fast. Here's how credit unions close it.",
     "date": "",
@@ -100,7 +100,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/crypto-as-collateral.html",
+    "slug": "/blog/crypto-as-collateral/",
     "title": "Crypto as Collateral: DeFi Lending's $26.47B Lesson for Institutions",
     "excerpt": "Turning crypto's fastest-growing lending model into bank-grade infrastructure with programmable risk and insured collateralization.",
     "date": "",
@@ -110,7 +110,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/wealth-insurance-member-value.html",
+    "slug": "/blog/wealth-insurance-member-value/",
     "title": "Wealth, Insurance, and Member Value: Where Product Meets Policy",
     "excerpt": "Build modern member services with lifecycle tokens, compliant payments, multi-chain reporting, and standardized counterparty scoring.",
     "date": "",
@@ -120,7 +120,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/institutional-rails-tokenization.html",
+    "slug": "/blog/institutional-rails-tokenization/",
     "title": "Institutional Rails for Tokenization, Compliance, and Transfers",
     "excerpt": "Institutional rails for digital assets — tokenization, AI compliance, real-time tracking, and standardized risk scoring.",
     "date": "",
