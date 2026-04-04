@@ -72,14 +72,14 @@ jobs:
       - name: Send reminder email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.MAIL_SERVER }}
+          server_address: smtp.ionos.com
           server_port: 587
           secure: false
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "Blog reminder — Week ${{ steps.post.outputs.week }}/12: Publish today"
           to: jbailey@aetherum.ai
-          from: Aetherum Blog Bot <${{ secrets.MAIL_USERNAME }}>
+          from: Aetherum Blog Bot <jbailey@aetherum.ai>
           body: |
             Hi John,
 
