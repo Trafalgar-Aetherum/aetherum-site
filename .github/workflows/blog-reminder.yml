@@ -1,0 +1,106 @@
+name: Weekly Blog Post Reminder
+
+on:
+  schedule:
+    - cron: '0 13 * * 2'  # Every Tuesday at 9am ET (UTC-4 in summer)
+  workflow_dispatch:        # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Determine this week's post
+        id: post
+        run: |
+          # 12-week schedule starting April 7, 2026
+          START_DATE="2026-04-07"
+          TODAY=$(date -u +%Y-%m-%d)
+
+          START_EPOCH=$(date -d "$START_DATE" +%s)
+          TODAY_EPOCH=$(date -d "$TODAY" +%s)
+          DIFF_DAYS=$(( (TODAY_EPOCH - START_EPOCH) / 86400 ))
+          WEEK=$(( DIFF_DAYS / 7 + 1 ))
+
+          if [ $WEEK -lt 1 ]; then WEEK=1; fi
+          if [ $WEEK -gt 12 ]; then WEEK=12; fi
+
+          case $WEEK in
+            1)  TITLE="How to Explain Crypto-Backed Loans to Your Credit Union Board"
+                SLUG="/blog/how-to-explain-crypto-loans-to-your-board/"
+                PUB_DATE="April 7, 2026" ;;
+            2)  TITLE="The Six Pillars: How DACS Scores Crypto Collateral in Real Time"
+                SLUG="/blog/dacs-six-pillars-crypto-risk-scoring/"
+                PUB_DATE="April 14, 2026" ;;
+            3)  TITLE="What Happens When Crypto Collateral Drops 40% Overnight?"
+                SLUG="/blog/crypto-collateral-margin-call-what-happens/"
+                PUB_DATE="April 21, 2026" ;;
+            4)  TITLE="Why Credit Unions Win the Crypto Lending Race — and It Has Nothing to Do With Rate"
+                SLUG="/blog/credit-unions-crypto-trust-advantage/"
+                PUB_DATE="April 28, 2026" ;;
+            5)  TITLE="LTV Ratios for Crypto Collateral: What 65% BTC and 80% USDC Actually Mean"
+                SLUG="/blog/ltv-ratios-crypto-collateral-explained/"
+                PUB_DATE="May 5, 2026" ;;
+            6)  TITLE="Stablecoins as Collateral: The Overlooked Entry Point for Credit Union Crypto Lending"
+                SLUG="/blog/stablecoins-as-collateral-credit-unions/"
+                PUB_DATE="May 12, 2026" ;;
+            7)  TITLE="AI Underwriting Doesn't Replace the Loan Officer. It Makes Them Faster."
+                SLUG="/blog/ai-underwriting-loan-officer-role/"
+                PUB_DATE="May 19, 2026" ;;
+            8)  TITLE="The Member Conversation: Why a Loan Beats Selling Crypto Right Now"
+                SLUG="/blog/crypto-loan-vs-selling-member-conversation/"
+                PUB_DATE="May 26, 2026" ;;
+            9)  TITLE="When Your Member's Home Equity Becomes On-Chain Collateral"
+                SLUG="/blog/rwa-tokenization-real-estate-collateral/"
+                PUB_DATE="June 2, 2026" ;;
+            10) TITLE="The Regulatory Readiness Checklist for Credit Unions Before Going Live on Crypto Lending"
+                SLUG="/blog/credit-union-crypto-lending-regulatory-checklist/"
+                PUB_DATE="June 9, 2026" ;;
+            11) TITLE="The Tax Score Nobody Else Is Looking At — And Why It Changes Your Risk Model"
+                SLUG="/blog/tpsoe-tax-position-scoring-crypto-collateral/"
+                PUB_DATE="June 16, 2026" ;;
+            12) TITLE="What Credit Union Digital Asset Programs Look Like in 2027"
+                SLUG="/blog/credit-union-digital-asset-programs-2027/"
+                PUB_DATE="June 23, 2026" ;;
+          esac
+
+          echo "week=$WEEK" >> $GITHUB_OUTPUT
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          echo "pub_date=$PUB_DATE" >> $GITHUB_OUTPUT
+
+      - name: Send reminder email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: 587
+          secure: false
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "Blog reminder — Week ${{ steps.post.outputs.week }}/12: Publish today"
+          to: jbailey@aetherum.ai
+          from: Aetherum Blog Bot <${{ secrets.MAIL_USERNAME }}>
+          body: |
+            Hi John,
+
+            This is your weekly reminder to publish this week's blog post.
+
+            Week ${{ steps.post.outputs.week }} of 12
+            Scheduled date: ${{ steps.post.outputs.pub_date }}
+
+            Title:
+            ${{ steps.post.outputs.title }}
+
+            Target URL:
+            https://aetherum.ai${{ steps.post.outputs.slug }}
+
+            Steps:
+            1. Write the post HTML and save it to blog${{ steps.post.outputs.slug }}index.html
+            2. Copy the add-post.js command from CONTENT-CALENDAR.md
+            3. Run the command, then: git add . && git commit -m "feat: publish week ${{ steps.post.outputs.week }} post" && git push
+
+            Full calendar: https://github.com/Trafalgar-Aetherum/aetherum-site/blob/main/CONTENT-CALENDAR.md
+
+            —
+            Sent automatically by GitHub Actions every Tuesday at 9am ET.
+            To pause: disable the workflow at https://github.com/Trafalgar-Aetherum/aetherum-site/actions/workflows/blog-reminder.yml
