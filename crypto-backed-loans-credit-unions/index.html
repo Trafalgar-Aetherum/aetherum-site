@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto-Backed Loans for Credit Unions | Aetherum</title>
+  <meta name="description" content="How credit unions can offer Bitcoin and crypto-collateralized loans — compliantly, profitably, and without taking custody of digital assets. A complete guide by Aetherum." />
+  <meta name="keywords" content="crypto-backed loans credit unions, bitcoin collateral loan credit union, crypto collateralized lending NCUA, digital asset loans credit union, crypto loan infrastructure" />
+  <link rel="canonical" href="https://aetherum.ai/crypto-backed-loans-credit-unions/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Crypto-Backed Loans for Credit Unions | Aetherum" />
+  <meta property="og:description" content="A complete guide to offering crypto-collateralized loans through your credit union — compliantly and profitably." />
+  <meta property="og:url" content="https://aetherum.ai/crypto-backed-loans-credit-unions/" />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #03060F;
+      --navy-mid: #080E1E;
+      --navy-light: #0D1630;
+      --orange: #F7931A;
+      --orange-dim: #c97414;
+      --white: #F0F4FF;
+      --muted: #8A9BC4;
+      --border: rgba(247, 147, 26, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(3,6,15,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--orange);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--navy);
+      padding: 0.5rem 1.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-dim); }
+
+    /* HERO */
+    .hero {
+      padding: 7rem 2rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      display: flex; gap: 2rem; flex-wrap: wrap;
+    }
+
+    /* TOC */
+    .toc-wrapper {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+    .toc-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .toc-list a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-family: 'Fraunces', serif;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--white); }
+    .toc-list .toc-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--orange);
+      margin-right: 0.6rem;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+    .section { margin-bottom: 5rem; }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      padding-top: 1rem;
+    }
+    h2 span { color: var(--orange); }
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 2.5rem 0 0.8rem;
+    }
+    p { color: var(--muted); margin-bottom: 1.2rem; }
+    p strong { color: var(--white); font-weight: 600; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* STAT ROW */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .stat-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--navy-light);
+      border-left: 3px solid var(--orange);
+      padding: 1.5rem 2rem;
+      border-radius: 0 4px 4px 0;
+      margin: 2rem 0;
+    }
+    .callout p { color: var(--white); margin: 0; font-style: italic; font-weight: 300; }
+
+    /* STEP LIST */
+    .step-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+    .step-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--orange);
+      line-height: 1;
+      min-width: 2.5rem;
+      padding-top: 0.1rem;
+    }
+    .step-body h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .step-body p { margin: 0; font-size: 0.95rem; }
+
+    /* COMPARISON TABLE */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+    }
+    .compare-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      text-align: left;
+    }
+    .compare-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .compare-table tr:hover td { background: var(--navy-light); }
+    .compare-table td:first-child { color: var(--white); font-weight: 600; }
+    .check { color: #4ade80; }
+    .cross { color: #f87171; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      background: var(--navy-light);
+    }
+    .faq-q {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+    .faq-a { font-size: 0.95rem; margin: 0; }
+
+    /* CTA */
+    .cta-block {
+      background: linear-gradient(135deg, var(--navy-light) 0%, #0a1228 100%);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--orange);
+      border-radius: 4px;
+      padding: 3.5rem 3rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    .cta-block h2 { margin-bottom: 0.8rem; font-size: 2.2rem; }
+    .cta-block p { max-width: 500px; margin: 0 auto 2rem; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.5rem;
+      border-radius: 3px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange-dim); text-decoration: none; }
+
+    /* RELATED */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .related-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .related-card:hover { border-color: var(--orange); text-decoration: none; }
+    .related-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+    .related-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0;
+    }
+    footer a { color: var(--orange); }
+  </style>
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Crypto-Backed Loans for Credit Unions: A Complete Guide",
+    "description": "How credit unions can offer Bitcoin and crypto-collateralized loans — compliantly, profitably, and without taking custody of digital assets.",
+    "author": {
+      "@type": "Organization",
+      "name": "Aetherum",
+      "url": "https://aetherum.ai"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aetherum",
+      "url": "https://aetherum.ai"
+    },
+    "mainEntityOfPage": "https://aetherum.ai/crypto-backed-loans-credit-unions/"
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://aetherum.ai">AETHERUM</a>
+    <ul class="nav-links">
+      <li><a href="https://aetherum.ai/blog">Blog</a></li>
+      <li><a href="https://aetherum.ai/crypto-compliance-financial-institutions/">Compliance</a></li>
+      <li><a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">Infrastructure</a></li>
+    </ul>
+    <a class="nav-cta" href="https://calendly.com/jbailey-aetherum/30min">Schedule a Demo</a>
+  </nav>
+
+  <div class="hero">
+    <div class="breadcrumb">
+      <a href="https://aetherum.ai">Home</a> &nbsp;/&nbsp;
+      <a href="https://aetherum.ai/blog">Resources</a> &nbsp;/&nbsp;
+      Crypto-Backed Loans for Credit Unions
+    </div>
+    <h1>Crypto-Backed Loans<br/>for <span>Credit Unions</span></h1>
+    <p class="hero-sub">Your members are sitting on billions in digital assets — and borrowing elsewhere to avoid selling. Here's how credit unions are turning that into a new revenue stream without taking on custody risk.</p>
+    <div class="hero-meta">
+      <span>By Aetherum Research</span>
+      <span>Updated April 2026</span>
+      <span>20 min read</span>
+      <span>For: CU Executives, Lending Officers, Risk Teams</span>
+    </div>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc-label">In this guide</div>
+    <ul class="toc-list">
+      <li><a href="#opportunity"><span class="toc-num">01</span>The Member Opportunity Credit Unions Are Missing</a></li>
+      <li><a href="#how-it-works"><span class="toc-num">02</span>How Crypto-Collateralized Lending Works</a></li>
+      <li><a href="#ncua-compliance"><span class="toc-num">03</span>NCUA Compliance & Regulatory Considerations</a></li>
+      <li><a href="#risk-framework"><span class="toc-num">04</span>Risk Management Framework</a></li>
+      <li><a href="#implementation"><span class="toc-num">05</span>Implementation: What Credit Unions Actually Need</a></li>
+      <li><a href="#member-benefits"><span class="toc-num">06</span>Member Benefits & How to Position It</a></li>
+      <li><a href="#revenue"><span class="toc-num">07</span>Revenue Model & Economics</a></li>
+      <li><a href="#faq"><span class="toc-num">08</span>Frequently Asked Questions</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+
+    <!-- 01 -->
+    <section id="opportunity" class="section">
+      <h2>The Member Opportunity <span>Credit Unions Are Missing</span></h2>
+      <p>Roughly <strong>33% of Americans now own cryptocurrency</strong> — and that number skews younger, affluent, and toward exactly the demographic credit unions most want to retain. Your members aren't asking their credit union about digital assets yet. They're going to Coinbase, Kraken, or crypto lending platforms instead.</p>
+      <p>The core dynamic is simple: a member who holds $100,000 in Bitcoin doesn't want to sell it to buy a car or fund a home renovation. Selling creates a taxable event, eliminates future upside, and feels emotionally wrong. But they need liquidity. If their credit union doesn't offer a path, a fintech will.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number">140M</div>
+          <div class="stat-label">U.S. credit union members</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">33%</div>
+          <div class="stat-label">Americans who own crypto</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$2.3T</div>
+          <div class="stat-label">Total CU assets under management</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8–12%</div>
+          <div class="stat-label">Competitive APR range for CU crypto loans</div>
+        </div>
+      </div>
+
+      <p>The opportunity isn't speculative. Crypto-collateralized lending is a proven product category — Nexo, Ledn, and Unchained have collectively originated billions in loans using digital assets as collateral. The difference is that none of them are credit unions. They don't have the trust relationship, the regulatory positioning, or the community mandate. You do.</p>
+
+      <div class="callout">
+        <p>"Credit unions didn't offer online banking for years because it felt too new. Then they did, and members rewarded them for it. Crypto lending is the same moment — just faster and with more at stake if you wait."</p>
+      </div>
+
+      <p>The gap isn't in member demand — it's in infrastructure. Most credit unions lack the <a href="https://aetherum.ai/crypto-compliance-financial-institutions/">compliance infrastructure</a> and risk frameworks to underwrite digital asset collateral safely. That's a solvable problem, not a reason to wait.</p>
+    </section>
+
+    <!-- 02 -->
+    <section id="how-it-works" class="section">
+      <h2>How Crypto-Collateralized <span>Lending Works</span></h2>
+      <p>A crypto-collateralized loan follows the same structural logic as a securities-backed or home equity loan. The borrower pledges a digital asset (most commonly Bitcoin or Ethereum) as collateral. The credit union holds a lien on that collateral — via institutional-grade custody infrastructure — and disburses USD to the member.</p>
+
+      <h3>The Basic Mechanics</h3>
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Member Applies & Pledges Collateral</h4>
+            <p>The member requests a loan amount and pledges digital asset collateral. The platform runs a real-time risk assessment — evaluating collateral value, volatility profile, asset quality, and member financial health — to determine maximum loan-to-value ratio (typically 50–70% LTV).</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Collateral is Secured by the CU</h4>
+            <p>The digital asset is transferred to a custody wallet held directly by the credit union through institutional-grade custody infrastructure. Critically, <strong>the credit union owns the custodial relationship</strong> — the technology platform is software-only. This is the architecture that keeps you in regulatory compliance.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>USD Is Disbursed to the Member</h4>
+            <p>The credit union funds the loan in USD, same as any other loan product. The member gets liquidity without selling their crypto and without triggering a taxable event.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Ongoing LTV Monitoring</h4>
+            <p>Because crypto is volatile, the platform continuously monitors collateral value relative to the outstanding loan balance. When LTV approaches a defined threshold (e.g., 80%), automated margin call procedures are triggered — giving the member an opportunity to add collateral or reduce the loan balance before liquidation.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h4>Repayment & Collateral Release</h4>
+            <p>When the loan is repaid, the collateral is released back to the member's wallet. If the member defaults and collateral is liquidated, the CU recoups principal plus accrued interest.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Supported Collateral Types</h3>
+      <p>Bitcoin (BTC) and Ethereum (ETH) are the standard starting point — high liquidity, established price feeds, and the deepest institutional custody support. As programs mature, credit unions can expand to other assets with appropriate risk parameters. Stablecoins like USDC can also serve as collateral in certain structures, dramatically reducing volatility risk.</p>
+
+      <p>Learn more about how the underlying <a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">digital asset infrastructure</a> enables this at the platform level.</p>
+    </section>
+
+    <!-- 03 -->
+    <section id="ncua-compliance" class="section">
+      <h2>NCUA Compliance &amp; <span>Regulatory Considerations</span></h2>
+      <p>The regulatory landscape for credit union digital asset programs has developed substantially. The NCUA has issued guidance that defines permissible activities, and the framework is workable — provided your program is structured correctly from day one.</p>
+
+      <h3>Key NCUA Guidance</h3>
+      <p>NCUA Letter 22-CU-02 established the baseline: credit unions must notify the NCUA before engaging in digital asset activities. More recent guidance has expanded the permissible activities framework, particularly around collateralized lending, which is structurally similar to existing securities-backed lending that credit unions already offer.</p>
+
+      <h3>Structuring for Compliance</h3>
+      <p>The critical architectural decision is <strong>custody separation</strong>. The credit union must hold the custodial relationship with the digital assets directly — not through a lending platform that acts as a sub-custodian. This keeps the CU in the chain of control that NCUA and state regulators expect.</p>
+
+      <div class="callout">
+        <p>The right structure: Credit union holds custody directly. Lending platform provides software, risk assessment, and workflow — not custody. This distinction is what makes the program compliant.</p>
+      </div>
+
+      <h3>BSA/AML Requirements</h3>
+      <p>Digital asset lending triggers standard BSA/AML obligations. Your program needs KYC/identity verification at onboarding, transaction monitoring, and the ability to produce SAR filings for suspicious activity. <a href="https://aetherum.ai/crypto-compliance-financial-institutions/">Compliance infrastructure built for financial institutions</a> should handle this natively — not as a bolt-on.</p>
+
+      <h3>Nacha & ACH Considerations</h3>
+      <p>If USD disbursement routes through ACH, Nacha's Phase 2 fraud monitoring requirements (effective June 2026) apply. Programs going live this year need to ensure their ACH layer meets the updated standards.</p>
+
+      <h3>State-Level Considerations</h3>
+      <p>State-chartered credit unions have a parallel set of state regulator requirements. Many states have issued crypto-specific guidance or adopted CSBS model frameworks. Your compliance team should map state requirements before launch — particularly around money transmission and digital asset licensing.</p>
+    </section>
+
+    <!-- 04 -->
+    <section id="risk-framework" class="section">
+      <h2>Risk Management <span>Framework</span></h2>
+      <p>The most common concern from credit union executives is volatility risk. If Bitcoin drops 40% overnight, what happens to the loan? The answer lies in three interlocking controls that any compliant crypto lending program must have.</p>
+
+      <h3>1. Loan-to-Value Ratio Discipline</h3>
+      <p>Starting LTV ratios of 50–60% provide substantial cushion against price declines. A member who pledges $100,000 in Bitcoin receives $50,000–60,000 in a loan. Bitcoin would need to fall more than 40% before the collateral value approaches the loan balance — and even then, margin call procedures trigger well before that threshold.</p>
+
+      <h3>2. Dynamic Risk Assessment</h3>
+      <p>Static underwriting models are insufficient for volatile collateral. A modern risk assessment model needs to evaluate six dimensions: borrower credit profile, total digital asset under management, asset volatility score, collateral quality, tax position and liquidity-adjusted net worth, and market conditions. This is the methodology behind Aetherum's DACS™ risk assessment model — which generates a composite score that determines both initial LTV and ongoing monitoring thresholds.</p>
+
+      <h3>3. Automated Monitoring & Margin Calls</h3>
+      <p>Real-time collateral monitoring is non-negotiable. When collateral value declines to within a defined threshold of the loan balance, the system triggers a tiered response: first a notification to the member to add collateral or pay down the loan, then escalating to automated liquidation if the threshold is breached and no action is taken. This protects the CU without requiring manual intervention from loan officers 24/7.</p>
+
+      <div class="callout">
+        <p>A well-designed risk framework turns volatility from a liability into a feature: it's what justifies higher-than-average APR for a loan that's actually overcollateralized relative to most consumer lending products.</p>
+      </div>
+
+      <p>Read more about <a href="https://aetherum.ai/crypto-compliance-financial-institutions/">compliance infrastructure requirements</a> for digital asset programs at financial institutions.</p>
+    </section>
+
+    <!-- 05 -->
+    <section id="implementation" class="section">
+      <h2>Implementation: What Credit Unions <span>Actually Need</span></h2>
+      <p>Getting a crypto-collateralized lending program off the ground doesn't require a multi-year buildout. The core infrastructure needs are well-defined and can be delivered through a purpose-built B2B platform.</p>
+
+      <h3>What You Need (And What You Don't)</h3>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>CU Provides</th>
+            <th>Platform Provides</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Custody relationship</td>
+            <td><span class="check">✓</span> CU holds directly</td>
+            <td>Integration layer only</td>
+          </tr>
+          <tr>
+            <td>Loan origination</td>
+            <td><span class="check">✓</span> CU funds & owns</td>
+            <td>Workflow & decisioning</td>
+          </tr>
+          <tr>
+            <td>Risk assessment</td>
+            <td>Policy thresholds</td>
+            <td><span class="check">✓</span> Real-time scoring</td>
+          </tr>
+          <tr>
+            <td>KYC/AML</td>
+            <td>Existing member data</td>
+            <td><span class="check">✓</span> Compliance infrastructure</td>
+          </tr>
+          <tr>
+            <td>Collateral monitoring</td>
+            <td>Oversight & policy</td>
+            <td><span class="check">✓</span> 24/7 automated</td>
+          </tr>
+          <tr>
+            <td>Member portal</td>
+            <td>Brand & relationship</td>
+            <td><span class="check">✓</span> White-labeled UI</td>
+          </tr>
+          <tr>
+            <td>Core banking integration</td>
+            <td><span class="check">✓</span> Existing core</td>
+            <td>API integration</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Pilot Program Structure</h3>
+      <p>Most successful implementations start with a limited pilot: a defined member segment, a single collateral type (BTC), and a capped loan volume. This lets the CU validate the member experience, test operational workflows, and build examiner confidence before scaling. A six-month pilot targeting 25–50 loans is a realistic starting point for a mid-sized credit union.</p>
+
+      <p>Explore the full <a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">digital asset infrastructure requirements</a> for credit union programs.</p>
+    </section>
+
+    <!-- 06 -->
+    <section id="member-benefits" class="section">
+      <h2>Member Benefits &amp; <span>How to Position It</span></h2>
+      <p>The member value proposition for crypto-collateralized lending is unusually strong — and importantly, it's distinct from anything else your credit union offers.</p>
+
+      <h3>The Core Benefits</h3>
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-num">→</div>
+          <div class="step-body">
+            <h4>Keep Their Crypto Exposure</h4>
+            <p>Members retain full ownership and upside of their digital assets. If Bitcoin rises during the loan term, they benefit — unlike selling, which permanently exits the position.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">→</div>
+          <div class="step-body">
+            <h4>No Taxable Event</h4>
+            <p>Pledging crypto as collateral is not a taxable event under current IRS guidance. Members get liquidity without realizing capital gains — a benefit that D2C crypto lenders market heavily, but that is far more powerful coming from a trusted credit union relationship.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">→</div>
+          <div class="step-body">
+            <h4>Competitive Rates from a Trusted Institution</h4>
+            <p>At 8–12% APR, crypto-backed loans from a credit union are competitive with personal loans and dramatically cheaper than credit cards — while being backed by the institutional trust and member protection that fintechs can't replicate.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">→</div>
+          <div class="step-body">
+            <h4>Stay With Their CU</h4>
+            <p>Perhaps most importantly: members who want this product don't have to leave. Every member who goes to a crypto lending platform for this is a member whose financial relationship is fragmenting away from you.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 07 -->
+    <section id="revenue" class="section">
+      <h2>Revenue Model &amp; <span>Economics</span></h2>
+      <p>Crypto-collateralized lending adds a meaningful new revenue stream with favorable unit economics compared to many traditional loan products.</p>
+
+      <h3>Fee Structure</h3>
+      <p>A well-structured program generates revenue across three layers: <strong>platform origination fees</strong> ($500–1,500 per loan, paid to the infrastructure provider), <strong>net interest income</strong> (the spread between APR charged to the member and the CU's cost of funds), and <strong>ancillary member engagement</strong> (members who bring crypto business tend to be higher-engagement, higher-balance members overall).</p>
+
+      <h3>Unit Economics Example</h3>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number">$50K</div>
+          <div class="stat-label">Average loan size</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10%</div>
+          <div class="stat-label">Average APR (net interest income)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$5K</div>
+          <div class="stat-label">Annual interest per loan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$500K</div>
+          <div class="stat-label">Annual NII at 100 loans</div>
+        </div>
+      </div>
+
+      <p>For a credit union running 100 crypto-backed loans per year at $50K average balance, the net interest income alone is $500K annually — before accounting for member retention value, deeper engagement, and the strategic positioning benefit of being the first CU in your market to offer the product.</p>
+
+      <div class="callout">
+        <p>The credit unions that move first don't just capture incremental revenue — they become the destination for crypto-holding members in their entire market area.</p>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="faq" class="section">
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Does the credit union have to take custody of the crypto?</div>
+          <p class="faq-a">Yes — and that's actually a feature, not a burden. The credit union holds the custodial relationship directly through institutional-grade infrastructure, which means the CU maintains control and regulatory clarity. The lending platform is software only — it doesn't hold member assets.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How does the NCUA view crypto-collateralized lending?</div>
+          <p class="faq-a">NCUA Letter 22-CU-02 requires pre-notification before engaging in digital asset activities. Structured correctly — with custody at the CU level, appropriate risk controls, and BSA/AML compliance — crypto-backed lending is a permissible activity analogous to securities-backed lending that CUs already offer.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What happens if the member's collateral value drops significantly?</div>
+          <p class="faq-a">Automated collateral monitoring triggers a tiered response: member notification, opportunity to add collateral or repay, and ultimately automated liquidation if thresholds are breached. At 50–60% initial LTV, the collateral buffer is substantial — Bitcoin would need to fall more than 40% from the loan origination price to approach a liquidation event.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What collateral types are supported?</div>
+          <p class="faq-a">Bitcoin (BTC) and Ethereum (ETH) are the standard starting point for most programs, given their liquidity and established custody infrastructure. Programs can expand to other assets as the program matures, with appropriate LTV adjustments for less liquid or more volatile assets.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How long does it take to launch a program?</div>
+          <p class="faq-a">A typical pilot program from contract to first loan is 60–90 days, including NCUA notification, custody account setup, platform integration, and staff training. A full production launch at scale can follow within 6 months of a successful pilot.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can small credit unions offer this product?</div>
+          <p class="faq-a">Yes. The infrastructure cost structure is designed for credit unions of all sizes. Many of the compliance and risk components that would otherwise require significant internal buildout are handled by the platform, making this accessible to CUs without large technology teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2>Ready to Build Your <span>Crypto Lending Program?</span></h2>
+      <p>Aetherum is purpose-built for credit unions. Talk to our team about what a pilot program would look like for your institution.</p>
+      <a class="cta-btn" href="https://calendly.com/jbailey-aetherum/30min">Schedule a 30-Minute Call</a>
+    </div>
+
+    <!-- Related Content -->
+    <section style="margin-top:5rem;">
+      <h2>Related <span>Resources</span></h2>
+      <div class="related-grid">
+        <a class="related-card" href="https://aetherum.ai/crypto-compliance-financial-institutions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Crypto Compliance for Financial Institutions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Digital Asset Infrastructure for Credit Unions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/blog/crypto-banks-are-back/">
+          <div class="related-tag">Blog</div>
+          <div class="related-title">Crypto Banks Are Back — And Credit Unions Are Next</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/blog/">
+          <div class="related-tag">Blog</div>
+          <div class="related-title">All Aetherum Research & Insights</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Aetherum, Inc. &nbsp;|&nbsp; <a href="https://aetherum.ai/terms">Terms</a> &nbsp;|&nbsp; <a href="https://aetherum.ai/privacy">Privacy</a> &nbsp;|&nbsp; Not financial or legal advice. For informational purposes only.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Asset Infrastructure for Credit Unions | Aetherum</title>
+  <meta name="description" content="The complete technical and operational infrastructure credit unions need to offer Bitcoin and crypto services — custody, risk assessment, compliance, and core banking integration." />
+  <meta name="keywords" content="digital asset infrastructure credit union, crypto infrastructure bank, bitcoin custody credit union, crypto lending platform credit union, blockchain infrastructure financial institution" />
+  <link rel="canonical" href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/" />
+
+  <meta property="og:title" content="Digital Asset Infrastructure for Credit Unions | Aetherum" />
+  <meta property="og:description" content="The complete infrastructure stack credit unions need to offer digital asset services — custody, compliance, risk assessment, and lending operations." />
+  <meta property="og:url" content="https://aetherum.ai/digital-asset-infrastructure-credit-unions/" />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #03060F; --navy-mid: #080E1E; --navy-light: #0D1630;
+      --orange: #F7931A; --orange-dim: #c97414;
+      --white: #F0F4FF; --muted: #8A9BC4; --border: rgba(247,147,26,0.18);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.75; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(3,6,15,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 3px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--orange-dim); }
+    .hero { padding: 7rem 2rem 5rem; max-width: 900px; margin: 0 auto; }
+    .breadcrumb { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.0; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 680px; margin-bottom: 2.5rem; font-weight: 300; }
+    .hero-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+    .toc-wrapper { background: var(--navy-light); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 4px; padding: 2rem 2.5rem; max-width: 900px; margin: 0 auto 4rem; }
+    .toc-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .toc-list a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-family: 'Fraunces', serif; transition: color 0.2s; }
+    .toc-list a:hover { color: var(--white); }
+    .toc-num { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--orange); margin-right: 0.6rem; }
+    .content { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .section { margin-bottom: 5rem; }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 0.03em; color: var(--white); margin-bottom: 1.5rem; padding-top: 1rem; }
+    h2 span { color: var(--orange); }
+    h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; color: var(--white); margin: 2.5rem 0 0.8rem; }
+    p { color: var(--muted); margin-bottom: 1.2rem; }
+    p strong { color: var(--white); font-weight: 600; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .callout { background: var(--navy-light); border-left: 3px solid var(--orange); padding: 1.5rem 2rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+    .callout p { color: var(--white); margin: 0; font-style: italic; font-weight: 300; }
+    /* Stack diagram */
+    .stack { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
+    .stack-layer {
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.8rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .stack-layer:first-child { border-radius: 4px 4px 0 0; background: rgba(247,147,26,0.12); border-color: var(--orange); }
+    .stack-layer:last-child { border-radius: 0 0 4px 4px; }
+    .stack-layer + .stack-layer { border-top: none; background: var(--navy-light); }
+    .stack-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); min-width: 2rem; line-height: 1; }
+    .stack-info { flex: 1; }
+    .stack-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1rem; }
+    .stack-desc { font-size: 0.88rem; color: var(--muted); margin: 0; }
+    .stack-owner { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); padding: 0.25rem 0.7rem; border: 1px solid var(--border); border-radius: 2px; white-space: nowrap; }
+    /* Feature grid */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .feature-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+    .feature-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+    .feature-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+    .feature-body { font-size: 0.9rem; color: var(--muted); margin: 0; }
+    /* Comparison */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    .compare-table th { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); border-bottom: 1px solid var(--border); padding: 0.8rem 1rem; text-align: left; }
+    .compare-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--muted); vertical-align: top; }
+    .compare-table tr:hover td { background: var(--navy-light); }
+    .compare-table td:first-child { color: var(--white); font-weight: 600; }
+    .check { color: #4ade80; }
+    .cross { color: #f87171; }
+    .dash { color: var(--muted); }
+    .faq-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; background: var(--navy-light); }
+    .faq-q { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; font-size: 1rem; }
+    .faq-a { font-size: 0.95rem; margin: 0; }
+    .cta-block { background: linear-gradient(135deg, var(--navy-light) 0%, #0a1228 100%); border: 1px solid var(--border); border-top: 2px solid var(--orange); border-radius: 4px; padding: 3.5rem 3rem; text-align: center; margin-top: 4rem; }
+    .cta-block h2 { margin-bottom: 0.8rem; font-size: 2.2rem; }
+    .cta-block p { max-width: 500px; margin: 0 auto 2rem; }
+    .cta-btn { display: inline-block; background: var(--orange); color: var(--navy); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 3px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--orange-dim); text-decoration: none; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .related-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; text-decoration: none; transition: border-color 0.2s; display: block; }
+    .related-card:hover { border-color: var(--orange); text-decoration: none; }
+    .related-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+    .related-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 0.95rem; line-height: 1.4; }
+    footer { background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+    footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin: 0; }
+    footer a { color: var(--orange); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Digital Asset Infrastructure for Credit Unions: A Complete Guide",
+    "description": "The full infrastructure stack credit unions need to offer digital asset services — custody, compliance, risk assessment, and core banking integration.",
+    "author": { "@type": "Organization", "name": "Aetherum", "url": "https://aetherum.ai" },
+    "publisher": { "@type": "Organization", "name": "Aetherum", "url": "https://aetherum.ai" },
+    "mainEntityOfPage": "https://aetherum.ai/digital-asset-infrastructure-credit-unions/"
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://aetherum.ai">AETHERUM</a>
+    <ul class="nav-links">
+      <li><a href="https://aetherum.ai/blog">Blog</a></li>
+      <li><a href="https://aetherum.ai/crypto-backed-loans-credit-unions/">CU Lending</a></li>
+      <li><a href="https://aetherum.ai/crypto-compliance-financial-institutions/">Compliance</a></li>
+    </ul>
+    <a class="nav-cta" href="https://calendly.com/jbailey-aetherum/30min">Schedule a Demo</a>
+  </nav>
+
+  <div class="hero">
+    <div class="breadcrumb">
+      <a href="https://aetherum.ai">Home</a> &nbsp;/&nbsp;
+      <a href="https://aetherum.ai/blog">Resources</a> &nbsp;/&nbsp;
+      Digital Asset Infrastructure for Credit Unions
+    </div>
+    <h1>Digital Asset Infrastructure<br/>for <span>Credit Unions</span></h1>
+    <p class="hero-sub">Credit unions don't need to build crypto infrastructure from scratch. They need purpose-built B2B infrastructure that integrates with how they already operate — and that examiners already understand.</p>
+    <div class="hero-meta">
+      <span>By Aetherum Research</span>
+      <span>Updated April 2026</span>
+      <span>18 min read</span>
+      <span>For: Technology Officers, Operations, C-Suite</span>
+    </div>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc-label">In this guide</div>
+    <ul class="toc-list">
+      <li><a href="#why-b2b"><span class="toc-num">01</span>Why Credit Unions Need Purpose-Built Infrastructure</a></li>
+      <li><a href="#stack"><span class="toc-num">02</span>The Full Infrastructure Stack</a></li>
+      <li><a href="#custody"><span class="toc-num">03</span>Custody Infrastructure</a></li>
+      <li><a href="#risk-assessment"><span class="toc-num">04</span>Risk Assessment & Underwriting</a></li>
+      <li><a href="#compliance-layer"><span class="toc-num">05</span>Compliance & On-Chain Identity Layer</a></li>
+      <li><a href="#core-integration"><span class="toc-num">06</span>Core Banking Integration</a></li>
+      <li><a href="#build-buy"><span class="toc-num">07</span>Build vs. Buy vs. Partner</a></li>
+      <li><a href="#faq"><span class="toc-num">08</span>Frequently Asked Questions</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+
+    <section id="why-b2b" class="section">
+      <h2>Why Credit Unions Need <span>Purpose-Built Infrastructure</span></h2>
+      <p>Credit unions face a set of infrastructure requirements that D2C crypto platforms were never designed to meet — and that enterprise bank software vendors have been too slow to address. The result is a gap that purpose-built B2B fintech infrastructure is now filling.</p>
+
+      <p>The core challenge isn't technical. Bitcoin custody, loan origination, and collateral monitoring are all solved problems individually. The challenge is that <strong>credit unions need all of it integrated</strong> — custody that feeds into loan origination, risk assessment that updates in real time, compliance that satisfies NCUA and BSA/AML simultaneously, and a member experience that feels like it belongs in a credit union rather than a crypto exchange.</p>
+
+      <div class="callout">
+        <p>The market has been focused on building faster crypto pipes. What credit unions actually need is infrastructure that explains itself — to examiners, to boards, and to members who've never bought crypto from an institution before.</p>
+      </div>
+
+      <p>There are three viable paths to infrastructure: build it internally, adapt a generic platform, or use purpose-built B2B infrastructure. Only one of those paths is realistic for the vast majority of credit unions.</p>
+    </section>
+
+    <section id="stack" class="section">
+      <h2>The Full <span>Infrastructure Stack</span></h2>
+      <p>A production-ready digital asset program at a credit union requires five integrated infrastructure layers. Each layer has a clear owner — the credit union or the platform — and a clear compliance function.</p>
+
+      <div class="stack">
+        <div class="stack-layer">
+          <div class="stack-num">5</div>
+          <div class="stack-info">
+            <div class="stack-title">Member Experience & Loan Officer Portal</div>
+            <p class="stack-desc">Member-facing loan application, crypto insights dashboard, and portfolio view. Loan officer workflow for origination, monitoring, and servicing. White-labeled to the credit union's brand.</p>
+          </div>
+          <div class="stack-owner">Platform</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-num">4</div>
+          <div class="stack-info">
+            <div class="stack-title">Risk Assessment & Underwriting Engine</div>
+            <p class="stack-desc">Real-time collateral risk scoring, LTV calculation, dynamic monitoring thresholds, and automated margin call workflow. Continuous 24/7 collateral value monitoring.</p>
+          </div>
+          <div class="stack-owner">Platform</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-num">3</div>
+          <div class="stack-info">
+            <div class="stack-title">Compliance Infrastructure</div>
+            <p class="stack-desc">Bank-connectivity layer for identity verification, BSA/AML monitoring (on-chain and off-chain), KYC automation, and on-chain identity compliance via programmable token standards.</p>
+          </div>
+          <div class="stack-owner">Platform</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-num">2</div>
+          <div class="stack-info">
+            <div class="stack-title">Custody Infrastructure</div>
+            <p class="stack-desc">Institutional-grade digital asset custody. The credit union holds the custodial relationship directly — the platform provides the integration layer. Wallets live in the CU's account, not the platform's.</p>
+          </div>
+          <div class="stack-owner">CU Owns</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-num">1</div>
+          <div class="stack-info">
+            <div class="stack-title">Core Banking Integration</div>
+            <p class="stack-desc">API integration with existing core banking system for loan booking, disbursement, repayment processing, and member account linkage. No core replacement required.</p>
+          </div>
+          <div class="stack-owner">CU Owns</div>
+        </div>
+      </div>
+
+      <p>The architecture is designed so that the credit union owns the two foundational layers — custody and core banking — while the platform provides the specialized crypto infrastructure layers above them. This is the structure that satisfies NCUA's vendor management and outsourcing guidance while keeping the CU in control of member assets and relationships.</p>
+    </section>
+
+    <section id="custody" class="section">
+      <h2>Custody <span>Infrastructure</span></h2>
+      <p>Custody is the most consequential infrastructure decision in a digital asset program. It determines your regulatory posture, your examiner conversation, and — most importantly — where liability sits if something goes wrong.</p>
+
+      <h3>The Right Architecture</h3>
+      <p>The architecture that works for credit union compliance is direct custody: <strong>the credit union holds its own account with institutional-grade custody infrastructure</strong>, and wallets created for member collateral live in that account. The technology platform is an integration layer — it can see and interact with those wallets (to monitor LTV, trigger liquidation, etc.) via API, but the wallets belong to the CU.</p>
+
+      <p>This means: if the technology platform ceases to exist, the credit union's custody account and member collateral remain intact. There is no dependency on the platform for asset custody. This is the architecture that NCUA expects and that passes examiner scrutiny.</p>
+
+      <h3>Wallet Management</h3>
+      <p>Each loan involves a dedicated collateral wallet — a wallet created specifically for that loan, funded with the member's pledged collateral, and monitored continuously for value. When the loan is repaid, the collateral is returned from that wallet to the member's external wallet. The dedicated wallet structure creates a clean audit trail: every dollar of collateral is traceable to a specific loan and a specific member identity.</p>
+
+      <h3>Key Management & Security</h3>
+      <p>Institutional custody infrastructure uses multi-signature key management (multi-sig) — requiring multiple independent approvals before any outbound transaction is processed. This eliminates single points of failure and meets the security standards that institutional insurance providers require. Hardware Security Modules (HSMs) provide an additional layer of private key protection. These are not nice-to-haves — they're the security baseline that separates institutional custody from consumer crypto wallets.</p>
+
+      <div class="callout">
+        <p>The security architecture of institutional custody is designed to be explainable to a board member who's never held crypto. Multi-sig means no single person can move assets alone. HSMs mean keys are never exposed in software. That's the conversation your board needs to have before approving the program.</p>
+      </div>
+    </section>
+
+    <section id="risk-assessment" class="section">
+      <h2>Risk Assessment &amp; <span>Underwriting</span></h2>
+      <p>Crypto-collateralized lending requires a fundamentally different approach to underwriting than traditional consumer or commercial lending. The collateral is volatile, liquid, and priced continuously — which means the risk assessment needs to be equally dynamic.</p>
+
+      <h3>Static vs. Dynamic Underwriting</h3>
+      <p>Traditional loan underwriting is a point-in-time assessment: the underwriter evaluates the borrower's creditworthiness at origination and books the loan. For crypto-collateralized loans, that point-in-time assessment is only the beginning. The collateral value changes constantly — which means the risk profile changes constantly. <strong>The underwriting model needs to be a continuous system, not a one-time event.</strong></p>
+
+      <h3>The Six Pillars of Crypto Risk Assessment</h3>
+      <p>A comprehensive risk assessment model for crypto-collateralized lending evaluates six dimensions:</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 1</div>
+          <div class="feature-title">Credit Profile</div>
+          <p class="feature-body">Traditional credit assessment — bureau data, payment history, existing obligations — establishes the borrower's base creditworthiness independent of the digital asset collateral.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 2</div>
+          <div class="feature-title">Assets Under Management</div>
+          <p class="feature-body">Total digital asset holdings, distribution across asset types, and concentration risk. A member holding 100% of their net worth in a single volatile asset presents a different risk profile than a diversified holder.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 3</div>
+          <div class="feature-title">Volatility Score</div>
+          <p class="feature-body">Asset-specific volatility assessment using rolling historical data and forward-looking market indicators. Bitcoin and Ethereum have different volatility profiles — and those profiles change over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 4</div>
+          <div class="feature-title">Asset Quality</div>
+          <p class="feature-body">Collateral quality assessment — custody provenance, on-chain transaction history, and any risk flags from blockchain analytics. Not all Bitcoin is equivalent from a compliance standpoint.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 5</div>
+          <div class="feature-title">Tax Position & Liquidity</div>
+          <p class="feature-body">Estimated embedded capital gains in the collateral — which affects the member's economic incentive to repay vs. allow liquidation — and liquidity-adjusted net worth accounting for the crypto position.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-tag">Pillar 6</div>
+          <div class="feature-title">Market Conditions</div>
+          <p class="feature-body">Current market liquidity, volatility regime, and macro indicators. The same collateral may warrant a different LTV in a high-volatility market environment than in a stable one.</p>
+        </div>
+      </div>
+
+      <p>This six-pillar methodology is the foundation of Aetherum's DACS™ risk assessment model — a proprietary approach to generating composite risk scores that determine initial LTV, monitoring thresholds, and margin call triggers. It's the underwriting intelligence layer that most credit unions can't build internally.</p>
+
+      <p>See how the risk assessment integrates with the broader <a href="https://aetherum.ai/crypto-backed-loans-credit-unions/">crypto-backed loan lifecycle</a> for credit unions.</p>
+    </section>
+
+    <section id="compliance-layer" class="section">
+      <h2>Compliance &amp; <span>On-Chain Identity Layer</span></h2>
+      <p>The compliance layer is where the digital asset program connects to the credit union's existing regulatory obligations — and where the novel on-chain compliance capabilities create new possibilities for examiner transparency.</p>
+
+      <h3>Bank Connectivity & Financial Data</h3>
+      <p>Connecting a member's traditional financial data to their digital asset loan application requires a secure bank connectivity layer. This enables income verification, existing debt obligations, and account history to flow into the risk assessment model — creating a complete picture of borrower financial health rather than evaluating the digital asset collateral in isolation.</p>
+
+      <h3>On-Chain KYC via ERC-3643</h3>
+      <p>The most significant compliance infrastructure development for regulated digital asset programs is the emergence of programmable compliance standards like ERC-3643. This standard allows institutions to embed verified compliance attestations — KYC completion, jurisdiction eligibility, membership verification — directly into the on-chain token infrastructure that manages collateral.</p>
+
+      <p>In practice: a member's collateral wallet can carry a cryptographic proof that they've completed KYC, that they're a verified member of the credit union, and that the collateral meets the LTV requirements for their loan. This proof is verifiable on-chain without exposing underlying personal data. Examiners can audit the compliance state of every active loan without requesting paper files.</p>
+
+      <div class="callout">
+        <p>On-chain compliance isn't about blockchain evangelism. It's about creating an audit trail that's impossible to falsify, instantly verifiable, and requires no manual reconciliation. That's what forward-looking examiners want to see.</p>
+      </div>
+
+      <h3>BSA/AML Infrastructure</h3>
+      <p>The compliance layer includes on-chain transaction monitoring — screening wallet addresses and transaction patterns against OFAC sanctions lists and known illicit activity typologies. This runs continuously in the background, generating alerts for the compliance team and producing SAR-ready documentation when needed. The monitoring infrastructure is designed to meet existing BSA/AML examination standards — not just to screen for obvious red flags.</p>
+
+      <p>Read the full treatment of <a href="https://aetherum.ai/crypto-compliance-financial-institutions/">crypto compliance requirements for financial institutions</a>.</p>
+    </section>
+
+    <section id="core-integration" class="section">
+      <h2>Core Banking <span>Integration</span></h2>
+      <p>The most common technology concern from credit union executives is core banking integration. The fear: deploying digital asset infrastructure means replacing or significantly modifying the core banking system. That fear is unfounded — but it needs to be addressed explicitly.</p>
+
+      <h3>API-First Integration Architecture</h3>
+      <p>Purpose-built digital asset infrastructure for credit unions is designed as an API layer on top of existing cores — not a replacement for them. The platform communicates with the core system for loan booking (creating the loan record in the core), disbursement initiation (triggering the USD transfer to the member), repayment processing (receiving and applying payments), and member account linkage (associating the digital asset loan with the member's existing account).</p>
+
+      <p>The core never needs to understand digital assets. It receives and processes loan transactions through the same API interfaces used by any other lending product. The complexity of custody, collateral monitoring, and blockchain interaction stays entirely within the digital asset platform layer.</p>
+
+      <h3>Supported Core Systems</h3>
+      <p>Modern API-first digital asset platforms support integration with major credit union core systems including Symitar, Corelation, DNA, and others through standard RESTful API interfaces. No proprietary core modifications are required. Implementation timelines for core integration are typically 2–4 weeks with a standard integration package.</p>
+
+      <h3>Integration Architecture Overview</h3>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Integration Point</th><th>Core Banking</th><th>Digital Asset Platform</th><th>Custody Infrastructure</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Loan origination</td><td><span class="check">Receives booking</span></td><td><span class="check">Orchestrates workflow</span></td><td><span class="dash">—</span></td></tr>
+          <tr><td>USD disbursement</td><td><span class="check">Processes ACH/wire</span></td><td><span class="check">Triggers disbursement</span></td><td><span class="dash">—</span></td></tr>
+          <tr><td>Collateral custody</td><td><span class="dash">—</span></td><td><span class="check">Monitors LTV</span></td><td><span class="check">Holds wallets</span></td></tr>
+          <tr><td>Margin calls</td><td><span class="dash">—</span></td><td><span class="check">Triggers workflow</span></td><td><span class="check">Executes if needed</span></td></tr>
+          <tr><td>Repayment</td><td><span class="check">Receives payment</span></td><td><span class="check">Updates loan status</span></td><td><span class="check">Releases collateral</span></td></tr>
+          <tr><td>Compliance reporting</td><td><span class="dash">—</span></td><td><span class="check">Generates reports</span></td><td><span class="check">Provides audit trail</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="build-buy" class="section">
+      <h2>Build vs. Buy vs. <span>Partner</span></h2>
+      <p>Every technology decision at a credit union eventually comes down to this question. For digital asset infrastructure, the answer is unusually clear.</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr><th>Approach</th><th>Time to Launch</th><th>Compliance Readiness</th><th>Ongoing Cost</th><th>Realistic For CUs?</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Build Internally</td>
+            <td>18–36 months</td>
+            <td>Requires dedicated team</td>
+            <td>Very high (engineering + maintenance)</td>
+            <td><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Generic Platform</td>
+            <td>6–12 months</td>
+            <td>Requires heavy customization</td>
+            <td>High (customization + integration)</td>
+            <td><span class="cross">Rarely</span></td>
+          </tr>
+          <tr>
+            <td>Purpose-Built B2B</td>
+            <td>60–90 days (pilot)</td>
+            <td>Built-in for CU requirements</td>
+            <td>Platform fee per loan + SaaS</td>
+            <td><span class="check">Yes</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The build-internally path requires a specialized engineering team with expertise in blockchain infrastructure, institutional custody, BSA/AML compliance systems, and core banking integration — and then requires ongoing maintenance as regulations evolve. For a credit union without an existing digital asset technology team, this is a 3-year minimum commitment before the first loan is originated.</p>
+
+      <p>Purpose-built B2B infrastructure spreads the development and compliance cost across multiple credit union customers, making institutional-grade infrastructure accessible at a per-loan fee structure that aligns with the program's revenue model. The first loan can be originated within 90 days of a signed agreement.</p>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Do we need to replace our core banking system?</div>
+          <p class="faq-a">No. Purpose-built digital asset infrastructure integrates with your existing core through standard API interfaces. The core continues to handle loan booking, disbursement, and repayment processing — the digital asset platform handles custody, collateral monitoring, and blockchain-specific operations as a layer above the core.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What happens to the collateral if the technology platform shuts down?</div>
+          <p class="faq-a">Because the credit union holds the custodial relationship directly — not the platform — the wallets and collateral remain in the CU's custody account regardless of the platform's status. This is a key architectural requirement: the platform is software, not custody.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How does on-chain compliance work with our existing KYC process?</div>
+          <p class="faq-a">On-chain compliance (via standards like ERC-3643) is an extension of your existing KYC process, not a replacement for it. Your existing member verification generates a compliance attestation that the platform translates into an on-chain token attribute. The underlying KYC data stays in your systems — the on-chain layer only carries a verifiable proof that the check was completed.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can the platform handle the full loan lifecycle, or just origination?</div>
+          <p class="faq-a">A complete digital asset lending platform handles the full lifecycle: member application and onboarding, risk assessment and underwriting, collateral custody and monitoring, margin call workflow, loan servicing, repayment processing, and collateral release. Origination-only solutions leave significant operational complexity on the CU's plate.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What's the minimum program size to make digital asset lending viable?</div>
+          <p class="faq-a">A pilot program of 25–50 loans is sufficient to validate the operational model and build examiner confidence before scaling. At an average loan size of $40K–50K, a 50-loan pilot represents $2M–2.5M in originations — meaningful enough to evaluate program performance and member uptake without requiring a large upfront commitment.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-block">
+      <h2>See the Infrastructure <span>in Action</span></h2>
+      <p>Aetherum's platform is purpose-built for credit unions — from NCUA-compliant custody architecture to loan officer portal to on-chain identity. Let's walk through it.</p>
+      <a class="cta-btn" href="https://calendly.com/jbailey-aetherum/30min">Schedule a 30-Minute Demo</a>
+    </div>
+
+    <section style="margin-top:5rem;">
+      <h2>Related <span>Resources</span></h2>
+      <div class="related-grid">
+        <a class="related-card" href="https://aetherum.ai/crypto-backed-loans-credit-unions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Crypto-Backed Loans for Credit Unions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/crypto-compliance-financial-institutions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Crypto Compliance for Financial Institutions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/blog/">
+          <div class="related-tag">Blog</div>
+          <div class="related-title">All Aetherum Research & Insights</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Aetherum, Inc. &nbsp;|&nbsp; <a href="https://aetherum.ai/terms">Terms</a> &nbsp;|&nbsp; <a href="https://aetherum.ai/privacy">Privacy</a> &nbsp;|&nbsp; Not financial or legal advice. For informational purposes only.</p>
+  </footer>
+
+</body>
+</html>

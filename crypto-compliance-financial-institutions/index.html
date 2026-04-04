@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Compliance for Financial Institutions | Aetherum</title>
+  <meta name="description" content="A practical compliance guide for banks, credit unions, and financial institutions offering digital asset services — covering NCUA, BSA/AML, KYC, and on-chain identity frameworks." />
+  <meta name="keywords" content="crypto compliance financial institutions, digital asset compliance credit union, crypto BSA AML bank, NCUA digital asset guidance, cryptocurrency KYC banking" />
+  <link rel="canonical" href="https://aetherum.ai/crypto-compliance-financial-institutions/" />
+
+  <meta property="og:title" content="Crypto Compliance for Financial Institutions | Aetherum" />
+  <meta property="og:description" content="A practical guide to digital asset compliance for banks and credit unions — covering NCUA, BSA/AML, KYC, and on-chain identity requirements." />
+  <meta property="og:url" content="https://aetherum.ai/crypto-compliance-financial-institutions/" />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #03060F; --navy-mid: #080E1E; --navy-light: #0D1630;
+      --orange: #F7931A; --orange-dim: #c97414;
+      --white: #F0F4FF; --muted: #8A9BC4; --border: rgba(247,147,26,0.18);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.75; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(3,6,15,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 3px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--orange-dim); }
+    .hero { padding: 7rem 2rem 5rem; max-width: 900px; margin: 0 auto; }
+    .breadcrumb { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.0; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 680px; margin-bottom: 2.5rem; font-weight: 300; }
+    .hero-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+    .toc-wrapper { background: var(--navy-light); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 4px; padding: 2rem 2.5rem; max-width: 900px; margin: 0 auto 4rem; }
+    .toc-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .toc-list a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-family: 'Fraunces', serif; transition: color 0.2s; }
+    .toc-list a:hover { color: var(--white); }
+    .toc-num { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--orange); margin-right: 0.6rem; }
+    .content { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .section { margin-bottom: 5rem; }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 0.03em; color: var(--white); margin-bottom: 1.5rem; padding-top: 1rem; }
+    h2 span { color: var(--orange); }
+    h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; color: var(--white); margin: 2.5rem 0 0.8rem; }
+    p { color: var(--muted); margin-bottom: 1.2rem; }
+    p strong { color: var(--white); font-weight: 600; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .callout { background: var(--navy-light); border-left: 3px solid var(--orange); padding: 1.5rem 2rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+    .callout p { color: var(--white); margin: 0; font-style: italic; font-weight: 300; }
+    .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .compliance-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+    .compliance-icon { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+    .compliance-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+    .compliance-body { font-size: 0.9rem; color: var(--muted); margin: 0; }
+    .timeline { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+    .timeline-item { display: flex; gap: 1.5rem; }
+    .timeline-left { display: flex; flex-direction: column; align-items: center; min-width: 2rem; }
+    .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); margin-top: 0.45rem; flex-shrink: 0; }
+    .timeline-line { width: 2px; background: var(--border); flex: 1; margin-top: 4px; }
+    .timeline-item:last-child .timeline-line { display: none; }
+    .timeline-content { padding-bottom: 2rem; }
+    .timeline-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.3rem; }
+    .timeline-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.4rem; }
+    .timeline-body { font-size: 0.9rem; color: var(--muted); margin: 0; }
+    .faq-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; background: var(--navy-light); }
+    .faq-q { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; font-size: 1rem; }
+    .faq-a { font-size: 0.95rem; margin: 0; }
+    .cta-block { background: linear-gradient(135deg, var(--navy-light) 0%, #0a1228 100%); border: 1px solid var(--border); border-top: 2px solid var(--orange); border-radius: 4px; padding: 3.5rem 3rem; text-align: center; margin-top: 4rem; }
+    .cta-block h2 { margin-bottom: 0.8rem; font-size: 2.2rem; }
+    .cta-block p { max-width: 500px; margin: 0 auto 2rem; }
+    .cta-btn { display: inline-block; background: var(--orange); color: var(--navy); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 3px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--orange-dim); text-decoration: none; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .related-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; text-decoration: none; transition: border-color 0.2s; display: block; }
+    .related-card:hover { border-color: var(--orange); text-decoration: none; }
+    .related-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+    .related-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 0.95rem; line-height: 1.4; }
+    footer { background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+    footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin: 0; }
+    footer a { color: var(--orange); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Crypto Compliance for Financial Institutions: A Practical Guide",
+    "description": "How banks, credit unions, and financial institutions structure digital asset compliance programs — covering NCUA, BSA/AML, KYC, and on-chain identity.",
+    "author": { "@type": "Organization", "name": "Aetherum", "url": "https://aetherum.ai" },
+    "publisher": { "@type": "Organization", "name": "Aetherum", "url": "https://aetherum.ai" },
+    "mainEntityOfPage": "https://aetherum.ai/crypto-compliance-financial-institutions/"
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://aetherum.ai">AETHERUM</a>
+    <ul class="nav-links">
+      <li><a href="https://aetherum.ai/blog">Blog</a></li>
+      <li><a href="https://aetherum.ai/crypto-backed-loans-credit-unions/">CU Lending</a></li>
+      <li><a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">Infrastructure</a></li>
+    </ul>
+    <a class="nav-cta" href="https://calendly.com/jbailey-aetherum/30min">Schedule a Demo</a>
+  </nav>
+
+  <div class="hero">
+    <div class="breadcrumb">
+      <a href="https://aetherum.ai">Home</a> &nbsp;/&nbsp;
+      <a href="https://aetherum.ai/blog">Resources</a> &nbsp;/&nbsp;
+      Crypto Compliance for Financial Institutions
+    </div>
+    <h1>Crypto Compliance for<br/><span>Financial Institutions</span></h1>
+    <p class="hero-sub">The regulatory landscape for digital assets at banks and credit unions is no longer a question mark. Here's the practical framework compliance teams need to build programs that pass examiner scrutiny from day one.</p>
+    <div class="hero-meta">
+      <span>By Aetherum Research</span>
+      <span>Updated April 2026</span>
+      <span>22 min read</span>
+      <span>For: Compliance Officers, Risk Teams, C-Suite</span>
+    </div>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc-label">In this guide</div>
+    <ul class="toc-list">
+      <li><a href="#regulatory-landscape"><span class="toc-num">01</span>The Regulatory Landscape in 2026</a></li>
+      <li><a href="#ncua-framework"><span class="toc-num">02</span>NCUA Framework for Credit Unions</a></li>
+      <li><a href="#bsa-aml"><span class="toc-num">03</span>BSA/AML Requirements for Digital Assets</a></li>
+      <li><a href="#kyc-identity"><span class="toc-num">04</span>KYC & On-Chain Identity</a></li>
+      <li><a href="#custody-structure"><span class="toc-num">05</span>Custody Structure & Compliance Implications</a></li>
+      <li><a href="#examiner-readiness"><span class="toc-num">06</span>Examiner Readiness & Audit Trail</a></li>
+      <li><a href="#building-program"><span class="toc-num">07</span>Building a Compliant Program</a></li>
+      <li><a href="#faq"><span class="toc-num">08</span>Frequently Asked Questions</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+
+    <section id="regulatory-landscape" class="section">
+      <h2>The Regulatory Landscape <span>in 2026</span></h2>
+      <p>The era of regulatory ambiguity around crypto at financial institutions is effectively over. A combination of OCC interpretive letters, NCUA guidance, FinCEN clarifications, and state-level frameworks has created a workable — if still evolving — compliance environment. The question is no longer whether institutions can offer digital asset services. It's whether their compliance infrastructure can support them.</p>
+
+      <div class="compliance-grid">
+        <div class="compliance-card">
+          <div class="compliance-icon">Federal</div>
+          <div class="compliance-title">OCC Guidance</div>
+          <p class="compliance-body">Interpretive letters permitting national banks to provide crypto custody services, stablecoin reserves, and digital asset node participation.</p>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-icon">Credit Unions</div>
+          <div class="compliance-title">NCUA Letter 22-CU-02</div>
+          <p class="compliance-body">Establishes pre-notification requirement and framework for permissible digital asset activities at federally insured credit unions.</p>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-icon">BSA/AML</div>
+          <div class="compliance-title">FinCEN Requirements</div>
+          <p class="compliance-body">Digital asset activities are subject to the same BSA/AML obligations as traditional financial services — KYC, CTR, SAR filing, and transaction monitoring.</p>
+        </div>
+        <div class="compliance-card">
+          <div class="compliance-icon">State</div>
+          <div class="compliance-title">State Frameworks</div>
+          <p class="compliance-body">New York BitLicense, CSBS model framework, and state-specific digital asset laws create a patchwork that state-chartered institutions must navigate in parallel.</p>
+        </div>
+      </div>
+
+      <p>The critical insight for compliance officers: digital asset compliance at a financial institution is largely an extension of your existing AML, KYC, and risk management frameworks — not a new discipline. The novel elements are on-chain-specific: wallet screening, transaction monitoring on public blockchains, and custody governance.</p>
+
+      <div class="callout">
+        <p>The institutions that struggled with crypto compliance weren't missing regulations — they were missing infrastructure. The regulations existed. The tooling to implement them at institutional grade didn't. That gap is now closed.</p>
+      </div>
+    </section>
+
+    <section id="ncua-framework" class="section">
+      <h2>NCUA Framework for <span>Credit Unions</span></h2>
+      <p>For federally insured credit unions, the NCUA is the primary federal regulator for digital asset activities. The framework has three essential elements: pre-notification, permissible activity classification, and ongoing safety-and-soundness compliance.</p>
+
+      <h3>Pre-Notification Requirement</h3>
+      <p>Before launching any digital asset activity, federally chartered credit unions must notify NCUA — typically through the Office of Credit Unions' Regional Director. The notification should describe the planned activity, the risk management framework, the third-party vendors involved, and how the CU will ensure member protection. <strong>State-chartered CUs must also notify their state regulator</strong>, even if they are federally insured.</p>
+
+      <h3>Permissible Activity Classification</h3>
+      <p>The NCUA categorizes digital asset activities by risk profile. <strong>Crypto-collateralized lending</strong> is among the most clearly permissible activities, structurally analogous to existing securities-backed lending that credit unions have offered for decades. The collateral is different — digital rather than physical — but the credit structure, documentation requirements, and regulatory treatment are familiar.</p>
+
+      <h3>Safety-and-Soundness Expectations</h3>
+      <p>Regardless of the activity, NCUA expects credit unions to demonstrate: robust risk management policies specific to digital assets, board-level oversight and documented governance, BSA/AML compliance integration, member disclosures, and regular risk reviews. An examiner walking into your digital asset program should see a governance structure that matches the risk profile of the activity.</p>
+
+      <p>For the infrastructure requirements that enable compliant program design, see our guide to <a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">digital asset infrastructure for credit unions</a>.</p>
+    </section>
+
+    <section id="bsa-aml" class="section">
+      <h2>BSA/AML Requirements for <span>Digital Assets</span></h2>
+      <p>Financial institutions offering digital asset services are covered financial institutions under the Bank Secrecy Act. This means all standard BSA/AML obligations apply — with additional considerations specific to digital asset transactions.</p>
+
+      <h3>Standard BSA Obligations</h3>
+      <p>Customer Identification Programs (CIP), Customer Due Diligence (CDD), Beneficial Ownership requirements, Currency Transaction Reports (CTR) for cash transactions over $10,000, and Suspicious Activity Reports (SAR) all apply to digital asset activities. None of these are new — they're the same obligations your compliance team already manages.</p>
+
+      <h3>Crypto-Specific Additions</h3>
+      <p><strong>On-chain transaction monitoring</strong> is the primary addition. Digital asset transactions are recorded on public blockchains, which means your transaction monitoring system needs to screen wallet addresses against sanctions lists (OFAC), monitor for typologies associated with illicit activity (structuring, layering, mixer usage), and produce SAR-ready documentation when flagged. This requires purpose-built blockchain analytics — not an adaptation of traditional transaction monitoring.</p>
+
+      <h3>The Travel Rule</h3>
+      <p>FinCEN's Travel Rule requires financial institutions to pass originator and beneficiary information for transactions above $3,000. For crypto transactions, this creates technical complexity — the information doesn't travel natively on-chain. Purpose-built Travel Rule compliance infrastructure handles the off-chain information sharing requirement between covered institutions.</p>
+
+      <h3>Nacha Phase 2 (June 2026)</h3>
+      <p>If your program routes USD disbursements or repayments through ACH, <strong>Nacha's Phase 2 fraud monitoring requirements take effect June 22, 2026</strong>. Programs going live this year need to ensure their ACH layer meets the updated monitoring standards before that deadline.</p>
+    </section>
+
+    <section id="kyc-identity" class="section">
+      <h2>KYC &amp; <span>On-Chain Identity</span></h2>
+      <p>KYC for digital asset programs at financial institutions is substantially more robust than what D2C crypto platforms typically implement — which is actually your competitive advantage with members. Your KYC infrastructure can be the trust signal that justifies lower rates and better terms.</p>
+
+      <h3>Standard KYC at Origination</h3>
+      <p>Identity verification, document review, sanctions screening, PEP screening, and adverse media review are the baseline — the same as any loan origination. The difference for crypto programs is that KYC outputs need to be linkable to on-chain activity: the verified identity needs to be associated with the wallet address being used for collateral or transactions.</p>
+
+      <h3>On-Chain Identity & Compliance Tokens</h3>
+      <p>Emerging standards like <strong>ERC-3643</strong> allow institutions to embed verified compliance attestations directly into on-chain token infrastructure. In practice, this means a member's wallet can carry a cryptographic attestation that they've completed KYC, are within the correct jurisdiction, and meet eligibility requirements — without exposing underlying personal data on-chain. This creates an auditable, privacy-preserving compliance layer that lives alongside the collateral itself.</p>
+
+      <div class="callout">
+        <p>On-chain identity compliance is not a future concept. It's production infrastructure — and it's how forward-looking credit unions will prove to examiners that their digital asset programs are governed at the asset level, not just at onboarding.</p>
+      </div>
+
+      <h3>Ongoing KYC & Refresh Cycles</h3>
+      <p>Digital asset programs require ongoing KYC refresh — periodic re-verification, continuous sanctions screening, and enhanced due diligence for elevated-risk members or transaction patterns. Your compliance infrastructure should automate refresh triggers rather than relying on manual cycles.</p>
+
+      <p>Learn how <a href="https://aetherum.ai/crypto-backed-loans-credit-unions/">crypto-collateralized lending programs</a> integrate KYC requirements into the loan lifecycle.</p>
+    </section>
+
+    <section id="custody-structure" class="section">
+      <h2>Custody Structure &amp; <span>Compliance Implications</span></h2>
+      <p>How digital assets are held — the custody architecture — has direct compliance implications. The wrong custody structure creates regulatory ambiguity, potential liability, and exam risk. The right structure creates clarity at every level.</p>
+
+      <h3>The CU-Direct Custody Model</h3>
+      <p>The architecture that best serves credit union compliance requirements is <strong>direct custody</strong>: the credit union holds the custodial relationship with the digital assets, using institutional-grade custody infrastructure that the CU contracts with directly. The lending platform is software-only — it orchestrates workflows, risk assessment, and compliance monitoring, but it does not hold member assets.</p>
+
+      <p>This model means: the CU is the custodian of record, the CU controls the wallet infrastructure, and the technology vendor is in the same position as any other fintech software provider. Examiners and auditors can assess the program against existing frameworks for technology vendor management and outsourcing.</p>
+
+      <h3>Why Sub-Custodian Models Create Risk</h3>
+      <p>Some platforms custody digital assets on behalf of institutions as a sub-custodian. This arrangement complicates the regulatory picture: it introduces an intermediary in the custody chain, creates questions about who bears the custodial liability, and can blur the lines of examiner jurisdiction. For credit unions, maintaining direct custody is not just a compliance preference — it's the architecture that keeps the program clearly within NCUA's existing frameworks.</p>
+
+      <h3>Insurance & Loss Coverage</h3>
+      <p>NCUA Share Insurance covers member deposits, not digital asset holdings. Your program needs to separately address the risk of digital asset loss — through institutional custody insurance, crime coverage, or other mechanisms. This is a required governance disclosure in the NCUA pre-notification and a standing exam question.</p>
+    </section>
+
+    <section id="examiner-readiness" class="section">
+      <h2>Examiner Readiness &amp; <span>Audit Trail</span></h2>
+      <p>The difference between a program that passes examination and one that doesn't is rarely about what you're doing — it's about whether you can prove what you're doing. Examiner readiness is fundamentally an audit trail and documentation challenge.</p>
+
+      <h3>What Examiners Look For</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Governance</div>
+            <div class="timeline-title">Board-Level Policy Documentation</div>
+            <p class="timeline-body">Written board resolutions approving the digital asset program, risk appetite statements specific to digital assets, and ongoing board reporting on program performance and risk metrics.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Vendor Management</div>
+            <div class="timeline-title">Third-Party Due Diligence</div>
+            <p class="timeline-body">SOC 2 reports, due diligence questionnaires (DDQs), and documented vendor assessment for all technology providers involved in the program — custody infrastructure, compliance infrastructure, and bank connectivity.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-label">BSA/AML</div>
+            <div class="timeline-title">Monitoring Records & SAR Documentation</div>
+            <p class="timeline-body">Complete transaction monitoring logs, documented disposition of flagged activity (including why flags were cleared as well as why SARs were filed), and evidence of ongoing staff training.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Member Protection</div>
+            <div class="timeline-title">Disclosures & Member Communications</div>
+            <p class="timeline-body">Written disclosures to members about the nature of digital asset risk, the limits of share insurance coverage, and the margin call procedures that could result in collateral liquidation.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Risk Management</div>
+            <div class="timeline-title">LTV Policy & Monitoring Logs</div>
+            <p class="timeline-body">Written LTV policy with board approval, complete logs of collateral monitoring events, margin call notices sent, member responses, and liquidation events (if any).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="building-program" class="section">
+      <h2>Building a Compliant <span>Program</span></h2>
+      <p>A compliant digital asset program at a credit union isn't built in a weekend — but it's also not a multi-year buildout. With the right infrastructure, the path from decision to examiner-ready program is well-defined.</p>
+
+      <h3>The Infrastructure Stack</h3>
+      <p>A purpose-built compliance stack for credit union digital asset programs has five layers: <strong>KYC/identity verification</strong> (bank-grade identity and document verification), <strong>BSA/AML monitoring</strong> (both on-chain transaction screening and off-chain behavioral monitoring), <strong>custody governance</strong> (institutional custody infrastructure with full audit trail), <strong>risk assessment</strong> (real-time collateral risk scoring and LTV monitoring), and <strong>on-chain compliance</strong> (programmable compliance attestations embedded in the asset infrastructure).</p>
+
+      <div class="callout">
+        <p>The compliance infrastructure should be invisible to the member and authoritative for the examiner. If it requires manual reconciliation or offline documentation, it's not infrastructure — it's a workaround.</p>
+      </div>
+
+      <h3>Timeline to Launch</h3>
+      <p>For a credit union using purpose-built B2B infrastructure, the path to pilot launch is typically 60–90 days: NCUA pre-notification (30 days), vendor due diligence and contracting (30 days), platform integration and testing (30 days), staff training and policy documentation (concurrent). A full production program typically follows within 6 months of a successful pilot.</p>
+
+      <p>See how the <a href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">full infrastructure stack</a> is designed for credit union deployment.</p>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Do credit unions need a special license to offer crypto services?</div>
+          <p class="faq-a">Federal credit unions operating under the NCUA framework generally don't need a separate crypto license — pre-notification and safety-and-soundness compliance within the existing CU charter is sufficient for most activities including crypto-collateralized lending. State-chartered CUs may face additional state licensing requirements depending on the jurisdiction.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How does NCUA Share Insurance apply to crypto lending programs?</div>
+          <p class="faq-a">NCUA Share Insurance covers member deposits up to $250,000 — it does not cover digital asset holdings. This must be disclosed to members. The credit union should separately obtain insurance coverage for digital assets held in custody (typically through institutional custody insurance or crime coverage).</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What BSA/AML tools are required for digital asset transaction monitoring?</div>
+          <p class="faq-a">Standard transaction monitoring systems are insufficient for on-chain activity. You need blockchain analytics infrastructure that screens wallet addresses against OFAC sanctions lists, monitors for on-chain risk typologies (mixer usage, high-risk counterparty exposure), and generates SAR-ready documentation. This is best handled by purpose-built compliance infrastructure rather than adapted from traditional monitoring tools.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can a small credit union afford institutional-grade compliance infrastructure?</div>
+          <p class="faq-a">Purpose-built B2B platforms are designed specifically to make institutional compliance accessible to credit unions of all sizes — by spreading the infrastructure cost across multiple institutions. The compliance capabilities that would require a significant buildout for a single CU become available through a software subscription, including blockchain analytics, KYC automation, and on-chain compliance.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is on-chain identity compliance and do we need it?</div>
+          <p class="faq-a">On-chain identity compliance uses programmable token standards (like ERC-3643) to embed verified compliance attestations directly into digital asset infrastructure. In practice, it means your KYC verification can be cryptographically associated with the wallet holding collateral — creating an auditable, automated compliance check at the asset level rather than just at onboarding. For programs with any scale, it's increasingly expected by forward-looking examiners.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-block">
+      <h2>Ready to Build a <span>Compliant Program?</span></h2>
+      <p>Aetherum's compliance infrastructure is purpose-built for credit unions — including BSA/AML integration, on-chain identity, and examiner-ready audit trails.</p>
+      <a class="cta-btn" href="https://calendly.com/jbailey-aetherum/30min">Schedule a 30-Minute Call</a>
+    </div>
+
+    <section style="margin-top:5rem;">
+      <h2>Related <span>Resources</span></h2>
+      <div class="related-grid">
+        <a class="related-card" href="https://aetherum.ai/crypto-backed-loans-credit-unions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Crypto-Backed Loans for Credit Unions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/digital-asset-infrastructure-credit-unions/">
+          <div class="related-tag">Pillar Guide</div>
+          <div class="related-title">Digital Asset Infrastructure for Credit Unions</div>
+        </a>
+        <a class="related-card" href="https://aetherum.ai/blog/">
+          <div class="related-tag">Blog</div>
+          <div class="related-title">All Aetherum Research & Insights</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Aetherum, Inc. &nbsp;|&nbsp; <a href="https://aetherum.ai/terms">Terms</a> &nbsp;|&nbsp; <a href="https://aetherum.ai/privacy">Privacy</a> &nbsp;|&nbsp; Not financial or legal advice. For informational purposes only.</p>
+  </footer>
+
+</body>
+</html>
