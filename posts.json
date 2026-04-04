@@ -20,6 +20,46 @@
     "featured": false
   },
   {
+    "slug": "/blog/what-your-members-own/",
+    "title": "What Your Members Own That You Can't See",
+    "excerpt": "Credit unions are flying blind on one of the fastest-growing asset classes in America. Here's what that silence is costing you — and what to do about it.",
+    "date": "March 25, 2026",
+    "readTime": "7 min read",
+    "icon": "👁️",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/erc-3643-credit-union-lending/",
+    "title": "Why Credit Unions Are the Missing Link in the ERC-3643 Ecosystem",
+    "excerpt": "The ERC-3643 standard is becoming the compliance backbone of institutional tokenization. Here's why credit unions — and their 140 million members — are the natural next frontier.",
+    "date": "March 20, 2026",
+    "readTime": "5 min read",
+    "icon": "🔗",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/genius-act-custody-moat/",
+    "title": "The GENIUS Act's Compliance Burden Is a Credit Union Advantage",
+    "excerpt": "The OCC's proposed rules impose custody segregation, operational backstops, and monthly audited disclosures. For fintechs, that's a steep climb. For credit unions, it's home turf.",
+    "date": "March 19, 2026",
+    "readTime": "5 min read",
+    "icon": "⚖️",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/crypto-banks-are-back.html",
+    "title": "'Crypto Banks' Are Back — But They're Not What You Might Think",
+    "excerpt": "11 companies. 83 days. The OCC just chartered eight crypto-native firms as national trust banks. Here's what credit unions need to know before their members start asking.",
+    "date": "March 2026",
+    "readTime": "6 min read",
+    "icon": "🏛️",
+    "isNew": false,
+    "featured": false
+  },
+  {
     "slug": "/blog/fhe-privacy-infrastructure/",
     "title": "Your Data Should Work For You. Not Around You.",
     "excerpt": "We've built something we believe is a first in credit union fintech. Here's what Fully Homomorphic Encryption means for the credit union and the member — no computer science degree required.",
