@@ -431,6 +431,21 @@
     letter-spacing: 0.5px;
   }
 
+  .blog-badge {
+    display: inline-block;
+    background: rgba(74,222,128,0.12);
+    border: 1px solid rgba(74,222,128,0.25);
+    color: var(--green-accent);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
   /* CTA */
   .cta-section {
     background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
@@ -587,113 +602,17 @@
 <!-- FEATURED -->
 <section class="featured-section">
   <div class="featured-label">Featured</div>
-  <a href="/blog/why-we-build/" class="featured-card">
-    <div class="featured-visual">
-      <div class="featured-visual-inner">
-        <div class="featured-badge">New</div>
-        <span class="featured-icon">🏗️</span>
-      </div>
-    </div>
-    <div class="featured-body">
-      <div class="new-tag">New Post</div>
-      <div class="featured-meta">April 3, 2026 &nbsp;·&nbsp; 4 min read</div>
-      <h2>Why We Build</h2>
-      <p>We didn't set out to disrupt credit unions. We set out to make sure they don't get left behind.</p>
-      <span class="read-more-link">Read Article →</span>
-    </div>
-  </a>
+  <div id="featured-post"></div>
 </section>
 
 <!-- BLOG GRID -->
 <section class="blog-section">
   <div class="blog-section-label">All Articles</div>
-  <div class="blog-grid">
+  <div class="blog-grid" id="blog-grid">
+    <div style="color:var(--text-muted);padding:40px 0;grid-column:1/-1;">Loading posts...</div>
 
-    <a href="/blog/why-we-build/" class="blog-card">
-      <div class="blog-card-thumb thumb-1">
-        <span class="thumb-icon">🏗️</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">April 3, 2026 &nbsp;·&nbsp; 4 min read <span class="new-tag" style="display:inline-block;margin:0 0 0 8px;padding:2px 10px;font-size:10px;vertical-align:middle;">New</span></div>
-        <h3>Why We Build</h3>
-        <p>We didn't set out to disrupt credit unions. We set out to make sure they don't get left behind.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="fhe-privacy-infrastructure/" class="blog-card">
-      <div class="blog-card-thumb thumb-1">
-        <span class="thumb-icon">🔐</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">March 30, 2026 &nbsp;·&nbsp; 5 min read</div>
-        <h3>Your Data Should Work For You. Not Around You.</h3>
-        <p>We've built something we believe is a first in credit union fintech. Here's what Fully Homomorphic Encryption means for the credit union and the member — no computer science degree required.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/when-nasdaq-calls-crypto-infrastructure-ready.html" class="blog-card">
-      <div class="blog-card-thumb thumb-2">
-        <span class="thumb-icon">📈</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">March 10, 2026 &nbsp;·&nbsp; 8 min read</div>
-        <h3>When Nasdaq Calls Crypto Infrastructure "Ready," It's Time to Pay Attention</h3>
-        <p>Nasdaq and Kraken just announced a partnership to tokenize equities on blockchain rails. Here's what it means for credit unions building digital asset infrastructure.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/why-were-moving-into-rwa-tokenization.html" class="blog-card">
-      <div class="blog-card-thumb thumb-3">
-        <span class="thumb-icon">🏗️</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">5 min read</div>
-        <h3>Why We're Moving Into Real-World Asset Tokenization — And Why It Starts with Credit Union Members</h3>
-        <p>The tokenized asset market crossed $33 billion in 2025. BlackRock and JP Morgan are already in. But the credit union ecosystem has been left out.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/who-gets-left-out.html" class="blog-card">
-      <div class="blog-card-thumb thumb-1">
-        <span class="thumb-icon">🏦</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">5 min read</div>
-        <h3>Citi Moves Into Bitcoin. Who Gets Left Out?</h3>
-        <p>When the world's largest banks move into digital assets, the gap between institutional and community finance widens fast. Here's how credit unions close it.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/crypto-as-collateral.html" class="blog-card">
-      <div class="blog-card-thumb thumb-1">
-        <span class="thumb-icon">📊</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">4 min read</div>
-        <h3>Crypto as Collateral: DeFi Lending's $26.47B Lesson for Institutions</h3>
-        <p>Turning crypto's fastest-growing lending model into bank-grade infrastructure with programmable risk and insured collateralization.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/wealth-insurance-member-value.html" class="blog-card">
-      <div class="blog-card-thumb thumb-2">
-        <span class="thumb-icon">🛡️</span>
-      </div>
-      <div class="blog-card-body">
-        <div class="blog-date">5 min read</div>
-        <h3>Wealth, Insurance, and Member Value: Where Product Meets Policy</h3>
-        <p>Build modern member services with lifecycle tokens, compliant payments, multi-chain reporting, and standardized counterparty scoring.</p>
-        <span class="blog-read-more">Read Article →</span>
-      </div>
-    </a>
-
-    <a href="blog/institutional-rails-tokenization.html" class="blog-card">
+    <!-- placeholder to preserve closing tags below -->
+    <a href="blog/institutional-rails-tokenization.html" class="blog-card" style="display:none">
       <div class="blog-card-thumb thumb-3">
         <span class="thumb-icon">🔗</span>
       </div>
@@ -731,6 +650,65 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     document.querySelector('.nav-links').classList.remove('open');
   });
 });
+
+// ── Posts manifest renderer ──────────────────────────────────────────────────
+const THUMBS = ['thumb-1', 'thumb-2', 'thumb-3'];
+
+function metaLine(post) {
+  const parts = [post.date, post.readTime].filter(Boolean);
+  return parts.join(' &nbsp;·&nbsp; ');
+}
+
+function renderFeatured(post) {
+  const el = document.getElementById('featured-post');
+  el.innerHTML = `
+    <a href="${post.slug}" class="featured-card">
+      <div class="featured-visual">
+        <div class="featured-visual-inner">
+          ${post.isNew ? '<div class="featured-badge">New</div>' : ''}
+          <span class="featured-icon">${post.icon}</span>
+        </div>
+      </div>
+      <div class="featured-body">
+        ${post.isNew ? '<div class="new-tag">New Post</div>' : ''}
+        <div class="featured-meta">${metaLine(post)}</div>
+        <h2>${post.title}</h2>
+        <p>${post.excerpt}</p>
+        <span class="read-more-link">Read Article →</span>
+      </div>
+    </a>`;
+}
+
+function renderCard(post, index) {
+  const thumb = THUMBS[index % THUMBS.length];
+  const badge = post.isNew ? '<span class="blog-badge">New</span>' : '';
+  return `
+    <a href="${post.slug}" class="blog-card">
+      <div class="blog-card-thumb ${thumb}">
+        <span class="thumb-icon">${post.icon}</span>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-date">${metaLine(post)}${badge}</div>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+        <span class="blog-read-more">Read Article →</span>
+      </div>
+    </a>`;
+}
+
+fetch('/posts.json')
+  .then(r => r.json())
+  .then(posts => {
+    const featured = posts.find(p => p.featured) || posts[0];
+    renderFeatured(featured);
+
+    const grid = document.getElementById('blog-grid');
+    grid.innerHTML = posts.map((post, i) => renderCard(post, i)).join('');
+  })
+  .catch(() => {
+    document.getElementById('blog-grid').innerHTML =
+      '<p style="color:var(--text-muted);padding:40px 0;grid-column:1/-1;">Could not load posts.</p>';
+  });
 </script>
 
 </body>

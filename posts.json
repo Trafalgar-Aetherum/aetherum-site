@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "/blog/why-we-build/",
+    "title": "Why We Build",
+    "excerpt": "We didn't set out to disrupt credit unions. We set out to make sure they don't get left behind.",
+    "date": "April 3, 2026",
+    "readTime": "4 min read",
+    "icon": "🏗️",
+    "isNew": true,
+    "featured": true
+  },
+  {
+    "slug": "/blog/bitcoin-backed-loans-no-capital-gains/",
+    "title": "Bitcoin-Backed Loans: Keep Your Crypto, Skip the Capital Gains",
+    "excerpt": "How crypto-collateralized loans let your members access liquidity without triggering a taxable event — and why credit unions are the right institution to offer them.",
+    "date": "April 3, 2026",
+    "readTime": "5 min read",
+    "icon": "₿",
+    "isNew": true,
+    "featured": false
+  },
+  {
+    "slug": "/blog/fhe-privacy-infrastructure/",
+    "title": "Your Data Should Work For You. Not Around You.",
+    "excerpt": "We've built something we believe is a first in credit union fintech. Here's what Fully Homomorphic Encryption means for the credit union and the member — no computer science degree required.",
+    "date": "March 30, 2026",
+    "readTime": "5 min read",
+    "icon": "🔐",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/when-nasdaq-calls-crypto-infrastructure-ready.html",
+    "title": "When Nasdaq Calls Crypto Infrastructure \"Ready,\" It's Time to Pay Attention",
+    "excerpt": "Nasdaq and Kraken just announced a partnership to tokenize equities on blockchain rails. Here's what it means for credit unions building digital asset infrastructure.",
+    "date": "March 10, 2026",
+    "readTime": "8 min read",
+    "icon": "📈",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/why-were-moving-into-rwa-tokenization.html",
+    "title": "Why We're Moving Into Real-World Asset Tokenization — And Why It Starts with Credit Union Members",
+    "excerpt": "The tokenized asset market crossed $33 billion in 2025. BlackRock and JP Morgan are already in. But the credit union ecosystem has been left out.",
+    "date": "",
+    "readTime": "5 min read",
+    "icon": "🏗️",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/who-gets-left-out.html",
+    "title": "Citi Moves Into Bitcoin. Who Gets Left Out?",
+    "excerpt": "When the world's largest banks move into digital assets, the gap between institutional and community finance widens fast. Here's how credit unions close it.",
+    "date": "",
+    "readTime": "5 min read",
+    "icon": "🏦",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/crypto-as-collateral.html",
+    "title": "Crypto as Collateral: DeFi Lending's $26.47B Lesson for Institutions",
+    "excerpt": "Turning crypto's fastest-growing lending model into bank-grade infrastructure with programmable risk and insured collateralization.",
+    "date": "",
+    "readTime": "4 min read",
+    "icon": "📊",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/wealth-insurance-member-value.html",
+    "title": "Wealth, Insurance, and Member Value: Where Product Meets Policy",
+    "excerpt": "Build modern member services with lifecycle tokens, compliant payments, multi-chain reporting, and standardized counterparty scoring.",
+    "date": "",
+    "readTime": "5 min read",
+    "icon": "🛡️",
+    "isNew": false,
+    "featured": false
+  },
+  {
+    "slug": "/blog/institutional-rails-tokenization.html",
+    "title": "Institutional Rails for Tokenization, Compliance, and Transfers",
+    "excerpt": "Institutional rails for digital assets — tokenization, AI compliance, real-time tracking, and standardized risk scoring.",
+    "date": "",
+    "readTime": "5 min read",
+    "icon": "🔗",
+    "isNew": false,
+    "featured": false
+  }
+]
