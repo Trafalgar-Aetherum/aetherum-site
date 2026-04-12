@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The GENIUS Act NPRM Is Here. Credit Unions Are Named. | Aetherum Blog</title>
+  <meta name="description" content="Treasury just published the GENIUS Act proposed rulemaking. NCUA is explicitly named. Here's what it means for credit unions — and why Aetherum was built for this moment." />
+  <meta property="og:title" content="The GENIUS Act NPRM Is Here. Credit Unions Are Named." />
+  <meta property="og:description" content="The rules being written right now will define what compliant stablecoin infrastructure looks like for every NCUA-regulated institution. Aetherum was purpose-built to satisfy them." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #03060F;
+      --orange: #F7931A;
+      --white: #FFFFFF;
+      --off-white: #F4F4F6;
+      --muted: #8B8FA8;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.035);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(3,6,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 80px 40px 60px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .tag-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 3px;
+      background: rgba(247,147,26,0.12);
+      border: 1px solid rgba(247,147,26,0.3);
+      color: var(--orange);
+    }
+    .tag.blue {
+      background: rgba(100,160,255,0.1);
+      border-color: rgba(100,160,255,0.25);
+      color: #90c0ff;
+    }
+    .post-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--orange); }
+    .hero-sub {
+      font-size: 20px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      font-style: italic;
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+    .byline { display: flex; align-items: center; gap: 14px; padding-top: 28px; border-top: 1px solid var(--glass-border); }
+    .byline-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), #c06010);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: white; flex-shrink: 0;
+    }
+    .byline-text { font-family: 'DM Mono', monospace; }
+    .byline-name { font-size: 13px; color: var(--white); }
+    .byline-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .article { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 40px 100px; }
+    .callout {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-left: 3px solid var(--orange);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 40px 0;
+    }
+    .callout .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .callout p { font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.65; margin: 0; }
+    .article h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin: 60px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .article h2 .accent { color: var(--orange); }
+    .article p { color: rgba(255,255,255,0.78); margin-bottom: 22px; font-size: 18px; }
+    .article p strong { color: var(--white); font-weight: 600; }
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+    @media (max-width: 640px) { .req-grid { grid-template-columns: 1fr; } }
+    .req-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 20px 22px;
+    }
+    .req-card .req-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .req-card p { font-size: 15px; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.55; }
+    .mapping-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 15px; }
+    .mapping-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(247,147,26,0.3);
+      background: rgba(247,147,26,0.06);
+    }
+    .mapping-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--glass-border);
+      color: rgba(255,255,255,0.75);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .mapping-table tr:last-child td { border-bottom: none; }
+    .mapping-table td:first-child { color: var(--white); font-weight: 600; white-space: nowrap; }
+    .status-live {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 3px;
+      background: rgba(80,200,120,0.12);
+      border: 1px solid rgba(80,200,120,0.3);
+      color: #80e0a0;
+      white-space: nowrap;
+    }
+    .ncua-block {
+      background: linear-gradient(135deg, rgba(247,147,26,0.08), rgba(247,147,26,0.03));
+      border: 1px solid rgba(247,147,26,0.2);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .ncua-block .ncua-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .ncua-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+    .ncua-block ul { list-style: none; padding: 0; }
+    .ncua-block ul li {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      padding: 8px 0 8px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      line-height: 1.55;
+    }
+    .ncua-block ul li:last-child { border-bottom: none; }
+    .ncua-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 14px; }
+    .positioning {
+      background: linear-gradient(135deg, rgba(3,6,15,0.9), rgba(20,20,40,0.6));
+      border: 1px solid rgba(247,147,26,0.25);
+      border-radius: 12px;
+      padding: 40px 44px;
+      margin: 56px 0;
+      text-align: center;
+    }
+    .positioning .pos-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .positioning blockquote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(22px, 3.5vw, 36px);
+      line-height: 1.2;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin: 0 0 18px;
+    }
+    .positioning blockquote .accent { color: var(--orange); }
+    .positioning .pos-sub { font-size: 15px; color: var(--muted); font-style: italic; }
+    .comment-cta {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin: 48px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .comment-cta p { margin: 0; font-size: 16px; color: rgba(255,255,255,0.7); }
+    .comment-cta a {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+      white-space: nowrap;
+      border: 1px solid rgba(247,147,26,0.4);
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .comment-cta a:hover { background: rgba(247,147,26,0.1); }
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: var(--white); }
+    .footer-brand span { color: var(--orange); }
+    .footer-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; }
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero, .article { padding-left: 20px; padding-right: 20px; }
+      .comment-cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">AETHE<span>RUM</span></a>
+    <ul class="nav-links">
+      <li><a href="/platform">Platform</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="https://test-app.aetherum.ai">Demo</a></li>
+    </ul>
+  </nav>
+  <header class="hero">
+    <div class="tag-row">
+      <span class="tag">Regulatory</span>
+      <span class="tag blue">GENIUS Act</span>
+      <span class="post-date">April 12, 2026</span>
+    </div>
+    <h1>The GENIUS Act NPRM Is Here.<br><span class="accent">Credit Unions Are Named.</span></h1>
+    <p class="hero-sub">Treasury just dropped the proposed rulemaking. NCUA is explicitly in scope. The rules being written right now will define what compliant stablecoin infrastructure looks like for every credit union in the country — and Aetherum was purpose-built to satisfy them.</p>
+    <div class="byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey II</div>
+        <div class="byline-role">Founder, Aetherum</div>
+      </div>
+    </div>
+  </header>
+  <article class="article">
+    <p>The wait is over. The U.S. Department of Treasury — through FinCEN and OFAC — has published a joint Notice of Proposed Rulemaking implementing the AML/CFT and sanctions compliance requirements of the GENIUS Act for Permitted Payment Stablecoin Issuers (PPSIs). The comment period is 60 days from Federal Register publication.</p>
+    <p>This is not background regulatory noise. For anyone building at the intersection of stablecoins and the credit union system, this NPRM is the starting gun.</p>
+    <div class="callout">
+      <div class="callout-label">The Core Directive</div>
+      <p>The GENIUS Act requires that a permitted payment stablecoin issuer "be treated as a financial institution for purposes of the Bank Secrecy Act, and as such, shall be subject to all Federal laws applicable to a financial institution located in the United States relating to economic sanctions, prevention of money laundering, customer identification, and due diligence."</p>
+    </div>
+    <h2>What the NPRM Actually <span class="accent">Requires</span></h2>
+    <p>The proposed rule translates that directive into five concrete obligations. These are not aspirational guidelines — they are the floor.</p>
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="req-label">AML Program</div>
+        <p>Formal program with risk assessments, a designated compliance officer, and documented policies — maintained and updated as conditions change.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-label">Technical Controls</div>
+        <p>Ability to <strong>block, freeze, and reject</strong> specific or impermissible transactions — including in secondary markets where the stablecoin is already circulating.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-label">SAR Filing</div>
+        <p>Suspicious Activity Reports for transactions relevant to potential violations. Secondary-market SAR obligations remain an open question — FinCEN is explicitly seeking comment.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-label">Sanctions Compliance</div>
+        <p>Effective OFAC economic sanctions compliance program. This is a separate OFAC-specific requirement, not subsumed by the BSA/AML framework.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-label">Record Retention</div>
+        <p>Appropriate records retained in a form accessible for examination — the audit trail is a legal artifact, not just a technical log.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-label">CIP (Forthcoming)</div>
+        <p>Customer Identification Program requirements are expected in a separate rulemaking. The identity architecture needs to be built now to absorb that requirement when it lands.</p>
+      </div>
+    </div>
+    <div class="ncua-block">
+      <div class="ncua-eyebrow">The Detail Everyone Is Missing</div>
+      <h3>The NCUA Is Explicitly Named</h3>
+      <p style="font-size:16px; color:rgba(255,255,255,0.72); margin-bottom:18px; line-height:1.6;">The GENIUS Act designates four primary federal payment stablecoin regulators: the OCC, the Federal Reserve, the FDIC, and the <strong style="color:white;">NCUA</strong>. Each is responsible for licensing, regulation, examination, and supervision of PPSIs within their charter domain.</p>
+      <p style="font-size:16px; color:rgba(255,255,255,0.72); margin-bottom:20px; line-height:1.6;">For credit unions, this translates into direct examination exposure:</p>
+      <ul>
+        <li>NCUA examiners will arrive at credit unions offering any stablecoin-adjacent product with a GENIUS Act compliance checklist</li>
+        <li>The 30-day FinCEN notice requirement before significant supervisory action creates a coordinated, predictable enforcement environment — reassuring for cautious compliance officers</li>
+        <li>The enforcement standard is systems-based: regulators are evaluating whether a functioning AML program exists and is maintained, not whether every suspicious transaction was caught</li>
+        <li>Credit unions that wait for final rules before building infrastructure will be building in a rushed, high-pressure environment after the fact</li>
+      </ul>
+    </div>
+    <h2>On-Chain Controls Are Now <span class="accent">Law</span></h2>
+    <p>The most technically significant provision is the mandate for technical controls to block, freeze, and reject transactions — <em>including in secondary markets</em>. This is not a soft policy requirement. It means issuers must design systems that allow intervention in stablecoins after they have left the issuer's direct custody.</p>
+    <p>This is precisely what smart contract-level compliance infrastructure provides. The ability to enforce compliance rules at the token layer — not just at the point of issuance — is the architecture FinCEN is describing. On-chain identity modules, jurisdiction checks, and collateral-state verification are not just technical differentiators. Under the GENIUS Act, they are compliance requirements.</p>
+    <h2>How Aetherum Maps to <span class="accent">Every Requirement</span></h2>
+    <p>Aetherum was purpose-built to satisfy GENIUS Act compliance requirements for NCUA-regulated institutions. The infrastructure is live today — not on a roadmap.</p>
+    <table class="mapping-table">
+      <thead>
+        <tr>
+          <th>NPRM Requirement</th>
+          <th>Aetherum Component</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AML Program</td>
+          <td>DACS Risk Assessment Model — 10-pillar member scoring with behavioral, financial, and on-chain signals generating a 0–100 composite score per member</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>Technical Controls</td>
+          <td>ERC-3643 On-Chain Compliance Modules — jurisdiction, collateral LTV, and member identity checks enforced at the smart contract layer</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>Sanctions Compliance</td>
+          <td>Real-time KYC/AML screening at onboarding, with compliance status written on-chain as an attestation</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>Customer Identification</td>
+          <td>Bank connectivity verification at account linking, with identity attestation recorded on-chain via ERC-3643 CUMember identity module</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>Record Retention</td>
+          <td>Full transaction audit trail in backend, plus DDQ Engine with 14-chunk compliance knowledge base for examiner-ready documentation</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>Dynamic Risk Control</td>
+          <td>DACS-driven LTV ceilings (Tier 1: 70% / Tier 2: 65% / Tier 3: 55%) written on-chain at loan origination</td>
+          <td><span class="status-live">Live</span></td>
+        </tr>
+        <tr>
+          <td>CIP (forthcoming)</td>
+          <td>On-chain CUMember identity module designed to absorb forthcoming CIP requirements without architectural changes</td>
+          <td><span class="status-live">Ready</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>The Audit Trail Is the <span class="accent">Product</span></h2>
+    <p>One of the NPRM's most practical implications is what it does to the definition of "documentation." Compliance documentation is no longer a report you generate before an exam — it is the automatic output of a well-built platform.</p>
+    <p>Every DACS score at Aetherum is timestamped, logged across all ten pillars, and stored as an underwriting record attached to the loan file. Every on-chain attestation is immutable and independently verifiable. Every KYC screening result is retained and linked to the member identity record. The compliance documentation that NCUA examiners will eventually request is generated as a byproduct of our normal operation — not assembled under pressure after the fact.</p>
+    <p>That is what a systems-based enforcement standard rewards. Not zero defects. A functioning system, documented and maintained.</p>
+    <div class="positioning">
+      <div class="pos-label">Aetherum Positioning</div>
+      <blockquote>Every competitor is building faster pipes.<br>Aetherum is building the first crypto lending platform<br>that <span class="accent">explains itself to regulators</span> — and that<br>explanation is the moat.</blockquote>
+      <p class="pos-sub">Purpose-built to satisfy GENIUS Act compliance requirements for NCUA-regulated institutions.</p>
+    </div>
+    <h2>What Credit Unions Should Do <span class="accent">Right Now</span></h2>
+    <p>The GENIUS Act NPRM comment period is open for 60 days from Federal Register publication. This is a rare opportunity to shape how the final rules apply to the credit union system specifically — and NCUA-focused voices are underrepresented in regulatory comment processes dominated by large bank lobbyists.</p>
+    <p>More practically: credit unions that want to offer crypto-collateralized lending products to their members need to start their compliance infrastructure conversations now. Final rules will arrive faster than build timelines allow.</p>
+    <p>Aetherum is that infrastructure. The platform is live, the compliance modules are deployed, and the audit trail is already running. Credit unions do not build this from scratch — they adopt Aetherum and inherit it.</p>
+    <div class="comment-cta">
+      <p>Interested in how Aetherum maps to your credit union's GENIUS Act compliance needs?</p>
+      <a href="https://calendly.com/jbailey-aetherum/30min" target="_blank" rel="noopener">Schedule a Call →</a>
+    </div>
+  </article>
+  <footer>
+    <div class="footer-brand">AETHE<span>RUM</span></div>
+    <div class="footer-meta">aetherum.ai &nbsp;·&nbsp; 5 Patents Pending &nbsp;·&nbsp; © 2026 Aetherum</div>
+  </footer>
+</body>
+</html>
