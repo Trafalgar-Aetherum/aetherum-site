@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Pipeline Problem Has a New Chapter | Aetherum</title>
+  <meta name="description" content="Credit unions are losing members to D2C crypto lenders. The pipeline problem has a new chapter — and Aetherum is how you solve it." />
+  <link rel="canonical" href="https://aetherum.ai/blog/the-pipeline-problem-credit-unions-crypto-lending/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #03060F;
+      --navy2:  #070D1A;
+      --orange: #F7931A;
+      --orange-dim: rgba(247,147,26,0.15);
+      --glass:  rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.07);
+      --text:   #E8EAF0;
+      --muted:  #7A8099;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      /* grid overlay */
+      background-image:
+        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(3,6,15,0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 2rem;
+    }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      line-height: 1.0;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--orange);
+      margin-bottom: 2.5rem;
+    }
+    .hero-intro {
+      font-size: 1.18rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+    }
+
+    article p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    article h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin: 3rem 0 1rem;
+    }
+
+    article hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    article ol, article ul {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+    article li {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    article li::marker { color: var(--orange); }
+
+    article strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    article em { font-style: italic; }
+
+    /* callout block */
+    .callout {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    /* footer bio */
+    .post-footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+      border-top: 1px solid var(--border);
+    }
+    .post-footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .post-footer a { color: var(--orange); text-decoration: none; }
+    .post-footer a:hover { text-decoration: underline; }
+
+    /* back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">AETHERUM<span>.</span></a>
+    <div class="nav-links">
+      <a href="/#platform">Platform</a>
+      <a href="/#compliance">Compliance</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <a class="back-link" href="/blog/">← All Posts</a>
+    <div class="hero-label">Credit Union Strategy</div>
+    <h1>The Pipeline Problem Has a New Chapter</h1>
+    <div class="hero-meta">
+      <span>Founder, Aetherum</span>
+      <span>April 2026</span>
+      <span>5 min read</span>
+    </div>
+    <div class="hero-divider"></div>
+    <p class="hero-intro">
+      There's a sharp piece circulating in credit union circles right now about lending partnerships — specifically how targeted borrower sourcing helps CUs hit and maintain qualifications for programs like LID, CDFI, and ECIP.
+    </p>
+  </div>
+
+  <!-- ARTICLE -->
+  <article>
+
+    <p>
+      The core insight is worth repeating: organic growth isn't always <em>aligned</em> growth. A loan is not a qualifying loan. A member is not a qualifying member. And the gap between volume and precision is where regulatory programs are won or lost.
+    </p>
+
+    <p>
+      That framing is worth sitting with — because it describes exactly what's happening to credit unions right now in a market they're not yet serving at all.
+    </p>
+
+    <hr />
+
+    <h2>The Members Who Are Already Leaving</h2>
+
+    <p>
+      Your members are sitting on Bitcoin, Ethereum, and other digital assets. Some have been accumulating for years. And at some point — to buy a home, start a business, cover a tax bill, bridge a cash flow gap — they need liquidity.
+    </p>
+
+    <p>They have three options:</p>
+
+    <ol>
+      <li>Sell the asset and trigger a taxable event</li>
+      <li>Go to a D2C crypto lender and get a USD loan against their holdings</li>
+      <li>Come to their credit union</li>
+    </ol>
+
+    <p>
+      Option three isn't available yet at most institutions. So they're quietly choosing option two — handing that loan relationship to a fintech that doesn't know them, doesn't serve their community, and doesn't reinvest in their neighborhood.
+    </p>
+
+    <div class="callout">
+      This is a pipeline problem. It just hasn't been named yet.
+    </div>
+
+    <hr />
+
+    <h2>Precision Lending, Expanded</h2>
+
+    <p>
+      The lending partnership argument works because it shifts focus <em>from where activity originates to who is actually being served.</em> That's the right lens.
+    </p>
+
+    <p>Apply it to crypto-collateralized lending:</p>
+
+    <ul>
+      <li>The borrower is an existing member with demonstrated financial behavior</li>
+      <li>The collateral is quantifiable, liquidatable, and held in institutional-grade custody</li>
+      <li>The loan is denominated in USD, underwritten against conservative LTV thresholds, and governed by existing credit union lending policy</li>
+      <li>The member retains their crypto exposure, avoids a taxable event, and builds a deeper relationship with their institution</li>
+    </ul>
+
+    <p>
+      This isn't exotic. It's a secured loan with a new asset class as collateral. The precision is already built in — because the member is already yours.
+    </p>
+
+    <hr />
+
+    <h2>What Aetherum Actually Does</h2>
+
+    <p>
+      Aetherum is B2B infrastructure. We don't lend. We don't custody assets. We don't compete with your existing programs.
+    </p>
+
+    <p>
+      We give credit unions the platform to offer crypto-collateralized lending under their own charter, using their own loan officers, compliant with NCUA guidance — with every risk parameter configurable and every decision explainable to your board, your examiners, and your members.
+    </p>
+
+    <p>
+      That includes DACS™, our proprietary risk assessment model, which evaluates collateral quality across six dimensions: credit profile, asset quality, on-chain volatility, tax position, and liquidity-adjusted net worth. It doesn't replace your underwriting process. It augments it — and it generates a plain-language explanation of every risk decision so your compliance team is never flying blind.
+    </p>
+
+    <p>
+      The result: a loan product that serves a growing segment of your membership, creates a new revenue stream, and keeps a relationship that would otherwise walk out the door.
+    </p>
+
+    <hr />
+
+    <h2>From Reactive to Proactive</h2>
+
+    <p>
+      The most useful framing in the lending partnership conversation is this: partnerships shift institutions <em>from reactive to proactive.</em>
+    </p>
+
+    <p>
+      That's exactly the posture credit unions need to take on digital assets. The members are already there. The demand is already there. The regulatory clarity — GENIUS Act, NCUA guidance on crypto custody, state-level frameworks — is arriving faster than most expected.
+    </p>
+
+    <p>
+      The question isn't whether crypto lending will be part of the credit union landscape. It's whether your institution builds the capability now, on your terms, or scrambles to catch up after the member attrition is already visible in your data.
+    </p>
+
+    <div class="callout">
+      The pipeline problem is solvable. Aetherum is how you solve it.
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <div class="post-footer">
+    <p>
+      Aetherum is a B2B fintech infrastructure platform purpose-built for NCUA-regulated credit unions.<br />
+      Learn more at <a href="https://aetherum.ai">aetherum.ai</a>
+    </p>
+  </div>
+
+</body>
+</html>
