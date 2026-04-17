@@ -14,6 +14,7 @@ const SECTIONS = [
   '#problem',
   '#solution',
   '#market',
+  '#competition',
   '#traction',
   '#revenue',
   '#team',
