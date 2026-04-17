@@ -319,6 +319,302 @@
     line-height: 1.65;
   }
 
+  /* PLATFORM IN ACTION */
+  #platform { background: var(--dark); }
+
+  #platform .container {
+    padding-top: 52px;
+    padding-bottom: 40px;
+  }
+
+  #platform h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    margin-bottom: 0;
+  }
+
+  .platform-header {
+    margin-bottom: 22px;
+  }
+
+  .platform-panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  /* Shared mockup panel shell */
+  .mock-panel {
+    background: #080d14;
+    border: 1px solid rgba(247,147,26,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mock-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #0d1520;
+    border-bottom: 1px solid rgba(247,147,26,0.12);
+    flex-shrink: 0;
+  }
+
+  .mock-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+
+  .mock-title-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-left: 4px;
+  }
+
+  .mock-body {
+    flex: 1;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── DACS GAUGE panel ── */
+  .gauge-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .gauge-dims {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .dim-chip {
+    background: rgba(247,147,26,0.07);
+    border: 1px solid rgba(247,147,26,0.18);
+    border-radius: 3px;
+    padding: 4px 6px;
+    text-align: center;
+  }
+
+  .dim-chip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(247,147,26,0.7);
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .dim-chip-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── SMART REVIEW panel ── */
+  .review-score-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  .review-score-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.2rem;
+    color: #F7931A;
+    line-height: 1;
+  }
+
+  .review-score-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+  }
+
+  .review-checks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .review-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid transparent;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .review-check.pass { border-color: #22c55e; }
+  .review-check.warn { border-color: #F7931A; }
+
+  .check-badge {
+    font-size: 0.55rem;
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .check-badge.pass { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .check-badge.warn { background: rgba(247,147,26,0.15); color: #F7931A; }
+
+  .review-ai-box {
+    margin-top: 10px;
+    width: 100%;
+    background: rgba(247,147,26,0.05);
+    border: 1px solid rgba(247,147,26,0.2);
+    border-radius: 3px;
+    padding: 8px 10px;
+  }
+
+  .review-ai-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,147,26,0.6);
+    margin-bottom: 4px;
+  }
+
+  .review-ai-text {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── LOAN OFFICER panel ── */
+  .lo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.56rem;
+  }
+
+  .lo-table th {
+    text-align: left;
+    padding: 5px 6px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-weight: 400;
+  }
+
+  .lo-table td {
+    padding: 6px 6px;
+    color: rgba(255,255,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+
+  .lo-table tr:last-child td { border-bottom: none; }
+
+  .lo-badge {
+    display: inline-block;
+    font-size: 0.48rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .lo-badge.green  { background: rgba(34,197,94,0.15);  color: #22c55e; }
+  .lo-badge.orange { background: rgba(247,147,26,0.15); color: #F7931A; }
+  .lo-badge.gray   { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
+
+  .lo-score {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .lo-score.hi  { color: #22c55e; }
+  .lo-score.mid { color: #F7931A; }
+  .lo-score.lo  { color: rgba(255,255,255,0.4); }
+
+  .lo-stat-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .lo-stat {
+    flex: 1;
+    background: rgba(247,147,26,0.06);
+    border: 1px solid rgba(247,147,26,0.15);
+    border-radius: 3px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .lo-stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+    color: #F7931A;
+    line-height: 1;
+  }
+
+  .lo-stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.45rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 2px;
+  }
+
+  /* Panel captions */
+  .panel-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+  .panel-caption-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    margin-top: 3px;
+  }
+
   /* MARKET */
   #market { background: var(--dark); }
 
@@ -1205,12 +1501,226 @@
   </div>
 </section>
 
+<!-- PLATFORM IN ACTION -->
+<section id="platform">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="platform-header fade-in">
+      <div class="section-label">05 · Platform in Action</div>
+      <h2>Most fintech shows you a dashboard.<br><em>Aetherum shows you the reasoning.</em></h2>
+    </div>
+
+    <div class="platform-panels fade-in">
+
+      <!-- ── Panel 1: DACS Gauge ── -->
+      <div>
+        <div class="mock-panel" style="height:340px;">
+          <div class="mock-titlebar">
+            <div class="mock-dot" style="background:#ff5f57;"></div>
+            <div class="mock-dot" style="background:#febc2e;"></div>
+            <div class="mock-dot" style="background:#28c840;"></div>
+            <span class="mock-title-text">DACS Risk Assessment</span>
+          </div>
+          <div class="mock-body">
+            <div class="gauge-wrap">
+              <!-- SVG circular gauge -->
+              <svg viewBox="0 0 160 160" width="130" height="130" style="flex-shrink:0;">
+                <!-- Track -->
+                <circle cx="80" cy="80" r="62" fill="none"
+                  stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+                <!-- Score arc: 81.78% of 2π×62=389.6 → 318.7 -->
+                <circle cx="80" cy="80" r="62" fill="none"
+                  stroke="#F7931A" stroke-width="10"
+                  stroke-dasharray="318.7 389.6"
+                  stroke-linecap="round"
+                  transform="rotate(-90 80 80)"/>
+                <!-- Inner ring -->
+                <circle cx="80" cy="80" r="50" fill="rgba(8,13,20,0.9)"/>
+                <!-- Score number -->
+                <text x="80" y="76" text-anchor="middle" fill="white"
+                  font-size="22" font-family="Georgia,serif" font-weight="400">81.78</text>
+                <text x="80" y="91" text-anchor="middle" fill="rgba(247,147,26,0.7)"
+                  font-size="7" font-family="monospace" letter-spacing="2">DACS SCORE</text>
+                <!-- Grade badge -->
+                <rect x="60" y="97" width="40" height="14" rx="2"
+                  fill="rgba(247,147,26,0.12)" stroke="rgba(247,147,26,0.3)" stroke-width="0.5"/>
+                <text x="80" y="107" text-anchor="middle" fill="#F7931A"
+                  font-size="7" font-family="monospace" letter-spacing="1">STRONG</text>
+              </svg>
+
+              <!-- Dimension chips -->
+              <div class="gauge-dims">
+                <div class="dim-chip">
+                  <span class="dim-chip-label">Volatility</span>
+                  <span class="dim-chip-val">78.2</span>
+                </div>
+                <div class="dim-chip">
+                  <span class="dim-chip-label">Liquidity</span>
+                  <span class="dim-chip-val">84.5</span>
+                </div>
+                <div class="dim-chip">
+                  <span class="dim-chip-label">Collateral</span>
+                  <span class="dim-chip-val">83.1</span>
+                </div>
+                <div class="dim-chip">
+                  <span class="dim-chip-label">Tax Pos.</span>
+                  <span class="dim-chip-val">79.4</span>
+                </div>
+                <div class="dim-chip">
+                  <span class="dim-chip-label">Reg. Risk</span>
+                  <span class="dim-chip-val">88.0</span>
+                </div>
+                <div class="dim-chip">
+                  <span class="dim-chip-label">LTV Ratio</span>
+                  <span class="dim-chip-val">80.6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-caption">DACS™ Risk Gauge</div>
+        <div class="panel-caption-sub">Member sees their risk profile in real time<br>— not just a number.</div>
+      </div>
+
+      <!-- ── Panel 2: Smart Review / Compliance ── -->
+      <div>
+        <div class="mock-panel" style="height:340px;">
+          <div class="mock-titlebar">
+            <div class="mock-dot" style="background:#ff5f57;"></div>
+            <div class="mock-dot" style="background:#febc2e;"></div>
+            <div class="mock-dot" style="background:#28c840;"></div>
+            <span class="mock-title-text">Smart Review · Compliance Check</span>
+          </div>
+          <div class="mock-body" style="justify-content:flex-start;padding-top:12px;">
+            <div class="review-score-row">
+              <div class="review-score-num">81.78</div>
+              <div>
+                <div class="review-score-sub">DACS Score</div>
+                <div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#F7931A;margin-top:2px;">● Approved — $24,500</div>
+              </div>
+            </div>
+            <div class="review-checks">
+              <div class="review-check pass">
+                KYC Identity Verified
+                <span class="check-badge pass">Passed</span>
+              </div>
+              <div class="review-check pass">
+                Sanctions &amp; AML Screening
+                <span class="check-badge pass">Clear</span>
+              </div>
+              <div class="review-check pass">
+                ERC-3643 On-Chain Attestation
+                <span class="check-badge pass">Passed</span>
+              </div>
+              <div class="review-check pass">
+                US Jurisdiction Verified
+                <span class="check-badge pass">Confirmed</span>
+              </div>
+              <div class="review-check warn">
+                TPSOE™ Tax Efficiency Score
+                <span class="check-badge warn">74 / 100</span>
+              </div>
+            </div>
+            <div class="review-ai-box">
+              <div class="review-ai-label">✦ AI Underwriting Guidance</div>
+              <div class="review-ai-text">"Based on your DACS profile, pledging ETH minimises your tax exposure by ~$3,200 vs. selling. Recommended borrow: $24,500 at 65% LTV."</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-caption">Smart Review™</div>
+        <div class="panel-caption-sub">Every loan comes with an explanation the<br>member can actually read.</div>
+      </div>
+
+      <!-- ── Panel 3: Loan Officer Portal ── -->
+      <div>
+        <div class="mock-panel" style="height:340px;">
+          <div class="mock-titlebar">
+            <div class="mock-dot" style="background:#ff5f57;"></div>
+            <div class="mock-dot" style="background:#febc2e;"></div>
+            <div class="mock-dot" style="background:#28c840;"></div>
+            <span class="mock-title-text">Loan Officer Dashboard</span>
+          </div>
+          <div class="mock-body" style="justify-content:flex-start;padding-top:10px;">
+            <!-- Summary stats -->
+            <div class="lo-stat-row">
+              <div class="lo-stat">
+                <div class="lo-stat-num">12</div>
+                <div class="lo-stat-lbl">Pending</div>
+              </div>
+              <div class="lo-stat">
+                <div class="lo-stat-num">$1.4M</div>
+                <div class="lo-stat-lbl">Volume MTD</div>
+              </div>
+              <div class="lo-stat">
+                <div class="lo-stat-num">96%</div>
+                <div class="lo-stat-lbl">Compliance</div>
+              </div>
+            </div>
+            <!-- Members table -->
+            <table class="lo-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Amount</th>
+                  <th>DACS</th>
+                  <th>KYC</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color:rgba(255,255,255,0.8);">A. Reyes</td>
+                  <td>$24,500</td>
+                  <td><span class="lo-score hi">81.8</span></td>
+                  <td><span class="lo-badge green">✓ Pass</span></td>
+                  <td><span class="lo-badge green">Approved</span></td>
+                </tr>
+                <tr>
+                  <td style="color:rgba(255,255,255,0.8);">M. Chen</td>
+                  <td>$50,000</td>
+                  <td><span class="lo-score hi">77.2</span></td>
+                  <td><span class="lo-badge green">✓ Pass</span></td>
+                  <td><span class="lo-badge orange">Review</span></td>
+                </tr>
+                <tr>
+                  <td style="color:rgba(255,255,255,0.8);">T. Williams</td>
+                  <td>$12,000</td>
+                  <td><span class="lo-score mid">62.4</span></td>
+                  <td><span class="lo-badge green">✓ Pass</span></td>
+                  <td><span class="lo-badge orange">Pending</span></td>
+                </tr>
+                <tr>
+                  <td style="color:rgba(255,255,255,0.8);">S. Patel</td>
+                  <td>$95,000</td>
+                  <td><span class="lo-score hi">88.1</span></td>
+                  <td><span class="lo-badge green">✓ Pass</span></td>
+                  <td><span class="lo-badge green">Approved</span></td>
+                </tr>
+                <tr>
+                  <td style="color:rgba(255,255,255,0.8);">D. Kim</td>
+                  <td>$8,500</td>
+                  <td><span class="lo-score lo">41.9</span></td>
+                  <td><span class="lo-badge orange">Review</span></td>
+                  <td><span class="lo-badge gray">Flagged</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel-caption">Loan Officer Portal</div>
+        <div class="panel-caption-sub">The CU sees everything their<br>examiner wants to see.</div>
+      </div>
+
+    </div><!-- /.platform-panels -->
+  </div>
+</section>
+
 <!-- TRACTION -->
 <section id="traction">
   <div class="grid-lines"></div>
   <div class="container">
     <div class="fade-in">
-      <div class="section-label">05 · Traction</div>
+      <div class="section-label">06 · Traction</div>
       <h2>Built to the <em>compliance bar</em> that keeps others out.</h2>
     </div>
     <div class="traction-items fade-in">
@@ -1280,7 +1790,7 @@
   <div class="container">
     <div class="two-col fade-in">
       <div>
-        <div class="section-label">06 · Revenue Model</div>
+        <div class="section-label">07 · Revenue Model</div>
         <h2>Five streams. <em>Platform-fee led.</em></h2>
         <div class="divider"></div>
         <p>Revenue is tied directly to loan volume — meaning we grow as our credit union partners grow. The SaaS license layer adds predictable recurring revenue at scale.</p>
@@ -1327,7 +1837,7 @@
   <div class="grid-lines"></div>
   <div class="container">
     <div class="fade-in">
-      <div class="section-label">07 · Team & Advisors</div>
+      <div class="section-label">08 · Team & Advisors</div>
       <h2>Built by operators.<br><em>Advised by the ecosystem.</em></h2>
     </div>
     <div class="team-grid fade-in">
@@ -1361,7 +1871,7 @@
   <div class="container">
     <div class="ask-inner fade-in">
       <div>
-        <div class="section-label">08 · The Ask</div>
+        <div class="section-label">09 · The Ask</div>
         <h2>Closing a <em>$1M Pre-Seed</em> Round.</h2>
         <div class="divider"></div>
         <p>We're in the final stretch of closing our pre-seed round. Proceeds go toward closing the first two credit union pilots, completing platform development, and bringing on a CTO.</p>
