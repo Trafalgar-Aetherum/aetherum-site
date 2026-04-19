@@ -16,7 +16,7 @@
     "date": "2026-04-15",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -26,7 +26,7 @@
     "date": "April 12, 2026",
     "readTime": "7 min read",
     "icon": "⚖️",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
@@ -36,7 +36,7 @@
     "date": "April 2026",
     "readTime": "7 min read",
     "icon": "✈️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
