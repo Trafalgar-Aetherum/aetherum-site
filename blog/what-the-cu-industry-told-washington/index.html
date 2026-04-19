@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What the Credit Union Industry Just Told Washington About Digital Assets | Aetherum</title>
+  <meta name="description" content="The GENIUS Act comment period closed April 13. America's Credit Unions told NCUA the quiet part out loud — and it has everything to do with why infrastructure defines the credit union digital asset era." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:          #03060F;
+      --navy-2:        #07101f;
+      --navy-3:        #0c1628;
+      --orange:        #F7931A;
+      --orange-dim:    rgba(247,147,26,0.10);
+      --orange-border: rgba(247,147,26,0.28);
+      --text:          #dde0ea;
+      --text-bright:   #f0f2f7;
+      --muted:         #7a8299;
+      --rule:          rgba(255,255,255,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3rem;
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      background: rgba(3,6,15,0.94);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.14em;
+      color: var(--orange);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 2.5rem;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.70rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--orange-border);
+      background: var(--orange-dim);
+      padding: 0.28rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+    .tag-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: 0.03em;
+      color: var(--text-bright);
+      margin-bottom: 1.4rem;
+    }
+    .deck {
+      font-size: 1.15rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .byline-sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.6;
+    }
+    article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 7rem;
+    }
+    article p {
+      margin-bottom: 1.65rem;
+      color: #cdd0de;
+      font-weight: 300;
+    }
+    article p.lede {
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: var(--text-bright);
+      line-height: 1.75;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.06em;
+      color: var(--text-bright);
+      margin: 3.5rem 0 1.1rem;
+      line-height: 1.1;
+    }
+    blockquote {
+      border-left: 3px solid var(--orange);
+      margin: 2.8rem 0;
+      padding: 1.1rem 1.8rem;
+      background: var(--navy-2);
+    }
+    blockquote p {
+      font-size: 1.12rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-bright) !important;
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .callout {
+      background: var(--navy-3);
+      border: 1px solid var(--orange-border);
+      padding: 1.75rem 2rem;
+      margin: 2.8rem 0;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .callout p {
+      color: var(--text) !important;
+      margin: 0 !important;
+      font-size: 0.97rem;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+      opacity: 0.3;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--text);
+    }
+    .divider-icon {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+    }
+    .cta-block {
+      margin-top: 4rem;
+      padding: 2.5rem;
+      background: var(--navy-2);
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .cta-block p {
+      font-size: 1rem;
+      color: var(--muted) !important;
+      margin: 0 !important;
+      max-width: 520px;
+    }
+    .cta-btn {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--orange);
+      padding: 0.8rem 1.6rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+    footer {
+      border-top: 1px solid var(--rule);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+    @media (max-width: 640px) {
+      nav { padding: 1.2rem 1.25rem; }
+      .hero, article { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Aetherum</a>
+    <a class="nav-back" href="/blog">← All Posts</a>
+  </nav>
+
+  <div class="hero">
+    <div class="tag"><span class="tag-dot"></span> Regulatory · GENIUS Act</div>
+    <h1>What the Credit Union Industry Just Told Washington About Digital Assets</h1>
+    <p class="deck">The GENIUS Act comment period closed April 13. America's Credit Unions told NCUA the quiet part out loud — and it has everything to do with why infrastructure, not institutions, will define the credit union digital asset era.</p>
+    <div class="byline">
+      <span>John Bailey II</span>
+      <span class="byline-sep"></span>
+      <span>Founder, Aetherum</span>
+      <span class="byline-sep"></span>
+      <span>April 19, 2026</span>
+      <span class="byline-sep"></span>
+      <span>5 min read</span>
+    </div>
+  </div>
+
+  <article>
+
+    <p class="lede">On April 13, 2026, the comment period closed on the NCUA's first proposed rule under the GENIUS Act — the landmark legislation establishing the U.S. regulatory framework for payment stablecoins. Among the comments submitted was an 18-page letter from America's Credit Unions, the industry's primary trade association, speaking on behalf of over 145 million credit union members nationwide.</p>
+
+    <p>The letter is a masterclass in careful regulatory advocacy. It commends the NCUA, asks for flexibility, and flags a list of open questions the agency should resolve before finalizing the rule. Standard trade association playbook. But buried in the second paragraph is something that goes far beyond procedural commentary — a frank acknowledgment of how the credit union movement will actually enter the digital asset economy.</p>
+
+    <blockquote>
+      <p>"[T]he near-term likelihood [is] that credit union issuing activity will occur through industry consortia backing larger PPSIs, rather than each credit union rolling out its own branded stablecoin using a white-label model."</p>
+      <cite>— America's Credit Unions, Letter to NCUA, April 13, 2026</cite>
+    </blockquote>
+
+    <p>Read that again. The largest trade association in the credit union movement just told the federal regulator, on the record, that individual credit unions are not going to build their own digital asset infrastructure. They're going to participate through shared platforms and consortia.</p>
+
+    <p>That isn't a criticism of credit unions. It's a structural reality — and it's exactly how the industry has always worked. The CUSO model exists because collaboration has always been the credit union's competitive advantage. What's new is that digital assets are now explicitly inside that model.</p>
+
+    <h2>What the GENIUS Act Actually Does</h2>
+
+    <p>To understand why this moment matters, it helps to understand what the NCUA's proposed rule actually covers. The GENIUS Act established the NCUA as a primary federal regulator for payment stablecoin issuers that are subsidiaries of federally insured credit unions. Credit unions cannot issue stablecoins directly — they must do so through licensed subsidiaries, typically structured as CUSOs.</p>
+
+    <p>The proposed rule (Docket No. NCUA-2025-1335) is the first of two expected rulemakings. This one covers the licensing and application process. A second rulemaking will address operational standards — reserve requirements, capital adequacy, liquidity protocols, and IT risk management specific to blockchain infrastructure. The NCUA is required to finalize both by July 18, 2026.</p>
+
+    <div class="callout">
+      <div class="callout-label">Why This Timeline Matters</div>
+      <p>The full GENIUS Act implementation framework will be in place by mid-July 2026. Credit unions that have established infrastructure partnerships and begun internal education before that date will be positioned to move; those that haven't will be starting from scratch in a fully operational regulatory environment.</p>
+    </div>
+
+    <p>America's Credit Unions raised several substantive concerns in its letter — most notably asking the NCUA to allow federal credit unions to invest in PPSI subsidiaries that are structured distinctly from traditional CUSOs, and requesting clarity on whether PPSI reserve assets count against the existing 1% aggregate CUSO investment cap. These are technical but important questions that will shape how participation economics work in practice.</p>
+
+    <h2>The Stablecoin Picture and the Lending Picture</h2>
+
+    <p>The GENIUS Act and its implementing rules are focused on payment stablecoins — digital dollars used for transactions and settlement. That is one dimension of digital asset activity. But it is not the dimension where most credit union members are showing up today.</p>
+
+    <p>The members sitting across from loan officers right now are the ones who bought Bitcoin in 2020, held through the volatility, and now have a significant asset — one their credit union has no infrastructure to recognize, lend against, or help them manage. They are not asking about stablecoins. They are asking about liquidity. They want to borrow against what they have without selling it. And in most cases, their credit union has to turn them away.</p>
+
+    <p>That is the gap Aetherum was built to close. Crypto-collateralized lending infrastructure, purpose-built for NCUA-regulated credit unions — with compliance logic, member-facing transparency, and the ability to plug into the core banking systems credit unions already use. No custody risk on the institution's balance sheet. No member data sold. No new charter required.</p>
+
+    <div class="divider"><span class="divider-icon">◆</span></div>
+
+    <h2>Infrastructure Is Not Optional</h2>
+
+    <p>The ACU letter makes something explicit that practitioners in this space have understood for years: the credit union movement participates in new financial technology through trusted intermediaries, not through individual institution build-outs. That is not a weakness. It is how 135 million members got access to shared ATM networks, card processing, mortgage secondary markets, and digital banking platforms — through the CUSO and vendor infrastructure layer.</p>
+
+    <p>Digital assets are following the same path. The regulatory framework is being established now. The comment record is being written now. The infrastructure decisions that will determine which credit unions can serve their members in the digital asset economy — and which ones cannot — are being made now.</p>
+
+    <p>The institutions that will be ready when the NCUA finalizes its GENIUS Act rules in July are the ones building or adopting infrastructure today. Not because they predicted the future — but because they understood that the credit union model has always been about accessing capability through shared infrastructure, and this era is no different.</p>
+
+    <h2>What Comes Next</h2>
+
+    <p>The NCUA will review the comment record, including America's Credit Unions' letter, and issue a final rule by July 18. A second proposed rulemaking on operational standards is expected in the coming months. For credit unions paying attention, each of these milestones is an inflection point — not just for stablecoin issuance, but for the broader question of how the institution positions itself on digital assets for the decade ahead.</p>
+
+    <p>Aetherum will continue tracking the GENIUS Act implementation and publishing analysis as the rules take shape. If you're a credit union executive thinking through your digital asset strategy — or a CUSO evaluating infrastructure partnerships — we're building for you.</p>
+
+    <div class="cta-block">
+      <p>Aetherum is crypto-collateralized lending infrastructure for NCUA-regulated credit unions. Purpose-built for the cooperative model. Compliance-first by design.</p>
+      <a class="cta-btn" href="https://calendly.com/jbailey-aetherum/30min">Schedule a Conversation</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <p>© 2026 Aetherum.ai, Inc. · <a href="/">aetherum.ai</a> · All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
