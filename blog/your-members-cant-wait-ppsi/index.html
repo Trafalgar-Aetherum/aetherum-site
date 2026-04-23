@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Members Can't Wait for PPSI Clarity. They Don't Have To. | Aetherum</title>
+  <meta name="description" content="The GENIUS Act's PPSI framework is months from final rules. Crypto-collateralized lending for credit unions is available today — no stablecoin license required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:   #03060F;
+      --orange: #F7931A;
+      --white:  #F0EDE6;
+      --muted:  #8A95A3;
+      --rule:   #111C2B;
+      --card:   #070F1C;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(3,6,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.8rem;
+    }
+    .hero-kicker::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--orange);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.6rem;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.65;
+      margin-bottom: 2.4rem;
+    }
+
+    .meta {
+      display: flex; align-items: center; gap: 1.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .meta-dot { color: var(--orange); }
+
+    /* ── BODY ── */
+    .body-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    .body-wrap p {
+      margin-bottom: 1.6rem;
+      font-size: 1.05rem;
+      color: #C8C3BA;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin: 3.2rem 0 1rem;
+      line-height: 1.1;
+    }
+
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin: 2.4rem 0 0.8rem;
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      background: var(--card);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 6px 6px 0;
+      padding: 1.6rem 2rem;
+      margin: 2.8rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 1rem;
+      font-style: italic;
+      color: #D4CFCA;
+      line-height: 1.7;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.4rem 0;
+      font-size: 0.92rem;
+    }
+    .compare-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--rule);
+    }
+    .compare-table th:first-child { color: var(--muted); }
+    .compare-table th.col-aetherum { color: var(--orange); }
+    .compare-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--rule);
+      color: #C8C3BA;
+      vertical-align: top;
+    }
+    .compare-table td:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      width: 28%;
+    }
+    .compare-table td.col-ppsi { color: #6B7885; }
+    .compare-table td.col-aetherum {
+      color: var(--white);
+      font-weight: 400;
+    }
+    .check { color: var(--orange); font-weight: 600; }
+    .cross { color: #4A5668; }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 3rem 0;
+    }
+    .stat-cell {
+      background: var(--card);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--orange);
+      letter-spacing: 0.04em;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: block;
+      line-height: 1.4;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: var(--card);
+      border: 1px solid #1A2A3F;
+      border-radius: 10px;
+      padding: 2.8rem 2.4rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+    .cta-block h2 {
+      margin-top: 0;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+    .cta-block p {
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* ── BYLINE ── */
+    .byline {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 2.4rem 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 3.6rem;
+    }
+    .byline-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--rule);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+    .byline-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+    .byline-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.8rem 0;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .hero { padding: 3rem 1.2rem 2rem; }
+      .body-wrap { padding: 2rem 1.2rem 4rem; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.82rem; }
+      .compare-table td:first-child { width: 34%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://www.aetherum.ai" class="nav-logo">AETHER<span>UM</span></a>
+    <span class="nav-tag">Insights</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-kicker">Regulatory Clarity</div>
+    <h1>Your Members Can't Wait for<br><em>PPSI Clarity.</em><br>They Don't Have To.</h1>
+    <p class="hero-sub">
+      The GENIUS Act's stablecoin framework is months from final rules. Crypto-collateralized lending is available to your credit union today — no stablecoin license, no CUSO restructuring, no 1% cap headache.
+    </p>
+    <div class="meta">
+      <span>April 19, 2026</span>
+      <span class="meta-dot">·</span>
+      <span>6 min read</span>
+      <span class="meta-dot">·</span>
+      <span>Regulatory</span>
+    </div>
+  </header>
+
+  <main class="body-wrap">
+
+    <p>
+      This week, America's Credit Unions sent a letter to the NCUA raising concerns that deserve attention from every credit union executive watching the GENIUS Act unfold. The core ask: give credit unions flexibility to invest in Permitted Payment Stablecoin Issuer (PPSI) subsidiaries that are structured differently from traditional CUSOs — and clarify whether PPSI reserve assets count against the existing 1% aggregate CUSO investment cap.
+    </p>
+
+    <p>
+      These are legitimate concerns. They are also concerns your credit union doesn't have to wait to resolve before serving members who hold crypto today.
+    </p>
+
+    <div class="callout">
+      <span class="callout-label">The key distinction</span>
+      <p>
+        Stablecoin issuance and crypto-collateralized lending are not the same thing. One requires a new federal license and months of regulatory clarity. The other is a loan — already within your credit union's existing lending authority, booked like any other collateralized product.
+      </p>
+    </div>
+
+    <h2>What the PPSI Debate Is Actually About</h2>
+
+    <p>
+      The GENIUS Act, signed into law in July 2025 and now entering its implementation phase, requires that federally insured credit unions wishing to issue payment stablecoins do so through a separately licensed subsidiary — a PPSI. For federal credit unions, the NCUA has interpreted this to mean a CUSO structure under Part 712.
+    </p>
+
+    <p>
+      That creates real structural friction. CUSOs are built around service organizations that primarily serve credit union members. Stablecoin issuers are reserve-backed payment infrastructure. ACU's letter correctly identifies that the CUSO rulebook wasn't written for this use case — and asks the NCUA to consider tailored treatment.
+    </p>
+
+    <p>
+      Then there is the 1% question. Federal credit unions are capped at investing 1% of paid-in and unimpaired capital and surplus in CUSOs. If PPSI reserve assets — the collateral backing the stablecoins themselves — count against that cap, the participation economics for any credit union outside the top tier become deeply unfavorable.
+    </p>
+
+    <p>
+      The NCUA has acknowledged this tension and is soliciting comment. Final regulations are due by July 18, 2026. Until then, credit unions considering the stablecoin path are in a genuine regulatory holding pattern.
+    </p>
+
+    <h2>Meanwhile, Your Members Are Already Here</h2>
+
+    <p>
+      While the regulatory machinery turns, the members in your branches — and in your loan queues — aren't waiting. They hold Bitcoin. They hold Ethereum. And right now, when they need liquidity, they have two choices: sell their crypto and trigger a taxable event, or go to a non-bank lender who charges them 15–20% to borrow against it.
+    </p>
+
+    <p>
+      Neither outcome serves your member. Neither outcome serves your credit union.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat-cell">
+        <span class="stat-num">52M+</span>
+        <span class="stat-label">U.S. adults who own crypto</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">$0</span>
+        <span class="stat-label">PPSI license fees to offer collateralized lending</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">Today</span>
+        <span class="stat-label">When your CU can go live with Aetherum</span>
+      </div>
+    </div>
+
+    <h2>Two Paths Into Crypto. One Is Ready Now.</h2>
+
+    <p>
+      There are fundamentally two ways a credit union can participate in the crypto economy. Understanding the difference is the most important strategic clarity your board can have right now.
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Stablecoin Issuance<br>(PPSI Path)</th>
+          <th class="col-aetherum">Crypto-Collateralized<br>Lending (Aetherum)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Regulatory status</td>
+          <td class="col-ppsi">Proposed rules, final July 2026</td>
+          <td class="col-aetherum"><span class="check">✓</span> Permissible under existing lending authority</td>
+        </tr>
+        <tr>
+          <td>License required</td>
+          <td class="col-ppsi">NCUA PPSI license (new)</td>
+          <td class="col-aetherum"><span class="check">✓</span> None beyond existing CU charter</td>
+        </tr>
+        <tr>
+          <td>CUSO structure</td>
+          <td class="col-ppsi">Required (Part 712)</td>
+          <td class="col-aetherum"><span class="check">✓</span> Not required</td>
+        </tr>
+        <tr>
+          <td>1% CUSO cap exposure</td>
+          <td class="col-ppsi">Under active NCUA review</td>
+          <td class="col-aetherum"><span class="check">✓</span> Not applicable</td>
+        </tr>
+        <tr>
+          <td>Reserve asset obligations</td>
+          <td class="col-ppsi">Yes — backing the stablecoin</td>
+          <td class="col-aetherum"><span class="check">✓</span> Collateral held in custody; CU never holds crypto</td>
+        </tr>
+        <tr>
+          <td>Member benefit</td>
+          <td class="col-ppsi">Payment infrastructure (future)</td>
+          <td class="col-aetherum"><span class="check">✓</span> Liquidity for crypto-holding members (now)</td>
+        </tr>
+        <tr>
+          <td>Time to live</td>
+          <td class="col-ppsi">Months to years</td>
+          <td class="col-aetherum"><span class="check">✓</span> Weeks</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      The PPSI path may well be right for some credit unions — particularly large institutions with the capital, legal resources, and long-term payments strategy to pursue it. We are not dismissing it. The regulatory questions ACU raised are important and will shape how the industry evolves.
+    </p>
+
+    <p>
+      But for the credit union that wants to serve its members in the next quarter — not the next regulatory cycle — crypto-collateralized lending is the path that exists today.
+    </p>
+
+    <h2>What Aetherum Actually Does</h2>
+
+    <p>
+      Aetherum is B2B infrastructure purpose-built for NCUA-regulated credit unions. We power crypto-collateralized lending as a white-label product: your brand, your member relationship, your loan on your books.
+    </p>
+
+    <p>
+      The member pledges their crypto as collateral. It's held in qualified institutional custody — your credit union never touches it, never holds it, never appears on your balance sheet as a crypto asset. When the loan is repaid, the collateral is released. If the collateral falls below the required threshold, automated risk controls respond before you need to.
+    </p>
+
+    <p>
+      From a regulatory standpoint, this is a collateralized consumer loan. From a member standpoint, it's finally a reason to bring their full financial life to their credit union.
+    </p>
+
+    <h3>Built for the way credit unions actually work</h3>
+
+    <p>
+      Aetherum integrates with the core banking systems credit unions already run. The loan officer dashboard, the compliance officer workflow, the member-facing application — all designed around NCUA examination standards, not retrofitted from a crypto-native product.
+    </p>
+
+    <p>
+      Our risk assessment model scores each borrower's position dynamically, accounting for collateral volatility and loan-to-value thresholds. Your compliance officer sees the same clarity your loan officer does. And the member sees a plain-language borrowing position — not a black-box approval.
+    </p>
+
+    <hr class="section-rule" />
+
+    <p>
+      The GENIUS Act will eventually bring stablecoin infrastructure to credit unions. That is a genuinely exciting development for the long arc of the movement. But the members sitting across from your loan officers right now — the ones with six figures in crypto and a home improvement project — don't need stablecoin rails. They need a lender who understands their full financial picture.
+    </p>
+
+    <p>
+      That credit union can be yours. Today.
+    </p>
+
+    <div class="cta-block">
+      <h2>Ready to See It Live?</h2>
+      <p>
+        Walk through a live demo of the Aetherum platform — the full member application, loan officer dashboard, and compliance workflow — in 30 minutes.
+      </p>
+      <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn" target="_blank" rel="noopener">Schedule a Demo</a>
+    </div>
+
+    <div class="byline">
+      <div class="byline-avatar">JB</div>
+      <div>
+        <div class="byline-name">John Bailey II</div>
+        <div class="byline-role">Founder, Aetherum</div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

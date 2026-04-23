@@ -1,12 +1,22 @@
 [
   {
+    "slug": "your-members-cant-wait-ppsi",
+    "title": "Your Members Can't Wait for PPSI Clarity. They Don't Have To.",
+    "excerpt": "The GENIUS Act's stablecoin framework is months from final rules. Crypto-collateralized lending is available to your credit union today — no license, no CUSO restructuring, no 1% cap headache.",
+    "date": "April 23, 2026",
+    "readTime": "6 min read",
+    "icon": "⚖️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/what-the-cu-industry-told-washington/",
     "title": "What the Credit Union Industry Just Told Washington About Digital Assets",
     "excerpt": "The GENIUS Act comment period closed April 13. America's Credit Unions told NCUA the quiet part out loud — and it has everything to do with why infrastructure defines the credit union digital asset era.",
     "date": "April 19, 2026",
     "readTime": "5 min read",
     "icon": "🏛️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
