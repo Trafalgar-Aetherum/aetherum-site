@@ -1,5 +1,15 @@
 [
   {
+    "slug": "global-adoption-cu-bridge",
+    "title": "140 Million Members, Zero On-Ramps",
+    "excerpt": "Global crypto adoption just crossed an inflection point. New data shows 11% of Americans already hold digital assets. Credit unions serve 140 million of them — and most have no compliant path to borrow against what they own.",
+    "date": "May 2026",
+    "readTime": "9 min read",
+    "icon": "🌐",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/your-members-cant-wait-ppsi",
     "title": "Your Members Can't Wait for PPSI Clarity. They Don't Have To.",
     "excerpt": "The GENIUS Act's stablecoin framework is months from final rules. Crypto-collateralized lending is available to your credit union today — no license, no CUSO restructuring, no 1% cap headache.",
