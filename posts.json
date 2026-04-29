@@ -1,6 +1,6 @@
 [
   {
-    "slug": "wall-street-consensus-credit-unions",
+    "slug": "/blog/wall-street-consensus-credit-unions/",
     "title": "Wall Street Just Showed Up to Crypto. Your Members Win.",
     "date": "April 29, 2026",
     "author": "John Bailey II",
@@ -15,7 +15,6 @@
     "date": "April 27, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
-    "isNew": false,
     "featured": false
   },
   {
@@ -25,7 +24,6 @@
     "date": "May 2026",
     "readTime": "9 min read",
     "icon": "🌐",
-    "isNew": false,
     "featured": true
   },
   {
@@ -35,7 +33,6 @@
     "date": "April 23, 2026",
     "readTime": "6 min read",
     "icon": "⚖️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -45,7 +42,6 @@
     "date": "April 19, 2026",
     "readTime": "5 min read",
     "icon": "🏛️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -55,7 +51,6 @@
     "date": "2026-04-15",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": false,
     "featured": false
   },
   {
@@ -65,7 +60,6 @@
     "date": "April 12, 2026",
     "readTime": "7 min read",
     "icon": "⚖️",
-    "isNew": false,
     "featured": true
   },
   {
@@ -75,7 +69,6 @@
     "date": "April 2026",
     "readTime": "7 min read",
     "icon": "✈️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -85,7 +78,6 @@
     "date": "April 3, 2026",
     "readTime": "8 min read",
     "icon": "₿",
-    "isNew": false,
     "featured": true
   },
   {
@@ -95,7 +87,6 @@
     "date": "April 3, 2026",
     "readTime": "4 min read",
     "icon": "🏗️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -105,7 +96,6 @@
     "date": "March 25, 2026",
     "readTime": "7 min read",
     "icon": "👁️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -115,7 +105,6 @@
     "date": "March 20, 2026",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": false,
     "featured": false
   },
   {
@@ -125,7 +114,6 @@
     "date": "March 19, 2026",
     "readTime": "5 min read",
     "icon": "⚖️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -135,7 +123,6 @@
     "date": "March 2026",
     "readTime": "6 min read",
     "icon": "🏛️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -145,7 +132,6 @@
     "date": "March 30, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
-    "isNew": false,
     "featured": false
   },
   {
@@ -155,7 +141,6 @@
     "date": "March 10, 2026",
     "readTime": "8 min read",
     "icon": "📈",
-    "isNew": false,
     "featured": false
   },
   {
@@ -165,7 +150,6 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🏗️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -175,7 +159,6 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🏦",
-    "isNew": false,
     "featured": false
   },
   {
@@ -185,7 +168,6 @@
     "date": "",
     "readTime": "4 min read",
     "icon": "📊",
-    "isNew": false,
     "featured": false
   },
   {
@@ -195,7 +177,6 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🛡️",
-    "isNew": false,
     "featured": false
   },
   {
@@ -205,7 +186,6 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": false,
     "featured": false
   }
 ]
