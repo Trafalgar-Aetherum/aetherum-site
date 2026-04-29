@@ -5,6 +5,7 @@
     "date": "April 29, 2026",
     "author": "John Bailey II",
     "category": "Industry Perspective",
+    "isNew": true,
     "excerpt": "As the biggest names in institutional finance converge on Miami this week, the infrastructure gap between Wall Street and Main Street is finally closing — and credit union members are about to be the biggest beneficiaries."
   },
   {
@@ -14,7 +15,7 @@
     "date": "April 27, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -24,7 +25,7 @@
     "date": "May 2026",
     "readTime": "9 min read",
     "icon": "🌐",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
