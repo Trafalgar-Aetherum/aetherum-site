@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aetherum — Investor Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ef;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --dark: #111210;
+    --mid: #1c1c1a;
+    --border: rgba(201,168,76,0.2);
+    --text-muted: rgba(245,243,239,0.45);
+    --text-mid: rgba(245,243,239,0.72);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* SECTIONS */
+  section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 48px;
+  }
+
+  /* GRID LINE DECORATION */
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  /* LABEL */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* HERO */
+  #hero {
+    background: var(--black);
+  }
+
+  #hero .container {
+    padding-top: 140px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .stat {
+    border-left: 1px solid var(--border);
+    padding-left: 20px;
+  }
+
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* GOLD GLOW */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(120px);
+    opacity: 0.12;
+  }
+
+  .glow-1 {
+    width: 600px; height: 600px;
+    background: var(--gold);
+    top: -100px; right: -200px;
+  }
+
+  .glow-2 {
+    width: 400px; height: 400px;
+    background: var(--gold);
+    bottom: -100px; left: -100px;
+  }
+
+  /* PROBLEM */
+  #problem { background: var(--dark); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p {
+    color: var(--text-mid);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .problem-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .problem-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    font-size: 0.95rem;
+  }
+
+  .problem-list li:last-child { border-bottom: none; }
+
+  .problem-list .icon {
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* SOLUTION */
+  #solution { background: var(--black); }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .solution-card {
+    background: var(--mid);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .solution-card:hover { background: #222220; }
+
+  .solution-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .solution-card:hover::before { opacity: 1; }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .card-body {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* MARKET */
+  #market { background: var(--dark); }
+
+  .market-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .market-box {
+    background: var(--mid);
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .market-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .market-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* TRACTION */
+  #traction { background: var(--black); }
+
+  .traction-items {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .traction-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    background: var(--mid);
+  }
+
+  .traction-label {
+    background: rgba(201,168,76,0.08);
+    padding: 24px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .traction-content {
+    padding: 24px 32px;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+  }
+
+  .traction-content strong {
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  /* REVENUE */
+  #revenue { background: var(--dark); }
+
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .revenue-card {
+    background: var(--mid);
+    padding: 36px 32px;
+  }
+
+  .revenue-pct {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.8rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .revenue-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .revenue-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .target-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .target-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .target-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem;
+    color: var(--white);
+  }
+
+  /* TEAM */
+  #team { background: var(--black); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .team-card {
+    background: var(--mid);
+    padding: 36px 32px;
+  }
+
+  .team-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .team-bio {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ASK */
+  #ask {
+    background: var(--dark);
+    min-height: 80vh;
+  }
+
+  .ask-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .ask-terms {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ask-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: var(--mid);
+  }
+
+  .ask-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .ask-val {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+  }
+
+  .cta-block {
+    text-align: center;
+    padding: 48px 40px;
+    background: var(--mid);
+    border: 1px solid var(--border);
+  }
+
+  .cta-block p {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .cta-sub {
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.4s forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--gold);
+    animation: slide 2s 1.5s infinite;
+  }
+
+  @keyframes slide {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .container { padding: 100px 24px; }
+    .two-col, .solution-grid, .market-numbers,
+    .team-grid, .revenue-grid, .ask-inner { grid-template-columns: 1fr; gap: 32px; }
+    .traction-row { grid-template-columns: 1fr; }
+    .traction-label { border-right: none; border-bottom: 1px solid var(--border); }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Aetherum</div>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#traction">Traction</a></li>
+    <li><a href="#revenue">Revenue</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#ask">The Ask</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="hero-eyebrow">Pre-Seed · $1M · 2026</div>
+    <h1 class="hero-title">
+      Crypto-backed lending<br>
+      infrastructure for <em>credit unions.</em>
+    </h1>
+    <p class="hero-sub">
+      Aetherum enables credit unions to offer crypto-collateralized loans
+      to their members — keeping the regulatory bar that keeps competitors out.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">140M</div>
+        <div class="stat-label">CU Members in the US</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$2.2T</div>
+        <div class="stat-label">CU Assets Under Management</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">B2B Crypto Lending Infrastructure</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="two-col">
+      <div class="fade-in">
+        <div class="section-label">01 · Problem</div>
+        <h2>Credit unions are <em>locked out</em> of crypto lending.</h2>
+        <div class="divider"></div>
+        <p>140 million Americans trust their credit union over any bank. But when those members want to unlock liquidity from their Bitcoin or Ethereum holdings, they're forced to go to D2C lenders like Nexo or Ledn — or sell, triggering a taxable event.</p>
+        <p>Credit unions want to serve these members. The regulatory complexity is the barrier — not the appetite.</p>
+      </div>
+      <div class="fade-in">
+        <ul class="problem-list">
+          <li>
+            <span class="icon">01</span>
+            <span>No compliant crypto lending infrastructure exists for NCUA-regulated institutions</span>
+          </li>
+          <li>
+            <span class="icon">02</span>
+            <span>D2C competitors (Nexo, Ledn, SALT) aren't B2B — they compete with CUs, not serve them</span>
+          </li>
+          <li>
+            <span class="icon">03</span>
+            <span>Younger members with crypto assets are migrating to fintech — CUs are losing them</span>
+          </li>
+          <li>
+            <span class="icon">04</span>
+            <span>No risk assessment model purpose-built for crypto collateral under NCUA guidelines exists</span>
+          </li>
+          <li>
+            <span class="icon">05</span>
+            <span>BitGo, Plaid, and KYC/AML integration requires months of compliance work per institution</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">02 · Solution</div>
+      <h2>The <em>full stack</em> a credit union needs to go live.</h2>
+    </div>
+    <div class="solution-grid fade-in">
+      <div class="solution-card">
+        <div class="card-num">01 · Lending Engine</div>
+        <div class="card-title">Crypto-Collateralized Loans</div>
+        <div class="card-body">Members keep their BTC/ETH exposure, avoid the taxable sale, and receive USD liquidity at 8–12% APR. Real-time LTV monitoring with automated margin calls.</div>
+      </div>
+      <div class="solution-card">
+        <div class="card-num">02 · Risk</div>
+        <div class="card-title">DACS™ Risk Assessment</div>
+        <div class="card-body">Dynamic Asset Credit Scoring — a patent-pending five-pillar risk model purpose-built for crypto collateral. Described as a "risk assessment model" throughout, per Plaid compliance guidance.</div>
+      </div>
+      <div class="solution-card">
+        <div class="card-num">03 · Custody</div>
+        <div class="card-title">BitGo Institutional Custody</div>
+        <div class="card-body">Each credit union holds its own direct BitGo account. Member wallets live within the CU's structure. Aetherum is the software layer only — we never touch member assets.</div>
+      </div>
+      <div class="solution-card">
+        <div class="card-num">04 · Compliance</div>
+        <div class="card-title">Plaid + Sardine Integration</div>
+        <div class="card-body">Plaid Check (CRA bundle) approved and live across 6 core products. Sardine KYC/AML/fraud under MSA negotiation. Compliance-first architecture from day one.</div>
+      </div>
+      <div class="solution-card">
+        <div class="card-num">05 · Distribution</div>
+        <div class="card-title">Velera Partnership</div>
+        <div class="card-body">Steve Salzer, SVP at Velera — our gateway to the 5,000+ CU ecosystem — serves as Board Advisor.</div>
+      </div>
+      <div class="solution-card">
+        <div class="card-num">06 · Platform</div>
+        <div class="card-title">Full-Stack Infrastructure</div>
+        <div class="card-body">Portfolio tracker, collateral calculator, staking module, and DACS gauge — all live at test-app.aetherum.ai. TypeScript/NestJS backend, React frontend, deployed on Railway.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">03 · Market</div>
+      <h2>A massive, <em>unserved</em> market.</h2>
+      <p style="max-width: 560px; margin-top: 16px;">The credit union ecosystem is one of the largest financial networks in the US — and the last major institutional channel without crypto lending infrastructure.</p>
+    </div>
+    <div class="market-numbers fade-in">
+      <div class="market-box">
+        <div class="market-num">140M</div>
+        <div class="market-desc">Credit union members<br>in the United States</div>
+      </div>
+      <div class="market-box">
+        <div class="market-num">5,000+</div>
+        <div class="market-desc">Credit unions reachable<br>through Velera alone</div>
+      </div>
+      <div class="market-box">
+        <div class="market-num">$1.2M</div>
+        <div class="market-desc">Target ARR at 10 CUs<br>× 100 loans/month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section id="traction">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">04 · Traction</div>
+      <h2>Built to the <em>compliance bar</em> that keeps others out.</h2>
+    </div>
+    <div class="traction-items fade-in">
+      <div class="traction-row">
+        <div class="traction-label">Plaid</div>
+        <div class="traction-content"><strong>Plaid Check (CRA bundle) approved and live</strong> — 6 core products active. Production approval used as investor data room leverage.</div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">Sardine</div>
+        <div class="traction-content"><strong>KYC/AML/fraud integration.</strong></div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">BitGo</div>
+        <div class="traction-content"><strong>Enterprise custody account live.</strong> Each CU holds its own account — Aetherum never touches assets.</div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">DACS™</div>
+        <div class="traction-content"><strong>Patent pending.</strong> Five-pillar risk model, live gauge wired to API.</div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">Velera</div>
+        <div class="traction-content"><strong>Steve Salzer, SVP at Velera — our gateway to the 5,000+ CU ecosystem — serves as Board Advisor.</strong></div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">Platform</div>
+        <div class="traction-content"><strong>~80% complete</strong> — live at test-app.aetherum.ai across 6 Railway services. Demo accounts available on request.</div>
+      </div>
+      <div class="traction-row">
+        <div class="traction-label">BD Pipeline</div>
+        <div class="traction-content"><strong>Active outreach</strong> to Coastal Federal CU and GLCU Holdings. NACUSO and Curql fund relationships in progress.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section id="revenue">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="two-col fade-in">
+      <div>
+        <div class="section-label">05 · Revenue Model</div>
+        <h2>Three streams. <em>Platform-fee led.</em></h2>
+        <div class="divider"></div>
+        <p>Revenue is tied directly to loan volume — meaning we grow as our credit union partners grow. The SaaS license layer adds predictable recurring revenue at scale.</p>
+        <div class="target-box">
+          <div class="target-label">ARR Target</div>
+          <div class="target-value">$1K/loan × 100 loans/mo × 10 CUs = $1.2M ARR</div>
+        </div>
+      </div>
+      <div>
+        <div class="revenue-grid">
+          <div class="revenue-card">
+            <div class="revenue-pct">70%</div>
+            <div class="revenue-title">Platform Fees</div>
+            <div class="revenue-desc">$500–$1,500 per loan originated. Primary revenue driver tied to volume.</div>
+          </div>
+          <div class="revenue-card">
+            <div class="revenue-pct">20%</div>
+            <div class="revenue-title">Transaction Fees</div>
+            <div class="revenue-desc">0.5–1% on crypto collateral transactions processed through the platform.</div>
+          </div>
+          <div class="revenue-card" style="grid-column: span 2;">
+            <div class="revenue-pct">10%</div>
+            <div class="revenue-title">SaaS License</div>
+            <div class="revenue-desc">$50K–$150K/year for large credit unions. Predictable ARR layer at scale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">06 · Team & Advisors</div>
+      <h2>Built by operators.<br><em>Advised by the ecosystem.</em></h2>
+    </div>
+    <div class="team-grid fade-in">
+      <div class="team-card">
+        <div class="team-name">John Bailey</div>
+        <div class="team-role">Founder & CEO</div>
+        <div class="team-bio">20+ years in technical recruiting with placements at Google, Spotify, and Goldman Sachs. Previously co-founded Thorium Data (Data Catalog). Building Aetherum full-time since early 2025, managing all product, BD, fundraising, and technical implementation.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Steve Salzer</div>
+        <div class="team-role">Board Advisor · SVP, Velera</div>
+        <div class="team-bio">Steve Salzer, SVP at Velera — our gateway to the 5,000+ CU ecosystem — serves as Board Advisor to Aetherum.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Rahul Goel</div>
+        <div class="team-role">Advisor · JP Morgan / Uber</div>
+        <div class="team-bio">Cybersecurity and financial infrastructure expertise from senior roles at JP Morgan and Uber, including involvement with Meta's Novi digital wallet. Advises on platform security architecture and institutional trust.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Saiprasad Raut</div>
+        <div class="team-role">Advisor · Worldpay / Vanar</div>
+        <div class="team-bio">Head of Payments Infrastructure at Vanar, formerly Worldpay. Deep payments and blockchain infrastructure expertise guiding Aetherum's settlement and custody architecture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section id="ask">
+  <div class="grid-lines"></div>
+  <div class="container">
+    <div class="ask-inner fade-in">
+      <div>
+        <div class="section-label">07 · The Ask</div>
+        <h2>Closing a <em>$1M pre-seed</em> round.</h2>
+        <div class="divider"></div>
+        <p>We're in the final stretch of closing our pre-seed round. Proceeds go toward closing the first two credit union pilots, completing platform development, and bringing on a CTO.</p>
+        <div class="ask-terms">
+          <div class="ask-row">
+            <span class="ask-key">Round Size</span>
+            <span class="ask-val">$1,000,000</span>
+          </div>
+          <div class="ask-row">
+            <span class="ask-key">Instrument</span>
+            <span class="ask-val">Post-Money SAFE</span>
+          </div>
+          <div class="ask-row">
+            <span class="ask-key">Valuation Cap</span>
+            <span class="ask-val">$8M Post-Money</span>
+          </div>
+          <div class="ask-row">
+            <span class="ask-key">Discount</span>
+            <span class="ask-val">20%</span>
+          </div>
+          <div class="ask-row">
+            <span class="ask-key">Timeline</span>
+            <span class="ask-val">Closing Mid-April 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="cta-block">
+        <div class="section-label" style="justify-content: center; margin-bottom: 16px;">Request a Demo</div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Let's talk.</h2>
+        <p>20 minutes. We'll walk through the platform live and answer any diligence questions.</p>
+        <a href="https://calendly.com/jbailey-aetherum/30min" target="_blank" class="cta-btn">Book a Call</a>
+        <div class="cta-sub">jbailey@aetherum.ai · aetherum.ai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-note">Confidential · For Accredited Investors Only · © 2026 Aetherum.ai</div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
