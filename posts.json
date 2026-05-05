@@ -1,22 +1,13 @@
 [
   {
-    "slug": "freeze-key-governance",
-    "title": "The $577M Wake-Up Call: DeFi Has No Freeze Protocol. Credit Unions Will.",
-    "excerpt": "In April 2026, $577M was stolen and stablecoin issuers couldn't stop it. The industry has no freeze protocol. Here's how Aetherum is building one — purpose-built for NCUA-regulated credit unions.",
+    "slug": "/blog/freeze-key-governance/",
+    "title": "Who Can Freeze a Key — And Who Can't",
+    "excerpt": "Freeze authority is one of the most consequential powers in a crypto lending system. Here's how Aetherum governs it so that credit unions stay in control — and examiners can verify it.",
     "date": "May 5, 2026",
-    "readTime": "7 min read",
-    "icon": "🔐",
+    "readTime": "5 min read",
+    "icon": "🔒",
     "isNew": true,
     "featured": false
-  },
-  {
-    "slug": "/blog/wall-street-consensus-credit-unions/",
-    "title": "Wall Street Just Showed Up to Crypto. Your Members Win.",
-    "date": "April 29, 2026",
-    "author": "John Bailey II",
-    "category": "Industry Perspective",
-    "isNew": false,
-    "excerpt": "As the biggest names in institutional finance converge on Miami this week, the infrastructure gap between Wall Street and Main Street is finally closing — and credit union members are about to be the biggest beneficiaries."
   },
   {
     "slug": "/blog/key-governance-audit-trail/",
@@ -25,6 +16,7 @@
     "date": "April 27, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
+    "isNew": true,
     "featured": false
   },
   {
@@ -34,6 +26,7 @@
     "date": "May 2026",
     "readTime": "9 min read",
     "icon": "🌐",
+    "isNew": true,
     "featured": true
   },
   {
@@ -43,6 +36,7 @@
     "date": "April 23, 2026",
     "readTime": "6 min read",
     "icon": "⚖️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -52,6 +46,7 @@
     "date": "April 19, 2026",
     "readTime": "5 min read",
     "icon": "🏛️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -61,6 +56,7 @@
     "date": "2026-04-15",
     "readTime": "5 min read",
     "icon": "🔗",
+    "isNew": false,
     "featured": false
   },
   {
@@ -70,6 +66,7 @@
     "date": "April 12, 2026",
     "readTime": "7 min read",
     "icon": "⚖️",
+    "isNew": false,
     "featured": true
   },
   {
@@ -79,6 +76,7 @@
     "date": "April 2026",
     "readTime": "7 min read",
     "icon": "✈️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -88,6 +86,7 @@
     "date": "April 3, 2026",
     "readTime": "8 min read",
     "icon": "₿",
+    "isNew": false,
     "featured": true
   },
   {
@@ -97,6 +96,7 @@
     "date": "April 3, 2026",
     "readTime": "4 min read",
     "icon": "🏗️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -106,6 +106,7 @@
     "date": "March 25, 2026",
     "readTime": "7 min read",
     "icon": "👁️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -115,6 +116,7 @@
     "date": "March 20, 2026",
     "readTime": "5 min read",
     "icon": "🔗",
+    "isNew": false,
     "featured": false
   },
   {
@@ -124,6 +126,7 @@
     "date": "March 19, 2026",
     "readTime": "5 min read",
     "icon": "⚖️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -133,6 +136,7 @@
     "date": "March 2026",
     "readTime": "6 min read",
     "icon": "🏛️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -142,6 +146,7 @@
     "date": "March 30, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
+    "isNew": false,
     "featured": false
   },
   {
@@ -151,6 +156,7 @@
     "date": "March 10, 2026",
     "readTime": "8 min read",
     "icon": "📈",
+    "isNew": false,
     "featured": false
   },
   {
@@ -160,6 +166,7 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🏗️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -169,6 +176,7 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🏦",
+    "isNew": false,
     "featured": false
   },
   {
@@ -178,6 +186,7 @@
     "date": "",
     "readTime": "4 min read",
     "icon": "📊",
+    "isNew": false,
     "featured": false
   },
   {
@@ -187,6 +196,7 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🛡️",
+    "isNew": false,
     "featured": false
   },
   {
@@ -196,6 +206,7 @@
     "date": "",
     "readTime": "5 min read",
     "icon": "🔗",
+    "isNew": false,
     "featured": false
   }
 ]
