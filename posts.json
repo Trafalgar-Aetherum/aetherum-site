@@ -1,11 +1,21 @@
 [
   {
+    "slug": "freeze-key-governance",
+    "title": "The $577M Wake-Up Call: DeFi Has No Freeze Protocol. Credit Unions Will.",
+    "excerpt": "In April 2026, $577M was stolen and stablecoin issuers couldn't stop it. The industry has no freeze protocol. Here's how Aetherum is building one — purpose-built for NCUA-regulated credit unions.",
+    "date": "May 5, 2026",
+    "readTime": "7 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/wall-street-consensus-credit-unions/",
     "title": "Wall Street Just Showed Up to Crypto. Your Members Win.",
     "date": "April 29, 2026",
     "author": "John Bailey II",
     "category": "Industry Perspective",
-    "isNew": true,
+    "isNew": false,
     "excerpt": "As the biggest names in institutional finance converge on Miami this week, the infrastructure gap between Wall Street and Main Street is finally closing — and credit union members are about to be the biggest beneficiaries."
   },
   {
