@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aetherum.ai — Institutional Crypto-Collateralized Lending Infrastructure</title>
 <meta name="description" content="AI-powered crypto-collateralized lending infrastructure for credit unions and banks. Institutional-grade custody, compliance, and real-time risk management.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0B1A2E;
@@ -835,6 +835,44 @@
     body { background: white; color: #1a1a1a; }
     .nav { display: none; }
   }
+
+  /* ─── CIRCLE ALLIANCE BADGE (hero) ─── */
+  .circle-alliance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(247,147,26,0.08);
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 100px;
+    padding: 7px 18px 7px 10px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    width: fit-content;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 0.8s ease-out 0.1s both;
+    transition: background 0.2s;
+  }
+
+  .circle-alliance-badge:hover { background: rgba(247,147,26,0.14); }
+
+  .circle-alliance-badge img {
+    height: 22px;
+    width: auto;
+    background: #fff;
+    border-radius: 4px;
+    padding: 2px 6px;
+    object-fit: contain;
+  }
+
+  .circle-alliance-badge .badge-wordmark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #F7931A;
+  }
 </style>
 </head>
 <body>
@@ -853,6 +891,7 @@
     <li><a href="#blog">Blog</a></li>
     <li><a href="mailto:demo@aetherum.ai">Contact</a></li>
     <li><a href="/product.html">Product Sheet</a></li>
+    <li><a href="/partners/">Partners</a></li>
     <li><a href="https://calendly.com/jbailey-aetherum/30min" class="nav-cta">Request Demo →</a></li>
   </ul>
 </nav>
@@ -861,6 +900,10 @@
 <section class="hero" id="home">
   <div class="grid-overlay"></div>
   <div class="hero-badge">Built for Credit Unions & Community Banks</div>
+  <a class="circle-alliance-badge" href="https://partners.circle.com/Aetherum.ai" target="_blank" rel="noopener">
+    <img src="https://www.circle.com/hubfs/circle-logo.svg" alt="Circle" onerror="this.style.display='none'">
+    <span class="badge-wordmark">Circle Alliance Partner</span>
+  </a>
   <h1>Crypto-Collateralized Lending Infrastructure, <span class="copper">Powered by AI</span></h1>
   <p class="hero-sub">Give your members access to USD liquidity without selling their digital assets — no tax events, no lost upside. Aetherum's turnkey platform layers onto your existing core with institutional-grade custody, compliance, and real-time risk management.</p>
   <p class="hero-sub" style="margin-top:16px;opacity:0.75;">Intelligent lending that meets members where they are — with guidance built into every step of the loan journey.</p>
