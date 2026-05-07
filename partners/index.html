@@ -11,7 +11,6 @@
 <style>
   /* ── TOKENS ── */
   :root {
-    /* nav / footer match index.html */
     --navy:          #0B1A2E;
     --navy-mid:      #122440;
     --copper:        #D4885C;
@@ -21,7 +20,6 @@
     --text-secondary:#9AADCC;
     --text-muted:    #6B82A6;
 
-    /* page accent (partners design language) */
     --bg:            #03060F;
     --orange:        #F7931A;
     --orange-dim:    rgba(247,147,26,0.10);
@@ -54,7 +52,7 @@
   }
 
   /* ═══════════════════════════════════
-     NAV — exact match to index.html
+     NAV
   ═══════════════════════════════════ */
   .nav {
     position: fixed;
@@ -111,7 +109,6 @@
   }
 
   .nav-links a:hover { color: var(--white); }
-
   .nav-links a.nav-active { color: var(--white); }
 
   .nav-cta {
@@ -234,7 +231,6 @@
     height: 36px;
     width: auto;
     flex-shrink: 0;
-    /* white bg so the logo reads on dark */
     background: var(--white);
     padding: 6px 12px;
     border-radius: 8px;
@@ -297,39 +293,28 @@
 
   .alliance-desc a:hover { opacity: 0.75; text-decoration: underline; }
 
-  .alliance-cta {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--orange);
-    text-decoration: none;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-    flex-shrink: 0;
-  }
-
-  .alliance-cta:hover { gap: 10px; }
-
-  /* ── PARTNER GRID ── */
-  .partners-section {
+  /* ── PARTNER SECTIONS ── */
+  .partners-wrap {
     padding: 0 60px 128px;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    max-width: 1280px;
   }
 
-  .section-eyebrow {
+  .partner-section-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--orange);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  .section-eyebrow::before {
+  .partner-section-label::before {
     content: '';
     display: inline-block;
     width: 20px; height: 1px;
@@ -337,20 +322,11 @@
     flex-shrink: 0;
   }
 
-  .section-title {
-    font-family: 'Bebas Neue', cursive;
-    font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--white);
-    letter-spacing: 0.5px;
-    margin-bottom: 48px;
-    line-height: 1;
-  }
-
+  /* ── STANDARD PARTNER GRID ── */
   .partner-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    max-width: 1160px;
   }
 
   /* ── PARTNER CARD ── */
@@ -370,7 +346,6 @@
     transition: border-color 0.3s, background 0.3s, transform 0.3s;
   }
 
-  /* top-edge orange glow on hover */
   .partner-card::before {
     content: '';
     position: absolute;
@@ -389,7 +364,6 @@
 
   .partner-card:hover::before { opacity: 1; }
 
-  /* text wordmark — Bebas Neue, large */
   .partner-wordmark {
     font-family: 'Bebas Neue', cursive;
     font-size: 32px;
@@ -399,7 +373,6 @@
     margin-bottom: 14px;
   }
 
-  /* category badge */
   .partner-category {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -413,8 +386,45 @@
     white-space: nowrap;
   }
 
+  /* ── ERC-3643 FEATURED CARD ── */
+  .compliance-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .partner-card--featured {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(247,147,26,0.06);
+    border: 1px solid rgba(247,147,26,0.50);
+    box-shadow: 0 0 32px rgba(247,147,26,0.12), 0 0 0 1px rgba(247,147,26,0.10);
+    padding: 52px 40px 44px;
+  }
+
+  .partner-card--featured::before {
+    opacity: 1;
+    background: linear-gradient(90deg, transparent 5%, var(--orange) 50%, transparent 95%);
+  }
+
+  .partner-card--featured:hover {
+    border-color: rgba(247,147,26,0.70);
+    background: rgba(247,147,26,0.09);
+    box-shadow: 0 0 48px rgba(247,147,26,0.18), 0 0 0 1px rgba(247,147,26,0.15);
+  }
+
+  .partner-card--featured .partner-wordmark {
+    font-size: 38px;
+  }
+
+  .partner-card--featured .partner-category {
+    font-size: 10px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.5;
+  }
+
   /* ═══════════════════════════════════
-     FOOTER — exact match to index.html
+     FOOTER
   ═══════════════════════════════════ */
   footer {
     padding: 32px 60px;
@@ -453,6 +463,10 @@
   }
 
   /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .partner-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 768px) {
     .nav { padding: 12px 24px; }
     .nav-links { display: none; }
@@ -470,19 +484,16 @@
     .hero { padding: 118px 24px 64px; }
     .alliance-wrap { padding: 0 24px 48px; }
     .alliance-banner { padding: 24px; gap: 20px; }
-    .alliance-cta { display: none; }
-    .partners-section { padding: 0 24px 80px; }
+    .partners-wrap { padding: 0 24px 80px; gap: 52px; }
     footer { padding: 24px; flex-direction: column; text-align: center; }
-  }
-
-  @media (max-width: 1024px) {
-    .partner-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 580px) {
     .partner-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .partner-card { padding: 32px 20px 28px; }
     .partner-wordmark { font-size: 24px; }
+    .partner-card--featured { max-width: 100%; padding: 36px 24px 32px; }
+    .partner-card--featured .partner-wordmark { font-size: 30px; }
   }
 
   @media (max-width: 380px) {
@@ -540,79 +551,100 @@
         <a href="https://partners.circle.com/partner/aetherumai" target="_blank" rel="noopener">partners.circle.com/partner/aetherumai →</a>
       </p>
     </div>
-
   </div>
 </div>
 
-<!-- PARTNER GRID -->
-<section class="partners-section">
-  <div class="section-eyebrow">Ecosystem</div>
-  <div class="section-title">Integration Partners</div>
+<!-- PARTNER SECTIONS -->
+<div class="partners-wrap">
 
-  <div class="partner-grid">
+  <!-- SECTION 1: BLOCKCHAIN INFRASTRUCTURE -->
+  <div>
+    <div class="partner-section-label">Blockchain Infrastructure</div>
+    <div class="partner-grid">
 
-    <div class="partner-card">
-      <div class="partner-wordmark">Circle</div>
-      <span class="partner-category">Stablecoin Infrastructure</span>
+      <div class="partner-card">
+        <div class="partner-wordmark">Pharos Network</div>
+        <span class="partner-category">Layer 1 Blockchain</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Ethereum</div>
+        <span class="partner-category">Base Layer Blockchain</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Solana</div>
+        <span class="partner-category">Layer 1 Blockchain</span>
+      </div>
+
     </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Pharos Network</div>
-      <span class="partner-category">Layer 1 Blockchain</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Jack Henry</div>
-      <span class="partner-category">Core Banking</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Fiserv</div>
-      <span class="partner-category">Core Banking</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">FIS</div>
-      <span class="partner-category">Core Banking</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Corelation</div>
-      <span class="partner-category">Core Banking</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Sardine</div>
-      <span class="partner-category">Compliance Infrastructure</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Plaid</div>
-      <span class="partner-category">Bank Connectivity</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Ripple / XRPL</div>
-      <span class="partner-category">Blockchain Settlement</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Paxos</div>
-      <span class="partner-category">Stablecoin Infrastructure</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">ERC-3643</div>
-      <span class="partner-category">On-Chain Compliance</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-wordmark">Ethereum</div>
-      <span class="partner-category">Base Layer Blockchain</span>
-    </div>
-
   </div>
-</section>
+
+  <!-- SECTION 2: INTEGRATION PARTNERS -->
+  <div>
+    <div class="partner-section-label">Integration Partners</div>
+    <div class="partner-grid">
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Circle</div>
+        <span class="partner-category">Stablecoin Infrastructure</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Jack Henry</div>
+        <span class="partner-category">Core Banking</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Fiserv</div>
+        <span class="partner-category">Core Banking</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">FIS</div>
+        <span class="partner-category">Core Banking</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Corelation</div>
+        <span class="partner-category">Core Banking</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Sardine</div>
+        <span class="partner-category">Compliance Infrastructure</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Plaid</div>
+        <span class="partner-category">Bank Connectivity</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Paxos</div>
+        <span class="partner-category">Stablecoin Infrastructure</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Ripple / XRPL</div>
+        <span class="partner-category">Blockchain Settlement</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 3: PROPRIETARY COMPLIANCE ARCHITECTURE -->
+  <div>
+    <div class="partner-section-label">Proprietary Compliance Architecture</div>
+    <div class="compliance-wrap">
+      <div class="partner-card partner-card--featured">
+        <div class="partner-wordmark">ERC-3643</div>
+        <span class="partner-category">On-Chain Compliance — 3 Modules Live on Sepolia Testnet</span>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
