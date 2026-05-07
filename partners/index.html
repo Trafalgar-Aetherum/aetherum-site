@@ -347,10 +347,19 @@
   }
 
   .partner-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     max-width: 1160px;
+  }
+
+  .partner-card {
+    flex: 0 0 calc(33.333% - 14px);
+  }
+
+  @media (max-width: 1024px) {
+    .partner-card { flex: 0 0 calc(50% - 10px); }
   }
 
   /* ── PARTNER CARD ── */
@@ -453,10 +462,6 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    .partner-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
   @media (max-width: 768px) {
     .nav { padding: 12px 24px; }
     .nav-links { display: none; }
@@ -480,13 +485,12 @@
   }
 
   @media (max-width: 580px) {
-    .partner-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-    .partner-card { padding: 32px 20px 28px; }
+    .partner-card { flex: 0 0 calc(50% - 7px); padding: 32px 20px 28px; }
     .partner-wordmark { font-size: 24px; }
   }
 
   @media (max-width: 380px) {
-    .partner-grid { grid-template-columns: 1fr; }
+    .partner-card { flex: 0 0 100%; }
   }
 </style>
 </head>
@@ -537,13 +541,10 @@
       <div class="alliance-headline">Circle Alliance Partner</div>
       <p class="alliance-desc">
         Listed in the Circle Alliance Directory — a curated network of companies building on Circle's financial infrastructure and USDC ecosystem.<br>
-        <a href="https://partners.circle.com/Aetherum.ai" target="_blank" rel="noopener">partners.circle.com/Aetherum.ai →</a>
+        <a href="https://partners.circle.com/partner/aetherumai" target="_blank" rel="noopener">partners.circle.com/partner/aetherumai →</a>
       </p>
     </div>
 
-    <a class="alliance-cta" href="https://partners.circle.com/Aetherum.ai" target="_blank" rel="noopener">
-      View Listing <span>→</span>
-    </a>
   </div>
 </div>
 
@@ -602,6 +603,11 @@
     <div class="partner-card">
       <div class="partner-wordmark">Paxos</div>
       <span class="partner-category">Stablecoin Infrastructure</span>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-wordmark">ERC-3643</div>
+      <span class="partner-category">On-Chain Compliance</span>
     </div>
 
   </div>
