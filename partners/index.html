@@ -347,19 +347,10 @@
   }
 
   .partner-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     max-width: 1160px;
-  }
-
-  .partner-card {
-    flex: 0 0 calc(33.333% - 14px);
-  }
-
-  @media (max-width: 1024px) {
-    .partner-card { flex: 0 0 calc(50% - 10px); }
   }
 
   /* ── PARTNER CARD ── */
@@ -484,13 +475,18 @@
     footer { padding: 24px; flex-direction: column; text-align: center; }
   }
 
+  @media (max-width: 1024px) {
+    .partner-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 580px) {
-    .partner-card { flex: 0 0 calc(50% - 7px); padding: 32px 20px 28px; }
+    .partner-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .partner-card { padding: 32px 20px 28px; }
     .partner-wordmark { font-size: 24px; }
   }
 
   @media (max-width: 380px) {
-    .partner-card { flex: 0 0 100%; }
+    .partner-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -608,6 +604,11 @@
     <div class="partner-card">
       <div class="partner-wordmark">ERC-3643</div>
       <span class="partner-category">On-Chain Compliance</span>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-wordmark">Ethereum</div>
+      <span class="partner-category">Base Layer Blockchain</span>
     </div>
 
   </div>
