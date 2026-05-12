@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/erc3643-credit-unions/",
+    "title": "The $2.4 Trillion Gap in the ERC-3643 Story",
+    "excerpt": "A new institutional RWA report funded by the Ethereum Foundation names ERC-3643 the only standard built for compliant tokenization. Credit unions aren't in it yet.",
+    "date": "May 12, 2026",
+    "readTime": "5 min read",
+    "icon": "⛓️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/freeze-key-governance/",
     "title": "Who Can Freeze a Key — And Who Can't",
     "excerpt": "Freeze authority is one of the most consequential powers in a crypto lending system. Here's how Aetherum governs it so that credit unions stay in control — and examiners can verify it.",
     "date": "May 5, 2026",
     "readTime": "5 min read",
     "icon": "🔒",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
