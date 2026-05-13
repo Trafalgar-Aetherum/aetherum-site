@@ -1,5 +1,15 @@
 [
   {
+    "slug": "jpmorgan-validates-cu-next",
+    "title": "When JPMorgan Files for an On-Chain Money Market Fund, Credit Unions Should Pay Attention",
+    "excerpt": "JPMorgan just filed for a tokenized, SEC-registered, T-bill-backed fund on Ethereum. For credit unions, the waiting is over — the institutional validation they needed is here.",
+    "date": "May 13, 2026",
+    "readTime": "6 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/erc3643-credit-unions/",
     "title": "Credit Unions Are Next in the ERC-3643 Story",
     "excerpt": "The Ethereum Foundation just funded an institutional guide naming ERC-3643 the standard for compliant tokenization. ABN AMRO, DTCC, Citi are in it. Credit unions are next — and the infrastructure to get them there exists now.",
