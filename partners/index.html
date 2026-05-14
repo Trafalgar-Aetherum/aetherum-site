@@ -293,6 +293,54 @@
 
   .alliance-desc a:hover { opacity: 0.75; text-decoration: underline; }
 
+  /* ── ALLIANCE INTEGRATION CARDS ── */
+  .alliance-integrations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .alliance-integration-card {
+    background: rgba(0,0,0,0.28);
+    border: 1px solid var(--orange-border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .alliance-int-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .alliance-int-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .alliance-int-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .alliance-int-desc {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
   /* ── PARTNER SECTIONS ── */
   .partners-wrap {
     padding: 0 60px 128px;
@@ -484,6 +532,7 @@
     .hero { padding: 118px 24px 64px; }
     .alliance-wrap { padding: 0 24px 48px; }
     .alliance-banner { padding: 24px; gap: 20px; }
+    .alliance-integrations { grid-template-columns: 1fr; }
     .partners-wrap { padding: 0 24px 80px; gap: 52px; }
     footer { padding: 24px; flex-direction: column; text-align: center; }
   }
@@ -550,6 +599,30 @@
         Listed in the Circle Alliance Directory — a curated network of companies building on Circle's financial infrastructure and USDC ecosystem.<br>
         <a href="https://partners.circle.com/partner/aetherumai" target="_blank" rel="noopener">partners.circle.com/partner/aetherumai →</a>
       </p>
+    </div>
+  </div>
+  <!-- THREE ACTIVE INTEGRATIONS -->
+  <div class="alliance-integrations">
+    <div class="alliance-integration-card">
+      <div class="alliance-int-header">
+        <span class="alliance-int-dot" style="background:#2775CA;"></span>
+        <span class="alliance-int-label">USDC Collateral Flows</span>
+      </div>
+      <div class="alliance-int-desc">Stablecoin collateral acceptance and settlement</div>
+    </div>
+    <div class="alliance-integration-card">
+      <div class="alliance-int-header">
+        <span class="alliance-int-dot" style="background:#00ADEF;"></span>
+        <span class="alliance-int-label">Cross-Chain Transfer Protocol (CCTP)</span>
+      </div>
+      <div class="alliance-int-desc">Native USDC cross-chain movement</div>
+    </div>
+    <div class="alliance-integration-card">
+      <div class="alliance-int-header">
+        <span class="alliance-int-dot" style="background:#F7931A;"></span>
+        <span class="alliance-int-label">Programmable Wallet Infrastructure</span>
+      </div>
+      <div class="alliance-int-desc">Embedded wallet layer for member-facing collateral flows</div>
     </div>
   </div>
 </div>
