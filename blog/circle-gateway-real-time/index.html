@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Settlement Layer Just Got Real-Time. — Aetherum Blog</title>
+<meta name="description" content="The same event-driven pattern banks and core processors have built on for years is now live in Aetherum's USDC settlement stack." />
+<meta property="og:title" content="Our Settlement Layer Just Got Real-Time." />
+<meta property="og:description" content="The same event-driven pattern banks and core processors have built on for years is now live in Aetherum's USDC settlement stack." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/circle-gateway-real-time/" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070D1A;
+    --bg2: #0B1425;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --body-text: #B8C8E0;
+    --gray1: rgba(184,200,224,0.9);
+    --gray2: rgba(184,200,224,0.55);
+    --gray3: rgba(184,200,224,0.22);
+    --gray4: rgba(184,200,224,0.07);
+    --border: rgba(184,200,224,0.09);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--body-text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(7,13,26,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,200,224,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,200,224,0.03) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.14) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.09) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(68px, 9.5vw, 122px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--body-text);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* ── CODE BLOCK ── */
+  .event-list {
+    margin: 40px 0;
+    padding: 32px 40px;
+    background: rgba(184,200,224,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    border-left: 3px solid var(--blue-light);
+  }
+
+  .event-list-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 20px;
+  }
+
+  .event-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    color: var(--body-text);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    line-height: 1.4;
+  }
+
+  .event-item:last-child { border-bottom: none; }
+
+  .event-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    flex-shrink: 0;
+  }
+
+  /* ── REALITY BOX ── */
+  .reality-box {
+    margin: 48px 0;
+    padding: 36px 40px;
+    border: 1px solid rgba(247,147,26,0.22);
+    border-radius: 16px;
+    background: rgba(247,147,26,0.04);
+  }
+
+  .reality-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .reality-box p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--body-text);
+  }
+
+  .reality-box strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── BYLINE ── */
+  .byline {
+    margin: 56px 0 0;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(184,200,224,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.22) 0%, rgba(247,147,26,0.07) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  footer a { color: var(--gray2); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .scroll-hint { left: 24px; }
+    .article { padding: 60px 24px; }
+    .pullquote { margin: 40px 0; padding: 32px 24px; }
+    .pullquote p { font-size: 21px !important; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    .cta-block { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Settlement Infrastructure</span>
+      <span class="hero-date">May 15, 2026 &middot; 3 min read</span>
+    </div>
+
+    <h1 class="hero-title">
+      OUR SETTLEMENT<br>LAYER JUST GOT<br><span class="accent">REAL-TIME.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      The same event-driven pattern banks and core processors have built on for years is now live in Aetherum&rsquo;s USDC settlement stack.
+    </p>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    Milestone worth noting: the USDC settlement infrastructure Aetherum is built on now supports real-time webhook events. Deposit finalized. Mint confirmed. Loan state updated. Instantly &mdash; <strong>no polling, no lag, no manual reconciliation.</strong>
+  </p>
+
+  <p>
+    For most fintech infrastructure announcements, this would be a developer footnote. For credit union lending, it&rsquo;s a structural shift.
+  </p>
+
+  <div class="pullquote">
+    <p>&ldquo;Credit unions have been trained by their core processors to accept batch processing and T+1 settlement as normal. That window is closing &mdash; and for crypto-collateralized lending, it was never acceptable to begin with.&rdquo;</p>
+  </div>
+
+  <h2>WHY THIS MATTERS FOR <span class="acc">CRYPTO-COLLATERALIZED</span> LENDING</h2>
+
+  <p>
+    Crypto collateral is volatile. BTC and ETH move. A collateral position that clears a loan-to-value threshold at 9:00am may be underwater by 9:15. In that environment, <strong>a settlement layer that requires polling isn&rsquo;t just slow. It&rsquo;s a risk management gap.</strong> Real-time webhook infrastructure closes that gap.
+  </p>
+
+  <p>
+    When a deposit finalizes, your system knows instantly. When a mint confirms, the loan state updates in the same moment. There is no reconciliation window during which a member&rsquo;s collateral position is ambiguous. The record is live because the event is live.
+  </p>
+
+  <h2>WHAT&rsquo;S LIVE IN <span class="acc">THE STACK</span></h2>
+
+  <p>
+    Three event types now fire in real time:
+  </p>
+
+  <div class="event-list">
+    <div class="event-list-label">Live Webhook Events</div>
+    <div class="event-item">
+      <div class="event-dot"></div>
+      gateway.deposit.finalized
+    </div>
+    <div class="event-item">
+      <div class="event-dot"></div>
+      gateway.mint.finalized
+    </div>
+    <div class="event-item">
+      <div class="event-dot"></div>
+      gateway.mint.forwarded
+    </div>
+  </div>
+
+  <p>
+    Each event carries the full payload needed to update loan state, trigger downstream compliance checks, and log the transaction to the audit trail &mdash; without a secondary polling call.
+  </p>
+
+  <h2>THE PATTERN BANKS <span class="acc">ALREADY KNOW</span></h2>
+
+  <p>
+    Core processors &mdash; Jack Henry, Fiserv, FIS &mdash; have operated on event-driven architectures for years. The institutions that built on those rails got faster reconciliation, cleaner audit trails, and lower operational overhead as a direct result.
+  </p>
+
+  <p>
+    Credit unions that partner with Aetherum now get that same infrastructure standard applied to crypto-collateralized lending. The pattern isn&rsquo;t new. The application to this asset class is.
+  </p>
+
+  <div class="pullquote">
+    <p>&ldquo;Every infrastructure partner we&rsquo;ve selected has one thing in common: they build for institutions first. That standard flows through everything Aetherum delivers to credit unions.&rdquo;</p>
+  </div>
+
+  <div class="reality-box">
+    <div class="reality-label">What This Means Operationally</div>
+    <p>Real-time settlement events eliminate the reconciliation gap that creates risk in volatile collateral environments. <strong>Your loan officers see collateral state when it changes, not when the next polling cycle runs.</strong> Your compliance team gets event logs that are timestamped to the moment of settlement, not the moment of ingestion.</p>
+  </div>
+
+  <p>
+    The rails keep getting better. We keep building on the best ones.
+  </p>
+
+  <div class="byline">John Bailey II &mdash; Founder, Aetherum</div>
+
+  <div class="tags">
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#Settlement</span>
+    <span class="tag">#USDC</span>
+    <span class="tag">#Circle</span>
+    <span class="tag">#RealTime</span>
+    <span class="tag">#Infrastructure</span>
+    <span class="tag">#CryptoLending</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">SCHEDULE A DEMO</div>
+    <div class="cta-sub">See the full settlement stack in action &mdash; real-time events, collateral state, and audit trail &mdash; in 30 minutes.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Book a 30-min Call</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div style="font-size:13px;color:var(--gray2)"><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a> &middot; <a href="/help">Help</a></div>
+</footer>
+
+</body>
+</html>
