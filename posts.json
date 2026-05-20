@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/sec-validated-infrastructure",
+    "title": "The SEC Just Validated the Infrastructure We Built On",
+    "excerpt": "SEC Chairman Atkins cited ERC-3643 by name. The tokenized securities framework drops this week. Here's what credit unions need to understand before the wave arrives.",
+    "date": "May 19, 2026",
+    "readTime": "5 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/circle-gateway-real-time/",
     "title": "Our Settlement Layer Just Got Real-Time.",
     "excerpt": "The same event-driven pattern banks and core processors have built on for years is now live in Aetherum's USDC settlement stack.",
     "date": "May 15, 2026",
     "readTime": "3 min read",
     "icon": "⚡",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
