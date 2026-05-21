@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stablecoins Don't Take Deposits. They Take Relationships. — Aetherum Blog</title>
+<meta name="description" content="The GENIUS Act is now law. Credit unions have a new NCUA rule on their desk and a $6.6 trillion question they haven't answered yet." />
+<meta property="og:title" content="Stablecoins Don't Take Deposits. They Take Relationships." />
+<meta property="og:description" content="The GENIUS Act is now law. Credit unions have a new NCUA rule on their desk and a $6.6 trillion question they haven't answered yet." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/genius-act-deposit-flight" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-readtime {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray2);
+    font-style: normal;
+  }
+
+  /* ── DATA FLOW BOX ── */
+  .data-flow {
+    margin: 64px 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .data-flow-header {
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .data-flow-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .data-flow-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .flow-item.loss {
+    border-color: rgba(216,90,48,0.25);
+    background: rgba(216,90,48,0.06);
+  }
+
+  .flow-item.gain {
+    border-color: rgba(74,143,255,0.25);
+    background: rgba(15,60,140,0.12);
+  }
+
+  .flow-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .flow-arrow.down { color: #D85A30; }
+  .flow-arrow.up   { color: var(--blue-light); }
+
+  .flow-label {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray1);
+    flex: 1;
+  }
+
+  .flow-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--gray2);
+    white-space: nowrap;
+  }
+
+  /* ── REALITY BOX ── */
+  .reality-box {
+    margin: 48px 0;
+    padding: 36px 40px;
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 16px;
+    background: rgba(247,147,26,0.04);
+  }
+
+  .reality-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .reality-box p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--gray1);
+  }
+
+  .reality-box strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-patent {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  footer a { color: var(--gray3); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--gray1); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Regulatory &amp; Policy</span>
+      <span class="hero-date">May 21, 2026</span>
+      <span class="hero-readtime">5 min read</span>
+    </div>
+
+    <h1 class="hero-title">
+      STABLECOINS DON'T<br>TAKE DEPOSITS.<br><span class="accent">THEY TAKE RELATIONSHIPS.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      The GENIUS Act is now law. Credit unions have a new NCUA rule on their desk and a $6.6 trillion question they haven't answered yet.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Cofounder &middot; Aetherum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">$6.6T</div>
+    <div class="stat-desc">Estimated deposits at risk of migration to stablecoins — U.S. Treasury</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">$311B</div>
+    <div class="stat-desc">Total stablecoin market cap already in circulation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">308&ndash;122</div>
+    <div class="stat-desc">House vote passing the GENIUS Act into law</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">140M</div>
+    <div class="stat-desc">Credit union members whose deposit relationships are now in play</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <h2>THE LAW IS SETTLED. <span class="acc">THE THREAT ISN'T.</span></h2>
+
+  <p>
+    The GENIUS Act was signed into law on July 18, 2025. The House passed it 308&ndash;122. The Senate passed it 68&ndash;30. The NCUA dropped its supplemental implementation rule on May 15, 2026.
+  </p>
+
+  <p>
+    The regulatory framework for payment stablecoins in the United States is no longer theoretical. It's operational.
+  </p>
+
+  <p>
+    And most credit unions still haven't decided what it means for them.
+  </p>
+
+  <p>
+    That's understandable. The GENIUS Act was framed as a tech story &mdash; digital dollars, blockchain rails, big fintech ambition. But buried underneath that framing is something credit unions should recognize immediately: a deposit flight problem.
+  </p>
+
+  <h2>THE NUMBER NOBODY WANTS <span class="acc">TO SAY OUT LOUD</span></h2>
+
+  <p>
+    The U.S. Treasury estimated that if yield-bearing stablecoins were allowed to spread unchecked, the result could be <strong>$6.6 trillion in deposits leaving banks and credit unions</strong> &mdash; a capital drain that would directly constrain lending.
+  </p>
+
+  <p>
+    Bank of America's CEO put his own number on it: up to $6 trillion in deposits, roughly 30&ndash;35% of all commercial bank balances, could migrate to stablecoins depending on how the regulatory yield debate resolves.
+  </p>
+
+  <p>
+    America's Credit Unions didn't stay quiet. They joined the American Bankers Association and a coalition of industry groups in urging Congress to close the yield loophole &mdash; framing every deposit not as a line item, but as a home loan, a small business loan, an agricultural loan waiting to happen.
+  </p>
+
+  <p>
+    The Fed backed them up. A 2025 Federal Reserve note concluded that <strong>substitution of retail deposits into stablecoins could raise banks' funding costs and liquidity risks</strong> &mdash; even if total deposit levels held steady.
+  </p>
+
+  <div class="pullquote">
+    <p>"These aren't hypotheticals. The stablecoin market has already crossed $311 billion. USDC alone holds over $76 billion."</p>
+  </div>
+
+  <p>
+    Crypto exchanges were offering 3.5&ndash;5% rewards on stablecoin balances by end of 2025. And unlike bank deposits, stablecoin reserves flow almost entirely into T-bills and money market funds &mdash; meaning when a member moves $100 into a stablecoin wallet, nearly all of it exits the traditional banking system.
+  </p>
+
+  <!-- DEPOSIT FLIGHT FLOW -->
+  <div class="data-flow">
+    <div class="data-flow-header">
+      <span class="data-flow-title">The Deposit Flight Mechanism</span>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;">Aetherum Analysis</span>
+    </div>
+    <div class="data-flow-body">
+      <div class="flow-item loss">
+        <span class="flow-arrow down">&#8595;</span>
+        <span class="flow-label">Member moves $100 into stablecoin wallet</span>
+        <span class="flow-value">$100 exits CU</span>
+      </div>
+      <div class="flow-item loss">
+        <span class="flow-arrow down">&#8595;</span>
+        <span class="flow-label">Stablecoin reserve buys T-bills or money market fund</span>
+        <span class="flow-value">~$98 exits banking system</span>
+      </div>
+      <div class="flow-item loss">
+        <span class="flow-arrow down">&#8595;</span>
+        <span class="flow-label">CU loses funding capacity for loans</span>
+        <span class="flow-value">Fewer loans originated</span>
+      </div>
+      <div class="flow-item loss">
+        <span class="flow-arrow down">&#8595;</span>
+        <span class="flow-label">Net interest margin compresses</span>
+        <span class="flow-value">Mission erosion</span>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    The math is direct: fewer deposits &rarr; less lending capacity &rarr; compressed net interest margin &rarr; mission erosion.
+  </p>
+
+  <h2>THE REVENUE LOSS MOST CUs <span class="acc">AREN'T TRACKING</span></h2>
+
+  <p>
+    The deposit headline gets the attention. The revenue story is quieter &mdash; and arguably more dangerous.
+  </p>
+
+  <p>
+    Under the GENIUS Act framework, federally regulated credit unions are prohibited from paying interest on payment stablecoin balances. That sounds protective. But look at what it actually means operationally:
+  </p>
+
+  <p>
+    When a member moves crypto activity to a third-party wallet or exchange &mdash; and they will &mdash; the credit union loses visibility into those transactions. No interchange revenue. No cross-sell opportunity. No relationship data. No lending signal.
+  </p>
+
+  <div class="reality-box">
+    <div class="reality-label">The Real Cost</div>
+    <p>The deposit relationship isn't just a funding source. It's the <strong>data substrate</strong> for everything else a credit union does. Once a member starts routing digital asset activity outside the institution, that relationship begins to hollow out from the inside.</p>
+  </div>
+
+  <p>
+    The question isn't whether your members will interact with digital assets. They already are. <strong>The question is whether they'll do it through you &mdash; or through someone else.</strong>
+  </p>
+
+  <h2>WHAT THE GENIUS ACT ACTUALLY <span class="acc">OPENS FOR CREDIT UNIONS</span></h2>
+
+  <p>
+    The NCUA's February and May 2026 proposed rules lay out a path: credit unions can issue payment stablecoins through a Credit Union Service Organization subsidiary, subject to NCUA oversight.
+  </p>
+
+  <p>
+    Most credit unions won't take that path. The capital requirements, compliance complexity, and operational burden of becoming a permitted payment stablecoin issuer are beyond the reach of all but the largest institutions.
+  </p>
+
+  <p>
+    But that's not the only way to compete.
+  </p>
+
+  <p>
+    The institutions that win this transition won't be the ones that become stablecoin issuers. They'll be the ones that give members a reason to keep their digital asset activity inside the credit union relationship.
+  </p>
+
+  <div class="pullquote">
+    <p>"That's a product problem. And it has a solution that doesn't require a CUSO subsidiary, a blockchain team, or a GENIUS Act filing."</p>
+  </div>
+
+  <h2>THE ANSWER ISN'T ISSUANCE. <span class="acc">IT'S RETENTION.</span></h2>
+
+  <p>
+    Crypto-collateralized lending does something stablecoin wallets can't: it deepens the member relationship rather than replacing it.
+  </p>
+
+  <p>
+    A member who holds Bitcoin or Ethereum doesn't have to sell it, trigger a taxable event, or open an account at a D2C crypto lender to get dollar liquidity. They can borrow against it &mdash; at their credit union &mdash; at competitive rates. Their crypto stays put. Their deposit stays put. The credit union books a new loan, generates fee income, and keeps the member inside the relationship.
+  </p>
+
+  <p>
+    This isn't a workaround for the GENIUS Act. It's the response the GENIUS Act was always going to require: meet members where their assets already are, before someone else does.
+  </p>
+
+  <p>
+    The 140 million Americans who belong to credit unions aren't moving to crypto exchanges because they distrust their CUs. They're moving because their CUs haven't offered them anything else.
+  </p>
+
+  <p>
+    <strong>The GENIUS Act just made the clock visible.</strong>
+  </p>
+
+  <div class="tags">
+    <span class="tag">#GENIUSAct</span>
+    <span class="tag">#Stablecoins</span>
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#DepositFlight</span>
+    <span class="tag">#NCUA</span>
+    <span class="tag">#RegPolicy</span>
+    <span class="tag">#DigitalAssets</span>
+    <span class="tag">#CryptoLending</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">YOUR MEMBERS' CRYPTO IS ALREADY WORKING AGAINST YOUR BALANCE SHEET.</div>
+    <div class="cta-sub">See how Aetherum turns held crypto into CU-originated loans &mdash; without custody, without issuance complexity, and without losing the member relationship.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Schedule a Demo &rarr;</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span class="footer-patent">Patent Pending</span>
+    <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gray3);"><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

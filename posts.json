@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/genius-act-deposit-flight",
+    "title": "Stablecoins Don't Take Deposits. They Take Relationships.",
+    "excerpt": "The GENIUS Act is now law. Credit unions have a new NCUA rule on their desk and a $6.6 trillion question they haven't answered yet.",
+    "date": "May 21, 2026",
+    "readTime": "5 min read",
+    "icon": "⚖️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/sec-validated-infrastructure",
     "title": "The SEC Just Validated the Infrastructure We Built On",
     "excerpt": "SEC Chairman Atkins cited ERC-3643 by name. The tokenized securities framework drops this week. Here's what credit unions need to understand before the wave arrives.",
