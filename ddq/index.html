@@ -43,6 +43,13 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 .cat-count { background:var(--orange-glow); border:1px solid var(--orange-border); border-radius:10px; padding:1px 5px; font-size:9px; color:var(--orange); }
 .kb-item { padding:5px 8px; border-radius:4px; cursor:pointer; font-size:11px; color:var(--muted); transition:all 0.14s; line-height:1.4; margin-bottom:2px; }
 .kb-item:hover { background:var(--orange-glow); color:var(--white); }
+.onchain-ref { padding:12px 14px; border-top:1px solid var(--border); background:var(--navy-mid); flex-shrink:0; }
+.ref-label { font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange); margin-bottom:8px; }
+.ref-row { display:flex; align-items:baseline; justify-content:space-between; gap:6px; margin-bottom:3px; }
+.ref-name { font-size:10px; color:var(--muted); white-space:nowrap; }
+.ref-addr { font-size:10px; color:var(--orange); text-decoration:none; font-family:'DM Mono',monospace; letter-spacing:0.02em; }
+.ref-addr:hover { text-decoration:underline; }
+.ref-net { font-size:9px; color:var(--muted); opacity:0.6; margin-top:5px; }
 
 /* MAIN */
 .main { display:flex; flex-direction:column; overflow:hidden; }
@@ -140,6 +147,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
     <div class="kb-scroll" id="kb-list">
       <div class="s-label">Knowledge base</div>
       <div style="color:var(--muted);font-size:11px;">Loading...</div>
+    </div>
+    <div class="onchain-ref">
+      <div class="ref-label">On-Chain Reference</div>
+      <div class="ref-row">
+        <span class="ref-name">CollateralEscrow</span>
+        <a href="https://testnet.arcscan.app/address/0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897" target="_blank" class="ref-addr" title="0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897">0x1fF9…8897</a>
+      </div>
+      <div class="ref-net">Arc Testnet · Chain ID 5042002</div>
     </div>
   </aside>
 
