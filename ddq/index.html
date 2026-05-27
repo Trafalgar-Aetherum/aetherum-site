@@ -102,7 +102,6 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 .results::-webkit-scrollbar { width:4px; }
 .results::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 .empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--muted); text-align:center; padding:40px; }
-.empty-hex { width:50px; height:50px; background:var(--orange-glow); border:1px solid var(--orange-border); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); margin-bottom:4px; }
 .empty-title { font-family:'Fraunces',serif; font-size:18px; color:var(--white); font-weight:300; }
 .empty-sub { font-size:13px; line-height:1.75; max-width:360px; }
 
@@ -216,7 +215,6 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 
     <div class="results" id="results">
       <div class="empty" id="empty-state">
-        <div class="empty-hex"></div>
         <div class="empty-title">DDQ Engine ready</div>
         <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
       </div>
@@ -354,7 +352,6 @@ function copyText(id, text) {
 function clearAll() {
   document.getElementById('results').innerHTML = `
     <div class="empty" id="empty-state">
-      <div class="empty-hex"></div>
       <div class="empty-title">DDQ Engine ready</div>
       <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture.</div>
     </div>`;
