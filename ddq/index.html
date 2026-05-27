@@ -175,6 +175,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('What is your business continuity and disaster recovery plan?')">Business continuity &amp; DR?</button>
       <button class="quick-q" onclick="setQ('What is your change management and deployment process?')">Change management process?</button>
     </div>
+    <div class="sidebar-top" style="border-top:1px solid var(--border);">
+      <div class="s-label">Operations &amp; Procedures</div>
+      <button class="quick-q" onclick="setQ('signing flow?')">Signing flow &amp; authorization?</button>
+      <button class="quick-q" onclick="setQ('threshold configuration?')">Threshold configuration?</button>
+      <button class="quick-q" onclick="setQ('escalation runbook?')">Escalation runbook?</button>
+      <button class="quick-q" onclick="setQ('incident response?')">Incident response?</button>
+      <button class="quick-q" onclick="setQ('key rotation?')">Key rotation procedure?</button>
+    </div>
     <div class="arc-live-block">
       <div class="arc-live-header">
         <div class="arc-live-dot"></div>
@@ -256,7 +264,8 @@ async function loadKb() {
 const CAT_LABELS = {
   arc_testnet:'Arc Testnet', risk_model:'Risk Model', compliance:'Compliance',
   data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
-  blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)'
+  blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)',
+  ops:'Operations & Procedures'
 };
 
 function renderKb(entries) {
