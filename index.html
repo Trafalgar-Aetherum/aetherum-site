@@ -35,6 +35,18 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* ─── NAV ─── */
   .nav {
     position: fixed;
@@ -177,16 +189,6 @@
     bottom: -30%; left: -15%;
     width: 700px; height: 700px;
     background: radial-gradient(circle, rgba(96,165,250,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
     pointer-events: none;
   }
 
@@ -923,7 +925,6 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="grid-overlay"></div>
   <div class="hero-content">
     <h1>Crypto-Collateralized Lending Infrastructure, <span class="copper">Powered by AI</span></h1>
     <p class="hero-sub">Give your members access to USD liquidity without selling their digital assets — no tax events, no lost upside. Aetherum's turnkey platform layers onto your existing core with institutional-grade custody, compliance, and real-time risk management.</p>
