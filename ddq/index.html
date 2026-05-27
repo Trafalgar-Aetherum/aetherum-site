@@ -167,6 +167,15 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('Do you have any patents or proprietary intellectual property?')">Patents & IP?</button>
       <button class="quick-q" onclick="setQ('Can you process ACH transfers or move money on behalf of members?')">Payments / ACH capability?</button>
     </div>
+    <div class="sidebar-top" style="border-top:1px solid var(--border);">
+      <div class="s-label">Security Review</div>
+      <button class="quick-q" onclick="setQ('How are signing keys and private keys managed? Do you have key rotation policies?')">Signing keys &amp; key management?</button>
+      <button class="quick-q" onclick="setQ('What is your incident response process for a security breach or system failure?')">Incident response process?</button>
+      <button class="quick-q" onclick="setQ('How is data encrypted at rest and in transit? What data do you store?')">Data encryption &amp; storage?</button>
+      <button class="quick-q" onclick="setQ('Who are your key subprocessors and third party vendors?')">Third party / subprocessors?</button>
+      <button class="quick-q" onclick="setQ('What is your business continuity and disaster recovery plan?')">Business continuity &amp; DR?</button>
+      <button class="quick-q" onclick="setQ('What is your change management and deployment process?')">Change management process?</button>
+    </div>
     <div class="arc-live-block">
       <div class="arc-live-header">
         <div class="arc-live-dot"></div>
@@ -249,7 +258,7 @@ async function loadKb() {
 const CAT_LABELS = {
   arc_testnet:'Arc Testnet', risk_model:'Risk Model', compliance:'Compliance',
   data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
-  blockchain:'Blockchain', company:'Company'
+  blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)'
 };
 
 function renderKb(entries) {
