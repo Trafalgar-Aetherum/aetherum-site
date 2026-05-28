@@ -133,6 +133,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 /* ERROR */
 .error-card { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.18); border-radius:8px; padding:13px 16px; font-size:13px; color:var(--red); display:flex; gap:10px; align-items:flex-start; }
 .error-card::before { content:'✕'; flex-shrink:0; font-weight:500; }
+
+/* KB VERSION BADGE */
+#kb-version-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.06em; color:var(--muted); background:var(--border); border-radius:4px; padding:3px 8px; white-space:nowrap; }
+
+/* DDQ FOOTER */
+.ddq-footer { font-size:11px; color:var(--muted); text-align:center; padding:16px 20px; border-top:1px solid var(--border); margin-top:auto; }
+.ddq-footer a { color:var(--muted); text-decoration:underline; }
+.ddq-footer a:hover { color:var(--white); }
 </style>
 </head>
 <body>
@@ -145,6 +153,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <span class="logo-module">DDQ Engine</span>
     </div>
     <div class="header-right">
+      <span id="kb-version-badge"></span>
       <span class="endpoint-txt" id="ep-display"></span>
       <div class="status-pill">
         <div class="status-dot"></div>
@@ -237,6 +246,13 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
     </div>
   </main>
 
+  <div class="ddq-footer">
+    Knowledge base maintained under documented review process. Full revision history available at:
+    <a href="https://github.com/Trafalgar-Aetherum/aethereum-backend/commits/main/src/ddq/knowledge-base/kb.json" target="_blank">GitHub commit history</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/Trafalgar-Aetherum/aethereum-backend/blob/main/src/ddq/knowledge-base/kb-changelog.md" target="_blank">KB Changelog</a>
+  </div>
+
 </div>
 
 <script>
@@ -255,6 +271,18 @@ async function init() {
     token = d.token || d.access_token || d.accessToken;
   } catch(e) {}
   loadKb();
+  loadKbMeta();
+}
+
+async function loadKbMeta() {
+  try {
+    const r = await fetch(`${API}/ddq/kb-meta`);
+    const meta = await r.json();
+    const badge = document.getElementById('kb-version-badge');
+    if (badge && meta.version && meta.last_reviewed) {
+      badge.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+    }
+  } catch(e) {}
 }
 
 async function loadKb() {
