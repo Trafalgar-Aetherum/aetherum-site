@@ -23,7 +23,12 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
 
   body {
     background: var(--navy);
@@ -78,6 +83,7 @@
   /* SECTIONS */
   section {
     min-height: 100vh;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     justify-content: center;
