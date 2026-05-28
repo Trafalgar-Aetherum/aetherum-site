@@ -31,7 +31,7 @@
   --amber: #F59E0B;
 }
 html,body { height:100%; overflow:hidden; background:var(--navy); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; }
-.app { display:grid; grid-template-rows:52px 1fr; grid-template-columns:200px 1fr; height:100vh; overflow:hidden; }
+.app { display:grid; grid-template-rows:52px 1fr auto; grid-template-columns:200px 1fr; height:100vh; overflow:hidden; }
 
 /* HEADER */
 header { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; padding:0 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); position:relative; z-index:10; }
@@ -138,7 +138,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 #kb-version-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.06em; color:var(--muted); background:var(--border); border-radius:4px; padding:3px 8px; white-space:nowrap; }
 
 /* DDQ FOOTER */
-.ddq-footer { font-size:11px; color:var(--muted); text-align:center; padding:16px 20px; border-top:1px solid var(--border); margin-top:auto; }
+.ddq-footer { grid-column:1/-1; font-size:11px; color:var(--muted); text-align:center; padding:16px 20px; border-top:1px solid var(--border); }
 .ddq-footer a { color:var(--muted); text-decoration:underline; }
 .ddq-footer a:hover { color:var(--white); }
 </style>
