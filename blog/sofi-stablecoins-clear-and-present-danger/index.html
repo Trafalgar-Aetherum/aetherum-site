@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoFi, Stablecoins, and a Clear and Present Danger to Credit Union Relevance | Aetherum</title>
+  <meta name="description" content="On May 27, 2026, SoFi became the first U.S. national bank to put a stablecoin in the hands of 15 million members. Credit unions have 140 million. The window is open — but not forever." />
+  <meta property="og:title" content="SoFi, Stablecoins, and a Clear and Present Danger to Credit Union Relevance" />
+  <meta property="og:description" content="On May 27, 2026, SoFi became the first U.S. national bank to put a stablecoin in the hands of 15 million members. Credit unions have 140 million. The window is open — but not forever." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #03060F;
+      --navy2:   #070d1c;
+      --navy3:   #0d1829;
+      --blue:    #0F50C8;
+      --orange:  #F7931A;
+      --orange2: rgba(247,147,26,0.12);
+      --white:   #FFFFFF;
+      --gray1:   #b0bcd4;
+      --gray2:   #5a6a88;
+      --gray3:   #1e2d45;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Fraunces', serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(3,6,15,0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--orange); }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray1);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(247,147,26,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,147,26,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+    .hero-orb-1 {
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,80,200,0.14) 0%, transparent 65%);
+      top: -280px; left: -260px;
+      pointer-events: none;
+    }
+    .hero-orb-2 {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,147,26,0.11) 0%, transparent 65%);
+      bottom: -160px; right: -160px;
+      pointer-events: none;
+    }
+    .hero-orb-3 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 70%);
+      top: 30%; left: 55%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 940px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      text-transform: uppercase;
+      border: 1px solid rgba(247,147,26,0.35);
+      padding: 5px 13px;
+      border-radius: 3px;
+    }
+    .hero-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gray2);
+      text-transform: uppercase;
+    }
+    .hero-read {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gray2);
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(68px, 9vw, 126px);
+      line-height: 0.87;
+      letter-spacing: 0.01em;
+      margin-bottom: 36px;
+    }
+    .hero-title .accent { color: var(--orange); }
+    .hero-subtitle {
+      font-family: 'Fraunces', serif;
+      font-size: 21px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gray1);
+      max-width: 700px;
+      line-height: 1.65;
+    }
+
+    /* ── BODY ── */
+    .article-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 96px 48px 40px;
+    }
+
+    /* ── LEDE ── */
+    .lede {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--gray1);
+      margin-bottom: 56px;
+      border-left: 3px solid var(--orange);
+      padding-left: 28px;
+    }
+
+    /* ── SECTION HEADS ── */
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin: 64px 0 20px;
+      line-height: 1;
+    }
+    h2 .acc { color: var(--orange); }
+
+    /* ── BODY COPY ── */
+    p {
+      font-size: 18px;
+      line-height: 1.82;
+      color: var(--gray1);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 56px 0;
+      padding: 36px 40px;
+      border-left: 4px solid var(--orange);
+      background: linear-gradient(135deg, rgba(247,147,26,0.06) 0%, rgba(15,80,200,0.04) 100%);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin: 56px 0;
+    }
+    .stat-block {
+      background: var(--navy3);
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-block:first-child { border-radius: 8px 0 0 8px; }
+    .stat-block:last-child { border-radius: 0 8px 8px 0; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray2);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      margin: 56px 0;
+      position: relative;
+      padding-left: 32px;
+      border-left: 2px solid var(--gray3);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid var(--navy);
+    }
+    .timeline-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .timeline-head {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .timeline-body {
+      font-size: 15px;
+      color: var(--gray2);
+      line-height: 1.6;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      margin: 56px 0;
+      padding: 36px 40px;
+      background: var(--navy3);
+      border: 1px solid rgba(247,147,26,0.2);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .callout::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .callout h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .callout p {
+      font-size: 16px;
+      color: var(--gray1);
+      margin: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--gray3);
+      margin: 64px 0;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      margin: 80px 0 40px;
+      padding: 56px 48px;
+      background: linear-gradient(135deg, var(--navy3) 0%, rgba(15,80,200,0.08) 100%);
+      border: 1px solid rgba(247,147,26,0.15);
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .cta-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .cta-block h2 {
+      margin: 0 0 16px;
+      font-size: clamp(32px, 4vw, 52px);
+      position: relative;
+    }
+    .cta-block p {
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .cta-btn:hover {
+      background: #ffaa33;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(247,147,26,0.3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gray3);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--orange); }
+    .footer-patent {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray2);
+      border: 1px solid var(--gray3);
+      padding: 6px 14px;
+      border-radius: 3px;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--gray2);
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 16px 24px; }
+      .hero { padding: 0 24px 64px; min-height: 80vh; }
+      .article-wrap { padding: 72px 24px 32px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .stat-block:first-child { border-radius: 8px 8px 0 0; }
+      .stat-block:last-child { border-radius: 0 0 8px 8px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .cta-block { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="https://aetherum.ai" class="nav-brand">AETHERUM<span>.</span></a>
+    <a href="https://aetherum.ai/blog" class="nav-back">← Back to Blog</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-orb-3"></div>
+    <div class="hero-inner">
+      <div class="hero-meta">
+        <span class="hero-tag">Regulatory &amp; Strategy</span>
+        <span class="hero-date">May 28, 2026</span>
+        <span class="hero-read">6 min read</span>
+      </div>
+      <h1 class="hero-title">
+        SOFI, STABLECOINS,<br>
+        AND A <span class="accent">CLEAR AND</span><br>
+        <span class="accent">PRESENT DANGER</span><br>
+        TO CREDIT UNION<br>RELEVANCE
+      </h1>
+      <p class="hero-subtitle">
+        On May 27th, a nationally chartered U.S. bank put blockchain-native dollars in the hands of 15 million members. Credit unions serve 140 million. The question is no longer whether this is coming — it's whether you'll be the institution your members turn to when it arrives.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <main class="article-wrap">
+
+    <p class="lede">
+      For years, the crypto conversation in credit union boardrooms has been a comfortable one: <em>monitor, wait, let someone else take the regulatory risk first.</em> On May 27, 2026, that conversation ended.
+    </p>
+
+    <p>
+      SoFi Technologies — a nationally chartered bank with a consumer app and no branch network — launched SoFiUSD: a fully reserved, 1:1 dollar-redeemable stablecoin available on Ethereum and Solana, embedded directly inside the SoFi banking app. Not in a separate wallet. Not behind a crypto-native interface. Inside the same app 14.7 million members use to check their balance, pay their bills, and apply for a loan.
+    </p>
+
+    <p>
+      That is the line that has now been crossed. A regulated U.S. bank — OCC-chartered, FDIC-insured — just made stablecoins as accessible as a savings account. And they did it on a public, permissionless blockchain. The first to do so in American banking history.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-num">14.7M</div>
+        <div class="stat-label">SoFi members with stablecoin access — day one</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">140M</div>
+        <div class="stat-label">U.S. credit union members — still waiting</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">Jul 18</div>
+        <div class="stat-label">NCUA GENIUS Act rulemaking deadline, 2026</div>
+      </div>
+    </div>
+
+    <h2>WHAT SOFI <span class="acc">ACTUALLY</span> BUILT</h2>
+
+    <p>
+      The mechanics matter. SoFiUSD was built on institutional-grade custody and stablecoin infrastructure — the same infrastructure that powers much of the digital asset settlement market. Each token is fully reserved against cash held at SoFi Bank itself, audited quarterly by a U.S.-licensed CPA, and redeemable directly through the bank. It is not a crypto product bolted onto a bank. It is a bank product built on crypto rails.
+    </p>
+
+    <p>
+      The roadmap is more revealing than the launch. Within weeks, SoFi plans to introduce interest-earning tokenized deposits with FDIC insurance — a product that doesn't exist anywhere in traditional banking today. They've also announced integration with their Galileo technology platform, which processes transactions for over 160 million accounts across fintechs and neobanks globally. And they've partnered with Mastercard to enable SoFiUSD as a settlement option across Mastercard's global payments network.
+    </p>
+
+    <div class="pull-quote">
+      <p>"People no longer have to choose between blockchain technology and regulated banking products."</p>
+      <cite>— Anthony Noto, CEO, SoFi Technologies — December 2025</cite>
+    </div>
+
+    <p>
+      He said the quiet part out loud. The choice framing is the threat. Because your members — the ones you've served for decades, who trust you with their mortgage and their car loan and their children's first savings account — are now being told they <em>don't have to leave their bank</em> to access digital assets. SoFi just removed the friction that kept members choosing between you and the crypto-native alternatives.
+    </p>
+
+    <h2>THE <span class="acc">REGULATORY</span> RUNWAY IS CLOSING</h2>
+
+    <p>
+      This didn't happen in a vacuum. The GENIUS Act — signed into law in July 2025 — created the federal framework that made SoFi's launch possible. The OCC, FDIC, Federal Reserve, and NCUA were all designated as primary regulators for payment stablecoin issuers under their respective jurisdictions. SoFi moved the moment the regulatory air cleared.
+    </p>
+
+    <p>
+      Credit unions have a path. The NCUA issued its first GENIUS Act implementing rulemaking in February 2026 and followed with its operational standards proposal in May. The July 18, 2026 deadline for final regulations is weeks away. NCUA Chairman Kyle Hauptman has been explicit: <strong>"Credit unions will face no disadvantage compared to other entities regarding standards."</strong>
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">July 2025</div>
+        <div class="timeline-head">GENIUS Act signed into law</div>
+        <p class="timeline-body">Federal stablecoin framework established. NCUA named as primary regulator for credit union subsidiaries.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">December 2025</div>
+        <div class="timeline-head">SoFi launches SoFiUSD on Ethereum</div>
+        <p class="timeline-body">First bank-issued stablecoin on a public blockchain. Enterprise pilots only at launch.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">February 2026</div>
+        <div class="timeline-head">NCUA releases PPSI licensing framework</div>
+        <p class="timeline-body">Credit unions can issue stablecoins through CUSO subsidiaries (PPSIs). Joint application structure defined.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">May 15, 2026</div>
+        <div class="timeline-head">NCUA releases operational standards proposal</div>
+        <p class="timeline-body">Risk management, AML, and compliance standards for licensed PPSIs published. Comment period closes July 17.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">May 27, 2026</div>
+        <div class="timeline-head">SoFi puts stablecoins in 15 million wallets</div>
+        <p class="timeline-body">SoFiUSD goes live on Solana. Buy, sell, hold, convert — inside the banking app. The line is crossed.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">July 18, 2026</div>
+        <div class="timeline-head">NCUA final rules due</div>
+        <p class="timeline-body">Statutory deadline for GENIUS Act implementation. The regulatory framework for credit union digital asset participation becomes final.</p>
+      </div>
+    </div>
+
+    <p>
+      The window is open. But NCUA's framework also makes clear that credit unions cannot issue stablecoins directly — it must be done through a separately licensed subsidiary, structured as a CUSO. That is not a barrier. It is a design specification. And it is one that takes time to architect correctly.
+    </p>
+
+    <h2>THE <span class="acc">LENDING</span> ANGLE NOBODY IS TALKING ABOUT</h2>
+
+    <p>
+      SoFi launched a stablecoin. That's a payment and store-of-value product. What they haven't done — what no bank or credit union has done at scale — is answer the question that follows naturally from 140 million Americans holding crypto assets: <strong>can I use what I have to access the liquidity I need, without selling?</strong>
+    </p>
+
+    <p>
+      That's not a stablecoin problem. That's a lending problem. And lending is what credit unions do.
+    </p>
+
+    <p>
+      Credit union members who hold Bitcoin, Ethereum, or other digital assets don't want to sell. Selling is a taxable event. Selling breaks their long-term position. What they want is what your wealthiest members have always wanted: access to the value they've built, in a form they can use, from an institution they trust. A crypto-collateralized loan — secured against their digital assets, denominated in dollars, structured by their credit union — solves that problem without requiring a sale.
+    </p>
+
+    <div class="callout">
+      <div class="callout-label">The Member Benefit</div>
+      <h3>No Sale. No Tax Event. No Leaving.</h3>
+      <p>
+        A member with $50,000 in Bitcoin wants a $25,000 home improvement loan. Under a crypto-collateralized lending model, they keep their position, access the capital, and repay over time at competitive APR — all through the credit union they already bank with. That member never has to look at SoFi, Coinbase, or anyone else.
+      </p>
+    </div>
+
+    <p>
+      The threat SoFi represents is real — but it's a threat to member retention in the payments and savings layer. The deeper opportunity is in lending: the product that builds relationship, generates durable revenue, and keeps a member in your ecosystem for years. That is the ground credit unions should be moving to claim.
+    </p>
+
+    <h2>WHAT <span class="acc">WAITING</span> COSTS</h2>
+
+    <p>
+      The "wait and see" posture has always had a cost. That cost is now denominated in members. SoFi's 14.7 million users are disproportionately younger, higher-income, and digitally active — exactly the demographic that credit unions have struggled to attract and retain. They chose SoFi over a traditional bank because SoFi moved faster, offered more, and met them where they were. SoFi just moved again.
+    </p>
+
+    <p>
+      The institutions that respond to this moment — that build the infrastructure, partner with the right technology providers, and bring compliant crypto services to their membership — will capture a cohort that is currently adrift between D2C crypto platforms and institutions that still don't serve them. Credit unions have the trust. They have the relationships. They have the regulatory standing. They need the infrastructure.
+    </p>
+
+    <div class="pull-quote">
+      <p>The member attrition risk is no longer theoretical. It arrived on May 27th. The question now is which credit unions will be ready when their members ask the question SoFi just answered for everyone else.</p>
+    </div>
+
+    <h2>THE <span class="acc">PATH</span> FORWARD</h2>
+
+    <p>
+      Credit unions don't need to out-innovate SoFi. They need to serve their members in a way SoFi structurally cannot: with the depth of relationship, the commitment to financial wellbeing, and the cooperative mission that defines the movement. Digital assets are a member need, not a threat to the credit union identity. The credit unions that understand this will use SoFi's launch as the catalyst it is.
+    </p>
+
+    <p>
+      The infrastructure to do this — compliant, core-integrated, built specifically for NCUA-regulated institutions — exists today. Crypto-collateralized lending does not require a PPSI license, a CUSO restructuring, or months of regulatory waiting. It requires a partner who has already done the compliance work, built the risk assessment architecture, and integrated with the core banking systems your operations already run on.
+    </p>
+
+    <p>
+      The danger is clear. The window is open. The only question is whether your institution will be on the right side of this moment when it closes.
+    </p>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-label">Built for Credit Unions</div>
+      <h2>READY TO <span class="acc">MOVE?</span></h2>
+      <p>Aetherum is the crypto-collateralized lending infrastructure built exclusively for NCUA-regulated credit unions. See how we integrate with your core and serve your members from day one.</p>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn">Schedule a Conversation</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">AETHERUM<span>.</span></div>
+    <div class="footer-patent">8 Patents Pending &nbsp;·&nbsp; DACS™ Risk Assessment</div>
+    <div class="footer-copy">&copy; 2026 Aetherum, Inc. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
