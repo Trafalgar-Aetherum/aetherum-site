@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/erc-7943-credit-union-compliance/",
+    "title": "A New Ethereum Standard Just Dropped. Here's Why It Matters for Regulated Institutions.",
+    "excerpt": "ERC-7943 is now an official Ethereum standard. For credit unions evaluating crypto infrastructure, this changes the compliance conversation entirely — and Aetherum was already built for it.",
+    "date": "May 29, 2026",
+    "readTime": "4 min read",
+    "icon": "⛓️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/sofi-stablecoins-clear-and-present-danger",
     "title": "SoFi, Stablecoins, and a Clear and Present Danger to Credit Union Relevance",
     "excerpt": "On May 27th, a nationally chartered U.S. bank put blockchain-native dollars in the hands of 15 million members. Credit unions serve 140 million. The window is open — but not forever.",

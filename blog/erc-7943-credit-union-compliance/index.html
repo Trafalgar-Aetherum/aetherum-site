@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A New Ethereum Standard Just Dropped. Here's Why It Matters for Regulated Institutions — Aetherum Blog</title>
+<meta name="description" content="ERC-7943 is now an official Ethereum standard. For credit unions evaluating crypto infrastructure, this changes the compliance conversation entirely — and Aetherum was already built for it." />
+<meta property="og:title" content="A New Ethereum Standard Just Dropped. Here's Why It Matters for Regulated Institutions." />
+<meta property="og:description" content="ERC-7943 is now an official Ethereum standard. For credit unions evaluating crypto infrastructure, this changes the compliance conversation entirely — and Aetherum was already built for it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/erc-7943-credit-union-compliance/" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7.5vw, 108px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-text {}
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--orange);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray2);
+    font-style: normal;
+  }
+
+  /* ── PATENT BADGE ── */
+  .patent-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: rgba(247,147,26,0.1);
+    color: var(--orange);
+    border: 1px solid rgba(247,147,26,0.28);
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  /* ── CLOSING NOTE ── */
+  .closing-note {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--gray2);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  footer a { color: var(--gray2); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Blockchain Infrastructure</span>
+      <span class="hero-date">May 29, 2026 &middot; 4 min read</span>
+    </div>
+
+    <h1 class="hero-title">
+      A NEW ETHEREUM STANDARD<br>
+      <span class="accent">JUST DROPPED.</span><br>
+      HERE'S WHY IT MATTERS<br>
+      FOR REGULATED INSTITUTIONS —<br>
+      AND WHY AETHERUM WAS<br>
+      <span class="accent">ALREADY BUILT FOR IT.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      ERC-7943 is now an official standard. For credit unions evaluating crypto infrastructure, this changes the compliance conversation entirely.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Founder &middot; Aetherum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">Final</div>
+    <div class="stat-desc">ERC-7943 official status on the Ethereum standards track</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">4</div>
+    <div class="stat-desc">Aetherum smart contracts deployed and verified on Sepolia</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">2</div>
+    <div class="stat-desc">Open compliance standards in Aetherum's on-chain stack: ERC-3643 + ERC-7943</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">Day 0</div>
+    <div class="stat-desc">AetherumCollateralToken was ERC-7943 compliant the day the standard reached Final</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    This week, ERC-7943 became an official Ethereum standard.
+  </p>
+
+  <p>
+    If you're not a Solidity developer, that sentence probably doesn't mean much. Let me explain why it should matter to anyone building financial infrastructure for regulated institutions.
+  </p>
+
+  <p>
+    For the last several years, every institution that wanted to work with tokenized assets faced the same problem &mdash; not regulatory uncertainty, not member reluctance, not even technology risk. The problem was dependency. Every compliant token solution on the market came with a vendor-controlled compliance model baked in. You didn't just buy a product. You bought a roadmap you couldn't audit, a framework you couldn't exit, and a compliance surface you didn't own.
+  </p>
+
+  <p>
+    That's a non-starter for a credit union. Credit unions don't outsource their compliance posture to vendors. They own it, they examine it, and they answer for it to NCUA.
+  </p>
+
+  <p>
+    ERC-7943 is the first open standard that changes this equation. It defines a neutral, minimal interface that any compliant tokenized asset must expose &mdash; eligibility checks, transfer controls, freeze mechanisms, enforcement actions. No identity vendor required. No compliance platform required. Just a standard that any wallet, custodian, asset manager, or distribution platform can speak.
+  </p>
+
+  <div class="pullquote">
+    <p>For regulated institutions, that's the difference between a vendor relationship and infrastructure.</p>
+  </div>
+
+  <h2>AETHERUM WAS ALREADY BUILT FOR THIS</h2>
+
+  <p>
+    Aetherum has been building toward exactly this architecture since we started.
+  </p>
+
+  <p>
+    Our compliance stack &mdash; three on-chain modules covering US jurisdiction verification, collateral LTV enforcement, and credit union membership attestation &mdash; was built on ERC-3643, the T-REX transfer compliance standard that Tokeny pioneered. Every loan origination on Aetherum triggers a live on-chain check across all three. Immutable, timestamped, independently verifiable by any examiner.
+  </p>
+
+  <p>
+    When ERC-7943 reached Final status this week, our AetherumCollateralToken was ERC-7943 compliant the same day. Not because we scrambled to retrofit &mdash; because the architecture was already there. ERC-7943 is the universal interface layer that sits above ERC-3643. Our modules are the compliance engine underneath it.
+  </p>
+
+  <p>
+    The result is a two-layer on-chain compliance stack that maps directly to what NCUA examiners will ask for: member eligibility, collateral enforcement, regulatory freeze capability, and enforcement actions. <strong>All on open standards. All auditable. All patent-pending.</strong>
+  </p>
+
+  <h2>WHY OPEN STANDARDS CHANGE THE INSTITUTIONAL CONVERSATION</h2>
+
+  <p>
+    Here's the part that matters most for where this industry is going.
+  </p>
+
+  <p>
+    ERC-7943 isn't just a technical spec. It's a signal that the institutional tokenization space is maturing past proprietary frameworks toward open infrastructure. Wallets, custodians, asset managers, and platforms are all converging on a common interface. That means distribution &mdash; getting compliant tokenized assets into the hands of regulated institution members &mdash; becomes the differentiated layer.
+  </p>
+
+  <p>
+    That's what Aetherum is.
+  </p>
+
+  <p>
+    We're not an identity provider. We're not a custody platform. We're not a compliance vendor. <strong>We're the distribution layer for this standard into NCUA-regulated credit unions</strong> &mdash; the institutions that have been waiting for exactly this kind of open, auditable, examination-ready infrastructure before they could move.
+  </p>
+
+  <h2>THE STANDARDS LAYER JUST CAUGHT UP TO THE OPPORTUNITY</h2>
+
+  <p>
+    The work of putting it in front of the right institutions is what comes next.
+  </p>
+
+  <div class="closing-note">
+    Aetherum's ERC-7943 compliant collateral token is deployed and verified on Ethereum Sepolia testnet. Contract verified on Etherscan and Sourcify.
+  </div>
+
+  <div class="tags">
+    <span class="tag">#ERC7943</span>
+    <span class="tag">#ERC3643</span>
+    <span class="tag">#BlockchainInfrastructure</span>
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#TokenizedAssets</span>
+    <span class="tag">#NCUA</span>
+    <span class="tag">#OnChainCompliance</span>
+    <span class="tag">#RWA</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">THE INFRASTRUCTURE IS HERE</div>
+    <div class="cta-sub">Open standards. On-chain compliance. Examination-ready architecture. Built for NCUA-regulated institutions — available today.</div>
+    <a href="https://calendly.com/jbailey-aetherum/30min" class="cta-btn">Book a 30-min Call</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div style="font-size:13px;color:var(--gray2)"><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a> &middot; <a href="/help">Help</a></div>
+</footer>
+
+</body>
+</html>
