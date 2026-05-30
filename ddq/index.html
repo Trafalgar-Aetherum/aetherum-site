@@ -137,6 +137,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 /* KB VERSION BADGE */
 #kb-version-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.06em; color:var(--muted); background:var(--border); border-radius:4px; padding:3px 8px; white-space:nowrap; }
 
+/* DEMO CARD */
+.demo-card { position:sticky; bottom:0; background:var(--sidebar-card); border-top:1px solid var(--orange-border); padding:14px; flex-shrink:0; }
+.demo-card-title { font-size:13px; font-weight:500; color:var(--white); display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+.demo-card-sub { font-size:11px; color:var(--nav-text); line-height:1.55; margin-bottom:12px; }
+.demo-btn { display:block; width:100%; padding:9px 12px; background:var(--orange); color:var(--navy); border:none; border-radius:5px; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; text-align:center; text-decoration:none; cursor:pointer; transition:opacity 0.14s, transform 0.14s; }
+.demo-btn:hover { opacity:0.88; transform:translateY(-1px); }
+.demo-btn:active { transform:none; }
+
 /* DDQ FOOTER */
 .ddq-footer { grid-column:1/-1; font-size:11px; color:var(--muted); text-align:center; padding:16px 20px; border-top:1px solid var(--border); }
 .ddq-footer a { color:var(--muted); text-decoration:underline; }
@@ -222,6 +230,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
         <a href="https://testnet.arcscan.app/address/0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897" target="_blank" class="ref-addr" title="0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897">0x1fF9…8897</a>
       </div>
       <div class="ref-net">Arc Testnet · Chain ID 5042002</div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-title">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><rect x="1" y="2" width="14" height="13" rx="2" stroke="#F7931A" stroke-width="1.4"/><path d="M1 6h14" stroke="#F7931A" stroke-width="1.4"/><path d="M5 1v2M11 1v2" stroke="#F7931A" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Request a Demo
+      </div>
+      <div class="demo-card-sub">Schedule a 30-minute walkthrough with the Aetherum team</div>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" target="_blank" rel="noopener noreferrer" class="demo-btn">Book a time →</a>
     </div>
   </aside>
 
