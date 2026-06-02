@@ -1,12 +1,21 @@
 [
   {
+    "slug": "/blog/ai-underwriting-engine",
+    "title": "Why We Built Our Own AI Underwriting Engine — And What It Knows",
+    "excerpt": "General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is.",
+    "date": "June 1, 2026",
+    "category": "Technology",
+    "readTime": "6 min read",
+    "isNew": true
+  },
+  {
     "slug": "/blog/erc-7943-credit-union-compliance/",
     "title": "A New Ethereum Standard Just Dropped. Here's Why It Matters for Regulated Institutions.",
     "excerpt": "ERC-7943 is now an official Ethereum standard. For credit unions evaluating crypto infrastructure, this changes the compliance conversation entirely — and Aetherum was already built for it.",
     "date": "May 29, 2026",
     "readTime": "4 min read",
     "icon": "⛓️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -16,7 +25,7 @@
     "date": "May 28, 2026",
     "readTime": "6 min read",
     "icon": "⚠️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {

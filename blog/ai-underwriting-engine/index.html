@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why We Built Our Own AI Underwriting Engine — And What It Knows — Aetherum Blog</title>
+<meta name="description" content="General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is." />
+<meta property="og:title" content="Why We Built Our Own AI Underwriting Engine — And What It Knows" />
+<meta property="og:description" content="General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/ai-underwriting-engine" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #03060F;
+    --bg2: #070D1A;
+    --orange: #F7931A;
+    --blue: #2563EB;
+    --blue-light: #4A8FFF;
+    --white: #FFFFFF;
+    --gray1: rgba(255,255,255,0.7);
+    --gray2: rgba(255,255,255,0.45);
+    --gray3: rgba(255,255,255,0.18);
+    --gray4: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  .hero-orb-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,80,200,0.15) 0%, transparent 65%);
+    top: -200px; left: -200px;
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,147,26,0.1) 0%, transparent 65%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gray2);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray1);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .byline-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .byline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .byline-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gray3);
+    text-transform: uppercase;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray3);
+  }
+
+  /* ── STAT BANNER ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .stat-item {
+    padding: 40px 60px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.blue   { color: var(--blue-light); }
+  .stat-num.white  { color: var(--white); }
+
+  .stat-desc {
+    font-size: 14px;
+    color: var(--gray2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--gray1);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .article p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    line-height: 1;
+  }
+
+  .article h2 .acc { color: var(--orange); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 56px -80px;
+    padding: 48px 80px;
+    border-left: 3px solid var(--orange);
+    background: linear-gradient(90deg, rgba(247,147,26,0.06) 0%, transparent 100%);
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: 26px !important;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* ── INFOGRAPHIC ── */
+  .infographic {
+    margin: 64px 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .infographic-header {
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .infographic-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .infographic-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .source-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 28px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .source-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--orange);
+    flex-shrink: 0;
+    margin-top: 3px;
+    border: 1px solid rgba(247,147,26,0.3);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .source-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 6px;
+  }
+
+  .source-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray2);
+    line-height: 1.65;
+  }
+
+  /* ── DECISION TABLE ── */
+  .decision-table {
+    margin: 48px 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .decision-header {
+    padding: 22px 32px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  .decision-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .decision-row:last-child { border-bottom: none; }
+
+  .decision-label {
+    padding: 18px 28px;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray1);
+    flex: 1;
+    border-right: 1px solid var(--border);
+  }
+
+  .decision-verdict {
+    padding: 18px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .verdict-approved  { color: var(--blue-light); }
+  .verdict-conditional { color: var(--orange); }
+
+  /* ── REALITY BOX ── */
+  .reality-box {
+    margin: 48px 0;
+    padding: 36px 40px;
+    border: 1px solid rgba(247,147,26,0.25);
+    border-radius: 16px;
+    background: rgba(247,147,26,0.04);
+  }
+
+  .reality-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .reality-box p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--gray1);
+    margin-bottom: 0;
+  }
+
+  .reality-box strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    margin: 64px 0 0;
+    background: linear-gradient(135deg, rgba(15,60,140,0.25) 0%, rgba(247,147,26,0.08) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray2);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray3);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-patent {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid rgba(247,147,26,0.25);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  footer a { color: var(--gray2); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-tag">Technology &middot; AI</span>
+      <span class="hero-date">June 1, 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      WHY WE BUILT OUR OWN<br><span class="accent">AI UNDERWRITING ENGINE</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is.
+    </p>
+
+    <div class="hero-byline">
+      <div class="byline-avatar">JB</div>
+      <div class="byline-text">
+        <div class="byline-name">John Bailey</div>
+        <div class="byline-role">Cofounder &middot; Aetherum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STAT BANNER -->
+<div class="stat-banner">
+  <div class="stat-item">
+    <div class="stat-num orange">~2,000</div>
+    <div class="stat-desc">Labeled training examples in the underwriting dataset</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num white">60</div>
+    <div class="stat-desc">NCUA Letters to Credit Unions ingested (2016&ndash;2026)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num blue">3</div>
+    <div class="stat-desc">Distinct knowledge source categories powering Smart Review AI</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num orange">011</div>
+    <div class="stat-desc">AETHERUM-011 &mdash; Patent pending, filed June 1, 2026</div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    The credit union movement has always been built on trust. Member-owned. Community-rooted. Conservative by design. When a member walks in and asks to borrow against their Bitcoin, the instinct of every compliance officer in the room is the same: how do we evaluate this in a way that's defensible to an NCUA examiner?
+  </p>
+
+  <h2>THE PROBLEM WITH <span class="acc">OFF-THE-SHELF AI</span></h2>
+
+  <p>
+    Large language models are extraordinarily capable. But they're trained on the internet &mdash; not on NCUA Letters to Credit Unions. Not on the Examiner's Guide lending and collateral provisions. Not on the specific risk posture of institutions operating under CAMELS ratings and 5300 call report requirements.
+  </p>
+
+  <p>
+    Ask a general-purpose AI whether a 65% LTV crypto-collateralized loan is appropriate for an NCUA-regulated credit union with a CAMELS rating of 2, and you'll get a thoughtful-sounding answer grounded in nothing. No regulatory precedent. No exam guidance. No awareness of the collateral volatility bands that matter to a federal examiner.
+  </p>
+
+  <div class="pullquote">
+    <p>"A thoughtful-sounding answer grounded in nothing. No regulatory precedent. No exam guidance. No awareness of the collateral volatility bands that matter to a federal examiner."</p>
+  </div>
+
+  <p>
+    We needed something different.
+  </p>
+
+  <h2>WHAT SMART REVIEW AI <span class="acc">ACTUALLY KNOWS</span></h2>
+
+  <p>
+    The knowledge base powering Smart Review AI was built from three distinct sources &mdash; each chosen deliberately.
+  </p>
+
+  <div class="infographic">
+    <div class="infographic-header">
+      <span class="infographic-title">Smart Review AI &mdash; Training Knowledge Sources</span>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;">Aetherum Analysis</span>
+    </div>
+    <div class="infographic-body">
+      <div class="source-item">
+        <span class="source-num">01</span>
+        <div>
+          <div class="source-name">NCUA Regulatory Corpora</div>
+          <div class="source-desc">Every Letter to Credit Unions published 2016&ndash;2026 &mdash; 60 letters covering permissible loan interest rate ceilings, CAMELS rating methodology, cybersecurity incident notification requirements, NCUA digital asset guidance including Letter 22-CU-07, CECL implementation, alternative data in underwriting, BSA/AML information sharing obligations, commercial real estate workout guidance, and NCUA supervisory priorities for 2025 and 2026. Plus lending and collateral provisions from the NCUA Examiner's Guide.</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <span class="source-num">02</span>
+        <div>
+          <div class="source-name">Institutional Due Diligence Knowledge</div>
+          <div class="source-desc">Everything Aetherum knows about how crypto-collateralized lending works in a regulated context: custody architecture, AML procedures, on-chain compliance module design, liquidation escalation runbooks, signing key governance, and GENIUS Act PPSI compliance posture. This is the operational layer &mdash; the knowledge that turns regulatory understanding into executable lending policy.</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <span class="source-num">03</span>
+        <div>
+          <div class="source-name">Proprietary Risk Scenarios</div>
+          <div class="source-desc">Thousands of loan evaluation scenarios spanning BTC and ETH collateral, LTV bands from 50% to 75%, Dynamic Asset Credit Score outputs across the full risk spectrum, and member tenure profiles from first-year members to 20-year relationships. Each scenario labeled with a lending decision &mdash; APPROVED, CONDITIONAL, or DENIED &mdash; calibrated to NCUA-compliant underwriting policy. The result: a training dataset of nearly 2,000 examples.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>WHY FINE-TUNING, <span class="acc">NOT PROMPTING</span></h2>
+
+  <p>
+    We could have written a very long system prompt. We didn't, for three reasons.
+  </p>
+
+  <p>
+    <strong>First, regulatory precision.</strong> Fine-tuning embeds knowledge into the model's weights structurally &mdash; it cannot be overridden by a user prompt or lost in a long context window.
+  </p>
+
+  <p>
+    <strong>Second, explainability.</strong> Our model returns structured decisions: a classification (APPROVED, CONDITIONAL, or DENIED), specific conditions if applicable, risk flags, NCUA compliance notes, and a plain-English explanation the credit union can show a member. That structure is trained in, not prompted in.
+  </p>
+
+  <div class="decision-table">
+    <div class="decision-header">Smart Review AI &mdash; Structured Output Per Decision</div>
+    <div class="decision-row">
+      <div class="decision-label">Decision classification</div>
+      <div class="decision-verdict verdict-approved">Structured</div>
+    </div>
+    <div class="decision-row">
+      <div class="decision-label">Conditions (if applicable)</div>
+      <div class="decision-verdict verdict-conditional">Conditional</div>
+    </div>
+    <div class="decision-row">
+      <div class="decision-label">Risk flags</div>
+      <div class="decision-verdict verdict-approved">Logged</div>
+    </div>
+    <div class="decision-row">
+      <div class="decision-label">NCUA compliance notes</div>
+      <div class="decision-verdict verdict-approved">Logged</div>
+    </div>
+    <div class="decision-row">
+      <div class="decision-label">Plain-English member explanation</div>
+      <div class="decision-verdict verdict-approved">Always</div>
+    </div>
+  </div>
+
+  <p>
+    <strong>Third, IP defensibility.</strong> A model trained on proprietary regulatory corpora and institutional knowledge is a moat. It is patent-pending (AETHERUM-011, filed June 1, 2026).
+  </p>
+
+  <h2>WHAT THIS MEANS <span class="acc">FOR EXAMINERS</span></h2>
+
+  <p>
+    The NCUA's 2025 supervisory priorities explicitly flag digital asset activities and AI-assisted decision-making as examination focus areas. Credit unions adopting crypto-collateralized lending need to demonstrate that their underwriting process is documented, consistent, and defensible.
+  </p>
+
+  <p>
+    Smart Review AI produces a structured audit trail for every decision. The input parameters, the model version, the decision, the conditions, the compliance notes &mdash; all logged. When an examiner asks how a particular loan was approved, the answer is a record, not a conversation.
+  </p>
+
+  <div class="reality-box">
+    <div class="reality-label">Examiner-Ready</div>
+    <p>When an examiner asks how a particular loan was approved, the answer is <strong>a record, not a conversation</strong>. Input parameters, model version, decision, conditions, and compliance notes &mdash; all logged at the point of decision.</p>
+  </div>
+
+  <h2>THE <span class="acc">BIGGER PICTURE</span></h2>
+
+  <p>
+    We didn't build Smart Review AI because AI is trendy. We built it because the alternative &mdash; asking a loan officer to manually evaluate a BTC-collateralized loan application against NCUA guidance they may have never read &mdash; creates the kind of inconsistency that shows up in examination findings.
+  </p>
+
+  <p>
+    The credit union movement serves 140 million members. Many of them hold cryptocurrency. They deserve access to the liquidity it represents, evaluated by a process that would hold up to scrutiny.
+  </p>
+
+  <div class="pullquote">
+    <p>"That's what we built."</p>
+  </div>
+
+  <div class="tags">
+    <span class="tag">#AI</span>
+    <span class="tag">#Underwriting</span>
+    <span class="tag">#NCUA</span>
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#FineTuning</span>
+    <span class="tag">#SmartReview</span>
+    <span class="tag">#DACS</span>
+    <span class="tag">#PatentPending</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">SEE IT IN ACTION</div>
+    <div class="cta-sub">Smart Review AI is live in production. Book a call to see a real underwriting decision &mdash; with the regulatory reasoning behind it.</div>
+    <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn">Book a 30-min Call</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Aetherum</div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div class="footer-patent">11 Patents Pending</div>
+</footer>
+
+</body>
+</html>
