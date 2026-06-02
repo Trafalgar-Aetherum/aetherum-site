@@ -505,7 +505,11 @@
 <!-- DACS -->
 <section id="dacs">
   <h2 class="section-title">DACS — Risk Assessment Model</h2>
+<<<<<<< HEAD
   <p class="section-sub">Twelve pillars of crypto risk assessment, backed by 11 patent-pending innovations — quantifying borrower position beyond traditional credit metrics in language the member can actually understand.</p>
+=======
+  <p class="section-sub">Twelve pillars of crypto risk assessment, backed by 14 patent-pending innovations — quantifying borrower position beyond traditional credit metrics in language the member can actually understand.</p>
+>>>>>>> 3c0f5b6 (feat: ship AETHERUM-012/013/014 — audit-native infrastructure, 14 patents)
   <div class="pillars pillar-grid">
     <div class="pillar">
       <div class="pillar-num">1</div>
@@ -632,6 +636,52 @@
   </div>
 </section>
 
+<!-- AUDIT-NATIVE INFRASTRUCTURE -->
+<section id="audit-native">
+  <div style="max-width:1000px;margin:0 auto;">
+    <h2 class="section-title" style="text-align:left;margin-bottom:.5rem;">Audit-Native Infrastructure</h2>
+    <p class="section-sub" style="text-align:left;margin-left:0;margin-bottom:2rem;">Every lending decision cryptographically anchored on-chain and examiner-ready — built for NCUA examination from day one, not retrofitted after.</p>
+    <div class="three-col">
+      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+        <h3>On-Chain Compliance Receipts</h3>
+        <p>SHA-256 hash of every decision record written to Ethereum via <strong style="color:var(--text);">AetherumComplianceReceipt.sol</strong> (UUPS upgradeable, AccessControl). Verification endpoint confirms integrity by recomputing the hash against the on-chain commitment.</p>
+        <ul>
+          <li>Covers every DACS assessment, loan approval/denial, and collateral event</li>
+          <li>Sensitive member data remains off-chain — only the cryptographic commitment is public</li>
+          <li>NCUA examiners receive a verification URL per decision</li>
+          <li>Tamper-evident · Examiner-ready · No other lending infrastructure provides this</li>
+        </ul>
+        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
+      </div>
+      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+        <h3>DACS Explainability Layer</h3>
+        <p>Structured <strong style="color:var(--text);">DacsExplanation</strong> document auto-generated after every scoring run — designed for direct NCUA examination submission.</p>
+        <ul>
+          <li>Factor breakdowns: PV, AQ, Stability, TAM, Volatility — with weights and plain-English explanations</li>
+          <li>Score breakdown with risk tier assignment</li>
+          <li>Comparable peer profile</li>
+          <li>Plain-language decision rationale</li>
+          <li>12 CFR Part 723 regulatory basis citation</li>
+          <li>PDF export for direct NCUA submission</li>
+        </ul>
+        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
+      </div>
+      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+        <h3>Supervisory Control &amp; Audit Layer</h3>
+        <p><strong style="color:var(--text);">SupervisoryHoldService</strong> provides documented human-in-the-loop control over every collateral position — purpose-built for NCUA examination.</p>
+        <ul>
+          <li>NCUA-aligned event types: SUPERVISORY_HOLD_INITIATED, SUPERVISORY_HOLD_RELEASED, SUPERVISORY_OVERRIDE</li>
+          <li>6 reason categories aligned to NCUA guidance</li>
+          <li>JWT officer attribution on every action</li>
+          <li>On-chain attestation for every supervisory event</li>
+          <li>CSV examination export with Etherscan links — on demand</li>
+        </ul>
+        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- THREE COLUMN BOTTOM -->
 <section>
   <div class="three-col bottom-grid">
@@ -693,7 +743,11 @@
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
+<<<<<<< HEAD
   <p>DACS (Digital Asset Credit Score) is a patent-pending risk-assessment framework developed by Aetherum. Eleven patents pending. It is not a consumer credit score and is not reported to credit bureaus.</p>
+=======
+  <p>DACS (Digital Asset Credit Score) is a patent-pending risk-assessment framework developed by Aetherum. 14 provisional patents pending. It is not a consumer credit score and is not reported to credit bureaus.</p>
+>>>>>>> 3c0f5b6 (feat: ship AETHERUM-012/013/014 — audit-native infrastructure, 14 patents)
   <p>Contact: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
 </footer>
 
