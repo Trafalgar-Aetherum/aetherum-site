@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/model-said-so",
+    "title": "Why \"The Model Said So\" Gets You a Fine",
+    "excerpt": "Regulated finance doesn't need faster AI. It needs AI that can explain itself to an examiner. The market is finally starting to figure this out.",
+    "date": "June 2026",
+    "readTime": "6 min read",
+    "icon": "🧾",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/ai-underwriting-engine",
     "title": "Why We Built Our Own AI Underwriting Engine — And What It Knows",
     "excerpt": "General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is.",
