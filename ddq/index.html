@@ -475,44 +475,12 @@ function copyText(id, text) {
 }
 
 function clearAll() {
-  const preloaded = document.getElementById('preloaded-section');
+  document.getElementById('q-input').value = '';
   document.getElementById('results').innerHTML = `
-    <div class="empty" id="empty-state" style="display:none;">
+    <div class="empty" id="empty-state">
       <div class="empty-hex"></div>
       <div class="empty-title">DDQ Engine ready</div>
-      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture.</div>
-    </div>
-    <div class="result-card">
-      <div class="result-header">
-        <div class="result-q"><strong>Q:</strong> How many patents does Aetherum have?</div>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--orange);padding:3px 8px;border:1px solid var(--orange-border);border-radius:4px;letter-spacing:0.06em;">IP &middot; Patents</span>
-      </div>
-      <div class="result-body"><div class="answer-text">Aetherum has 14 provisional patent applications pending with the USPTO, covering DACS risk assessment, CUMember on-chain identity, TPSOE tax intelligence, FHE-DACS privacy-preserving underwriting, collateral management, XLS-66 LoanBroker, key governance, tiered liquidation escalation, LTV monitoring, fine-tuned underwriting models, on-chain compliance receipts, DACS explainability, and supervisory control infrastructure.</div></div>
-      <div class="result-footer"><span class="source-tag">IP &amp; Patents</span></div>
-    </div>
-    <div class="result-card">
-      <div class="result-header">
-        <div class="result-q"><strong>Q:</strong> How does Aetherum demonstrate human oversight of automated collateral management to NCUA examiners?</div>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--orange);padding:3px 8px;border:1px solid var(--orange-border);border-radius:4px;letter-spacing:0.06em;">AETHERUM-014</span>
-      </div>
-      <div class="result-body"><div class="answer-text">The Supervisory Control &amp; Audit Layer provides credit union officers with a documented human-in-the-loop control mechanism. Every supervisory action requires selection of an NCUA-aligned reason category, is attributed to a named officer via JWT authentication, and is attested on-chain. A CSV examination export with Etherscan links for each event is available on demand for NCUA examination submission.</div></div>
-      <div class="result-footer"><span class="source-tag">Regulatory</span><span class="source-tag">Blockchain</span></div>
-    </div>
-    <div class="result-card">
-      <div class="result-header">
-        <div class="result-q"><strong>Q:</strong> How does Aetherum document AI underwriting decisions for regulatory examination?</div>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--orange);padding:3px 8px;border:1px solid var(--orange-border);border-radius:4px;letter-spacing:0.06em;">AETHERUM-013</span>
-      </div>
-      <div class="result-body"><div class="answer-text">Every DACS risk assessment automatically generates a structured underwriting record comprising factor-level breakdowns with weights and plain-English explanations, a risk tier assignment, a comparable peer profile, a plain-language decision rationale, and a regulatory basis citation referencing NCUA 12 CFR Part 723. The record is cryptographically linked to an on-chain compliance receipt and exportable as PDF for direct NCUA submission.</div></div>
-      <div class="result-footer"><span class="source-tag">Regulatory</span><span class="source-tag">Risk Model</span></div>
-    </div>
-    <div class="result-card">
-      <div class="result-header">
-        <div class="result-q"><strong>Q:</strong> How does Aetherum ensure the integrity of AI-assisted lending decisions for NCUA examination purposes?</div>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--orange);padding:3px 8px;border:1px solid var(--orange-border);border-radius:4px;letter-spacing:0.06em;">AETHERUM-012</span>
-      </div>
-      <div class="result-body"><div class="answer-text">Every material lending decision — DACS risk assessment, loan approval/denial, collateral lock/release — generates a SHA-256 hash commitment written to Ethereum via the AetherumComplianceReceipt smart contract. NCUA examiners receive a verification URL for each decision. Recomputing the hash against the on-chain commitment confirms the record has not been altered. Sensitive member data remains off-chain; only the cryptographic commitment is public.</div></div>
-      <div class="result-footer"><span class="source-tag">Compliance</span><span class="source-tag">Blockchain</span><span class="source-tag">Regulatory</span></div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
     </div>`;
 }
 
