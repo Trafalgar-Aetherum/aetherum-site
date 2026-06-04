@@ -475,18 +475,25 @@ function copyText(id, text) {
   });
 }
 
-function clearAll() {
-  document.getElementById('q-input').value = '';
-  document.getElementById('results').innerHTML = `
+const EMPTY_STATE_HTML = `
     <div class="empty" id="empty-state">
       <div class="empty-hex"></div>
       <div class="empty-title">DDQ Engine ready</div>
       <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
     </div>`;
+
+function clearAll() {
+  document.getElementById('q-input').value = '';
+  document.getElementById('results').innerHTML = EMPTY_STATE_HTML;
+  sessionStorage.setItem('ddq_cleared', '1');
 }
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function escJs(s) { return String(s).replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$'); }
+
+if (sessionStorage.getItem('ddq_cleared') === '1') {
+  document.getElementById('results').innerHTML = EMPTY_STATE_HTML;
+}
 
 init();
 </script>
