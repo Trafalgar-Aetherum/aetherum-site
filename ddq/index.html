@@ -254,6 +254,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
         <div class="btn-col">
           <button class="ask-btn" id="ask-btn" onclick="ask()">Ask →</button>
           <button class="clear-btn" onclick="clearAll()">Clear</button>
+          <button class="clear-btn" onclick="newSession()">New Session</button>
         </div>
       </div>
       <div class="hint">Cmd+Enter to submit</div>
@@ -481,6 +482,11 @@ const EMPTY_STATE_HTML = `
       <div class="empty-title">DDQ Engine ready</div>
       <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
     </div>`;
+
+function newSession() {
+  sessionStorage.removeItem('ddq_cleared');
+  location.reload();
+}
 
 function clearAll() {
   document.getElementById('q-input').value = '';
