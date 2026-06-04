@@ -389,7 +389,7 @@ function renderKb(entries) {
   entries.forEach(e => { if(!cats[e.category]) cats[e.category]=[]; cats[e.category].push(e); });
   let html = '<div class="s-label">Knowledge base</div>';
   Object.entries(cats).forEach(([cat, items]) => {
-    html += `<div class="cat-group"><div class="cat-label">${CAT_LABELS[cat]||cat}<span class="cat-count">${items.length}</span></div>`;
+    html += `<div class="cat-group"><div class="cat-label">${CAT_LABELS[cat]||(cat.replace(/_/g,' '))}<span class="cat-count">${items.length}</span></div>`;
     items.forEach(it => {
       const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
       html += `<div class="kb-item" onclick="setQ('${q}?')">${it.title}</div>`;
