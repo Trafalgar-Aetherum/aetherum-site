@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That. | Aetherum</title>
+  <meta name="description" content="New data shows 1 in 4 American adults now owns crypto — and 76% want their bank or credit union to help them manage it. Here's what that means for credit unions." />
+  <meta property="og:title" content="67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That." />
+  <meta property="og:description" content="New data shows 1 in 4 American adults now owns crypto — and 76% want their bank or credit union to help them manage it." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aetherum.ai/blog/67-million-crypto-holders/" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #162848;
+      --navy-2:   #1A3055;
+      --navy-3:   #1E3660;
+      --orange:   #F7931A;
+      --orange-dim: rgba(247,147,26,0.15);
+      --white:    #F0F4FF;
+      --text:     #C8D8F0;
+      --muted:    #8A9FBF;
+      --grid:     rgba(255,255,255,0.04);
+      --border:   rgba(247,147,26,0.12);
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      line-height: 1.78;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(18,36,66,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .nav-back::before { content: '←'; font-size: 13px; }
+    .nav-back:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 80px 48px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(247,147,26,0.08) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--orange);
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .hero-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .hero-read {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    article p {
+      margin-bottom: 1.5rem;
+      font-size: 1.02rem;
+      color: var(--text);
+    }
+
+    article h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(26px, 3.2vw, 38px);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin: 3rem 0 1.2rem;
+      line-height: 1.1;
+    }
+
+    article strong {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    article em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── STAT CALLOUT ── */
+    .stat-block {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 2rem 0;
+    }
+
+    .stat-block p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── BULLET LIST ── */
+    .data-list {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+      padding: 0;
+    }
+
+    .data-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .data-list li::before {
+      content: '▸';
+      color: var(--orange);
+      font-size: 12px;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px 40px;
+      margin: 4rem 0 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(247,147,26,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .cta-block p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #0D1B2E;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 4px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .patent-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 14px;
+      border-radius: 4px;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 48px 20px 40px; }
+      article { padding: 0 20px 60px; }
+      footer { padding: 24px 20px; }
+      .cta-block { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">AETHERUM<span>.</span>AI</a>
+    <a href="/blog" class="nav-back">Back to Blog</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="hero-tag">Market Intelligence</span>
+      <span class="hero-date">June 2026</span>
+      <span class="hero-read">6 min read</span>
+    </div>
+    <h1>67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That.</h1>
+    <p class="hero-sub">New data shows 1 in 4 American adults now holds cryptocurrency — and three-quarters of them want their bank or credit union to help them manage it. The gap between member demand and credit union readiness has never been wider.</p>
+  </header>
+
+  <article>
+
+    <p>A new report just dropped that should be required reading for every credit union CEO in the country.</p>
+
+    <p>The National Cryptocurrency Association's <em>2026 State of Crypto Holders Report</em> — based on a survey of 10,000 U.S. crypto holders — paints a picture that's hard to ignore: crypto ownership has gone from a niche hobby to a mainstream financial behavior, almost overnight.</p>
+
+    <p>In a single year, 12 million more Americans became crypto holders. One in four adults now owns cryptocurrency. That's 67 million people — and they're not who you might think.</p>
+
+    <hr class="divider" />
+
+    <h2>This Isn't a Silicon Valley Story Anymore</h2>
+
+    <p>The newest wave of crypto holders skews female (42% of recent buyers), older (28% are 55+), and decidedly non-tech. Construction and manufacturing workers now make up over a fifth of all holders. The median household income for a crypto owner tracks with the middle of the American economy — more than half earn under $150K a year.</p>
+
+    <p>In other words: your members.</p>
+
+    <p>The report describes the typical crypto holder in 2026 as equally likely to be a construction foreman in Dallas as a software engineer in San Francisco. They might earn $80,000 a year and use crypto to pay a subcontractor or send money to a relative.</p>
+
+    <p>Sound familiar? That's a credit union member.</p>
+
+    <hr class="divider" />
+
+    <h2>They Trust Crypto. They Also Still Trust Their CU.</h2>
+
+    <p>Here's the stat that should stop every credit union executive mid-scroll:</p>
+
+    <div class="stat-block">
+      <p><strong>69% of crypto holders trust crypto. 65% trust traditional banking.</strong> For the first time, familiarity with digital assets has outpaced trust in the institutions that have served American families for generations.</p>
+    </div>
+
+    <p>Before you read that as a threat, read the rest: these people aren't abandoning banks or credit unions. They want both. They want their credit union to offer crypto services the same way it offers auto loans and checking accounts — as part of the trusted relationship they already have.</p>
+
+    <div class="stat-block">
+      <p><strong>76% of holders want their bank or credit union to let them buy, hold, and manage crypto alongside their regular accounts.</strong></p>
+    </div>
+
+    <p>That's not a niche request. That's three out of four of your crypto-owning members raising their hand.</p>
+
+    <hr class="divider" />
+
+    <h2>They're Using It for Ordinary Things</h2>
+
+    <p>The mainstream narrative still frames crypto as speculative, volatile, and risky. The actual behavior of 67 million Americans tells a different story.</p>
+
+    <ul class="data-list">
+      <li>41% send crypto to friends and family — up 10 points from last year</li>
+      <li>40% use it to shop for goods and services</li>
+      <li>37% plan to send crypto to employees in the next year</li>
+      <li>87% of holders are actively using crypto, up from 80% in 2025</li>
+    </ul>
+
+    <p>When a technology starts showing up in payroll conversations, it's no longer a speculative asset class. It's a payment rail.</p>
+
+    <hr class="divider" />
+
+    <h2>The Moment Credit Unions Are Missing</h2>
+
+    <p>Credit unions have always won on trust. That's the whole model — member-owned, community-rooted, not chasing shareholder returns. And right now, your members are making crypto decisions without you.</p>
+
+    <p>They're using exchanges. They're holding assets on platforms with no connection to their credit union. And when they want liquidity — when they need a loan but don't want to sell — they're going somewhere else for that, too.</p>
+
+    <p>That last part is where the real opportunity lives. Crypto-collateralized lending lets members unlock the value in their digital assets without triggering a taxable sale event. They keep their upside. They get the liquidity they need. And the credit union earns a new revenue stream while deepening the member relationship.</p>
+
+    <p>It's the kind of product that attracts younger members, retains existing ones, and positions the credit union as a forward-looking financial partner — not a relic of the pre-digital era.</p>
+
+    <hr class="divider" />
+
+    <h2>The Window Is Open, But Not Forever</h2>
+
+    <p>The NCA report shows that 82% of crypto holders expect the market to grow significantly over the next five years. 90% plan to buy more in the next year. Merchants are responding — 40% already accept crypto at checkout, and 84% expect crypto payments to become standard within five years.</p>
+
+    <p>The infrastructure is maturing. The regulatory environment is clarifying. And your members are already there.</p>
+
+    <p>The question for credit unions isn't whether to engage with crypto. It's whether to engage now — while there's still a first-mover advantage — or to wait until it's table stakes and the relationship has already moved elsewhere.</p>
+
+    <hr class="divider" />
+
+    <p>The data from this report isn't a prediction. It's a portrait of where your members already are.</p>
+
+    <p>We built Aetherum because we believe credit unions are the right institutions to serve this moment — trusted, regulated, member-focused. The infrastructure exists. The demand is documented. The only missing piece is the decision to act.</p>
+
+    <div class="cta-block">
+      <h3>See the Platform</h3>
+      <p>Purpose-built crypto-collateralized lending infrastructure for NCUA-regulated credit unions.</p>
+      <a href="https://aetherum.ai" class="cta-btn">Request a Demo</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <a href="/" class="footer-logo">AETHERUM<span>.</span>AI</a>
+    <span class="patent-badge">14 PATENTS PENDING</span>
+    <span class="footer-copy">© 2026 Aetherum, Inc.</span>
+  </footer>
+
+</body>
+</html>

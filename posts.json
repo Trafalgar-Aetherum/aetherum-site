@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/67-million-crypto-holders",
+    "title": "67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That.",
+    "excerpt": "New data shows 1 in 4 American adults now holds cryptocurrency — and 76% want their credit union to help them manage it. The gap between member demand and CU readiness has never been wider.",
+    "date": "June 2026",
+    "readTime": "6 min read",
+    "icon": "📊",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/model-said-so",
     "title": "Why \"The Model Said So\" Gets You a Fine",
     "excerpt": "Regulated finance doesn't need faster AI. It needs AI that can explain itself to an examiner. The market is finally starting to figure this out.",
     "date": "June 2026",
     "readTime": "6 min read",
     "icon": "🧾",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -16,7 +26,7 @@
     "date": "June 1, 2026",
     "category": "Technology",
     "readTime": "6 min read",
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "/blog/erc-7943-credit-union-compliance/",
