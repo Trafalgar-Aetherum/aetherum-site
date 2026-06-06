@@ -253,6 +253,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
         <textarea class="question-box" id="q-input" placeholder="Paste a security question from a CU IT or risk team here..." onkeydown="handleKey(event)"></textarea>
         <div class="btn-col">
           <button class="ask-btn" id="ask-btn" onclick="ask()">Ask →</button>
+          <button class="clear-btn" onclick="newSession()">New Session</button>
           <button class="clear-btn" onclick="clearAll()">Clear</button>
           <button class="clear-btn" onclick="newSession()">New Session</button>
         </div>
@@ -339,6 +340,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 <script>
 const API = 'https://aetherum-backend-production.up.railway.app';
 let token = null;
+let sessionId = null;
 
 document.getElementById('ep-display').textContent = API.replace('https://','');
 
@@ -351,8 +353,27 @@ async function init() {
     const d = await r.json();
     token = d.token || d.access_token || d.accessToken;
   } catch(e) {}
+  try {
+    const r = await fetch(`${API}/ddq/new-session`, { method:'POST' });
+    const d = await r.json();
+    sessionId = d.sessionId;
+  } catch(e) {}
   loadKb();
   loadKbMeta();
+}
+
+async function newSession() {
+  try {
+    const r = await fetch(`${API}/ddq/new-session`, { method:'POST' });
+    const d = await r.json();
+    sessionId = d.sessionId;
+  } catch(e) {}
+  document.getElementById('results').innerHTML = `
+    <div class="empty" id="empty-state">
+      <div class="empty-title">DDQ Engine ready</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+    </div>`;
+  document.getElementById('q-input').value = '';
 }
 
 async function loadKbMeta() {
@@ -429,7 +450,7 @@ async function ask() {
     if(token) h['Authorization'] = `Bearer ${token}`;
     const r = await fetch(`${API}/ddq/ask`, {
       method:'POST', headers:h,
-      body: JSON.stringify({ question: q })
+      body: JSON.stringify({ question: q, sessionId })
     });
     const data = await r.json();
     document.getElementById(lid)?.remove();
