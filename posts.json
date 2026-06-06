@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/clarity-act-credit-union-custody",
+    "title": "The CLARITY Act Just Gave Credit Unions a Choice. Here's Why Both Answers Win.",
+    "excerpt": "The CLARITY Act gives credit unions a clear path to custody digital assets — directly or through a partner. Both choices lead to the same strategic outcome: new revenue, younger members, and lasting relevance.",
+    "date": "June 5, 2026",
+    "readTime": "7 min read",
+    "icon": "⚖️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/67-million-crypto-holders",
     "title": "67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That.",
     "excerpt": "New data shows 1 in 4 American adults now holds cryptocurrency — and 76% want their credit union to help them manage it. The gap between member demand and CU readiness has never been wider.",
     "date": "June 2026",
     "readTime": "6 min read",
     "icon": "📊",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
