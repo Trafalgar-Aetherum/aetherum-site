@@ -59,6 +59,9 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 .cat-count { background:var(--orange-glow); border:1px solid var(--orange-border); border-radius:10px; padding:1px 5px; font-size:9px; color:var(--orange); }
 .kb-item { padding:6px 8px 6px 10px; border-radius:4px; cursor:pointer; font-size:13px; color:var(--nav-text); transition:all 0.14s; line-height:1.4; margin-bottom:6px; border-left:2px solid transparent; }
 .kb-item:hover { background:var(--orange-glow); color:var(--white); border-left-color:var(--orange); }
+.cat-label.collapsible { cursor:pointer; user-select:none; }
+.cat-chevron { display:inline-block; font-size:9px; color:var(--muted); margin-left:auto; transition:transform 0.18s; line-height:1; flex-shrink:0; }
+.cat-label.collapsible.expanded .cat-chevron { transform:rotate(90deg); }
 
 /* ARC TESTNET LIVE BLOCK */
 .arc-live-block { padding:12px 14px; border-bottom:1px solid var(--border); background:var(--sidebar-card); flex-shrink:0; }
@@ -369,6 +372,16 @@ const CAT_LABELS = {
   NCUA_LETTERS:'NCUA Letters'
 };
 
+const COLLAPSED_BY_DEFAULT = new Set(['ncua_letters']);
+
+function toggleCatGroup(cat) {
+  const label = document.querySelector(`.cat-label[data-cat="${cat}"]`);
+  const items = document.querySelector(`.cat-items[data-cat="${cat}"]`);
+  if (!label || !items) return;
+  const expanded = label.classList.toggle('expanded');
+  items.style.display = expanded ? '' : 'none';
+}
+
 function renderKb(entries) {
   const cats = {};
   entries.forEach(e => { if(!cats[e.category]) cats[e.category]=[]; cats[e.category].push(e); });
@@ -381,12 +394,26 @@ function renderKb(entries) {
     return 0;
   });
   sortedCats.forEach(([cat, items]) => {
-    html += `<div class="cat-group"><div class="cat-label">${CAT_LABELS[cat]||(cat.replace(/_/g,' '))}<span class="cat-count">${items.length}</span></div>`;
+    const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
+    const labelText = CAT_LABELS[cat] || cat.replace(/_/g,' ');
+    if (collapsible) {
+      html += `<div class="cat-group">`;
+      html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
+      html += `${labelText}<span class="cat-count">${items.length}</span><span class="cat-chevron">&#9658;</span>`;
+      html += `</div>`;
+      html += `<div class="cat-items" data-cat="${cat}" style="display:none">`;
+    } else {
+      html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${items.length}</span></div>`;
+    }
     items.forEach(it => {
       const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
       html += `<div class="kb-item" onclick="setQ('${q}?')">${it.title}</div>`;
     });
-    html += '</div>';
+    if (collapsible) {
+      html += `</div></div>`;
+    } else {
+      html += `</div>`;
+    }
   });
   document.getElementById('kb-list').innerHTML = html;
 }
