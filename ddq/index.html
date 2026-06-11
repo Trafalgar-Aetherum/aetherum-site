@@ -373,7 +373,14 @@ function renderKb(entries) {
   const cats = {};
   entries.forEach(e => { if(!cats[e.category]) cats[e.category]=[]; cats[e.category].push(e); });
   let html = '<div class="s-label">Knowledge base</div>';
-  Object.entries(cats).forEach(([cat, items]) => {
+  const sortedCats = Object.entries(cats).sort(([a], [b]) => {
+    const aIsNcua = a.toLowerCase() === 'ncua_letters';
+    const bIsNcua = b.toLowerCase() === 'ncua_letters';
+    if (aIsNcua && !bIsNcua) return 1;
+    if (!aIsNcua && bIsNcua) return -1;
+    return 0;
+  });
+  sortedCats.forEach(([cat, items]) => {
     html += `<div class="cat-group"><div class="cat-label">${CAT_LABELS[cat]||(cat.replace(/_/g,' '))}<span class="cat-count">${items.length}</span></div>`;
     items.forEach(it => {
       const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
