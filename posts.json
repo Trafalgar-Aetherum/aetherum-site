@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/when-visa-open-sources-your-thesis",
+    "title": "When Visa Open-Sources Your Thesis",
+    "excerpt": "A top-5 payments network just published the principle we built Aetherum on — AI reasoning inside a governed pipeline, every finding traceable to policy. So we forked their open-source security harness and extended it with three lenses of our own.",
+    "date": "June 11, 2026",
+    "readTime": "5 min read",
+    "icon": "🛡️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/clarity-act-credit-union-custody",
     "title": "The CLARITY Act Just Gave Credit Unions a Choice. Here's Why Both Answers Win.",
     "excerpt": "The CLARITY Act gives credit unions a clear path to custody digital assets — directly or through a partner. Both choices lead to the same strategic outcome: new revenue, younger members, and lasting relevance.",
     "date": "June 5, 2026",
     "readTime": "7 min read",
     "icon": "⚖️",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
