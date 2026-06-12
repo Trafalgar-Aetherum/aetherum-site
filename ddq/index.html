@@ -124,8 +124,12 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 .copy-btn:hover { border-color:var(--orange-border); color:var(--orange); }
 .copy-btn.copied { border-color:var(--green); color:var(--green); }
 .result-body { padding:16px; }
-.answer-text { font-size:14px; line-height:1.7; color:#C8D8EC; white-space:pre-wrap; }
+.answer-text { font-size:14px; line-height:1.7; color:#C8D8EC; }
 .answer-text strong, .answer-text b { color:#FFFFFF; }
+.answer-text p { margin:0 0 0.6em 0; }
+.answer-text p:last-child { margin-bottom:0; }
+.answer-text ul, .answer-text ol { margin:0.4em 0 0.6em 1.4em; padding:0; }
+.answer-text li { margin-bottom:0.25em; }
 .result-footer { padding:10px 16px; border-top:1px solid var(--card-border); display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
 .source-tag { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:4px; background:var(--tag-bg); border:1px solid var(--tag-border); font-size:11px; color:var(--tag-text); }
 .source-tag::before { content:'◆'; font-size:7px; }
@@ -298,8 +302,7 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
   <div class="ddq-footer">
     Knowledge base maintained under documented review process. Formal operational security procedures available at:
     <a href="https://aetherum.ai/docs/operational-security-procedures.pdf" target="_blank">Operational Security Procedures</a>
-    &nbsp;·&nbsp;
-    <a href="https://aetherum.ai/ddq" target="_blank">KB v2.7 · Reviewed 2026-06-07</a>
+    <span id="kb-footer-version-wrap" style="display:none">&nbsp;·&nbsp;<a href="https://aetherum.ai/ddq" target="_blank" id="kb-footer-version"></a></span>
   </div>
 
 </div>
@@ -345,9 +348,15 @@ async function loadKbMeta() {
   try {
     const r = await fetch(`${API}/ddq/kb-meta`);
     const meta = await r.json();
-    const badge = document.getElementById('kb-version-badge');
-    if (badge && meta.version && meta.last_reviewed) {
-      badge.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+    if (meta.version && meta.last_reviewed) {
+      const badge = document.getElementById('kb-version-badge');
+      if (badge) badge.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+      const footerLink = document.getElementById('kb-footer-version');
+      const footerWrap = document.getElementById('kb-footer-version-wrap');
+      if (footerLink && footerWrap) {
+        footerLink.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+        footerWrap.style.display = '';
+      }
     }
   } catch(e) {}
 }
@@ -479,7 +488,7 @@ function renderResult(question, data) {
       <div class="result-q"><strong>Q:</strong> ${esc(question)}</div>
       <button class="copy-btn" id="${cid}" onclick="copyText('${cid}',\`${escJs(data.answer)}\`)">Copy</button>
     </div>
-    <div class="result-body"><div class="answer-text">${esc(data.answer)}</div></div>
+    <div class="result-body"><div class="answer-text">${renderMd(data.answer)}</div></div>
     ${footer}
   `;
   document.getElementById('results').prepend(card);
@@ -507,6 +516,37 @@ function clearAll() {
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function escJs(s) { return String(s).replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$'); }
+
+// XSS-safe markdown renderer: escape HTML first, then apply only known patterns.
+function inlineMd(s) {
+  return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>');
+}
+function renderMd(raw) {
+  const s = esc(String(raw));
+  const lines = s.split('\n');
+  let html = '', inUl = false, inOl = false;
+  for (const line of lines) {
+    const ulM = line.match(/^[-*]\s+(.+)$/);
+    const olM = !ulM && line.match(/^\d+\.\s+(.+)$/);
+    if (ulM) {
+      if (inOl) { html += '</ol>'; inOl = false; }
+      if (!inUl) { html += '<ul>'; inUl = true; }
+      html += `<li>${inlineMd(ulM[1])}</li>`;
+    } else if (olM) {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (!inOl) { html += '<ol>'; inOl = true; }
+      html += `<li>${inlineMd(olM[1])}</li>`;
+    } else {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (inOl) { html += '</ol>'; inOl = false; }
+      if (line.trim()) html += `<p>${inlineMd(line)}</p>`;
+      else html += '<br>';
+    }
+  }
+  if (inUl) html += '</ul>';
+  if (inOl) html += '</ol>';
+  return html;
+}
 
 init();
 </script>
