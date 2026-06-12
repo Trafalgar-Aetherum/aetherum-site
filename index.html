@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aetherum.ai — Institutional Crypto-Collateralized Lending Infrastructure</title>
 <meta name="description" content="AI-powered crypto-collateralized lending infrastructure for credit unions and banks. Institutional-grade custody, compliance, and real-time risk management.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0B1A2E;
@@ -681,6 +681,60 @@
   .partner-badge .dot { width: 8px; height: 8px; background: var(--green-accent); border-radius: 50%; }
   .partner-badge span { font-size: 15px; font-weight: 500; color: var(--text-primary); }
   .partner-badge .role { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+
+  /* ─── AUDIT-NATIVE ─── */
+  .audit-section {
+    background: #162848;
+    border-top: 1px solid rgba(247,147,26,0.15);
+    border-bottom: 1px solid rgba(247,147,26,0.15);
+  }
+  .audit-section .section-label {
+    font-family: 'DM Mono', monospace;
+    color: #F7931A;
+    letter-spacing: .12em;
+  }
+  .audit-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1.02;
+    letter-spacing: .01em;
+    color: #fff;
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+  .audit-intro {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: #9FB0C8;
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+  .audit-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+  }
+  .audit-pillar {
+    background: linear-gradient(160deg, rgba(247,147,26,0.06), rgba(247,147,26,0.01));
+    border: 1px solid rgba(247,147,26,0.18);
+    border-radius: 20px;
+    padding: 36px 32px;
+  }
+  .audit-pillar-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: .04em;
+    color: #F7931A;
+    margin-bottom: 12px;
+  }
+  .audit-pillar p {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: #EAEEF5;
+    line-height: 1.65;
+  }
 
   /* ─── BLOG ─── */
   .blog-section { background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%); }
@@ -1414,6 +1468,27 @@
     <div class="partner-badge"><div class="dot"></div><span>USDC Collateral Flows</span></div>
     <div class="partner-badge"><div class="dot"></div><span>Cross-Chain Transfer Protocol</span></div>
     <div class="partner-badge"><div class="dot"></div><span>Programmable Wallet Infrastructure</span></div>
+  </div>
+</section>
+
+<!-- AUDIT-NATIVE SECURITY -->
+<section class="section audit-section">
+  <div class="section-label">SECURITY · AUDIT-NATIVE BY DESIGN</div>
+  <h2 class="audit-headline">Built to Prove Every Step</h2>
+  <p class="audit-intro">Regulated finance can't run on "trust us." Aetherum is engineered so every risk assessment, every disbursement, and every line of code is traceable to policy and built to withstand examination. As the industry's most serious players move toward governed, AI-assisted security, we're not catching up — it's how we've built from day one.</p>
+  <div class="audit-pillars">
+    <div class="audit-pillar">
+      <div class="audit-pillar-title">Traceable to policy</div>
+      <p>Every control and every finding maps to a documented rule an examiner can follow.</p>
+    </div>
+    <div class="audit-pillar">
+      <div class="audit-pillar-title">Proven, not promised</div>
+      <p>Risks resolve when they're demonstrably closed, not when a scan looks clean.</p>
+    </div>
+    <div class="audit-pillar">
+      <div class="audit-pillar-title">Explainable to the member</div>
+      <p>The clarity a regulator sees is the clarity your members get.</p>
+    </div>
   </div>
 </section>
 
