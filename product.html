@@ -6,20 +6,34 @@
   <title>Aetherum — Crypto-Backed Lending for Credit Unions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #0b1120;
-      --bg-card: #131b2e;
-      --accent: #c8893e;
-      --accent-hover: #daa050;
-      --text: #ffffff;
-      --text-muted: #94a3b8;
-      --border: #1e293b;
+      /* Landing-page design tokens */
+      --navy:          #0B1A2E;
+      --navy-mid:      #122440;
+      --navy-light:    #1A3155;
+      --copper:        #D4885C;
+      --copper-light:  #E8A87C;
+      --copper-glow:   rgba(212, 136, 92, 0.15);
+      --ice:           #E8EDF4;
+      --white:         #FFFFFF;
+      --green-accent:  #4ADE80;
+      --blue-accent:   #60A5FA;
+      --text-primary:  #E8EDF4;
+      --text-secondary:#9AADCC;
+      --text-muted:    #6B82A6;
+      --border:        rgba(255,255,255,0.07);
+      /* Aliases for product-page CSS */
+      --bg:            var(--navy);
+      --bg-card:       var(--navy-mid);
+      --accent:        var(--copper);
+      --accent-hover:  var(--copper-light);
+      --text:          var(--white);
     }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Outfit', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -166,7 +180,7 @@
     }
     .badge {
       display: inline-block;
-      background: rgba(200,137,62,.15);
+      background: var(--copper-glow);
       color: var(--accent);
       font-size: .7rem;
       font-weight: 600;
@@ -471,7 +485,7 @@
       <h3>Member Management</h3>
       <p>Unified member profiles combining traditional account data with on-chain wallet history, DACS eligibility scores, and loan activity — giving your team a complete picture of every borrower.</p>
     </div>
-    <div class="card" id="stablecoin" style="border-color:rgba(247,147,26,0.35);">
+    <div class="card" id="stablecoin" style="border-color:rgba(212,136,92,0.35);">
       <div class="card-icon">⭕</div>
       <span class="badge">STABLECOIN ALLIANCE</span>
       <h3>Multi-Rail Stablecoin Disbursement</h3>
@@ -486,7 +500,7 @@
           <span style="color:#94a3b8;">Cross-Chain Transfer Protocol</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;">
-          <span style="width:6px;height:6px;border-radius:50%;background:#F7931A;flex-shrink:0;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--copper);flex-shrink:0;"></span>
           <span style="color:#94a3b8;">Programmable Wallet Infrastructure</span>
         </div>
       </div>
@@ -549,32 +563,32 @@
     </div>
     <div class="pillar">
       <div class="pillar-num">7</div>
-      <h4>On-Chain Member Identity (CUMember) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>On-Chain Member Identity (CUMember) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. ERC-3643 + ERC-7943 compliant identity attestation — KYC verified, jurisdiction gated, and collateral-scored on-chain via ONCHAINID.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">8</div>
-      <h4>Privacy-Preserving Computation (FHE-DACS) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>Privacy-Preserving Computation (FHE-DACS) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. Member financial data is encrypted before scoring — risk assessment computations are performed without exposing raw inputs at any step.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">9</div>
-      <h4>Dynamic LTV Enforcement (DACS-LTV) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>Dynamic LTV Enforcement (DACS-LTV) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. DACS risk tier automatically sets each member's on-chain LTV ceiling — Tier 1 up to 70%, Tier 2 up to 65%, Tier 3 up to 55%. Enforced at the blockchain layer via ERC-3643 + ERC-7943. No manual override possible.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">10</div>
-      <h4>Distributed Ledger Collateral Management &amp; Liquidation Control <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>Distributed Ledger Collateral Management &amp; Liquidation Control <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. A distributed ledger architecture for real-time collateral tracking, automated margin enforcement, and liquidation control — ensuring every collateral event is recorded on-chain with full auditability and no single point of failure.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">11</div>
-      <h4>XLS-66 LoanBroker Integration <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>XLS-66 LoanBroker Integration <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. Native on-ledger lending via the XRP Ledger XLS-66 protocol — DACS-gated origination, dual-party authorization, and First-Loss Capital management purpose-built for NCUA-regulated credit unions.</p>
     </div>
     <div class="pillar">
       <div class="pillar-num">12</div>
-      <h4>Key Governance &amp; Audit Trail <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(200,137,62,.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
+      <h4>Key Governance &amp; Audit Trail <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
       <p>Patent-pending pillar. Two-tier on-chain key hierarchy with instant operational key revocation and an immutable audit trail independently verifiable by NCUA examiners — no platform API access required.</p>
     </div>
   </div>
@@ -585,13 +599,13 @@
   <div style="max-width:1000px;margin:0 auto;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
       <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;">Stablecoin Infrastructure</p>
-      <span style="font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(247,147,26,0.12);color:#F7931A;border:1px solid rgba(247,147,26,0.25);">Alliance Partner</span>
+      <span style="font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(212,136,92,0.12);color:var(--copper);border:1px solid rgba(212,136,92,0.25);">Alliance Partner</span>
     </div>
     <h2 class="section-title" style="text-align:left;margin-bottom:.5rem;">Multi-Rail Stablecoin Disbursement</h2>
     <p class="section-sub" style="text-align:left;margin-left:0;margin-bottom:2rem;">Pluggable multi-rail disbursement infrastructure supporting USD and SGD settlement across EVM-compatible networks — from loan origination through international cross-border delivery to the member's wallet.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:1.5rem;">
       <!-- USDC -->
-      <div style="background:#131b2e;border:1px solid rgba(39,117,202,0.3);border-radius:12px;padding:1.5rem;">
+      <div style="background:var(--navy-mid);border:1px solid rgba(39,117,202,0.3);border-radius:12px;padding:1.5rem;">
         <div style="width:36px;height:36px;border-radius:8px;background:rgba(39,117,202,0.15);border:1px solid rgba(39,117,202,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
           <span style="color:#2775CA;font-size:1.1rem;">🪙</span>
         </div>
@@ -603,7 +617,7 @@
         <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
       </div>
       <!-- CCTP -->
-      <div style="background:#131b2e;border:1px solid rgba(0,173,239,0.3);border-radius:12px;padding:1.5rem;">
+      <div style="background:var(--navy-mid);border:1px solid rgba(0,173,239,0.3);border-radius:12px;padding:1.5rem;">
         <div style="width:36px;height:36px;border-radius:8px;background:rgba(0,173,239,0.15);border:1px solid rgba(0,173,239,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
           <span style="color:#00ADEF;font-size:1.1rem;">⚡</span>
         </div>
@@ -614,9 +628,9 @@
         <div style="font-size:.72rem;color:#64748b;">Finality · ~20s cross-chain &nbsp;·&nbsp; Slippage · Zero &nbsp;·&nbsp; Chains · 5</div>
       </div>
       <!-- Programmable Wallets -->
-      <div style="background:#131b2e;border:1px solid rgba(247,147,26,0.3);border-radius:12px;padding:1.5rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(247,147,26,0.12);border:1px solid rgba(247,147,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
-          <span style="color:#F7931A;font-size:1.1rem;">🔐</span>
+      <div style="background:var(--navy-mid);border:1px solid rgba(212,136,92,0.3);border-radius:12px;padding:1.5rem;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(212,136,92,0.12);border:1px solid rgba(212,136,92,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+          <span style="color:var(--copper);font-size:1.1rem;">🔐</span>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
           <h3 style="font-size:1rem;font-weight:700;margin:0;">Programmable Wallet Infrastructure</h3>
@@ -625,7 +639,7 @@
         <div style="font-size:.72rem;color:#64748b;">Model · Non-custodial &nbsp;·&nbsp; Keys · MPC &nbsp;·&nbsp; Compliance · NCUA beneficial-ownership</div>
       </div>
       <!-- Multi-Rail Payout -->
-      <div style="background:#131b2e;border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:1.5rem;">
+      <div style="background:var(--navy-mid);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:1.5rem;">
         <div style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
           <span style="color:#22c55e;font-size:1.1rem;">🌐</span>
         </div>
@@ -638,16 +652,16 @@
       </div>
     </div>
     <!-- Arc Mainnet Milestone -->
-    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 1.5rem;background:rgba(247,147,26,0.06);border:1px solid rgba(247,147,26,0.2);border-radius:12px;">
-      <div style="flex-shrink:0;padding:.75rem 1.25rem;background:rgba(247,147,26,0.1);border:1px solid rgba(247,147,26,0.25);border-radius:8px;text-align:center;min-width:90px;">
-        <div style="font-size:1.3rem;font-weight:800;color:#F7931A;line-height:1;">Arc</div>
+    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 1.5rem;background:rgba(212,136,92,0.06);border:1px solid rgba(212,136,92,0.2);border-radius:12px;">
+      <div style="flex-shrink:0;padding:.75rem 1.25rem;background:rgba(212,136,92,0.1);border:1px solid rgba(212,136,92,0.25);border-radius:8px;text-align:center;min-width:90px;">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--copper);line-height:1;">Arc</div>
         <div style="font-size:.65rem;color:#94a3b8;margin-top:2px;">Mainnet</div>
-        <div style="font-size:.65rem;font-weight:700;color:#F7931A;margin-top:4px;">Q3 2026</div>
+        <div style="font-size:.65rem;font-weight:700;color:var(--copper);margin-top:4px;">Q3 2026</div>
       </div>
       <div style="flex:1;">
         <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
           <span style="font-size:.9rem;font-weight:700;color:white;">Arc Mainnet — Q3 2026 Settlement Layer Milestone</span>
-          <span style="font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(245,158,11,0.12);color:#F59E0B;border:1px solid rgba(245,158,11,0.25);">Roadmap</span>
+          <span style="font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(212,136,92,0.12);color:var(--copper);border:1px solid rgba(212,136,92,0.25);">Roadmap</span>
         </div>
         <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0;">Arc is the high-throughput EVM-compatible settlement layer built for institutional stablecoin flows. Aetherum will migrate stablecoin disbursements to Arc mainnet in Q3 2026 — delivering sub-second finality and near-zero gas costs across USD and SGD settlement rails for every credit-union loan.</p>
       </div>
@@ -661,7 +675,7 @@
     <h2 class="section-title" style="text-align:left;margin-bottom:.5rem;">Audit-Native Infrastructure</h2>
     <p class="section-sub" style="text-align:left;margin-left:0;margin-bottom:2rem;">Every lending decision cryptographically anchored on-chain and examiner-ready — built for NCUA examination from day one, not retrofitted after.</p>
     <div class="three-col">
-      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
         <h3>On-Chain Compliance Receipts</h3>
         <p>SHA-256 hash of every decision record written to Ethereum via <strong style="color:var(--text);">AetherumComplianceReceipt.sol</strong> (UUPS upgradeable, AccessControl). Verification endpoint confirms integrity by recomputing the hash against the on-chain commitment.</p>
         <ul>
@@ -672,7 +686,7 @@
         </ul>
         <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
       </div>
-      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
         <h3>DACS Explainability Layer</h3>
         <p>Structured <strong style="color:var(--text);">DacsExplanation</strong> document auto-generated after every scoring run — designed for direct NCUA examination submission.</p>
         <ul>
@@ -685,7 +699,7 @@
         </ul>
         <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
       </div>
-      <div class="col-block" style="border-color:rgba(200,137,62,.35);">
+      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
         <h3>Supervisory Control &amp; Audit Layer</h3>
         <p><strong style="color:var(--text);">SupervisoryHoldService</strong> provides documented human-in-the-loop control over every collateral position — purpose-built for NCUA examination.</p>
         <ul>
@@ -713,7 +727,7 @@
         <li>Automated monitoring manages margin calls, top-ups, and liquidation if needed.</li>
       </ol>
     </div>
-    <div class="col-block" style="border-color:rgba(200,137,62,.4);background:var(--bg-card);">
+    <div class="col-block" style="border-color:rgba(212,136,92,0.4);background:var(--bg-card);">
       <h3>GENIUS Act Ready</h3>
       <p style="margin-bottom:.75rem;">The NCUA's first GENIUS Act proposed rule closed its comment period on April 13, 2026. The final implementing regulations are due by July 18, 2026 — establishing the compliance framework for how credit unions participate in the digital asset economy.</p>
       <p style="margin-bottom:.75rem;">Aetherum was built inside this regulatory perimeter. Our ERC-3643 + ERC-7943 compliance modules, on-chain KYC/AML attestation, DACS risk assessment model, and institutional custody architecture are designed to operate within NCUA supervision — not around it.</p>
