@@ -8,17 +8,15 @@
   <meta property="og:title" content="SoFi, Stablecoins, and a Clear and Present Danger to Credit Union Relevance" />
   <meta property="og:description" content="On May 27, 2026, SoFi became the first U.S. national bank to put a stablecoin in the hands of 15 million members. Credit unions have 140 million. The window is open — but not forever." />
   <meta property="og:type" content="article" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy:    #0B1A2E;
       --navy2:   #0F2035;
       --navy3:   #122440;
       --blue:    #0F50C8;
-      --orange:  #F7931A;
-      --orange2: rgba(247,147,26,0.12);
+      --copper:  #D4885C;
+      --orange2: rgba(212,136,92,0.12);
       --white:   #FFFFFF;
       --gray1:   #b0bcd4;
       --gray2:   #5a6a88;
@@ -29,7 +27,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       background: var(--navy);
       color: var(--white);
       overflow-x: hidden;
@@ -45,19 +43,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(3,6,15,0.85);
+      background: rgba(11,26,46,0.85);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav-brand {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.14em;
       color: var(--white);
       text-decoration: none;
     }
-    .nav-brand span { color: var(--orange); }
+    .nav-brand span { color: var(--copper); }
     .nav-back {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -67,7 +65,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
 
     /* ── HERO ── */
     .hero {
@@ -84,8 +82,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(247,147,26,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247,147,26,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(212,136,92,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.04) 1px, transparent 1px);
       background-size: 64px 64px;
       pointer-events: none;
     }
@@ -101,7 +99,7 @@
       position: absolute;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(247,147,26,0.11) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(212,136,92,0.11) 0%, transparent 65%);
       bottom: -160px; right: -160px;
       pointer-events: none;
     }
@@ -109,7 +107,7 @@
       position: absolute;
       width: 400px; height: 400px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212,136,92,0.06) 0%, transparent 70%);
       top: 30%; left: 55%;
       pointer-events: none;
     }
@@ -133,9 +131,9 @@
       font-family: 'DM Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.18em;
-      color: var(--orange);
+      color: var(--copper);
       text-transform: uppercase;
-      border: 1px solid rgba(247,147,26,0.35);
+      border: 1px solid rgba(212,136,92,0.35);
       padding: 5px 13px;
       border-radius: 3px;
     }
@@ -154,15 +152,15 @@
       text-transform: uppercase;
     }
     .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(68px, 9vw, 126px);
       line-height: 0.87;
       letter-spacing: 0.01em;
       margin-bottom: 36px;
     }
-    .hero-title .accent { color: var(--orange); }
+    .hero-title .accent { color: var(--copper); }
     .hero-subtitle {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 21px;
       font-weight: 300;
       font-style: italic;
@@ -185,20 +183,20 @@
       line-height: 1.7;
       color: var(--gray1);
       margin-bottom: 56px;
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding-left: 28px;
     }
 
     /* ── SECTION HEADS ── */
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(36px, 5vw, 56px);
       letter-spacing: 0.03em;
       color: var(--white);
       margin: 64px 0 20px;
       line-height: 1;
     }
-    h2 .acc { color: var(--orange); }
+    h2 .acc { color: var(--copper); }
 
     /* ── BODY COPY ── */
     p {
@@ -217,12 +215,12 @@
     .pull-quote {
       margin: 56px 0;
       padding: 36px 40px;
-      border-left: 4px solid var(--orange);
-      background: linear-gradient(135deg, rgba(247,147,26,0.06) 0%, rgba(15,80,200,0.04) 100%);
+      border-left: 4px solid var(--copper);
+      background: linear-gradient(135deg, rgba(212,136,92,0.06) 0%, rgba(15,80,200,0.04) 100%);
       border-radius: 0 8px 8px 0;
     }
     .pull-quote p {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 22px;
       font-style: italic;
       font-weight: 300;
@@ -237,7 +235,7 @@
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       font-style: normal;
     }
 
@@ -256,10 +254,10 @@
     .stat-block:first-child { border-radius: 8px 0 0 8px; }
     .stat-block:last-child { border-radius: 0 8px 8px 0; }
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 52px;
       line-height: 1;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 8px;
     }
     .stat-label {
@@ -289,7 +287,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--copper);
       border: 2px solid var(--navy);
     }
     .timeline-date {
@@ -297,11 +295,11 @@
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 6px;
     }
     .timeline-head {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 17px;
       font-weight: 600;
       color: var(--white);
@@ -320,7 +318,7 @@
       margin: 56px 0;
       padding: 36px 40px;
       background: var(--navy3);
-      border: 1px solid rgba(247,147,26,0.2);
+      border: 1px solid rgba(212,136,92,0.2);
       border-radius: 8px;
       position: relative;
       overflow: hidden;
@@ -330,7 +328,7 @@
       position: absolute;
       top: 0; right: 0;
       width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212,136,92,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
     .callout-label {
@@ -338,11 +336,11 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 16px;
     }
     .callout h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 32px;
       letter-spacing: 0.04em;
       color: var(--white);
@@ -366,7 +364,7 @@
       margin: 80px 0 40px;
       padding: 56px 48px;
       background: linear-gradient(135deg, var(--navy3) 0%, rgba(15,80,200,0.08) 100%);
-      border: 1px solid rgba(247,147,26,0.15);
+      border: 1px solid rgba(212,136,92,0.15);
       border-radius: 12px;
       text-align: center;
       position: relative;
@@ -377,8 +375,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
       background-size: 48px 48px;
       pointer-events: none;
     }
@@ -387,7 +385,7 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 20px;
       position: relative;
     }
@@ -404,7 +402,7 @@
     }
     .cta-btn {
       display: inline-block;
-      background: var(--orange);
+      background: var(--copper);
       color: var(--navy);
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -420,7 +418,7 @@
     .cta-btn:hover {
       background: #ffaa33;
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(247,147,26,0.3);
+      box-shadow: 0 8px 32px rgba(212,136,92,0.3);
     }
 
     /* ── FOOTER ── */
@@ -434,12 +432,12 @@
       flex-wrap: wrap;
     }
     .footer-brand {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 20px;
       letter-spacing: 0.14em;
       color: var(--white);
     }
-    .footer-brand span { color: var(--orange); }
+    .footer-brand span { color: var(--copper); }
     .footer-patent {
       font-family: 'DM Mono', monospace;
       font-size: 9px;

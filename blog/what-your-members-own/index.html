@@ -7,27 +7,25 @@
   <meta name="description" content="Credit unions are flying blind on one of the fastest-growing asset classes in America. Here's what that means — and what to do about it." />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #03060F;
+      --navy: #0B1A2E;
       --navy-mid: #0a1628;
-      --orange: #F7931A;
+      --copper: #D4885C;
       --text-primary: #F1F5F9;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
-      --border: rgba(247,147,26,0.15);
+      --border: rgba(212,136,92,0.15);
     }
 
     body {
       background: var(--navy);
       color: var(--text-primary);
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
@@ -36,17 +34,17 @@
     /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(3,6,15,0.92);
+      background: rgba(11,26,46,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px; height: 60px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--text-primary); text-decoration: none; letter-spacing: 0.04em; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text-primary); text-decoration: none; letter-spacing: 0.04em; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--orange); }
-    .nav-cta { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; background: var(--orange); color: var(--navy); padding: 8px 18px; border-radius: 6px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--copper); }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; background: var(--copper); color: var(--navy); padding: 8px 18px; border-radius: 6px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; }
 
     /* ── Hero ── */
     .post-hero {
@@ -61,7 +59,7 @@
     }
     .post-tag {
       font-family: 'DM Mono', monospace; font-size: 10px;
-      color: var(--orange); background: rgba(247,147,26,0.1);
+      color: var(--copper); background: rgba(212,136,92,0.1);
       border: 1px solid var(--border);
       padding: 4px 12px; border-radius: 20px;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -72,14 +70,14 @@
     }
 
     .post-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(48px, 7vw, 80px);
       line-height: 0.95;
       color: #fff;
       letter-spacing: 0.01em;
       margin-bottom: 28px;
     }
-    .post-title span { color: var(--orange); }
+    .post-title span { color: var(--copper); }
 
     .post-subtitle {
       font-size: clamp(17px, 2vw, 21px);
@@ -97,11 +95,11 @@
     }
     .byline-avatar {
       width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(247,147,26,0.15);
+      background: rgba(212,136,92,0.15);
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       font-family: 'DM Mono', monospace; font-size: 12px;
-      color: var(--orange); font-weight: 500;
+      color: var(--copper); font-weight: 500;
     }
     .byline-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-primary); letter-spacing: 0.04em; }
     .byline-role { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; margin-top: 2px; }
@@ -135,7 +133,7 @@
     }
 
     .post-body h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 36px;
       color: #fff;
       letter-spacing: 0.03em;
@@ -146,7 +144,7 @@
     .post-body h3 {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
-      color: var(--orange);
+      color: var(--copper);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin: 40px 0 14px;
@@ -166,8 +164,8 @@
     .pull-quote {
       margin: 48px 0;
       padding: 32px 36px;
-      border-left: 3px solid var(--orange);
-      background: rgba(247,147,26,0.04);
+      border-left: 3px solid var(--copper);
+      background: rgba(212,136,92,0.04);
       border-radius: 0 8px 8px 0;
     }
     .pull-quote p {
@@ -197,19 +195,19 @@
     .stat-label {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
-      color: var(--orange);
+      color: var(--copper);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
     .stat-value {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 42px;
       color: #fff;
       line-height: 1;
     }
     .stat-sub {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 13px;
       color: var(--text-dim);
       margin-top: 6px;
@@ -217,7 +215,7 @@
 
     /* ── Insight box ── */
     .insight-box {
-      background: rgba(247,147,26,0.05);
+      background: rgba(212,136,92,0.05);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 24px 28px;
@@ -229,7 +227,7 @@
       color: var(--text-muted) !important;
       line-height: 1.65 !important;
     }
-    .insight-box p strong { color: var(--orange) !important; }
+    .insight-box p strong { color: var(--copper) !important; }
 
     /* ── CTA ── */
     .post-cta {
@@ -241,7 +239,7 @@
       text-align: center;
     }
     .post-cta h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 36px;
       color: #fff;
       letter-spacing: 0.03em;
@@ -256,7 +254,7 @@
     }
     .cta-btn {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--orange); color: var(--navy);
+      background: var(--copper); color: var(--navy);
       font-family: 'DM Mono', monospace; font-size: 12px;
       font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       padding: 14px 28px; border-radius: 8px; text-decoration: none;
@@ -487,7 +485,7 @@
       <p>Request a live demo of the CU Member Insights module — built for credit union executives, designed for your examiner.</p>
       <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn" target="_blank">
         Schedule a Demo
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="#03060F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="#0B1A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
 

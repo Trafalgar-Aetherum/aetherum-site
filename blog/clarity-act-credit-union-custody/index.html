@@ -11,24 +11,22 @@
   <meta property="og:url" content="https://aetherum.ai/blog/67-million-crypto-holders/" />
   <link rel="icon" href="/favicon.ico" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:     #162848;
+      --navy:     #0B1A2E;
       --navy-2:   #1A3055;
       --navy-3:   #1E3660;
-      --orange:   #F7931A;
-      --orange-dim: rgba(247,147,26,0.15);
+      --copper:   #D4885C;
+      --copper-glow: rgba(212,136,92,0.15);
       --white:    #F0F4FF;
       --text:     #C8D8F0;
       --muted:    #8A9FBF;
       --grid:     rgba(255,255,255,0.04);
-      --border:   rgba(247,147,26,0.12);
+      --border:   rgba(212,136,92,0.12);
     }
 
     html { font-size: 17px; scroll-behavior: smooth; }
@@ -36,7 +34,7 @@
     body {
       background: var(--navy);
       color: var(--text);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       line-height: 1.78;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -59,7 +57,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(18,36,66,0.92);
+      background: rgba(11,26,46,0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -71,14 +69,14 @@
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.12em;
       color: var(--white);
       text-decoration: none;
     }
 
-    .nav-logo span { color: var(--orange); }
+    .nav-logo span { color: var(--copper); }
 
     .nav-back {
       font-family: 'DM Mono', monospace;
@@ -94,7 +92,7 @@
     }
 
     .nav-back::before { content: '←'; font-size: 13px; }
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
 
     /* ── HERO ── */
     .hero {
@@ -111,7 +109,7 @@
       top: 0; left: 50%;
       transform: translateX(-50%);
       width: 700px; height: 400px;
-      background: radial-gradient(ellipse at center, rgba(247,147,26,0.08) 0%, transparent 68%);
+      background: radial-gradient(ellipse at center, rgba(212,136,92,0.08) 0%, transparent 68%);
       pointer-events: none;
     }
 
@@ -128,7 +126,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--navy);
-      background: var(--orange);
+      background: var(--copper);
       padding: 4px 12px;
       border-radius: 3px;
       font-weight: 500;
@@ -149,7 +147,7 @@
     }
 
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(36px, 5.5vw, 64px);
       line-height: 1.05;
       letter-spacing: 0.02em;
@@ -182,7 +180,7 @@
     }
 
     article h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(26px, 3.2vw, 38px);
       letter-spacing: 0.04em;
       color: var(--white);
@@ -196,7 +194,7 @@
     }
 
     article em {
-      color: var(--orange);
+      color: var(--copper);
       font-style: normal;
     }
 
@@ -210,7 +208,7 @@
     .stat-block {
       background: var(--navy-2);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       border-radius: 6px;
       padding: 24px 28px;
       margin: 2rem 0;
@@ -241,7 +239,7 @@
 
     .data-list li::before {
       content: '▸';
-      color: var(--orange);
+      color: var(--copper);
       font-size: 12px;
       margin-top: 5px;
       flex-shrink: 0;
@@ -265,12 +263,12 @@
       bottom: -60px; left: 50%;
       transform: translateX(-50%);
       width: 500px; height: 300px;
-      background: radial-gradient(ellipse, rgba(247,147,26,0.07) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(212,136,92,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .cta-block h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 32px;
       letter-spacing: 0.06em;
       color: var(--white);
@@ -285,7 +283,7 @@
 
     .cta-btn {
       display: inline-block;
-      background: var(--orange);
+      background: var(--copper);
       color: #0D1B2E;
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -314,14 +312,14 @@
     }
 
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 18px;
       letter-spacing: 0.12em;
       color: var(--white);
       text-decoration: none;
     }
 
-    .footer-logo span { color: var(--orange); }
+    .footer-logo span { color: var(--copper); }
 
     .patent-badge {
       font-family: 'DM Mono', monospace;

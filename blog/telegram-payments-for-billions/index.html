@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Telegram Is Building Crypto Payments for Billions. Who's Building It for Your Members? | Aetherum</title>
   <meta name="description" content="Telegram just proved crypto payments are going mainstream. Here's why that's a five-alarm signal for every credit union in America — and what comes next." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #03060F;
-      --orange: #F7931A;
+      --navy:   #0B1A2E;
+      --copper: #D4885C;
       --white:  #F0EDE6;
       --muted:  #8A8FA8;
       --glass:  rgba(255,255,255,0.04);
-      --border: rgba(247,147,26,0.15);
+      --border: rgba(212,136,92,0.15);
     }
 
     html { scroll-behavior: smooth; }
@@ -26,7 +24,7 @@
     body {
       background: var(--navy);
       color: var(--white);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-weight: 300;
       line-height: 1.75;
       font-size: 18px;
@@ -40,8 +38,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
@@ -57,20 +55,20 @@
       justify-content: space-between;
       padding: 0 40px;
       height: 64px;
-      background: rgba(3,6,15,0.85);
+      background: rgba(11,26,46,0.85);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.12em;
       color: var(--white);
       text-decoration: none;
     }
 
-    .nav-logo span { color: var(--orange); }
+    .nav-logo span { color: var(--copper); }
 
     .nav-back {
       font-family: 'DM Mono', monospace;
@@ -81,7 +79,7 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
 
     /* Hero */
     .hero {
@@ -98,7 +96,7 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       border: 1px solid var(--border);
       padding: 5px 14px;
       border-radius: 2px;
@@ -106,7 +104,7 @@
     }
 
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(42px, 7vw, 68px);
       line-height: 1.0;
       letter-spacing: 0.03em;
@@ -115,7 +113,7 @@
     }
 
     h1 em {
-      color: var(--orange);
+      color: var(--copper);
       font-style: normal;
     }
 
@@ -143,7 +141,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--copper);
       opacity: 0.6;
     }
 
@@ -173,16 +171,16 @@
     }
 
     .post-body p:first-child::first-letter {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 4.5em;
       float: left;
       line-height: 0.82;
       margin: 0.06em 0.1em 0 0;
-      color: var(--orange);
+      color: var(--copper);
     }
 
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(26px, 4vw, 36px);
       letter-spacing: 0.06em;
       color: var(--white);
@@ -191,13 +189,13 @@
     }
 
     h2 em {
-      color: var(--orange);
+      color: var(--copper);
       font-style: normal;
     }
 
     /* Pull quote */
     .pull-quote {
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       margin: 2.4em 0;
       padding: 20px 28px;
       background: var(--glass);
@@ -230,10 +228,10 @@
     }
 
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 42px;
       letter-spacing: 0.04em;
-      color: var(--orange);
+      color: var(--copper);
       display: block;
       line-height: 1;
       margin-bottom: 8px;
@@ -256,7 +254,7 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       border: 1px solid var(--border);
       padding: 6px 14px;
       border-radius: 2px;
@@ -283,12 +281,12 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 14px;
     }
 
     .cta-headline {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 32px;
       letter-spacing: 0.06em;
       color: var(--white);
@@ -306,7 +304,7 @@
 
     .cta-btn {
       display: inline-block;
-      background: var(--orange);
+      background: var(--copper);
       color: var(--navy);
       font-family: 'DM Mono', monospace;
       font-size: 13px;
@@ -330,14 +328,14 @@
     }
 
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 20px;
       letter-spacing: 0.14em;
       color: var(--muted);
       margin-bottom: 12px;
     }
 
-    .footer-logo span { color: var(--orange); }
+    .footer-logo span { color: var(--copper); }
 
     .footer-patent {
       font-family: 'DM Mono', monospace;

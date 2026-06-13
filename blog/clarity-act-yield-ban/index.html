@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yield Is Over. Borrowing Is the Only Compliant Path to Liquidity. | Aetherum</title>
+  <meta name="description" content="The CLARITY Act just closed the yield door on stablecoins. For crypto holders who need USD liquidity, borrowing against their assets — not selling, not earning yield — is now the only compliant path forward." />
+  <meta property="og:title" content="Yield Is Over. Borrowing Is the Only Compliant Path to Liquidity." />
+  <meta property="og:description" content="As regulators eliminate yield from stablecoins, crypto-collateralized lending becomes the single compliant route to USD liquidity." />
+  <meta property="og:type" content="article" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0B1A2E;
+      --navy2:  #080E1E;
+      --navy3:  #0D1526;
+      --copper: #D4885C;
+      --copper-glow: rgba(212,136,92,0.12);
+      --white:  #FFFFFF;
+      --off-white: #E8EAF0;
+      --muted:  #8892A4;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,26,46,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper); }
+
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 2rem 48px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      border: 1px solid rgba(212,136,92,0.35);
+      border-radius: 3px;
+      padding: 4px 10px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    h1 .accent { color: var(--copper); }
+    .hero-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .byline-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--copper);
+      opacity: 0.6;
+    }
+
+    .rule {
+      max-width: 760px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .pull {
+      max-width: 760px;
+      margin: 48px auto;
+      padding: 0 2rem;
+    }
+    .pull blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 4px 0 4px 28px;
+      font-size: 1.28rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    .body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 80px;
+    }
+    .body h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin: 52px 0 16px;
+      line-height: 1.1;
+    }
+    .body p {
+      margin-bottom: 24px;
+      color: var(--off-white);
+    }
+    .body p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .body a {
+      color: var(--copper);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,136,92,0.3);
+      transition: border-color 0.2s;
+    }
+    .body a:hover { border-color: var(--copper); }
+
+    .callout {
+      background: var(--navy3);
+      border: 1px solid rgba(212,136,92,0.2);
+      border-left: 3px solid var(--copper);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 10px;
+    }
+    .callout p {
+      margin-bottom: 0 !important;
+      font-size: 0.97rem;
+      color: var(--off-white);
+      line-height: 1.65;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 36px 0;
+    }
+    .stat {
+      background: var(--navy2);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--copper);
+      letter-spacing: 0.04em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cta-block {
+      background: var(--copper-glow);
+      border: 1px solid rgba(212,136,92,0.25);
+      border-radius: 10px;
+      padding: 40px 36px;
+      margin-top: 56px;
+      text-align: center;
+    }
+    .cta-block h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-block p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 24px !important;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--copper);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.88; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Aetherum<span>.</span></a>
+    <a class="nav-back" href="/blog">← Blog</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-tag">Regulatory Analysis</div>
+    <h1>Yield Is <span class="accent">Over.</span><br>Borrowing Is the Only<br>Compliant Path to Liquidity.</h1>
+    <p class="hero-sub">The CLARITY Act just closed the yield door on stablecoins. For crypto holders who need USD liquidity, there is now one compliant route left—and it runs through a credit union.</p>
+    <div class="byline">
+      <span>John Bailey</span>
+      <div class="byline-dot"></div>
+      <span>Founder, Aetherum</span>
+      <div class="byline-dot"></div>
+      <span>March 24, 2026</span>
+    </div>
+  </header>
+
+  <hr class="rule" />
+
+  <div class="pull">
+    <blockquote>"As regulators eliminate yield from stablecoins, the only compliant path to liquidity is borrowing—not selling and not earning yield."</blockquote>
+  </div>
+
+  <article class="body">
+
+    <p>On March 20, 2026, Senators Thom Tillis and Angela Alsobrooks reached a deal that will reshape how 50 million American crypto holders access liquidity. The CLARITY Act's compromise on stablecoin yield is simple: passive yield—earned simply for holding a dollar-pegged token—is banned. The era of sitting on stablecoins and earning 4–5% is over for U.S. holders.</p>
+
+    <p>The banking lobby got exactly what it wanted. America's Credit Unions co-signed it. And with a Senate Banking Committee markup now targeted for late April, this direction is becoming structural, not speculative.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">$316B</span>
+        <span class="stat-label">Stablecoin market cap</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5%+</span>
+        <span class="stat-label">Yield some platforms advertised—until now</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">140M</span>
+        <span class="stat-label">U.S. credit union members</span>
+      </div>
+    </div>
+
+    <h2>Three Ways Out. Two Are Now Closed.</h2>
+
+    <p>When a crypto holder needs USD liquidity, they've historically had three options:</p>
+
+    <p><strong>Option 1: Sell.</strong> Convert BTC or ETH to dollars. Simple—but it triggers a taxable event, surrenders future upside, and is permanent. In a bull market, selling feels like punishing yourself for being right.</p>
+
+    <p><strong>Option 2: Earn yield on stablecoins.</strong> Park holdings in USDC and let a platform pay you 3–5% to sit still. This was the workaround that let holders stay liquid without selling. The CLARITY Act is closing this door. Passive yield on stablecoins is functionally banned for U.S.-regulated platforms. The deal is done in principle; the markup is April.</p>
+
+    <p><strong>Option 3: Borrow against your crypto.</strong> Use your BTC, ETH, or other digital assets as collateral, take out a USD loan, keep your position intact, and repay when it suits you. No taxable event. No lost upside. Full liquidity.</p>
+
+    <p>Option 3 is the only door that remains open—and regulators didn't just leave it open, they built it into the architecture of the CLARITY Act itself.</p>
+
+    <div class="callout">
+      <div class="callout-label">From the CLARITY Act</div>
+      <p>The bill would ensure stablecoins cannot be treated as a credit union or bank deposit, and would clarify that credit unions offering digital asset services are not required to hold assets held in custody as liabilities on their balance sheet—removing one of the last structural barriers to CU-based crypto lending.</p>
+    </div>
+
+    <h2>Why Credit Unions Are the Right Infrastructure</h2>
+
+    <p>When we talk about crypto-collateralized lending, we're not talking about offshore DeFi protocols or unregulated fintech lenders. We're talking about the most trusted financial institution in most Americans' lives: their credit union.</p>
+
+    <p>Credit unions have $2.3 trillion in assets and serve 140 million members. They are NCUA-regulated, member-owned, and mission-aligned with the people they serve. They are not trying to extract fees—they are trying to serve members better than a bank ever would.</p>
+
+    <p>But until now, they had no infrastructure to offer crypto-backed loans. No custody framework. No compliant risk assessment. No member-facing application workflow. That's the gap Aetherum was built to close.</p>
+
+    <h2>What Borrowing Against Crypto Actually Looks Like</h2>
+
+    <p>A credit union member holds $80,000 in Bitcoin. She needs $25,000 to renovate her kitchen. Under the old model, her choices were: sell the BTC, drain savings, or take a personal loan at 14% APR. None of those are good.</p>
+
+    <p>Under the Aetherum model, her credit union can now assess her crypto holdings as collateral—running a compliant risk model across her on-chain position, volatility exposure, and loan-to-value ratio—and offer her a loan in under two minutes. Her BTC stays in custody at the credit union level. She gets the cash. She pays it back. She keeps her upside.</p>
+
+    <p>No taxable event. No selling pressure on the market. No relationship with a crypto lender she's never heard of.</p>
+
+    <div class="callout">
+      <div class="callout-label">Member Value Proposition</div>
+      <p>Keep your crypto exposure intact. Access USD liquidity at 8–12% APR. No taxable event. No lost upside. Backed by an institution you already trust, regulated by the NCUA.</p>
+    </div>
+
+    <h2>The Regulatory Runway Is Now</h2>
+
+    <p>The CLARITY Act's compromise on stablecoin yield is simple: passive yield—earned simply for holding a dollar-pegged token—is banned. The era of sitting on stablecoins and earning 4–5% is over for U.S. holders.</p>
+
+    <p>The window for credit unions to get ahead of this shift—to be the institutions members turn to when they need liquidity in a yield-free environment—is right now. Not when the bill passes. Now.</p>
+
+    <p>The members who hold crypto are already in your institution. They're asking whether you can help them. Every month without an answer is a month they spend at a fintech lender they found on Twitter.</p>
+
+    <h2>Aetherum's Role</h2>
+
+    <p>Aetherum is the infrastructure layer that allows credit unions to offer crypto-collateralized loans compliantly, without becoming custodians themselves. Each credit union maintains its own direct custody structure through institutional-grade custody infrastructure. Member wallets live in the credit union's account—not ours. Aetherum is the software orchestration layer: the risk model, the loan workflow, the compliance modules, the member-facing application.</p>
+
+    <p>Our risk assessment model—patent-pending—evaluates six dimensions of a member's crypto position: credit score, assets under management, volatility exposure, asset quality, tax-position scoring, and liquidity-adjusted net worth. It gives loan officers a decision-ready signal in seconds.</p>
+
+    <p>We've built this in partnership with the compliance infrastructure providers and bank connectivity layers that credit unions already require of their vendors. We're bank-connectivity approved. We're KYC/AML-ready. We're built for NCUA examination.</p>
+
+    <p>The CLARITY Act didn't create a problem. It created a market.</p>
+
+    <div class="cta-block">
+      <h3>Ready to Offer Crypto-Backed Loans?</h3>
+      <p>We're onboarding credit union partners now. Let's talk about what this looks like for your members and your institution.</p>
+      <a class="btn" href="https://calendly.com/jbailey-aetherum/30min" target="_blank" rel="noopener">Schedule a 30-Minute Call</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <p>© 2026 Aetherum, Inc. &nbsp;·&nbsp; aetherum.ai &nbsp;·&nbsp; Fremont, California</p>
+  </footer>
+
+</body>
+</html>

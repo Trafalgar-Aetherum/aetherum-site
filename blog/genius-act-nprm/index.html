@@ -8,14 +8,12 @@
   <meta property="og:title" content="The GENIUS Act NPRM Is Here. Credit Unions Are Named." />
   <meta property="og:description" content="The rules being written right now will define what compliant stablecoin infrastructure looks like for every NCUA-regulated institution. Aetherum was purpose-built to satisfy them." />
   <meta property="og:type" content="article" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #03060F;
-      --orange: #F7931A;
+      --navy: #0B1A2E;
+      --copper: #D4885C;
       --white: #FFFFFF;
       --off-white: #F4F4F6;
       --muted: #8B8FA8;
@@ -27,7 +25,7 @@
     body {
       background-color: var(--navy);
       color: var(--white);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.75;
       min-height: 100vh;
@@ -38,8 +36,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
@@ -52,18 +50,18 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 40px;
-      background: rgba(3,6,15,0.85);
+      background: rgba(11,26,46,0.85);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--glass-border);
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 24px;
       letter-spacing: 0.12em;
       color: var(--white);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--orange); }
+    .nav-logo span { color: var(--copper); }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-family: 'DM Mono', monospace;
@@ -90,9 +88,9 @@
       text-transform: uppercase;
       padding: 5px 12px;
       border-radius: 3px;
-      background: rgba(247,147,26,0.12);
-      border: 1px solid rgba(247,147,26,0.3);
-      color: var(--orange);
+      background: rgba(212,136,92,0.12);
+      border: 1px solid rgba(212,136,92,0.3);
+      color: var(--copper);
     }
     .tag.blue {
       background: rgba(100,160,255,0.1);
@@ -101,14 +99,14 @@
     }
     .post-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(42px, 6vw, 72px);
       line-height: 1.0;
       letter-spacing: 0.02em;
       color: var(--white);
       margin-bottom: 24px;
     }
-    .hero h1 .accent { color: var(--orange); }
+    .hero h1 .accent { color: var(--copper); }
     .hero-sub {
       font-size: 20px;
       color: rgba(255,255,255,0.65);
@@ -120,9 +118,9 @@
     .byline { display: flex; align-items: center; gap: 14px; padding-top: 28px; border-top: 1px solid var(--glass-border); }
     .byline-avatar {
       width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), #c06010);
+      background: linear-gradient(135deg, var(--copper), #c06010);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: white; flex-shrink: 0;
+      font-family: 'DM Serif Display', serif; font-size: 18px; color: white; flex-shrink: 0;
     }
     .byline-text { font-family: 'DM Mono', monospace; }
     .byline-name { font-size: 13px; color: var(--white); }
@@ -131,7 +129,7 @@
     .callout {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       border-radius: 6px;
       padding: 24px 28px;
       margin: 40px 0;
@@ -141,12 +139,12 @@
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 10px;
     }
     .callout p { font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.65; margin: 0; }
     .article h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 32px;
       letter-spacing: 0.04em;
       color: var(--white);
@@ -154,7 +152,7 @@
       padding-bottom: 12px;
       border-bottom: 1px solid var(--glass-border);
     }
-    .article h2 .accent { color: var(--orange); }
+    .article h2 .accent { color: var(--copper); }
     .article p { color: rgba(255,255,255,0.78); margin-bottom: 22px; font-size: 18px; }
     .article p strong { color: var(--white); font-weight: 600; }
     .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
@@ -170,7 +168,7 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 8px;
     }
     .req-card p { font-size: 15px; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.55; }
@@ -180,11 +178,11 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       padding: 12px 16px;
       text-align: left;
-      border-bottom: 1px solid rgba(247,147,26,0.3);
-      background: rgba(247,147,26,0.06);
+      border-bottom: 1px solid rgba(212,136,92,0.3);
+      background: rgba(212,136,92,0.06);
     }
     .mapping-table td {
       padding: 14px 16px;
@@ -206,8 +204,8 @@
       white-space: nowrap;
     }
     .ncua-block {
-      background: linear-gradient(135deg, rgba(247,147,26,0.08), rgba(247,147,26,0.03));
-      border: 1px solid rgba(247,147,26,0.2);
+      background: linear-gradient(135deg, rgba(212,136,92,0.08), rgba(212,136,92,0.03));
+      border: 1px solid rgba(212,136,92,0.2);
       border-radius: 10px;
       padding: 32px 36px;
       margin: 40px 0;
@@ -217,11 +215,11 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 14px;
     }
     .ncua-block h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 26px;
       color: var(--white);
       margin-bottom: 16px;
@@ -237,10 +235,10 @@
       line-height: 1.55;
     }
     .ncua-block ul li:last-child { border-bottom: none; }
-    .ncua-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 14px; }
+    .ncua-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--copper); font-size: 14px; }
     .positioning {
-      background: linear-gradient(135deg, rgba(3,6,15,0.9), rgba(20,20,40,0.6));
-      border: 1px solid rgba(247,147,26,0.25);
+      background: linear-gradient(135deg, rgba(11,26,46,0.9), rgba(20,20,40,0.6));
+      border: 1px solid rgba(212,136,92,0.25);
       border-radius: 12px;
       padding: 40px 44px;
       margin: 56px 0;
@@ -255,14 +253,14 @@
       margin-bottom: 18px;
     }
     .positioning blockquote {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(22px, 3.5vw, 36px);
       line-height: 1.2;
       color: var(--white);
       letter-spacing: 0.04em;
       margin: 0 0 18px;
     }
-    .positioning blockquote .accent { color: var(--orange); }
+    .positioning blockquote .accent { color: var(--copper); }
     .positioning .pos-sub { font-size: 15px; color: var(--muted); font-style: italic; }
     .comment-cta {
       background: var(--glass-bg);
@@ -281,15 +279,15 @@
       font-size: 12px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       text-decoration: none;
       white-space: nowrap;
-      border: 1px solid rgba(247,147,26,0.4);
+      border: 1px solid rgba(212,136,92,0.4);
       padding: 10px 20px;
       border-radius: 4px;
       transition: background 0.2s;
     }
-    .comment-cta a:hover { background: rgba(247,147,26,0.1); }
+    .comment-cta a:hover { background: rgba(212,136,92,0.1); }
     footer {
       position: relative;
       z-index: 1;
@@ -301,8 +299,8 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: var(--white); }
-    .footer-brand span { color: var(--orange); }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: 0.1em; color: var(--white); }
+    .footer-brand span { color: var(--copper); }
     .footer-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; }
     @media (max-width: 640px) {
       nav { padding: 14px 20px; }

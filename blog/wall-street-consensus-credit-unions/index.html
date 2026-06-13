@@ -4,12 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wall Street Just Validated Everything Credit Unions Have Been Waiting For | Aetherum</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --navy:       #0B1A2E;
+      --navy-mid:   #122440;
+      --copper:     #D4885C;
+      --copper-light: #E8A87C;
+      --white:      #FFFFFF;
+      --text-primary:   #E8EDF4;
+      --text-secondary: #9AADCC;
+      --text-muted:     #6B82A6;
+      --card-bg:    rgba(255,255,255,0.04);
+      --border:     rgba(255,255,255,0.07);
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Georgia', serif; background: #f9f8f6; color: #1a1a1a; line-height: 1.75; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--text-primary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
 
     .hero {
-      background: linear-gradient(135deg, #0a1628 0%, #102040 60%, #0d2e4e 100%);
+      background: linear-gradient(135deg, #0B1A2E 0%, #122440 60%, #1A3155 100%);
       padding: 80px 24px 64px;
       text-align: center;
       position: relative;
@@ -19,17 +40,17 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(0,180,140,0.13) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 60% 40%, rgba(212,136,92,0.10) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-tag {
       display: inline-block;
-      background: rgba(0,200,160,0.15);
-      border: 1px solid rgba(0,200,160,0.35);
-      color: #00c8a0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: rgba(212,136,92,0.12);
+      border: 1px solid rgba(212,136,92,0.35);
+      color: var(--copper);
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
       padding: 6px 14px;
@@ -37,32 +58,31 @@
       margin-bottom: 28px;
     }
     .hero h1 {
-      font-family: 'Georgia', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(26px, 5vw, 48px);
-      font-weight: 700;
-      color: #ffffff;
+      font-weight: 400;
+      color: var(--white);
       max-width: 820px;
       margin: 0 auto 20px;
       line-height: 1.2;
-      letter-spacing: -0.5px;
     }
-    .hero h1 span { color: #00c8a0; }
+    .hero h1 span { color: var(--copper); }
     .hero-sub {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
-      color: rgba(255,255,255,0.62);
+      color: var(--text-secondary);
       max-width: 600px;
       margin: 0 auto 36px;
       font-weight: 300;
       line-height: 1.6;
     }
     .hero-meta {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 13px;
-      color: rgba(255,255,255,0.38);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
       letter-spacing: 0.5px;
     }
-    .hero-meta strong { color: rgba(255,255,255,0.62); font-weight: 600; }
+    .hero-meta strong { color: var(--text-secondary); font-weight: 500; }
 
     .article-wrap {
       max-width: 760px;
@@ -73,44 +93,43 @@
     .lede {
       font-size: 20px;
       line-height: 1.68;
-      color: #2c2c2c;
+      color: var(--text-secondary);
       font-style: italic;
-      border-left: 4px solid #00c8a0;
+      border-left: 4px solid var(--copper);
       padding-left: 22px;
       margin-bottom: 44px;
     }
 
-    p { font-size: 17.5px; margin-bottom: 26px; color: #2a2a2a; }
+    p { font-size: 17.5px; margin-bottom: 26px; color: var(--text-secondary); }
 
     h2 {
-      font-family: 'Georgia', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 26px;
-      font-weight: 700;
-      color: #0a1628;
+      font-weight: 400;
+      color: var(--white);
       margin: 56px 0 18px;
-      letter-spacing: -0.3px;
     }
 
     h3 {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #00c8a0;
+      color: var(--copper);
       margin: 44px 0 10px;
     }
 
     .callout {
-      background: linear-gradient(135deg, #f0fdf9 0%, #e8faf5 100%);
-      border: 1px solid #b2ecd9;
-      border-left: 4px solid #00c8a0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--copper);
       border-radius: 10px;
       padding: 26px 30px;
       margin: 38px 0;
     }
-    .callout p { font-size: 16.5px; color: #0d3d2e; margin-bottom: 0; }
-    .callout strong { color: #086050; }
+    .callout p { font-size: 16.5px; color: var(--text-secondary); margin-bottom: 0; }
+    .callout strong { color: var(--text-primary); }
 
     .stat-row {
       display: grid;
@@ -119,40 +138,39 @@
       margin: 38px 0;
     }
     .stat-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px 18px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     .stat-card .num {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 34px;
-      font-weight: 800;
-      color: #0a1628;
+      font-weight: 400;
+      color: var(--white);
       display: block;
       line-height: 1;
       margin-bottom: 8px;
     }
     .stat-card .label {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 12px;
-      color: #64748b;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
       letter-spacing: 0.4px;
       line-height: 1.4;
     }
 
     .pullquote {
-      font-family: 'Georgia', serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       font-style: italic;
-      color: #0a1628;
+      color: var(--white);
       text-align: center;
       margin: 52px 0;
       padding: 32px 36px;
-      border-top: 2px solid #00c8a0;
-      border-bottom: 2px solid #00c8a0;
+      border-top: 2px solid rgba(212,136,92,0.40);
+      border-bottom: 2px solid rgba(212,136,92,0.40);
       line-height: 1.5;
     }
 
@@ -163,29 +181,27 @@
       margin: 38px 0;
     }
     .win-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px 22px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
     .win-card .icon { font-size: 28px; margin-bottom: 12px; display: block; }
     .win-card h4 {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 14px;
-      font-weight: 700;
-      color: #0a1628;
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 8px;
     }
-    .win-card p { font-size: 14.5px; color: #4a5568; margin-bottom: 0; line-height: 1.55; }
+    .win-card p { font-size: 14.5px; color: var(--text-secondary); margin-bottom: 0; line-height: 1.55; }
 
     .member-story {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 32px 36px;
       margin: 44px 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       position: relative;
     }
     .member-story::before {
@@ -194,22 +210,23 @@
       top: -10px;
       left: 28px;
       font-size: 80px;
-      color: #00c8a0;
-      font-family: 'Georgia', serif;
+      color: var(--copper);
+      font-family: 'DM Serif Display', serif;
       line-height: 1;
-      opacity: 0.4;
+      opacity: 0.5;
     }
-    .member-story p { font-size: 17px; color: #2a2a2a; font-style: italic; margin-bottom: 16px; }
+    .member-story p { font-size: 17px; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; }
     .member-story .attribution {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 13px;
-      color: #64748b;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
       font-style: normal;
     }
-    .member-story .attribution strong { color: #0a1628; font-weight: 700; }
+    .member-story .attribution strong { color: var(--text-primary); font-weight: 500; }
 
     .cta-section {
-      background: linear-gradient(135deg, #0a1628 0%, #102040 100%);
+      background: linear-gradient(135deg, #0B1A2E 0%, #122440 100%);
+      border: 1px solid rgba(212,136,92,0.20);
       border-radius: 16px;
       padding: 52px 40px;
       text-align: center;
@@ -221,28 +238,28 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(0,200,160,0.1) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,136,92,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-    .cta-section h2 { color: #ffffff; font-size: 28px; margin: 0 0 16px; }
-    .cta-section p { color: rgba(255,255,255,0.62); font-size: 17px; max-width: 520px; margin: 0 auto 30px; }
+    .cta-section h2 { color: var(--white); font-size: 28px; margin: 0 0 16px; }
+    .cta-section p { color: var(--text-secondary); font-size: 17px; max-width: 520px; margin: 0 auto 30px; }
     .cta-btn {
       display: inline-block;
-      background: #00c8a0;
-      color: #0a1628;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 700;
+      background: var(--copper);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
       letter-spacing: 0.5px;
       padding: 14px 32px;
       border-radius: 8px;
       text-decoration: none;
+      transition: background 0.2s;
     }
+    .cta-btn:hover { background: var(--copper-light); }
 
-
-
-    a { color: #00a884; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--copper); text-decoration: none; }
+    a:hover { color: var(--copper-light); text-decoration: underline; }
 
     @media (max-width: 600px) {
       .article-wrap { padding: 40px 18px 70px; }

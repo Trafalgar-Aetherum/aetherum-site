@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why "The Model Said So" Gets You a Fine | Aetherum</title>
   <meta name="description" content="Regulated finance doesn't need faster AI. It needs AI that can explain itself to an examiner. Here's what audit-native infrastructure actually means." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #162848;
+      --navy: #0B1A2E;
       --navy-2: #1A3055;
       --navy-3: #1E3660;
-      --orange: #F7931A;
-      --orange-dim: rgba(247,147,26,0.15);
+      --copper: #D4885C;
+      --copper-glow: rgba(212,136,92,0.15);
       --white: #FFFFFF;
       --white-70: rgba(255,255,255,0.70);
       --white-40: rgba(255,255,255,0.40);
@@ -27,9 +25,9 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: #162848;
+      background: #0B1A2E;
       color: var(--white);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
@@ -57,13 +55,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(18,36,66,0.92);
+      background: rgba(11,26,46,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.12em;
       color: var(--white);
@@ -88,7 +86,7 @@
       transition: color 0.2s;
     }
 
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
 
     /* HERO */
     .hero {
@@ -112,7 +110,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--navy);
-      background: var(--orange);
+      background: var(--copper);
       padding: 4px 10px;
       border-radius: 2px;
     }
@@ -133,7 +131,7 @@
     }
 
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(48px, 7vw, 80px);
       line-height: 0.95;
       letter-spacing: 0.02em;
@@ -142,7 +140,7 @@
     }
 
     h1 span {
-      color: var(--orange);
+      color: var(--copper);
     }
 
     .hero-deck {
@@ -151,7 +149,7 @@
       color: var(--white-70);
       font-weight: 300;
       font-style: italic;
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding-left: 24px;
       margin-bottom: 16px;
     }
@@ -202,7 +200,7 @@
     }
 
     .post-body h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 36px;
       letter-spacing: 0.04em;
       color: var(--white);
@@ -215,12 +213,12 @@
       font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin: 40px 0 16px;
     }
 
     blockquote {
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding: 20px 28px;
       margin: 40px 0;
       background: var(--white-10);
@@ -237,8 +235,8 @@
 
     /* CALLOUT BOX */
     .callout {
-      background: var(--orange-dim);
-      border: 1px solid rgba(247,147,26,0.3);
+      background: var(--copper-glow);
+      border: 1px solid rgba(212,136,92,0.3);
       border-radius: 6px;
       padding: 28px 32px;
       margin: 40px 0;
@@ -249,7 +247,7 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 12px;
     }
 
@@ -277,7 +275,7 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 6px;
       padding: 24px 28px;
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
     }
 
     .pillar-num {
@@ -285,12 +283,12 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 8px;
     }
 
     .pillar-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.04em;
       color: var(--white);
@@ -316,7 +314,7 @@
     }
 
     .post-cta h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 42px;
       letter-spacing: 0.04em;
       color: var(--white);
@@ -333,7 +331,7 @@
 
     .cta-btn {
       display: inline-block;
-      background: var(--orange);
+      background: var(--copper);
       color: var(--navy);
       font-family: 'DM Mono', monospace;
       font-size: 13px;
@@ -364,7 +362,7 @@
     }
 
     footer a {
-      color: var(--orange);
+      color: var(--copper);
       text-decoration: none;
     }
 

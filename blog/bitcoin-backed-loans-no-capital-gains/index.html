@@ -13,36 +13,34 @@
   <meta property="og:url" content="https://aetherum.ai/blog/bitcoin-backed-loans-no-capital-gains/" />
   <meta property="og:type" content="article" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #03060F; --navy-mid: #080E1E; --navy-light: #0D1630;
-      --orange: #F7931A; --orange-dim: #c97414;
-      --white: #F0F4FF; --muted: #8A9BC4; --border: rgba(247,147,26,0.18);
+      --navy: #0B1A2E; --navy-mid: #080E1E; --navy-light: #0D1630;
+      --copper: #D4885C; --copper-glow: #c97414;
+      --white: #F0F4FF; --muted: #8A9BC4; --border: rgba(212,136,92,0.18);
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--navy); color: var(--white); font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.8; }
+    body { background: var(--navy); color: var(--white); font-family: 'Outfit', sans-serif; font-size: 18px; line-height: 1.8; }
 
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(3,6,15,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange); text-decoration: none; letter-spacing: 0.05em; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(11,26,46,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--copper); text-decoration: none; letter-spacing: 0.05em; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--orange); }
-    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--orange); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 3px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--orange-dim); }
+    .nav-links a:hover { color: var(--copper); }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--copper); color: var(--navy); padding: 0.5rem 1.2rem; border-radius: 3px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--copper-glow); }
 
     /* HERO */
     .hero { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 3rem; }
     .breadcrumb { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
     .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--orange); }
-    .post-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 2px; margin-bottom: 1.5rem; }
-    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; }
-    .hero h1 span { color: var(--orange); }
+    .breadcrumb a:hover { color: var(--copper); }
+    .post-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--copper); }
     .hero-sub { font-size: 1.15rem; color: var(--muted); font-weight: 300; font-style: italic; margin-bottom: 2rem; }
     .post-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; gap: 2rem; flex-wrap: wrap; }
     .post-meta span { display: flex; align-items: center; gap: 0.4rem; }
@@ -51,21 +49,21 @@
     .content { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 6rem; }
     .content p { color: var(--muted); margin-bottom: 1.4rem; }
     .content p strong { color: var(--white); font-weight: 600; }
-    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); letter-spacing: 0.03em; color: var(--white); margin: 3.5rem 0 1.2rem; }
-    h2 span { color: var(--orange); }
-    h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); margin: 2.5rem 0 0.8rem; }
-    a { color: var(--orange); text-decoration: none; }
+    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); letter-spacing: 0.03em; color: var(--white); margin: 3.5rem 0 1.2rem; }
+    h2 span { color: var(--copper); }
+    h3 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--white); margin: 2.5rem 0 0.8rem; }
+    a { color: var(--copper); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .callout { background: var(--navy-light); border-left: 3px solid var(--orange); padding: 1.5rem 2rem; border-radius: 0 4px 4px 0; margin: 2.5rem 0; }
+    .callout { background: var(--navy-light); border-left: 3px solid var(--copper); padding: 1.5rem 2rem; border-radius: 0 4px 4px 0; margin: 2.5rem 0; }
     .callout p { color: var(--white); margin: 0; font-style: italic; font-weight: 300; font-size: 1.05rem; }
 
     .scenario { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; margin: 2.5rem 0; }
-    .scenario-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
-    .scenario h4 { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1.05rem; margin-bottom: 0.8rem; }
+    .scenario-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); margin-bottom: 1rem; }
+    .scenario h4 { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--white); font-size: 1.05rem; margin-bottom: 0.8rem; }
     .scenario p { font-size: 0.95rem; margin-bottom: 0.8rem; }
     .scenario p:last-child { margin-bottom: 0; }
-    .scenario .number { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange); }
+    .scenario .number { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--copper); }
 
     .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
     @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
@@ -75,30 +73,30 @@
     .compare-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
     .compare-card.bad .compare-label { color: #f87171; }
     .compare-card.good .compare-label { color: #4ade80; }
-    .compare-card h4 { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+    .compare-card h4 { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
     .compare-card p { font-size: 0.9rem; margin: 0; }
 
     .stat-inline { display: inline-flex; align-items: baseline; gap: 0.4rem; }
-    .stat-inline .num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); line-height: 1; }
+    .stat-inline .num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--copper); line-height: 1; }
     .stat-inline .label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
-    .cta-block { background: linear-gradient(135deg, var(--navy-light) 0%, #0a1228 100%); border: 1px solid var(--border); border-top: 2px solid var(--orange); border-radius: 4px; padding: 3rem; text-align: center; margin: 4rem 0; }
+    .cta-block { background: linear-gradient(135deg, var(--navy-light) 0%, #0a1228 100%); border: 1px solid var(--border); border-top: 2px solid var(--copper); border-radius: 4px; padding: 3rem; text-align: center; margin: 4rem 0; }
     .cta-block h2 { margin: 0 0 0.8rem; font-size: 2rem; }
     .cta-block p { max-width: 460px; margin: 0 auto 2rem; }
-    .cta-btn { display: inline-block; background: var(--orange); color: var(--navy); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 3px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
-    .cta-btn:hover { background: var(--orange-dim); text-decoration: none; }
+    .cta-btn { display: inline-block; background: var(--copper); color: var(--navy); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 3px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--copper-glow); text-decoration: none; }
 
     .related { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-    .related-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; }
+    .related-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: 1.5rem; }
     .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
     .related-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 1.5rem; text-decoration: none; transition: border-color 0.2s; display: block; }
-    .related-card:hover { border-color: var(--orange); text-decoration: none; }
-    .related-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
-    .related-title { font-family: 'Fraunces', serif; font-weight: 600; color: var(--white); font-size: 0.92rem; line-height: 1.4; }
+    .related-card:hover { border-color: var(--copper); text-decoration: none; }
+    .related-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.5rem; }
+    .related-title { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--white); font-size: 0.92rem; line-height: 1.4; }
 
     footer { background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
     footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin: 0; }
-    footer a { color: var(--orange); }
+    footer a { color: var(--copper); }
   </style>
 
   <script type="application/ld+json">

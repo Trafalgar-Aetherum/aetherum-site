@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What the Credit Union Industry Just Told Washington About Digital Assets | Aetherum</title>
   <meta name="description" content="The GENIUS Act comment period closed April 13. America's Credit Unions told NCUA the quiet part out loud — and it has everything to do with why infrastructure defines the credit union digital asset era." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:          #03060F;
+      --navy:          #0B1A2E;
       --navy-2:        #07101f;
       --navy-3:        #0c1628;
-      --orange:        #F7931A;
-      --orange-dim:    rgba(247,147,26,0.10);
-      --orange-border: rgba(247,147,26,0.28);
+      --copper:        #D4885C;
+      --copper-glow:    rgba(212,136,92,0.10);
+      --orange-border: rgba(212,136,92,0.28);
       --text:          #dde0ea;
       --text-bright:   #f0f2f7;
       --muted:         #7a8299;
@@ -25,7 +24,7 @@
     body {
       background: var(--navy);
       color: var(--text);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.85;
       -webkit-font-smoothing: antialiased;
@@ -38,15 +37,15 @@
       border-bottom: 1px solid var(--rule);
       position: sticky;
       top: 0;
-      background: rgba(3,6,15,0.94);
+      background: rgba(11,26,46,0.94);
       backdrop-filter: blur(14px);
       z-index: 100;
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 1.45rem;
       letter-spacing: 0.14em;
-      color: var(--orange);
+      color: var(--copper);
       text-decoration: none;
     }
     .nav-back {
@@ -58,7 +57,7 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
     .hero {
       max-width: 760px;
       margin: 0 auto;
@@ -72,9 +71,9 @@
       font-size: 0.70rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       border: 1px solid var(--orange-border);
-      background: var(--orange-dim);
+      background: var(--copper-glow);
       padding: 0.28rem 0.8rem;
       border-radius: 2px;
       margin-bottom: 1.8rem;
@@ -83,7 +82,7 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--copper);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
@@ -91,7 +90,7 @@
       50%       { opacity: 0.3; }
     }
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(2.6rem, 5.5vw, 4.2rem);
       line-height: 1.02;
       letter-spacing: 0.03em;
@@ -122,7 +121,7 @@
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--copper);
       opacity: 0.6;
     }
     article {
@@ -142,7 +141,7 @@
       line-height: 1.75;
     }
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 1.7rem;
       letter-spacing: 0.06em;
       color: var(--text-bright);
@@ -150,7 +149,7 @@
       line-height: 1.1;
     }
     blockquote {
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       margin: 2.8rem 0;
       padding: 1.1rem 1.8rem;
       background: var(--navy-2);
@@ -184,7 +183,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 0.75rem;
     }
     .callout p {
@@ -209,7 +208,7 @@
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
       letter-spacing: 0.2em;
-      color: var(--orange);
+      color: var(--copper);
     }
     .cta-block {
       margin-top: 4rem;
@@ -234,7 +233,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--navy);
-      background: var(--orange);
+      background: var(--copper);
       padding: 0.8rem 1.6rem;
       text-decoration: none;
       transition: opacity 0.2s;
@@ -249,7 +248,7 @@
       letter-spacing: 0.08em;
       color: var(--muted);
     }
-    footer a { color: var(--orange); text-decoration: none; }
+    footer a { color: var(--copper); text-decoration: none; }
     @media (max-width: 640px) {
       nav { padding: 1.2rem 1.25rem; }
       .hero, article { padding-left: 1.25rem; padding-right: 1.25rem; }

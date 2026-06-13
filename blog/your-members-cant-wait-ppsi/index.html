@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Members Can't Wait for PPSI Clarity. They Don't Have To. | Aetherum</title>
   <meta name="description" content="The GENIUS Act's PPSI framework is months from final rules. Crypto-collateralized lending for credit unions is available today — no stablecoin license required." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy:   #03060F;
-      --orange: #F7931A;
+      --navy:   #0B1A2E;
+      --copper: #D4885C;
       --white:  #F0EDE6;
       --muted:  #8A95A3;
       --rule:   #111C2B;
@@ -26,7 +24,7 @@
     body {
       background: var(--navy);
       color: var(--white);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-weight: 300;
       line-height: 1.75;
       font-size: 18px;
@@ -38,18 +36,18 @@
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 2.5rem;
-      background: rgba(3,6,15,0.92);
+      background: rgba(11,26,46,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 1.5rem;
       letter-spacing: 0.08em;
       color: var(--white);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--orange); }
+    .nav-logo span { color: var(--copper); }
     .nav-tag {
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
@@ -71,17 +69,17 @@
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 1.8rem;
     }
     .hero-kicker::before {
       content: '';
       display: block; width: 24px; height: 1px;
-      background: var(--orange);
+      background: var(--copper);
     }
 
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(3rem, 7vw, 5.2rem);
       line-height: 1.0;
       letter-spacing: 0.02em;
@@ -90,7 +88,7 @@
     }
     h1 em {
       font-style: normal;
-      color: var(--orange);
+      color: var(--copper);
     }
 
     .hero-sub {
@@ -111,7 +109,7 @@
       padding-bottom: 2.4rem;
       border-bottom: 1px solid var(--rule);
     }
-    .meta-dot { color: var(--orange); }
+    .meta-dot { color: var(--copper); }
 
     /* ── BODY ── */
     .body-wrap {
@@ -127,7 +125,7 @@
     }
 
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       letter-spacing: 0.03em;
       color: var(--white);
@@ -136,7 +134,7 @@
     }
 
     h3 {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-weight: 600;
       font-size: 1.1rem;
       color: var(--white);
@@ -146,7 +144,7 @@
     /* ── CALLOUT BOX ── */
     .callout {
       background: var(--card);
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       border-radius: 0 6px 6px 0;
       padding: 1.6rem 2rem;
       margin: 2.8rem 0;
@@ -163,7 +161,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 0.8rem;
       display: block;
     }
@@ -186,7 +184,7 @@
       border-bottom: 1px solid var(--rule);
     }
     .compare-table th:first-child { color: var(--muted); }
-    .compare-table th.col-aetherum { color: var(--orange); }
+    .compare-table th.col-aetherum { color: var(--copper); }
     .compare-table td {
       padding: 0.9rem 1rem;
       border-bottom: 1px solid var(--rule);
@@ -205,7 +203,7 @@
       color: var(--white);
       font-weight: 400;
     }
-    .check { color: var(--orange); font-weight: 600; }
+    .check { color: var(--copper); font-weight: 600; }
     .cross { color: #4A5668; }
 
     /* ── STAT STRIP ── */
@@ -225,9 +223,9 @@
       text-align: center;
     }
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 2.4rem;
-      color: var(--orange);
+      color: var(--copper);
       letter-spacing: 0.04em;
       display: block;
     }
@@ -263,7 +261,7 @@
     }
     .cta-btn {
       display: inline-block;
-      background: var(--orange);
+      background: var(--copper);
       color: var(--navy);
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
@@ -288,13 +286,13 @@
       width: 44px; height: 44px; border-radius: 50%;
       background: var(--rule);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
-      color: var(--orange);
+      color: var(--copper);
       flex-shrink: 0;
     }
     .byline-name {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-weight: 400;
       font-size: 0.95rem;
       color: var(--white);

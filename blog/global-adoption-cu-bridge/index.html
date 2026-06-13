@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>140 Million Members, Zero On-Ramps | Aetherum</title>
   <meta name="description" content="Global crypto adoption just hit an inflection point. New data shows 11% of Americans already hold digital assets. Credit unions serve 140 million of them — and most have no compliant path to borrow against what they own." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy: #03060F;
+      --navy: #0B1A2E;
       --navy-mid: #070d1e;
       --navy-light: #0d1a35;
-      --orange: #F7931A;
-      --orange-dim: rgba(247,147,26,0.15);
-      --orange-glow: rgba(247,147,26,0.08);
+      --copper: #D4885C;
+      --copper-glow: rgba(212,136,92,0.15);
+      --orange-glow: rgba(212,136,92,0.08);
       --white: #ffffff;
       --white-80: rgba(255,255,255,0.8);
       --white-50: rgba(255,255,255,0.5);
@@ -32,7 +30,7 @@
     body {
       background: var(--navy);
       color: var(--white-80);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.75;
       overflow-x: hidden;
@@ -57,7 +55,7 @@
       top: 0;
       z-index: 100;
       padding: 18px 40px;
-      background: rgba(3,6,15,0.85);
+      background: rgba(11,26,46,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--white-08);
@@ -78,7 +76,7 @@
       gap: 8px;
     }
 
-    nav a:hover { color: var(--orange); }
+    nav a:hover { color: var(--copper); }
     nav a svg { width: 16px; height: 16px; }
 
     /* HERO */
@@ -96,7 +94,7 @@
       right: -120px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(247,147,26,0.12) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(212,136,92,0.12) 0%, transparent 65%);
       pointer-events: none;
       z-index: 0;
     }
@@ -126,9 +124,9 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
-      background: var(--orange-dim);
-      border: 1px solid rgba(247,147,26,0.3);
+      color: var(--copper);
+      background: var(--copper-glow);
+      border: 1px solid rgba(212,136,92,0.3);
       padding: 4px 12px;
       border-radius: 2px;
     }
@@ -148,7 +146,7 @@
     }
 
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(52px, 8vw, 88px);
       line-height: 0.95;
       letter-spacing: 0.02em;
@@ -159,7 +157,7 @@
     }
 
     h1 span {
-      color: var(--orange);
+      color: var(--copper);
     }
 
     .subtitle {
@@ -171,7 +169,7 @@
       max-width: 700px;
       position: relative;
       z-index: 1;
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding-left: 24px;
     }
 
@@ -198,14 +196,14 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: var(--orange-dim);
-      border: 1px solid rgba(247,147,26,0.4);
+      background: var(--copper-glow);
+      border: 1px solid rgba(212,136,92,0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 18px;
-      color: var(--orange);
+      color: var(--copper);
       flex-shrink: 0;
     }
 
@@ -231,7 +229,7 @@
     .stat-block {
       background: var(--white-04);
       border: 1px solid var(--white-08);
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding: 32px 36px;
       margin: 48px 0;
       display: grid;
@@ -246,9 +244,9 @@
     .stat-item {}
 
     .stat-number {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 48px;
-      color: var(--orange);
+      color: var(--copper);
       line-height: 1;
       display: block;
     }
@@ -267,7 +265,7 @@
     .pull-quote {
       margin: 56px 0;
       padding: 0 0 0 32px;
-      border-left: 4px solid var(--orange);
+      border-left: 4px solid var(--copper);
     }
 
     .pull-quote p {
@@ -291,7 +289,7 @@
 
     /* SECTION HEADERS */
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(32px, 5vw, 48px);
       letter-spacing: 0.04em;
       color: var(--white);
@@ -300,10 +298,10 @@
     }
 
     h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 28px;
       letter-spacing: 0.04em;
-      color: var(--orange);
+      color: var(--copper);
       margin: 40px 0 16px;
     }
 
@@ -314,8 +312,8 @@
 
     /* HIGHLIGHT BOX */
     .highlight-box {
-      background: linear-gradient(135deg, rgba(247,147,26,0.08) 0%, rgba(247,147,26,0.04) 100%);
-      border: 1px solid rgba(247,147,26,0.25);
+      background: linear-gradient(135deg, rgba(212,136,92,0.08) 0%, rgba(212,136,92,0.04) 100%);
+      border: 1px solid rgba(212,136,92,0.25);
       padding: 32px 36px;
       margin: 48px 0;
       position: relative;
@@ -326,7 +324,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--orange) 0%, transparent 100%);
+      background: linear-gradient(90deg, var(--copper) 0%, transparent 100%);
     }
 
     .highlight-box p {
@@ -335,7 +333,7 @@
     }
 
     .highlight-box strong {
-      color: var(--orange);
+      color: var(--copper);
       font-weight: 600;
     }
 
@@ -360,14 +358,14 @@
     }
 
     .region-card.featured {
-      border-color: rgba(247,147,26,0.3);
-      background: linear-gradient(135deg, rgba(247,147,26,0.07) 0%, var(--white-04) 100%);
+      border-color: rgba(212,136,92,0.3);
+      background: linear-gradient(135deg, rgba(212,136,92,0.07) 0%, var(--white-04) 100%);
     }
 
     .region-rank {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 52px;
-      color: var(--orange);
+      color: var(--copper);
       opacity: 0.25;
       position: absolute;
       top: 8px;
@@ -385,7 +383,7 @@
     }
 
     .region-card h4 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       color: var(--white);
       letter-spacing: 0.04em;
@@ -413,7 +411,7 @@
       top: 8px;
       bottom: 8px;
       width: 2px;
-      background: linear-gradient(to bottom, var(--orange) 0%, rgba(247,147,26,0.2) 100%);
+      background: linear-gradient(to bottom, var(--copper) 0%, rgba(212,136,92,0.2) 100%);
     }
 
     .timeline-item {
@@ -430,8 +428,8 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--orange);
-      box-shadow: 0 0 12px rgba(247,147,26,0.6);
+      background: var(--copper);
+      box-shadow: 0 0 12px rgba(212,136,92,0.6);
     }
 
     .timeline-label {
@@ -439,12 +437,12 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 6px;
     }
 
     .timeline-item h4 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       color: var(--white);
       letter-spacing: 0.04em;
@@ -485,7 +483,7 @@
       transform: translateX(-50%);
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(247,147,26,0.12) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(212,136,92,0.12) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -508,7 +506,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--orange);
+      background: var(--copper);
       color: var(--navy);
       font-family: 'DM Mono', monospace;
       font-size: 14px;
@@ -526,7 +524,7 @@
     .cta-button:hover {
       background: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(247,147,26,0.35);
+      box-shadow: 0 8px 32px rgba(212,136,92,0.35);
     }
 
     /* FOOTER */
@@ -563,7 +561,7 @@
     }
 
     footer a {
-      color: var(--orange);
+      color: var(--copper);
       text-decoration: none;
     }
 

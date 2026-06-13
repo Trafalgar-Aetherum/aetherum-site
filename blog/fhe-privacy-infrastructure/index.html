@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why We're Building on Fully Homomorphic Encryption — Aetherum Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:    #0B0F1A;
+      --navy:    #0B1A2E;
       --navy-2:  #111827;
       --navy-3:  #1A2236;
-      --orange:  #F7931A;
-      --orange-dim: rgba(247,147,26,0.12);
+      --copper:  #D4885C;
+      --copper-glow: rgba(212,136,92,0.12);
       --white:   #F0EDE8;
       --muted:   #8A95A8;
       --border:  rgba(240,237,232,0.08);
@@ -24,7 +24,7 @@
     body {
       background: var(--navy);
       color: var(--white);
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 18px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
@@ -35,18 +35,18 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(11,15,26,0.88);
+      background: rgba(11,26,46,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 22px;
       letter-spacing: 0.12em;
       color: var(--white);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--orange); }
+    .nav-logo span { color: var(--copper); }
     .nav-back {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -55,7 +55,7 @@
       text-decoration: none;
       text-transform: uppercase;
     }
-    .nav-back:hover { color: var(--orange); }
+    .nav-back:hover { color: var(--copper); }
 
     /* ── HERO ── */
     .hero {
@@ -67,7 +67,7 @@
     .hero::before {
       content: '';
       position: absolute; top: 100px; left: -80px; right: -80px; bottom: -40px;
-      background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(247,147,26,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(212,136,92,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -77,15 +77,15 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
-      border: 1px solid var(--orange);
+      color: var(--copper);
+      border: 1px solid var(--copper);
       padding: 4px 12px;
       border-radius: 2px;
       margin-bottom: 28px;
     }
 
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: clamp(52px, 7vw, 88px);
       line-height: 0.96;
       letter-spacing: 0.02em;
@@ -94,11 +94,11 @@
     }
     h1 em {
       font-style: normal;
-      color: var(--orange);
+      color: var(--copper);
     }
 
     .hero-sub {
-      font-family: 'Fraunces', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 21px;
       font-weight: 300;
       font-style: italic;
@@ -118,7 +118,7 @@
     }
     .byline-dot {
       width: 4px; height: 4px;
-      background: var(--orange);
+      background: var(--copper);
       border-radius: 50%;
     }
 
@@ -149,7 +149,7 @@
 
     /* Pull quote */
     .pull-quote {
-      border-left: 3px solid var(--orange);
+      border-left: 3px solid var(--copper);
       padding: 20px 0 20px 32px;
       margin: 56px 0;
     }
@@ -166,7 +166,7 @@
     .callout {
       background: var(--navy-3);
       border: 1px solid var(--border);
-      border-top: 2px solid var(--orange);
+      border-top: 2px solid var(--copper);
       padding: 36px 40px;
       margin: 56px 0;
       border-radius: 0 0 4px 4px;
@@ -176,7 +176,7 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 16px;
     }
     .callout p {
@@ -186,8 +186,8 @@
 
     /* Analogy box */
     .analogy {
-      background: var(--orange-dim);
-      border: 1px solid rgba(247,147,26,0.2);
+      background: var(--copper-glow);
+      border: 1px solid rgba(212,136,92,0.2);
       padding: 36px 40px;
       margin: 56px 0;
       border-radius: 4px;
@@ -197,7 +197,7 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--copper);
       margin-bottom: 16px;
     }
     .analogy p {
@@ -207,14 +207,14 @@
 
     /* Section heading */
     h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 42px;
       letter-spacing: 0.04em;
       color: var(--white);
       margin: 72px 0 24px;
       line-height: 1;
     }
-    h2 .accent { color: var(--orange); }
+    h2 .accent { color: var(--copper); }
 
     /* Three-up */
     .three-up {
@@ -231,9 +231,9 @@
     .three-up-card:first-child { border-radius: 4px 0 0 4px; }
     .three-up-card:last-child  { border-radius: 0 4px 4px 0; }
     .three-up-number {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 48px;
-      color: var(--orange);
+      color: var(--copper);
       line-height: 1;
       margin-bottom: 12px;
     }
@@ -268,7 +268,7 @@
     }
     .patent-badge::before {
       content: '⬡';
-      color: var(--orange);
+      color: var(--copper);
       font-size: 16px;
     }
 
@@ -279,13 +279,13 @@
       text-align: center;
     }
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Serif Display', serif;
       font-size: 20px;
       letter-spacing: 0.15em;
       color: var(--muted);
       margin-bottom: 8px;
     }
-    .footer-logo span { color: var(--orange); }
+    .footer-logo span { color: var(--copper); }
     .footer-copy {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
