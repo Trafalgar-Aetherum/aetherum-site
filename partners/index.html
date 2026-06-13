@@ -9,21 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ── TOKENS ── */
+  /* ── TOKENS (landing-page design system) ── */
   :root {
     --navy:          #0B1A2E;
     --navy-mid:      #122440;
+    --navy-light:    #1A3155;
     --copper:        #D4885C;
     --copper-light:  #E8A87C;
+    --copper-glow:   rgba(212,136,92,0.15);
+    --ice:           #E8EDF4;
     --white:         #FFFFFF;
+    --green-accent:  #4ADE80;
+    --blue-accent:   #60A5FA;
     --text-primary:  #E8EDF4;
     --text-secondary:#9AADCC;
     --text-muted:    #6B82A6;
 
-    --bg:            #03060F;
-    --orange:        #F7931A;
-    --orange-dim:    rgba(247,147,26,0.10);
-    --orange-border: rgba(247,147,26,0.28);
     --border:        rgba(255,255,255,0.07);
     --card-bg:       rgba(255,255,255,0.032);
   }
@@ -32,27 +33,40 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Fraunces', serif;
-    background: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    background: var(--navy);
     color: var(--text-primary);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── GRID TEXTURE ── */
+  /* Landing-page copper grid texture (fixed, full-page) */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── GRID OVERLAY (hero section) ── */
   .grid-overlay {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(247,147,26,0.022) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(247,147,26,0.022) 1px, transparent 1px);
+      linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
     background-size: 64px 64px;
     pointer-events: none;
     z-index: 0;
   }
 
   /* ═══════════════════════════════════
-     NAV
+     NAV  (matches landing page exactly)
   ═══════════════════════════════════ */
   .nav {
     position: fixed;
@@ -100,7 +114,6 @@
   }
 
   .nav-links a {
-    font-family: 'Outfit', sans-serif;
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
@@ -139,7 +152,6 @@
     position: relative;
     padding: 158px 60px 88px;
     overflow: hidden;
-    background: var(--bg);
   }
 
   .hero::before {
@@ -147,7 +159,7 @@
     position: absolute;
     top: -25%; right: -8%;
     width: 780px; height: 780px;
-    background: radial-gradient(circle, rgba(247,147,26,0.065) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(212,136,92,0.12) 0%, transparent 65%);
     pointer-events: none;
   }
 
@@ -156,7 +168,7 @@
     position: absolute;
     bottom: -20%; left: -10%;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(96,165,250,0.04) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(96,165,250,0.08) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -171,7 +183,7 @@
     font-size: 11px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: var(--copper);
     margin-bottom: 22px;
     display: flex;
     align-items: center;
@@ -182,26 +194,25 @@
     content: '';
     display: inline-block;
     width: 22px; height: 1px;
-    background: var(--orange);
+    background: var(--copper);
     flex-shrink: 0;
   }
 
   .hero h1 {
-    font-family: 'Bebas Neue', cursive;
-    font-size: clamp(60px, 8vw, 110px);
-    line-height: 0.93;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 5.5vw, 76px);
+    line-height: 1.05;
     color: var(--white);
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
     margin-bottom: 30px;
   }
 
   .hero h1 em {
-    color: var(--orange);
-    font-style: normal;
+    color: var(--copper);
+    font-style: italic;
   }
 
   .hero-sub {
-    font-family: 'Fraunces', serif;
     font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 300;
     color: var(--text-secondary);
@@ -217,8 +228,8 @@
   }
 
   .alliance-banner {
-    background: rgba(247,147,26,0.055);
-    border: 1px solid var(--orange-border);
+    background: rgba(212,136,92,0.055);
+    border: 1px solid rgba(212,136,92,0.25);
     border-radius: 16px;
     padding: 32px 40px;
     display: flex;
@@ -238,9 +249,8 @@
   }
 
   .alliance-logo-fallback {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'DM Serif Display', serif;
     font-size: 22px;
-    letter-spacing: 1px;
     color: var(--white);
     background: rgba(255,255,255,0.1);
     padding: 6px 16px;
@@ -257,8 +267,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--orange);
-    color: var(--bg);
+    background: var(--copper);
+    color: var(--navy);
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     font-weight: 500;
@@ -270,15 +280,13 @@
   }
 
   .alliance-headline {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'DM Serif Display', serif;
     font-size: 28px;
     color: var(--white);
-    letter-spacing: 0.5px;
     margin-bottom: 6px;
   }
 
   .alliance-desc {
-    font-family: 'Fraunces', serif;
     font-weight: 300;
     font-size: 15px;
     color: var(--text-secondary);
@@ -286,7 +294,7 @@
   }
 
   .alliance-desc a {
-    color: var(--orange);
+    color: var(--copper);
     text-decoration: none;
     transition: opacity 0.2s;
   }
@@ -303,7 +311,7 @@
 
   .alliance-integration-card {
     background: rgba(0,0,0,0.28);
-    border: 1px solid var(--orange-border);
+    border: 1px solid rgba(212,136,92,0.25);
     border-radius: 10px;
     padding: 20px 22px;
     display: flex;
@@ -330,11 +338,10 @@
     font-weight: 500;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: var(--copper);
   }
 
   .alliance-int-desc {
-    font-family: 'Fraunces', serif;
     font-weight: 300;
     font-size: 14px;
     color: var(--text-secondary);
@@ -355,7 +362,7 @@
     font-size: 11px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--orange);
+    color: var(--copper);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -366,7 +373,7 @@
     content: '';
     display: inline-block;
     width: 20px; height: 1px;
-    background: var(--orange);
+    background: var(--copper);
     flex-shrink: 0;
   }
 
@@ -403,26 +410,26 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 10%, var(--orange) 50%, transparent 90%);
+    background: linear-gradient(90deg, transparent 10%, var(--copper) 50%, transparent 90%);
     opacity: 0;
     transition: opacity 0.3s;
   }
 
   .partner-card:hover {
-    border-color: var(--orange-border);
-    background: rgba(247,147,26,0.038);
+    border-color: rgba(212,136,92,0.25);
+    background: rgba(212,136,92,0.04);
     transform: translateY(-4px);
   }
 
   .partner-card:hover::before { opacity: 1; }
 
   .partner-wordmark {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 32px;
-    letter-spacing: 1.5px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(18px, 1.8vw, 24px);
     color: var(--white);
-    line-height: 1;
+    line-height: 1.2;
     margin-bottom: 14px;
+    text-align: center;
   }
 
   .partner-category {
@@ -430,9 +437,9 @@
     font-size: 10px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--orange);
-    background: var(--orange-dim);
-    border: 1px solid var(--orange-border);
+    color: var(--copper);
+    background: rgba(212,136,92,0.10);
+    border: 1px solid rgba(212,136,92,0.25);
     padding: 4px 12px;
     border-radius: 100px;
     white-space: nowrap;
@@ -449,25 +456,25 @@
   .partner-card--featured {
     max-width: 420px;
     width: 100%;
-    background: rgba(247,147,26,0.06);
-    border: 1px solid rgba(247,147,26,0.50);
-    box-shadow: 0 0 32px rgba(247,147,26,0.12), 0 0 0 1px rgba(247,147,26,0.10);
+    background: rgba(212,136,92,0.06);
+    border: 1px solid rgba(212,136,92,0.50);
+    box-shadow: 0 0 32px rgba(212,136,92,0.12), 0 0 0 1px rgba(212,136,92,0.10);
     padding: 52px 40px 44px;
   }
 
   .partner-card--featured::before {
     opacity: 1;
-    background: linear-gradient(90deg, transparent 5%, var(--orange) 50%, transparent 95%);
+    background: linear-gradient(90deg, transparent 5%, var(--copper) 50%, transparent 95%);
   }
 
   .partner-card--featured:hover {
-    border-color: rgba(247,147,26,0.70);
-    background: rgba(247,147,26,0.09);
-    box-shadow: 0 0 48px rgba(247,147,26,0.18), 0 0 0 1px rgba(247,147,26,0.15);
+    border-color: rgba(212,136,92,0.70);
+    background: rgba(212,136,92,0.09);
+    box-shadow: 0 0 48px rgba(212,136,92,0.18), 0 0 0 1px rgba(212,136,92,0.15);
   }
 
   .partner-card--featured .partner-wordmark {
-    font-size: 38px;
+    font-size: 30px;
   }
 
   .partner-card--featured .partner-category {
@@ -478,7 +485,7 @@
   }
 
   /* ═══════════════════════════════════
-     FOOTER
+     FOOTER  (matches landing page exactly)
   ═══════════════════════════════════ */
   footer {
     padding: 32px 60px;
@@ -488,21 +495,11 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-    background: var(--bg);
   }
 
-  footer span {
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+  footer span { font-size: 13px; color: var(--text-muted); }
 
-  footer a {
-    font-family: 'Outfit', sans-serif;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
+  footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
 
   footer a:hover { color: var(--copper-light); }
 
@@ -515,6 +512,9 @@
     padding: 6px 14px;
     border-radius: 6px;
   }
+
+  .footer-social { width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; padding-top: 4px; }
+  .footer-social a { display: inline-flex; align-items: center; line-height: 1; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
@@ -546,9 +546,8 @@
   @media (max-width: 580px) {
     .partner-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .partner-card { padding: 32px 20px 28px; }
-    .partner-wordmark { font-size: 24px; }
     .partner-card--featured { max-width: 100%; padding: 36px 24px 32px; }
-    .partner-card--featured .partner-wordmark { font-size: 30px; }
+    .partner-card--featured .partner-wordmark { font-size: 24px; }
   }
 
   @media (max-width: 380px) {
@@ -629,7 +628,7 @@
     </div>
     <div class="alliance-integration-card">
       <div class="alliance-int-header">
-        <span class="alliance-int-dot" style="background:#F7931A;"></span>
+        <span class="alliance-int-dot" style="background:var(--copper);"></span>
         <span class="alliance-int-label">Programmable Wallet Infrastructure</span>
       </div>
       <div class="alliance-int-desc">Embedded wallet layer for member-facing collateral flows</div>
@@ -663,7 +662,7 @@
       <div class="partner-card">
         <div class="partner-wordmark">Arc Network</div>
         <span class="partner-category">L1 Blockchain — Circle Native</span>
-        <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.55;margin-top:14px;text-align:center;">Circle's purpose-built L1 blockchain. USDC as the native gas token. Sub-second deterministic finality. Aetherum's Milestone 2 settlement infrastructure.</p>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin-top:14px;text-align:center;">Circle's purpose-built L1 blockchain. USDC as the native gas token. Sub-second deterministic finality. Aetherum's Milestone 2 settlement infrastructure.</p>
         <span class="partner-category" style="margin-top:12px;color:#2775CA;background:rgba(39,117,202,0.08);border-color:rgba(39,117,202,0.30);">ARC TESTNET LIVE · MAINNET Q3 2026</span>
       </div>
 
@@ -701,18 +700,23 @@
       </div>
 
       <div class="partner-card">
-        <div class="partner-wordmark">BitGo</div>
+        <div class="partner-wordmark">Institutional Custody</div>
         <span class="partner-category">Custody Infrastructure</span>
       </div>
 
       <div class="partner-card">
-        <div class="partner-wordmark">Sardine</div>
+        <div class="partner-wordmark">Compliance &amp; Risk Infrastructure</div>
         <span class="partner-category">Compliance Infrastructure</span>
       </div>
 
       <div class="partner-card">
-        <div class="partner-wordmark">Plaid</div>
+        <div class="partner-wordmark">Bank Data Connectivity</div>
         <span class="partner-category">Bank Connectivity</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-wordmark">Collateral Connectivity</div>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin-top:14px;text-align:center;">Member wallet &amp; exchange onboarding with signed proof of ownership</p>
       </div>
 
       <div class="partner-card">
@@ -737,7 +741,7 @@
         <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.65;margin:16px 0 20px;text-align:center;">Proprietary compliance modules deployed on Ethereum — USJurisdiction, CollateralLTV, and CUMember attestation. Every loan application triggers a live on-chain check, verifiable on Etherscan.</p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
           <span class="partner-category">TRUSTLESS BY DESIGN</span>
-          <span class="partner-category" style="color:#c8893e;background:rgba(200,137,62,0.08);border-color:rgba(200,137,62,0.35);">PATENTS PENDING</span>
+          <span class="partner-category" style="color:var(--copper);background:rgba(212,136,92,0.10);border-color:rgba(212,136,92,0.35);">PATENTS PENDING</span>
         </div>
       </div>
       <div class="partner-card partner-card--featured">
@@ -745,7 +749,7 @@
         <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.65;margin:16px 0 20px;text-align:center;">Official Ethereum RWA standard. Aetherum's collateral token implements IERC7943Fungible — canTransact(), canTransfer(), setFrozenTokens(), and forcedTransfer() — delegating to all three ERC-3643 compliance modules. Every compliance check is on-chain and verifiable.</p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
           <span class="partner-category">UNIVERSAL RWA INTERFACE</span>
-          <span class="partner-category" style="color:#c8893e;background:rgba(200,137,62,0.08);border-color:rgba(200,137,62,0.35);">PATENTS PENDING</span>
+          <span class="partner-category" style="color:var(--copper);background:rgba(212,136,92,0.10);border-color:rgba(212,136,92,0.35);">PATENTS PENDING</span>
         </div>
       </div>
     </div>
@@ -757,7 +761,15 @@
 <footer>
   <span>&copy; 2026 Aetherum, Inc. All rights reserved.</span>
   <span><a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/disclaimers">Disclaimers</a> &middot; <a href="/help">Help</a></span>
-  <span class="patent-badge">11 Patents Pending</span>
+  <span class="patent-badge">15 Patents Pending</span>
+  <span class="footer-social">
+    <a href="https://x.com/Aetherum_ai" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.727-8.852L1.875 2.25h7.14l4.257 5.63 5.972-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/aetherum-ai" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </span>
 </footer>
 
 <script>
