@@ -50,6 +50,8 @@
     display:flex; align-items:center; justify-content:center; transition:all .2s; padding:0; line-height:1;
   }
   .controls button:hover{ border-color:var(--gold); color:var(--gold); }
+  .dlbtn{ font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; color:var(--gold); text-decoration:none; border:1px solid var(--gold); border-radius:20px; padding:8px 14px; transition:all .2s; white-space:nowrap;}
+  .dlbtn:hover{ background:var(--gold); color:var(--navy2);}
   .hint{ position:fixed; bottom:22px; left:26px; z-index:70; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; color:rgba(141,163,192,.55);}
 
   /* ---------- deck ---------- */
@@ -504,6 +506,7 @@
 </main>
 
 <div class="controls">
+  <a class="dlbtn" href="aetherum-deck.pdf" download aria-label="Download PDF">↓ PDF</a>
   <button id="prev" aria-label="Previous">‹</button>
   <span class="counter" id="counter">01 / 13</span>
   <button id="next" aria-label="Next">›</button>
