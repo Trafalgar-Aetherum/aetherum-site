@@ -1,810 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aetherum — Crypto-Backed Lending for Credit Unions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      /* Landing-page design tokens */
-      --navy:          #0B1A2E;
-      --navy-mid:      #122440;
-      --navy-light:    #1A3155;
-      --copper:        #D4885C;
-      --copper-light:  #E8A87C;
-      --copper-glow:   rgba(212, 136, 92, 0.15);
-      --ice:           #E8EDF4;
-      --white:         #FFFFFF;
-      --green-accent:  #4ADE80;
-      --blue-accent:   #60A5FA;
-      --text-primary:  #E8EDF4;
-      --text-secondary:#9AADCC;
-      --text-muted:    #6B82A6;
-      --border:        rgba(255,255,255,0.07);
-      /* Aliases for product-page CSS */
-      --bg:            var(--navy);
-      --bg-card:       var(--navy-mid);
-      --accent:        var(--copper);
-      --accent-hover:  var(--copper-light);
-      --text:          var(--white);
-    }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aetherum — Product</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,500;0,700;1,700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2240; --navy2:#0A1B33; --card:#183052; --cardHL:#1E3C64;
+    --cream:#F8F4EC; --gold:#DDB761; --goldSoft:#ECD088;
+    --mute:#C2CFDF; --muteDk:#8DA3C0; --line:#274566; --green:#8FD19E;
+    --slab:'Zilla Slab',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'Space Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;}
+  body{
+    background-color:var(--navy);
+    background-image:linear-gradient(rgba(255,255,255,.020) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.020) 1px,transparent 1px);
+    background-size:64px 64px;
+    color:var(--cream); font-family:var(--sans); overflow:hidden; -webkit-font-smoothing:antialiased;
+  }
+  .topnav{ position:fixed; top:0; left:0; right:0; height:54px; z-index:60; display:flex; align-items:center; justify-content:center; gap:clamp(10px,1.8vw,26px); background:rgba(10,27,51,.55); backdrop-filter:blur(10px); font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; border-bottom:1px solid rgba(39,69,102,.5);}
+  .topnav a{ color:var(--muteDk); text-decoration:none; cursor:pointer; transition:color .2s; white-space:nowrap;}
+  .topnav a:hover{ color:var(--cream);}
+  .topnav a.active{ color:var(--gold);}
+  .brand{ position:fixed; top:13px; right:26px; height:28px; width:auto; z-index:70;}
+  .controls{ position:fixed; bottom:20px; right:26px; z-index:70; display:flex; align-items:center; gap:13px; font-family:var(--mono); font-size:.72rem; color:var(--muteDk); letter-spacing:.1em;}
+  .controls button{ width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:rgba(24,48,82,.6); color:var(--cream); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; padding:0; line-height:1;}
+  .controls button:hover{ border-color:var(--gold); color:var(--gold);}
+  .dlbtn{ font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; color:var(--gold); text-decoration:none; border:1px solid var(--gold); border-radius:20px; padding:8px 14px; transition:all .2s; white-space:nowrap;}
+  .dlbtn:hover{ background:var(--gold); color:var(--navy2);}
+  .hint{ position:fixed; bottom:22px; left:26px; z-index:70; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; color:rgba(141,163,192,.55);}
 
-    /* NAV */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
-    }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .nav-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .nav-logo img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      color: var(--white);
-      letter-spacing: 0.5px;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .btn {
-      display: inline-block;
-      padding: .6rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: .9rem;
-      cursor: pointer;
-      transition: background .2s, transform .1s;
-      border: none;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-    .btn-primary:hover { background: var(--accent-hover); }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-    }
-    .btn-outline:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-    .btn-signin {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-    .btn-signin:hover {
-      border-color: var(--text-muted);
-      color: var(--text);
-    }
+  .deck{ display:flex; height:100vh; width:100vw; transition:transform .65s cubic-bezier(.66,0,.2,1); will-change:transform;}
+  .slide{ flex:0 0 100vw; width:100vw; height:100vh; overflow-y:auto; overflow-x:hidden; padding:clamp(2rem,7vh,4.5rem) clamp(1.6rem,6vw,6rem); display:flex; flex-direction:column; justify-content:center;}
+  .slide--dense{ justify-content:flex-start; padding-top:clamp(4.2rem,9vh,5.5rem);}
+  .inner{ width:100%; max-width:1180px; margin:0 auto;}
+  .slide .inner > *{ opacity:0; transform:translateY(14px); transition:opacity .55s ease,transform .55s ease;}
+  .slide.active .inner > *{ opacity:1; transform:none;}
+  .slide.active .inner > *:nth-child(2){transition-delay:.06s;}
+  .slide.active .inner > *:nth-child(3){transition-delay:.12s;}
+  .slide.active .inner > *:nth-child(4){transition-delay:.18s;}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem 4rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero h1 {
-      font-size: 2.75rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 620px;
-      margin: 0 auto 2rem;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  .eyebrow{ font-family:var(--mono); font-size:clamp(.66rem,1vw,.78rem); letter-spacing:.26em; color:var(--muteDk); display:flex; align-items:center; gap:14px; margin-bottom:clamp(1rem,3vh,2rem);}
+  .eyebrow .num{ color:var(--gold);}
+  .eyebrow .dash{ width:34px; height:1.5px; background:var(--gold); display:inline-block;}
+  h1.hero{ font-family:var(--slab); font-weight:700; font-size:clamp(2.4rem,6vw,5rem); line-height:1.02; margin:.2em 0 .55em; letter-spacing:-.01em;}
+  h2.title{ font-family:var(--slab); font-weight:700; font-size:clamp(1.7rem,3.7vw,3rem); line-height:1.08; margin:0 0 .7em; letter-spacing:-.01em;}
+  .gold-i{ color:var(--goldSoft); font-style:italic;}
+  .lead{ font-size:clamp(.98rem,1.3vw,1.18rem); line-height:1.55; color:var(--mute); max-width:64ch;}
+  .sub{ font-size:clamp(.95rem,1.2vw,1.12rem); color:var(--mute); line-height:1.5; max-width:60ch; margin-bottom:clamp(1.4rem,4vh,2.4rem);}
 
-    /* SECTIONS */
-    section { padding: 4rem 2rem; }
-    .section-title {
-      text-align: center;
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-    .section-sub {
-      text-align: center;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  .grid{ display:grid; gap:clamp(.7rem,1.4vw,1.05rem);}
+  .g3{ grid-template-columns:repeat(3,1fr);}
+  .g4{ grid-template-columns:repeat(4,1fr);}
+  .g2{ grid-template-columns:repeat(2,1fr);}
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:7px; padding:clamp(.85rem,1.5vw,1.25rem); display:flex; flex-direction:column;}
+  .card.hl{ background:var(--cardHL); border-color:var(--gold);}
+  .ckicker{ font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; color:var(--gold); margin-bottom:.6em; text-transform:uppercase;}
+  .ctitle{ font-family:var(--slab); font-weight:700; font-size:clamp(.95rem,1.25vw,1.18rem); color:var(--cream); line-height:1.12; margin-bottom:.45em;}
+  .cbody{ font-size:clamp(.74rem,.92vw,.88rem); color:var(--mute); line-height:1.44;}
+  .pill{ align-self:flex-start; margin-top:.7em; font-family:var(--mono); font-size:.54rem; letter-spacing:.12em; padding:3px 9px; border-radius:20px; border:1px solid var(--gold); color:var(--gold);}
+  .pill.live{ border-color:var(--green); color:var(--green);}
 
-    /* FEATURE CARDS */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: border-color .2s;
-    }
-    .card:hover { border-color: var(--accent); }
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .card h3 {
-      font-size: 1.15rem;
-      margin-bottom: .5rem;
-    }
-    .card p {
-      color: var(--text-muted);
-      font-size: .9rem;
-    }
-    .badge {
-      display: inline-block;
-      background: var(--copper-glow);
-      color: var(--accent);
-      font-size: .7rem;
-      font-weight: 600;
-      padding: .2rem .6rem;
-      border-radius: 999px;
-      margin-bottom: .75rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
+  .lead-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:clamp(1.2rem,3vh,2rem);}
+  .btn{ display:inline-block; background:var(--gold); color:var(--navy2); font-family:var(--mono); font-weight:700; font-size:.72rem; letter-spacing:.12em; padding:13px 24px; border-radius:5px; text-decoration:none;}
+  .btn.ghost{ background:transparent; color:var(--gold); border:1px solid var(--gold);}
 
-    /* DACS PILLARS */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1.25rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .pillar {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .pillar-num {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: .35rem;
-    }
-    .pillar h4 {
-      font-size: .95rem;
-      margin-bottom: .35rem;
-    }
-    .pillar p {
-      color: var(--text-muted);
-      font-size: .8rem;
-    }
+  .cover-stats{ display:flex; gap:clamp(1.4rem,4vw,3.2rem); margin-top:clamp(1.6rem,5vh,2.6rem); flex-wrap:wrap;}
+  .cstat{ padding-left:18px; border-left:1px solid var(--gold);}
+  .cstat .n{ font-family:var(--slab); font-weight:700; font-size:clamp(1.6rem,2.8vw,2.5rem); color:var(--gold); line-height:1;}
+  .cstat .l{ font-family:var(--mono); font-size:.6rem; letter-spacing:.16em; color:var(--muteDk); margin-top:.7em; max-width:20ch;}
 
-    /* THREE COL */
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .col-block {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-    }
-    .col-block h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-    .col-block p, .col-block li {
-      color: var(--text-muted);
-      font-size: .9rem;
-      margin-bottom: .5rem;
-    }
-    .col-block ol, .col-block ul {
-      padding-left: 1.25rem;
-    }
-    .col-block a {
-      color: var(--accent);
-    }
-    .col-block a:hover { text-decoration: underline; }
+  .pillars{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.55rem,1vw,.8rem);}
+  .pillar{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(.6rem,1vw,.85rem); display:flex; gap:9px; align-items:flex-start;}
+  .pillar .pidx{ font-family:var(--slab); font-weight:700; font-size:1rem; color:var(--gold); line-height:1; min-width:18px;}
+  .pillar .ptxt{ font-size:clamp(.66rem,.85vw,.8rem); color:var(--cream); line-height:1.22; font-weight:500;}
+  .pillar .ptag{ display:block; font-family:var(--mono); font-size:.48rem; letter-spacing:.08em; color:var(--gold); margin-top:3px;}
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: .8rem;
-      line-height: 1.8;
-    }
-    footer a { color: var(--accent); }
-    .footer-social { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 12px; }
-    .footer-social a { display: inline-flex; align-items: center; color: var(--text-muted); line-height: 1; transition: color 0.3s; }
-    .footer-social a:hover { color: var(--accent-hover); }
+  .quote{ border-left:2px solid var(--gold); padding-left:20px; font-family:var(--slab); font-style:italic; font-size:clamp(1rem,1.5vw,1.35rem); color:var(--cream); line-height:1.45; margin:0 0 clamp(1.2rem,3vh,2rem); max-width:62ch;}
 
-    /* PDF GRID OVERRIDES */
-    #product-sheet .feature-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
-    #product-sheet .pillar-grid { display: grid !important; grid-template-columns: repeat(6, 1fr) !important; }
-    #product-sheet .bottom-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.7rem,1.4vw,1.05rem);}
+  .step{ background:var(--card); border:1px solid var(--line); border-radius:7px; padding:clamp(.9rem,1.5vw,1.25rem);}
+  .step .sn{ font-family:var(--slab); font-weight:700; font-size:1.6rem; color:var(--gold); line-height:1; margin-bottom:.4em;}
+  .step .st{ font-size:clamp(.76rem,.95vw,.9rem); color:var(--mute); line-height:1.42;}
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav { flex-wrap: wrap; gap: .75rem; }
-      .nav-links { flex-wrap: wrap; gap: .75rem; }
-      .hero h1 { font-size: 2rem; }
-    }
-  </style>
+  .intg{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.55rem,1vw,.85rem);}
+  .ichip{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(.6rem,1vw,.85rem);}
+  .ichip .in{ font-weight:600; font-size:clamp(.82rem,1vw,.95rem); color:var(--cream);}
+  .ichip .id{ font-size:clamp(.68rem,.85vw,.8rem); color:var(--mute); margin-top:.3em; line-height:1.35;}
+
+  .rev-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(.6rem,1.2vw,.9rem);}
+  .rrow{ display:flex; gap:12px; align-items:baseline; padding:clamp(.5rem,1.2vh,.8rem) 0; border-bottom:1px solid rgba(39,69,102,.5);}
+  .rrow .rk{ font-family:var(--mono); font-size:.6rem; color:var(--gold); min-width:18px;}
+  .rrow .rt{ font-size:clamp(.82rem,1vw,.96rem); color:var(--mute);}
+  .cta{ background:var(--cardHL); border:1px solid var(--gold); border-radius:9px; padding:clamp(1.3rem,2.6vw,2rem); text-align:center;}
+  .cta .lt{ font-family:var(--slab); font-weight:700; font-size:clamp(1.3rem,2vw,1.8rem); margin:0 0 .4em;}
+  .cta p{ color:var(--mute); font-size:clamp(.82rem,1vw,.95rem); line-height:1.5; margin:0 0 1.2em;}
+  .cta .contact{ font-family:var(--mono); font-size:.64rem; letter-spacing:.08em; color:var(--muteDk); margin-top:1.1rem;}
+
+  @media (max-width:880px){
+    .topnav{display:none;}
+    .g3,.g4,.steps,.intg,.pillars{grid-template-columns:1fr 1fr;}
+    .g2,.rev-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){ .deck{transition:none;} .slide .inner>*{transition:none;opacity:1;transform:none;} }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="/" class="nav-brand">
-    <div class="nav-logo"><img src="/logo.jpg" alt="Aetherum"></div>
-    <span class="nav-name">Aetherum</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#platform">Platform</a></li>
-    <li><a href="/#dacs">DACS</a></li>
-    <li><a href="/#blog">Blog</a></li>
-    <li><a href="mailto:hello@aetherum.ai">Contact</a></li>
-  </ul>
+<nav class="topnav" id="topnav">
+  <a data-go="1">PLATFORM</a>
+  <a data-go="3">DACS</a>
+  <a data-go="5">COMPLIANCE</a>
+  <a data-go="6">AUDIT-NATIVE</a>
+  <a data-go="7">SETTLEMENT</a>
+  <a data-go="8">HOW IT WORKS</a>
+  <a data-go="9">CONTACT</a>
 </nav>
 
-<!-- CONTENT -->
-<div id="product-sheet">
+<img class="brand" src="data:image/png;base64,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" alt="Aetherum" />
 
-<!-- HERO -->
-<section class="hero" id="about">
-  <h1>The Crypto Lending Platform <span>That Explains Itself</span></h1>
-  <p>Every other platform is building faster pipes. Aetherum gives your members a lending decision they can actually understand — and that explanation is the moat.</p>
-  <div class="hero-buttons">
-    <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="btn btn-primary">Schedule a Demo</a>
-    <a href="/product-overview.pdf" download="Aetherum_Product_Overview.pdf" class="btn btn-outline">Download PDF</a>
-  </div>
-</section>
+<main class="deck" id="deck">
 
-<!-- FEATURES -->
-<section id="platform">
-  <h2 class="section-title">Built for the Member. Deployed for the Credit Union.</h2>
-  <p class="section-sub">The market has been focused on speed for the institution. Aetherum is focused on trust for the member.</p>
-  <div class="cards feature-grid">
-    <div class="card">
-      <div class="card-icon">🔐</div>
-      <span class="badge">DACS-LTV</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Crypto-Backed Lending</h3>
-      <p>Your members keep their crypto exposure, avoid a taxable event, and get USD liquidity — all through their trusted credit union. Aetherum handles the infrastructure. You own the relationship.</p>
+  <!-- 0 COVER -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">PRODUCT OVERVIEW</span></div>
+      <h1 class="hero">The Crypto Lending Platform<br>That <span class="gold-i">Explains Itself.</span></h1>
+      <div class="sub">Every other platform is building faster pipes. Aetherum gives your members a lending decision they can actually understand — and that explanation is the moat.</div>
+      <div class="cover-stats">
+        <div class="cstat"><div class="n">12</div><div class="l">DACS RISK PILLARS</div></div>
+        <div class="cstat"><div class="n">15</div><div class="l">PATENTS PENDING</div></div>
+        <div class="cstat"><div class="n">5,000+</div><div class="l">CREDIT UNIONS REACHABLE</div></div>
+      </div>
+      <div class="lead-cta">
+        <a class="btn" href="https://calendly.com/jbailey-aetherum/new-meeting">SCHEDULE A DEMO</a>
+        <a class="btn ghost" href="/aetherum-product.pdf" download="aetherum-product.pdf">↓ DOWNLOAD PDF</a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">📊</div>
-      <span class="badge">Patent Pending</span>
-      <h3>DACS Risk Assessment</h3>
-      <p>Our patent-pending ten-pillar risk model evaluates crypto collateral in real time. Every decision comes with a plain-language explanation the member can read and understand — not just a number on a screen.</p>
+  </section>
+
+  <!-- 1 THESIS / PLATFORM -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">01</span> · THE PLATFORM</div>
+      <h2 class="title">Built for the member. <span class="gold-i">Deployed for the credit union.</span></h2>
+      <div class="quote">The market has been focused on speed for the institution. Aetherum is focused on trust for the member — and hands the credit union the infrastructure to deliver it.</div>
+      <div class="grid g3">
+        <div class="card"><div class="ckicker">Lending</div><div class="ctitle">Crypto-Backed Lending</div><div class="cbody">Members keep their crypto exposure, avoid a taxable event, and get USD liquidity — all through their trusted credit union. Aetherum handles the infrastructure. You own the relationship.</div></div>
+        <div class="card"><div class="ckicker">Underwriting</div><div class="ctitle">Smart Review</div><div class="cbody">AI-powered underwriting guidance evaluates the full borrowing position and explains it in plain language — recommended amount, risk level, and reasoning, instantly, at the point of decision.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Tax Intelligence</div><div class="ctitle">Tax-Position Score &amp; Optimizer (TPSOE™)</div><div class="cbody">Scores the tax efficiency of each collateral position and ranks pledge assets to minimize member tax liability — a feature no D2C competitor offers institutions.</div><span class="pill">PATENT PENDING</span></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">💡</div>
-      <span class="badge">Tax Intelligence</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Tax-Position Score &amp; Collateral Optimizer</h3>
-      <p>Aetherum's TPSOE engine scores the tax efficiency of each collateral position and ranks pledge assets to minimize member tax liability. The Collateral Optimizer selects the optimal set for any loan request — a feature no D2C competitor offers institutions.</p>
+  </section>
+
+  <!-- 2 DACS INTRO -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">02</span> · DACS</div>
+      <h2 class="title">A <span class="gold-i">risk assessment model</span> built for crypto collateral.</h2>
+      <div class="lead">DACS quantifies a borrower's position beyond traditional metrics — in language the member can actually understand. Twelve pillars of crypto risk assessment, backed by 15 patent-pending innovations, with a plain-language explanation behind every decision. Not a number on a screen; the reasoning behind it.</div>
+      <div class="lead-cta">
+        <a class="btn ghost" href="#" data-go="3">SEE THE 12 PILLARS →</a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">✨</div>
-      <h3>Smart Review</h3>
-      <h4 style="color:#a78bfa;font-size:.85rem;margin-bottom:.75rem;">AI-Powered Underwriting Guidance</h4>
-      <p>Before a member signs, Aetherum evaluates their full borrowing position and explains it in plain language. Recommended amount, risk level, and reasoning — delivered instantly, automatically, at the point of decision.</p>
-      <ul style="margin:.75rem 0 0;padding-left:1.25rem;color:rgba(255,255,255,0.75);font-size:.9rem;line-height:1.65;">
-        <li>Proprietary fine-tuned AI underwriting model trained on NCUA regulatory corpora and institutional knowledge — patent-pending</li>
-      </ul>
+  </section>
+
+  <!-- 3 DACS 12 PILLARS -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">02</span> · DACS — THE TWELVE PILLARS</div>
+      <div class="pillars">
+        <div class="pillar"><span class="pidx">1</span><span class="ptxt">Wallet Age<span class="ptag">on-chain longevity</span></span></div>
+        <div class="pillar"><span class="pidx">2</span><span class="ptxt">Diversification<span class="ptag">portfolio spread</span></span></div>
+        <div class="pillar"><span class="pidx">3</span><span class="ptxt">On-Chain Activity<span class="ptag">active management</span></span></div>
+        <div class="pillar"><span class="pidx">4</span><span class="ptxt">Volatility<span class="ptag">collateral resilience</span></span></div>
+        <div class="pillar"><span class="pidx">5</span><span class="ptxt">Tax-Position Score<span class="ptag">TPSOE · patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">6</span><span class="ptxt">TAM Bonus<span class="ptag">verified holdings</span></span></div>
+        <div class="pillar"><span class="pidx">7</span><span class="ptxt">On-Chain Identity<span class="ptag">CUMember · patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">8</span><span class="ptxt">Privacy Computation<span class="ptag">FHE-DACS · patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">9</span><span class="ptxt">Dynamic LTV<span class="ptag">DACS-LTV · patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">10</span><span class="ptxt">Ledger Collateral Control<span class="ptag">patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">11</span><span class="ptxt">XLS-66 LoanBroker<span class="ptag">patent pending</span></span></div>
+        <div class="pillar"><span class="pidx">12</span><span class="ptxt">Key Governance &amp; Audit<span class="ptag">patent pending</span></span></div>
+      </div>
+      <div class="lead" style="margin-top:1.3rem; font-size:clamp(.85rem,1.05vw,1rem)">Tier 1 members access up to 70% LTV, Tier 2 up to 65%, Tier 3 up to 55% — enforced at the blockchain layer, no manual override.</div>
     </div>
-    <div class="card">
-      <div class="card-icon">🪙</div>
-      <h3>RWA Tokenization</h3>
-      <p>Tokenize real-world assets like real estate, receivables, and treasury instruments to expand collateral options and create new secondary-market liquidity for credit unions.</p>
+  </section>
+
+  <!-- 4 COMPLIANCE -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">03</span> · COMPLIANCE &amp; ON-CHAIN IDENTITY</div>
+      <h2 class="title" style="margin-bottom:.5em">Compliance <span class="gold-i">built in</span>, not bolted on.</h2>
+      <div class="grid g3">
+        <div class="card"><div class="ckicker">Identity</div><div class="ctitle">On-Chain Member Identity</div><div class="cbody">ERC-3643 + ERC-7943 compliant verification. Each member gets a portable ONCHAINID attestation — KYC verified, jurisdiction gated, collateral-scored on-chain. Built on the T-REX standard for regulated RWAs.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Privacy</div><div class="ctitle">Privacy-Preserving Underwriting (FHE-DACS)</div><div class="cbody">Encrypted risk assessment via homomorphic encryption — member financial data is never exposed in plaintext during underwriting.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Enforcement</div><div class="ctitle">ERC-7943 Collateral Token</div><div class="cbody">The official Ethereum Universal RWA Interface — on-chain eligibility checks, regulatory freeze, and forced transfer, all delegating through three ERC-3643 compliance modules.</div><span class="pill">PATENT PENDING</span></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🔗</div>
-      <span class="badge">Patent Pending</span>
-      <h3>XLS-66 LoanBroker (XRPL Native Lending)</h3>
-      <p>Aetherum operates as the LoanBroker in Ripple's XLS-66 Lending Protocol — managing DACS-gated loan origination, dual-party transaction authorization (BIDSF), and First-Loss Capital as a regulatory capital analog for NCUA-examined institutions. RLUSD as native loan currency. Live on XRPL testnet.</p>
+  </section>
+
+  <!-- 5 AUDIT-NATIVE -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">04</span> · AUDIT-NATIVE INFRASTRUCTURE</div>
+      <h2 class="title" style="margin-bottom:.5em">Every decision <span class="gold-i">examiner-ready</span> from day one.</h2>
+      <div class="grid g4">
+        <div class="card hl"><div class="ckicker">Receipts</div><div class="ctitle">On-Chain Compliance Receipts</div><div class="cbody">SHA-256 hash of every decision written to Ethereum. Examiners receive a verification URL per decision; sensitive data stays off-chain. No other lending infrastructure provides this.</div></div>
+        <div class="card"><div class="ckicker">Explainability</div><div class="ctitle">DACS Explainability Layer</div><div class="cbody">Auto-generated record after every scoring run — factor breakdowns, risk tier, peer comparison, plain-language rationale, and 12 CFR Part 723 citation. PDF export for NCUA submission.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Supervisory</div><div class="ctitle">Supervisory Control &amp; Audit</div><div class="cbody">Documented human-in-the-loop control over every position — NCUA-aligned event types, officer attribution, on-chain attestation, CSV examination export with Etherscan links.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Diligence</div><div class="ctitle">DDQ Engine</div><div class="cbody">342-entry security knowledge base spanning NCUA guidance, custody, BSA/AML, and the full SIG framework. A CU IT team can complete a full vendor security review without a call.</div><span class="pill live">LIVE</span></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🌊</div>
-      <span class="badge">Live Integration</span>
-      <span class="badge">Circle CCTP</span>
-      <h3>Pharos Partnership Panel</h3>
-      <p>Live Pharos Atlantic Testnet integration — USDC contract wired, wallet generation, balance checker, and USDC disbursement demo. Powered by Circle CCTP.</p>
+  </section>
+
+  <!-- 6 SETTLEMENT + COLLATERAL OPS -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">05</span> · SETTLEMENT &amp; COLLATERAL OPS</div>
+      <h2 class="title" style="margin-bottom:.5em">Money moves. <span class="gold-i">Collateral is watched.</span></h2>
+      <div class="grid g4">
+        <div class="card"><div class="ckicker">Disbursement</div><div class="ctitle">Multi-Rail Stablecoin</div><div class="cbody">Pluggable multi-rail disbursement — USD &amp; SGD across EVM networks, cross-chain transfer, and programmable MPC wallets. Migrating to Arc mainnet Q3 2026 for sub-second finality.</div><span class="pill live">LIVE</span></div>
+        <div class="card"><div class="ckicker">Surveillance</div><div class="ctitle">Collateral Intelligence Engine (CIE™)</div><div class="cbody">Every position monitored 24/7 — finality-aware on-chain event processing, live LTV, DACS updated on every price move, institution-authorized liquidation control.</div><span class="pill">PATENT PENDING</span></div>
+        <div class="card"><div class="ckicker">Monitoring</div><div class="ctitle">Native LTV Monitoring</div><div class="cbody">BTC and ETH collateral polled every 60 seconds via Blockstream and Alchemy — no third-party dependency. 30-day rolling volatility feeds DACS directly.</div><span class="pill live">LIVE</span></div>
+        <div class="card"><div class="ckicker">Oversight</div><div class="ctitle">Liquidation Escalation</div><div class="cbody">Three-tier human oversight: Tier 1 auto-executes, Tier 2 pages your risk officer with a 30-min window, Tier 3 requires officer authorization for $250K+ or 40%+ drops. Every action timestamped.</div><span class="pill live">LIVE</span></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">👁️</div>
-      <span class="badge">Opt-In Intelligence</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Member Crypto Insights</h3>
-      <p>Real-time visibility into the digital assets your members already own — before they need a loan. Consent-based wallet connections, DACS eligibility scoring, and opt-in loan pipeline. See what's invisible today.</p>
+  </section>
+
+  <!-- 7 OPERATIONS / SETTLEMENT nav anchor -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">06</span> · WHO RUNS IT</div>
+      <h2 class="title" style="margin-bottom:.5em">A view <span class="gold-i">for every seat</span> at the credit union.</h2>
+      <div class="grid g4">
+        <div class="card"><div class="ckicker">Lending</div><div class="ctitle">Loan Officer Portal</div><div class="cbody">Review applications, assess DACS scores, manage active loans, and action margin-call alerts — purpose-built for crypto-collateralized lending.</div></div>
+        <div class="card"><div class="ckicker">Compliance</div><div class="ctitle">Compliance Officer</div><div class="cbody">Siloed KYC/AML queue, sanctions monitoring, and audit-ready reporting — full visibility and control without touching operational loan data.</div></div>
+        <div class="card"><div class="ckicker">Regulatory</div><div class="ctitle">NCUA Examiner View</div><div class="cbody">Read-only audit dashboard scoped per CU. Live positions, LTV ratios, liquidation events, full BSA/AML trail. Zero custody access, zero execution permissions.</div></div>
+        <div class="card"><div class="ckicker">Members</div><div class="ctitle">Member Crypto Insights</div><div class="cbody">Consent-based visibility into the assets members already own — DACS eligibility scoring and an opt-in loan pipeline. See what's invisible today.</div><span class="pill">PATENT PENDING</span></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🛡️</div>
-      <span class="badge">ERC-3643</span>
-      <span class="badge">ERC-7943</span>
-      <span class="badge">Patent Pending</span>
-      <h3>On-Chain Member Identity</h3>
-      <p>ERC-3643 + ERC-7943 compliant identity verification for every borrower. Each member receives a portable ONCHAINID attestation — KYC verified, jurisdiction gated, and collateral-scored on-chain. Built on the T-REX standard and ERC-7943, the official Ethereum standard for regulated real-world assets — ensuring interoperability with any compliant wallet, custodian, or platform.</p>
+  </section>
+
+  <!-- 8 HOW IT WORKS -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">07</span> · HOW IT WORKS</div>
+      <h2 class="title">Four steps. <span class="gold-i">You own the relationship.</span></h2>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><div class="st">Member deposits crypto collateral into an institutional custody wallet — held directly by the credit union, never by Aetherum.</div></div>
+        <div class="step"><div class="sn">2</div><div class="st">DACS scores the borrower and Smart Review AI evaluates the application against NCUA guidance — returning a structured decision with compliance notes and a full audit trail.</div></div>
+        <div class="step"><div class="sn">3</div><div class="st">The credit union issues the loan using existing infrastructure. Aetherum handles the rest.</div></div>
+        <div class="step"><div class="sn">4</div><div class="st">Automated monitoring manages margin calls, top-ups, and liquidation if needed — with human oversight on every large position.</div></div>
+      </div>
+      <div class="lead" style="margin-top:1.3rem; font-size:clamp(.85rem,1.05vw,1rem)"><b style="color:var(--cream)">GENIUS Act ready.</b> Aetherum was built inside the NCUA's regulatory perimeter — on-chain identity, per-CU custody, and compliance-first infrastructure designed to operate within supervision, not around it.</div>
     </div>
-    <div class="card">
-      <div class="card-icon">🔐</div>
-      <span class="badge">Privacy-Preserving</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Privacy-Preserving Underwriting System (FHE-DACS)</h3>
-      <p>Encrypted risk assessment computation using homomorphic encryption — member financial data is never exposed in plaintext during underwriting. Patent Pending.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🔒</div>
-      <span class="badge">DACS-LTV</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Dynamic LTV Enforcement</h3>
-      <p>DACS risk tier automatically sets each member's on-chain loan-to-value ceiling — enforced at the blockchain layer via ERC-3643 + ERC-7943. Tier 1 members access up to 70% LTV, Tier 2 up to 65%, Tier 3 up to 55%.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🔗</div>
-      <span class="badge">Patent Pending</span>
-      <h3>Distributed Ledger Collateral Management &amp; Liquidation Control</h3>
-      <p>A distributed ledger architecture that tracks collateral positions, enforces margin calls, and executes liquidation logic on-chain — giving credit unions a tamper-proof, auditable record of every collateral event from origination to resolution.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🔗</div>
-      <span class="badge">ERC-3643</span>
-      <span class="badge">ERC-7943</span>
-      <h3>On-Chain Identity Attestation</h3>
-      <p>Automated on-chain attestation triggered by DACS scoring — members are registered as verified credit union participants directly on Sepolia and Pharos Atlantic Testnet via ERC-3643 + ERC-7943 compliance modules. US jurisdiction verification and collateral LTV are set on-chain in real time.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🪙</div>
-      <span class="badge">PATENT PENDING</span>
-      <h3>ERC-7943 Collateral Token</h3>
-      <p>Official Ethereum Universal RWA Interface. Our collateral token implements IERC7943Fungible — on-chain eligibility checks, regulatory freeze, and forced transfer — all delegating through our three ERC-3643 compliance modules.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">📡</div>
-      <span class="badge">Patent Pending</span>
-      <h3>Collateral Intelligence Engine (CIE™)</h3>
-      <p>Every collateral position monitored 24/7. Finality-aware on-chain event processing, live LTV computation, DACS score updated on every price movement, and institution-authorized liquidation control — all automated. The always-on layer that makes crypto collateral operationally viable for credit union loan officers.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">⏱</div>
-      <span class="badge">LIVE</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Native LTV Monitoring</h3>
-      <p>Real-time BTC and ETH collateral wallet surveillance polling every 60 seconds via Blockstream and Alchemy — no third-party monitoring dependency. 30-day rolling volatility feeds directly into DACS.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🚨</div>
-      <span class="badge">LIVE</span>
-      <span class="badge">Patent Pending</span>
-      <h3>Liquidation Escalation Layer</h3>
-      <p>Three-tier human oversight: Tier 1 auto-executes standard positions, Tier 2 pages your risk officer with a 30-minute override window, Tier 3 requires explicit loan officer authorization for $250K+ or 40%+ price drops. Every action timestamped for NCUA audit.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">⚡</div>
-      <h3>Staking Module</h3>
-      <p>Members earn yield on supported digital assets directly through the platform while maintaining collateral eligibility for crypto-backed loans.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">💸</div>
-      <span class="badge">Coming Soon</span>
-      <h3>Payments / Wallet Transfers</h3>
-      <p>Seamless on-chain and off-chain payment flows that let members move digital assets between wallets, fund loan repayments, and initiate transfers — all within your credit union's platform.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">📈</div>
-      <h3>Trading</h3>
-      <p>Integrated digital asset trading that lets members buy, sell, and rebalance their crypto portfolio directly through the Aetherum platform without leaving your credit union's ecosystem.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">📡</div>
-      <span class="badge">Patent Pending</span>
-      <h3>Collateral Intelligence Engine</h3>
-      <p>Real-time collateral surveillance for every active loan. Finality-aware on-chain event processing, live LTV computation, DACS score updates on every price movement, and institution-authorized liquidation control — all automated.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🧾</div>
-      <h3>Tax Savings</h3>
-      <p>Automated tax-loss harvesting, gain/loss reporting, and collateral optimization tools that help members minimize their crypto tax liability at every step of the loan lifecycle.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🛡️</div>
-      <h3>Fraud Detection</h3>
-      <p>AI-powered real-time fraud scoring and behavioral analytics monitor every transaction and onboarding event to protect your credit union and your members from bad actors.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">📋</div>
-      <h3>Claims Process</h3>
-      <p>Structured workflows for collateral disputes, liquidation events, and member escalations — giving your team a clear, auditable path from incident to resolution.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🏦</div>
-      <h3>Loan Officer Portal</h3>
-      <p>A dedicated dashboard for loan officers to review applications, assess DACS scores, manage active loans, and action margin call alerts — purpose-built for crypto-collateralized lending.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">✅</div>
-      <h3>Compliance Officer</h3>
-      <p>Siloed KYC/AML screening queue, sanctions monitoring, and audit-ready reporting tools that give your compliance team full visibility and control without touching operational loan data. When BTC drops 40% at 3AM, the three-tier escalation layer pauses liquidation automatically, fires Twilio SMS + email alerts to your risk officer, and blocks execution until a loan officer explicitly authorizes — every action timestamped for audit.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🏛️</div>
-      <span class="badge">Regulatory</span>
-      <h3>NCUA Examiner View</h3>
-      <p>Read-only audit dashboard scoped per credit union. Live on-chain collateral positions, LTV ratios, liquidation events, and full BSA/AML audit trail — built for NCUA examination from day one. Zero custody access, zero execution permissions.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">👤</div>
-      <h3>Member Management</h3>
-      <p>Unified member profiles combining traditional account data with on-chain wallet history, DACS eligibility scores, and loan activity — giving your team a complete picture of every borrower.</p>
-    </div>
-    <div class="card" id="stablecoin" style="border-color:rgba(212,136,92,0.35);">
-      <div class="card-icon">⭕</div>
-      <span class="badge">STABLECOIN ALLIANCE</span>
-      <h3>Multi-Rail Stablecoin Disbursement</h3>
-      <p>Pluggable multi-rail disbursement infrastructure supporting USD and SGD settlement across EVM-compatible networks — with cross-chain transfer protocol, programmable wallet provisioning, and international expansion capability built in.</p>
-      <div style="margin-top:1rem;display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;">
-          <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span>
-          <span style="color:#94a3b8;">Multi-Rail Payout Infrastructure (USD + SGD)</span>
+  </section>
+
+  <!-- 9 INTEGRATIONS + REVENUE + CONTACT -->
+  <section class="slide slide--dense">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">08</span> · INTEGRATIONS &amp; HOW WE'RE PAID</div>
+      <div class="grid g2" style="align-items:start; gap:clamp(1.4rem,3vw,2.6rem)">
+        <div>
+          <div class="ckicker" style="margin-bottom:.8em">LIVE INTEGRATIONS</div>
+          <div class="intg">
+            <div class="ichip"><div class="in">Jack Henry FIN</div><div class="id">5,000+ CUs reachable</div></div>
+            <div class="ichip"><div class="in">Corelation KeyStone</div><div class="id">~290 CUs day one</div></div>
+            <div class="ichip"><div class="in">Fiserv AppMarket</div><div class="id">DNA platform</div></div>
+            <div class="ichip"><div class="in">FIS Code Connect</div><div class="id">IBS Open APIs</div></div>
+            <div class="ichip"><div class="in">XRPL / XLS-66</div><div class="id">RLUSD loan currency</div></div>
+            <div class="ichip"><div class="in">Pharos · Circle CCTP</div><div class="id">USDC, live testnet</div></div>
+          </div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;">
-          <span style="width:6px;height:6px;border-radius:50%;background:#00ADEF;flex-shrink:0;"></span>
-          <span style="color:#94a3b8;">Cross-Chain Transfer Protocol</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--copper);flex-shrink:0;"></span>
-          <span style="color:#94a3b8;">Programmable Wallet Infrastructure</span>
+        <div>
+          <div class="ckicker" style="margin-bottom:.8em">REVENUE MODEL</div>
+          <div>
+            <div class="rrow"><span class="rk">01</span><span class="rt">Platform licensing fee (annual SaaS)</span></div>
+            <div class="rrow"><span class="rk">02</span><span class="rt">Per-loan origination fee</span></div>
+            <div class="rrow"><span class="rk">03</span><span class="rt">DACS API access for third-party integrations</span></div>
+            <div class="rrow"><span class="rk">04</span><span class="rt">RWA tokenization service fees (coming soon)</span></div>
+          </div>
+          <div class="lead" style="margin-top:1rem; font-size:clamp(.82rem,1vw,.95rem)"><b style="color:var(--cream)">Credit unions keep 100% of loan interest income.</b></div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🔑</div>
-      <span class="badge">PATENT PENDING</span>
-      <h3>Key Governance &amp; Freeze Authority</h3>
-      <p>Board-level cold storage with a two-tier on-chain signing hierarchy. Freeze authority is governed by role — loan officers, compliance teams, and board members each hold defined permissions. Compromised keys revoked instantly with no contract redeployment.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🔐</div>
-      <span class="badge">LIVE</span>
-      <h3>DDQ Engine — 342-Entry Security Knowledge Base</h3>
-      <p>Instant answers to credit union IT and risk team security questionnaires. Built on 342 KB entries spanning NCUA regulatory guidance, Letters to Credit Unions (2016–2026), custody architecture, BSA/AML procedures, ERC-3643 + ERC-7943 compliance modules, and the full SIG security review framework. A CU IT team can complete a full vendor security review without a call.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🛡️</div>
-      <span class="badge">AUDIT-NATIVE</span>
-      <h3>Audit-Native Security Pipeline</h3>
-      <p>Aetherum's codebase runs through an agentic security pipeline where AI reasoning operates inside a governed, deterministic framework — not as the framework itself. Every finding is traceable to policy and closes only when its exploit path is provably broken. On top of standard analysis, three platform-specific lenses encode our own threat model: a custody-boundary lens (software orchestrates; the credit union owns custody), a disbursement-rail lens (every rail clears the same governance gate before value moves), and a collateral/LTV lens (liquidation logic that's correct, current, and manipulation-resistant). Findings export as structured SARIF — examiner-ready evidence, not promises.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- DACS -->
-<section id="dacs">
-  <h2 class="section-title">DACS — Risk Assessment Model</h2>
-  <p class="section-sub">Twelve pillars of crypto risk assessment, backed by 15 patent-pending innovations — quantifying borrower position beyond traditional credit metrics in language the member can actually understand.</p>
-  <div class="pillars pillar-grid">
-    <div class="pillar">
-      <div class="pillar-num">1</div>
-      <h4>Wallet Age</h4>
-      <p>Longevity of on-chain presence signals commitment and experience.</p>
+  <!-- 10 CONTACT -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="dash"></span><span class="num">09</span> · GET IN TOUCH</div>
+      <h2 class="title">Bring crypto-backed lending <span class="gold-i">to your credit union.</span></h2>
+      <div class="cta" style="max-width:620px">
+        <div class="lt">Schedule a 30-minute demo.</div>
+        <p>We'll walk through the platform live — DACS, Smart Review, the audit-native trail — and answer any diligence questions.</p>
+        <a class="btn" href="https://calendly.com/jbailey-aetherum/new-meeting">SCHEDULE A DEMO</a>
+        <div class="contact">hello@aetherum.ai · aetherum.ai</div>
+      </div>
     </div>
-    <div class="pillar">
-      <div class="pillar-num">2</div>
-      <h4>Diversification</h4>
-      <p>Portfolio spread across assets reduces single-point-of-failure risk.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">3</div>
-      <h4>On-Chain Activity</h4>
-      <p>Transaction frequency and patterns demonstrate active asset management.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">4</div>
-      <h4>Volatility</h4>
-      <p>Historical price stability of held assets informs collateral resilience.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">5</div>
-      <h4>Tax-Position Score (TPSOE)</h4>
-      <p>Patent-pending pillar. Scores the borrower's embedded tax liability and collateral tax efficiency — ranking pledge assets to minimize tax cost at liquidation.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">6</div>
-      <h4>TAM Bonus</h4>
-      <p>Traditional asset weighting rewards borrowers with verified brokerage holdings via our financial data connectivity layer, enhancing the overall risk profile.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">7</div>
-      <h4>On-Chain Member Identity (CUMember) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. ERC-3643 + ERC-7943 compliant identity attestation — KYC verified, jurisdiction gated, and collateral-scored on-chain via ONCHAINID.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">8</div>
-      <h4>Privacy-Preserving Computation (FHE-DACS) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. Member financial data is encrypted before scoring — risk assessment computations are performed without exposing raw inputs at any step.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">9</div>
-      <h4>Dynamic LTV Enforcement (DACS-LTV) <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. DACS risk tier automatically sets each member's on-chain LTV ceiling — Tier 1 up to 70%, Tier 2 up to 65%, Tier 3 up to 55%. Enforced at the blockchain layer via ERC-3643 + ERC-7943. No manual override possible.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">10</div>
-      <h4>Distributed Ledger Collateral Management &amp; Liquidation Control <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. A distributed ledger architecture for real-time collateral tracking, automated margin enforcement, and liquidation control — ensuring every collateral event is recorded on-chain with full auditability and no single point of failure.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">11</div>
-      <h4>XLS-66 LoanBroker Integration <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. Native on-ledger lending via the XRP Ledger XLS-66 protocol — DACS-gated origination, dual-party authorization, and First-Loss Capital management purpose-built for NCUA-regulated credit unions.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">12</div>
-      <h4>Key Governance &amp; Audit Trail <span style="display:inline-block;font-size:.65rem;font-weight:600;color:var(--accent);background:rgba(212,136,92,0.15);padding:.15rem .5rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-left:.25rem;">Patent Pending</span></h4>
-      <p>Patent-pending pillar. Two-tier on-chain key hierarchy with instant operational key revocation and an immutable audit trail independently verifiable by NCUA examiners — no platform API access required.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STABLECOIN INFRASTRUCTURE -->
-<section id="stablecoin-infrastructure" style="background:rgba(0,0,0,0.25);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-      <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;">Stablecoin Infrastructure</p>
-      <span style="font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(212,136,92,0.12);color:var(--copper);border:1px solid rgba(212,136,92,0.25);">Alliance Partner</span>
-    </div>
-    <h2 class="section-title" style="text-align:left;margin-bottom:.5rem;">Multi-Rail Stablecoin Disbursement</h2>
-    <p class="section-sub" style="text-align:left;margin-left:0;margin-bottom:2rem;">Pluggable multi-rail disbursement infrastructure supporting USD and SGD settlement across EVM-compatible networks — from loan origination through international cross-border delivery to the member's wallet.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:1.5rem;">
-      <!-- USDC -->
-      <div style="background:var(--navy-mid);border:1px solid rgba(39,117,202,0.3);border-radius:12px;padding:1.5rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(39,117,202,0.15);border:1px solid rgba(39,117,202,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
-          <span style="color:#2775CA;font-size:1.1rem;">🪙</span>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-          <h3 style="font-size:1rem;font-weight:700;margin:0;">USDC Collateral Flows</h3>
-        </div>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.75rem;">Loan proceeds disbursed as dollar-backed digital currency. T+0 on-chain settlement. 1:1 USD peg. Monthly attestations. Eliminates ACH delays for member disbursements.</p>
-        <div style="font-size:.72rem;color:#64748b;">Settlement · T+0 on-chain &nbsp;·&nbsp; Peg · USD 1:1 &nbsp;·&nbsp; Audit · Monthly</div>
-        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
-      </div>
-      <!-- CCTP -->
-      <div style="background:var(--navy-mid);border:1px solid rgba(0,173,239,0.3);border-radius:12px;padding:1.5rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(0,173,239,0.15);border:1px solid rgba(0,173,239,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
-          <span style="color:#00ADEF;font-size:1.1rem;">⚡</span>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-          <h3 style="font-size:1rem;font-weight:700;margin:0;">Cross-Chain Transfer Protocol</h3>
-        </div>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.75rem;">Native burn-and-mint bridge moves digital dollars across blockchains without wrapping. Zero slippage. Member receives native digital dollars on their preferred chain — Ethereum, Base, Arbitrum, Avalanche, or Solana.</p>
-        <div style="font-size:.72rem;color:#64748b;">Finality · ~20s cross-chain &nbsp;·&nbsp; Slippage · Zero &nbsp;·&nbsp; Chains · 5</div>
-      </div>
-      <!-- Programmable Wallets -->
-      <div style="background:var(--navy-mid);border:1px solid rgba(212,136,92,0.3);border-radius:12px;padding:1.5rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(212,136,92,0.12);border:1px solid rgba(212,136,92,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
-          <span style="color:var(--copper);font-size:1.1rem;">🔐</span>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-          <h3 style="font-size:1rem;font-weight:700;margin:0;">Programmable Wallet Infrastructure</h3>
-        </div>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.75rem;">Embedded MPC-secured wallets provisioned automatically at member onboarding — no seed phrase required. Collateral held in the member's own address via smart-contract lock, satisfying NCUA beneficial-ownership standards. No omnibus account risk.</p>
-        <div style="font-size:.72rem;color:#64748b;">Model · Non-custodial &nbsp;·&nbsp; Keys · MPC &nbsp;·&nbsp; Compliance · NCUA beneficial-ownership</div>
-      </div>
-      <!-- Multi-Rail Payout -->
-      <div style="background:var(--navy-mid);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:1.5rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
-          <span style="color:#22c55e;font-size:1.1rem;">🌐</span>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-          <h3 style="font-size:1rem;font-weight:700;margin:0;">Multi-Rail Payout Infrastructure</h3>
-          <span style="font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.3);">LIVE</span>
-        </div>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.75rem;">Multiple live stablecoin disbursement rails supporting USD and SGD settlement — enabling compliant loan proceeds delivery to bank accounts or blockchain addresses across EVM-compatible networks. Architecture is pluggable: new currency rails activate without contract redeployment.</p>
-        <div style="font-size:.72rem;color:#64748b;">Currencies · USD &amp; SGD &nbsp;·&nbsp; Networks · EVM-compatible &nbsp;·&nbsp; Rails · Pluggable</div>
-      </div>
-    </div>
-    <!-- Arc Mainnet Milestone -->
-    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 1.5rem;background:rgba(212,136,92,0.06);border:1px solid rgba(212,136,92,0.2);border-radius:12px;">
-      <div style="flex-shrink:0;padding:.75rem 1.25rem;background:rgba(212,136,92,0.1);border:1px solid rgba(212,136,92,0.25);border-radius:8px;text-align:center;min-width:90px;">
-        <div style="font-size:1.3rem;font-weight:800;color:var(--copper);line-height:1;">Arc</div>
-        <div style="font-size:.65rem;color:#94a3b8;margin-top:2px;">Mainnet</div>
-        <div style="font-size:.65rem;font-weight:700;color:var(--copper);margin-top:4px;">Q3 2026</div>
-      </div>
-      <div style="flex:1;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
-          <span style="font-size:.9rem;font-weight:700;color:white;">Arc Mainnet — Q3 2026 Settlement Layer Milestone</span>
-          <span style="font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(212,136,92,0.12);color:var(--copper);border:1px solid rgba(212,136,92,0.25);">Roadmap</span>
-        </div>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0;">Arc is the high-throughput EVM-compatible settlement layer built for institutional stablecoin flows. Aetherum will migrate stablecoin disbursements to Arc mainnet in Q3 2026 — delivering sub-second finality and near-zero gas costs across USD and SGD settlement rails for every credit-union loan.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- AUDIT-NATIVE INFRASTRUCTURE -->
-<section id="audit-native">
-  <div style="max-width:1000px;margin:0 auto;">
-    <h2 class="section-title" style="text-align:left;margin-bottom:.5rem;">Audit-Native Infrastructure</h2>
-    <p class="section-sub" style="text-align:left;margin-left:0;margin-bottom:2rem;">Every lending decision cryptographically anchored on-chain and examiner-ready — built for NCUA examination from day one, not retrofitted after.</p>
-    <div class="three-col">
-      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
-        <h3>On-Chain Compliance Receipts</h3>
-        <p>SHA-256 hash of every decision record written to Ethereum via <strong style="color:var(--text);">AetherumComplianceReceipt.sol</strong> (UUPS upgradeable, AccessControl). Verification endpoint confirms integrity by recomputing the hash against the on-chain commitment.</p>
-        <ul>
-          <li>Covers every DACS assessment, loan approval/denial, and collateral event</li>
-          <li>Sensitive member data remains off-chain — only the cryptographic commitment is public</li>
-          <li>NCUA examiners receive a verification URL per decision</li>
-          <li>Tamper-evident · Examiner-ready · No other lending infrastructure provides this</li>
-        </ul>
-        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
-      </div>
-      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
-        <h3>DACS Explainability Layer</h3>
-        <p>Structured <strong style="color:var(--text);">DacsExplanation</strong> document auto-generated after every scoring run — designed for direct NCUA examination submission.</p>
-        <ul>
-          <li>Factor breakdowns: PV, AQ, Stability, TAM, Volatility — with weights and plain-English explanations</li>
-          <li>Score breakdown with risk tier assignment</li>
-          <li>Comparable peer profile</li>
-          <li>Plain-language decision rationale</li>
-          <li>12 CFR Part 723 regulatory basis citation</li>
-          <li>PDF export for direct NCUA submission</li>
-        </ul>
-        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
-      </div>
-      <div class="col-block" style="border-color:rgba(212,136,92,0.35);">
-        <h3>Supervisory Control &amp; Audit Layer</h3>
-        <p><strong style="color:var(--text);">SupervisoryHoldService</strong> provides documented human-in-the-loop control over every collateral position — purpose-built for NCUA examination.</p>
-        <ul>
-          <li>NCUA-aligned event types: SUPERVISORY_HOLD_INITIATED, SUPERVISORY_HOLD_RELEASED, SUPERVISORY_OVERRIDE</li>
-          <li>6 reason categories aligned to NCUA guidance</li>
-          <li>JWT officer attribution on every action</li>
-          <li>On-chain attestation for every supervisory event</li>
-          <li>CSV examination export with Etherscan links — on demand</li>
-        </ul>
-        <p style="margin-top:.75rem;"><span class="badge">PATENT PENDING</span></p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="controls">
+  <a class="dlbtn" href="/aetherum-product.pdf" download="aetherum-product.pdf" aria-label="Download PDF">↓ PDF</a>
+  <button id="prev" aria-label="Previous">‹</button>
+  <span class="counter" id="counter">01 / 11</span>
+  <button id="next" aria-label="Next">›</button>
+</div>
+<div class="hint">← → TO NAVIGATE</div>
 
-<!-- THREE COLUMN BOTTOM -->
-<section>
-  <div class="three-col bottom-grid">
-    <div class="col-block">
-      <h3>How It Works</h3>
-      <ol>
-        <li>Member deposits crypto collateral into an institutional custody wallet — held directly by the credit union, never by Aetherum.</li>
-        <li>DACS risk assessment model scores the borrower — and Smart Review AI evaluates the application against NCUA regulatory guidance, returning a structured underwriting decision with compliance notes and full audit trail.</li>
-        <li>Credit union issues the loan using existing infrastructure — Aetherum handles the rest.</li>
-        <li>Automated monitoring manages margin calls, top-ups, and liquidation if needed.</li>
-      </ol>
-    </div>
-    <div class="col-block" style="border-color:rgba(212,136,92,0.4);background:var(--bg-card);">
-      <h3>GENIUS Act Ready</h3>
-      <p style="margin-bottom:.75rem;">The NCUA's first GENIUS Act proposed rule closed its comment period on April 13, 2026. The final implementing regulations are due by July 18, 2026 — establishing the compliance framework for how credit unions participate in the digital asset economy.</p>
-      <p style="margin-bottom:.75rem;">Aetherum was built inside this regulatory perimeter. Our ERC-3643 + ERC-7943 compliance modules, on-chain KYC/AML attestation, DACS risk assessment model, and institutional custody architecture are designed to operate within NCUA supervision — not around it.</p>
-      <p style="margin-bottom:.5rem;font-weight:600;color:var(--text);">Three things the GENIUS Act framework confirms about how Aetherum is built:</p>
-      <ul>
-        <li><strong style="color:var(--text);">On-chain identity:</strong> Every borrower receives an ERC-3643 + ERC-7943 compliant ONCHAINID attestation — KYC verified, jurisdiction gated, and NCUA-audit ready.</li>
-        <li><strong style="color:var(--text);">Custody architecture:</strong> Each credit union holds its own institutional custody account. Aetherum is software layer only — no commingled funds, no custodial risk on the platform.</li>
-        <li><strong style="color:var(--text);">Compliance-first infrastructure:</strong> DACS scoring, LTV enforcement, and collateral management logic are built to produce the audit trails NCUA examiners will expect. Smart Review AI underwriting decisions are structured, logged, and exportable — every decision traceable to the regulatory guidance it was trained on.</li>
-        <li><strong style="color:var(--text);">Three-tier liquidation escalation:</strong> Positions over $250K or with price drops exceeding 40% are paused for mandatory human authorization — loan officers receive Twilio SMS + email alerts and action decisions from the dashboard, with every override logged for examination.</li>
-      </ul>
-    </div>
-    <div class="col-block">
-      <h3>Revenue Model</h3>
-      <ul>
-        <li>Platform licensing fee (annual SaaS)</li>
-        <li>Per-loan origination fee</li>
-        <li>DACS API access for third-party integrations</li>
-        <li>RWA tokenization service fees (coming soon)</li>
-      </ul>
-      <p style="margin-top:1rem;">Credit unions keep 100% of loan interest income.</p>
-      <h4 style="margin-top:1.5rem;margin-bottom:.5rem;">Live Integrations</h4>
-      <ul>
-        <li><strong>Jack Henry FIN</strong> — Core banking integration. 5,000+ credit unions reachable via Jack Henry ecosystem.</li>
-        <li><strong>Corelation KeyStone</strong> — Core banking integration. ~290 credit unions on KeyStone reachable from day one.</li>
-        <li><strong>Fiserv AppMarket</strong> — Core banking integration. DNA platform.</li>
-        <li><strong>FIS Code Connect</strong> — Core banking integration. IBS platform. 53M customers, 7.1M loan accounts addressable via IBS Open APIs.</li>
-        <li>Bank-grade financial data connectivity layer</li>
-        <li>Compliance and identity verification infrastructure</li>
-        <li><strong>XRPL / XLS-66</strong> — Native XRPL lending protocol integration. RLUSD as loan currency.</li>
-        <li><strong>Pharos Atlantic Testnet</strong> — Live testnet integration. USDC contract wired, wallet generation, balance checker, and USDC disbursement via cross-chain transfer protocol.</li>
-        <li><strong>Multi-Rail Stablecoin Disbursement</strong> — USD and SGD settlement across EVM-compatible networks. Multi-rail payout infrastructure, Cross-Chain Transfer Protocol, and Programmable Wallet Infrastructure. <a href="/product.html#stablecoin-infrastructure" style="color:var(--accent);">View details →</a></li>
-      </ul>
-    </div>
-    <div class="col-block" id="contact">
-      <h3>Get In Touch</h3>
-      <p>Ready to bring crypto-backed lending to your credit union?</p>
-      <p><a href="https://calendly.com/jbailey-aetherum/new-meeting">Schedule a 30-minute demo →</a></p>
-      <p style="margin-top:.75rem;">Email: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
-      <p>Web: <a href="https://aetherum.ai">aetherum.ai</a></p>
-    </div>
-  </div>
-</section>
-
-</div><!-- /product-sheet -->
-
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 Aetherum Technologies Inc. All rights reserved.</p>
-  <p>DACS (Digital Asset Credit Score) is a patent-pending risk-assessment framework developed by Aetherum. 15 provisional patents pending. It is not a consumer credit score and is not reported to credit bureaus.</p>
-  <p>Contact: <a href="mailto:hello@aetherum.ai">hello@aetherum.ai</a></p>
-  <div class="footer-social">
-    <a href="https://x.com/Aetherum_ai" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.727-8.852L1.875 2.25h7.14l4.257 5.63 5.972-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a href="https://www.linkedin.com/company/aetherum-ai" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-  </div>
-</footer>
-
-
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(deck.querySelectorAll('.slide'));
+  var navLinks=[].slice.call(document.querySelectorAll('.topnav a'));
+  var counter=document.getElementById('counter');
+  var total=slides.length, i=0;
+  function navKeyFor(idx){ if(idx===1)return 1; if(idx===2||idx===3)return 3; if(idx===4)return 5; if(idx===5)return 6; if(idx===6||idx===7)return 7; if(idx===8)return 8; if(idx===9||idx===10)return 9; return -1; }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function render(){
+    deck.style.transform='translateX(-'+(i*100)+'vw)';
+    counter.textContent=pad(i+1)+' / '+pad(total);
+    slides.forEach(function(s,idx){ s.classList.toggle('active',idx===i); });
+    var key=navKeyFor(i);
+    navLinks.forEach(function(a){ a.classList.toggle('active',parseInt(a.getAttribute('data-go'),10)===key); });
+  }
+  function go(n){ i=Math.max(0,Math.min(total-1,n)); render(); }
+  document.getElementById('next').addEventListener('click',function(){go(i+1);});
+  document.getElementById('prev').addEventListener('click',function(){go(i-1);});
+  navLinks.forEach(function(a){ a.addEventListener('click',function(){go(parseInt(a.getAttribute('data-go'),10));}); });
+  [].slice.call(document.querySelectorAll('[data-go]')).forEach(function(a){ if(!a.classList.contains('dlbtn')) a.addEventListener('click',function(e){ if(a.getAttribute('href')==='#'){e.preventDefault();} var t=a.getAttribute('data-go'); if(t!==null) go(parseInt(t,10)); }); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
+    else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(total-1);}
+  });
+  var wheelLock=false;
+  deck.addEventListener('wheel',function(e){
+    var s=slides[i]; var canScroll=s.scrollHeight>s.clientHeight+4;
+    if(canScroll&&Math.abs(e.deltaY)>Math.abs(e.deltaX))return;
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){ if(wheelLock)return; wheelLock=true; setTimeout(function(){wheelLock=false;},700); go(e.deltaX>0?i+1:i-1); }
+  },{passive:true});
+  var x0=null;
+  deck.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  deck.addEventListener('touchend',function(e){ if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50){go(dx<0?i+1:i-1);} x0=null; },{passive:true});
+  window.addEventListener('resize',render);
+  render();
+})();
+</script>
 </body>
 </html>
