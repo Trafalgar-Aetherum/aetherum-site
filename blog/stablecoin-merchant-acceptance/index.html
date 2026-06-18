@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Only 6% of Merchants Accept Stablecoins. That's the Opportunity. | Aetherum</title>
+  <meta name="description" content="Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns." />
+  <meta property="og:title" content="Only 6% of Merchants Accept Stablecoins. That's the Opportunity." />
+  <meta property="og:description" content="Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns." />
+  <meta property="og:type" content="article" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:    #0B1A2E;
+      --navy2:   #0F2035;
+      --navy3:   #122440;
+      --blue:    #0F50C8;
+      --copper:  #D4885C;
+      --orange2: rgba(212,136,92,0.12);
+      --white:   #FFFFFF;
+      --gray1:   #b0bcd4;
+      --gray2:   #5a6a88;
+      --gray3:   #1e2d45;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(11,26,46,0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--copper); }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray1);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+      background: #0B1A2E;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,136,92,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+    .hero-orb-1 {
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,80,200,0.14) 0%, transparent 65%);
+      top: -280px; left: -260px;
+      pointer-events: none;
+    }
+    .hero-orb-2 {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,136,92,0.11) 0%, transparent 65%);
+      bottom: -160px; right: -160px;
+      pointer-events: none;
+    }
+    .hero-orb-3 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,136,92,0.06) 0%, transparent 70%);
+      top: 30%; left: 55%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 940px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--copper);
+      text-transform: uppercase;
+      border: 1px solid rgba(212,136,92,0.35);
+      padding: 5px 13px;
+      border-radius: 3px;
+    }
+    .hero-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gray2);
+      text-transform: uppercase;
+    }
+    .hero-read {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gray2);
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(68px, 9vw, 126px);
+      line-height: 0.87;
+      letter-spacing: 0.01em;
+      margin-bottom: 36px;
+    }
+    .hero-title .accent { color: var(--copper); }
+    .hero-subtitle {
+      font-family: 'Outfit', sans-serif;
+      font-size: 21px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gray1);
+      max-width: 700px;
+      line-height: 1.65;
+    }
+
+    /* ── BODY ── */
+    .article-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 96px 48px 40px;
+    }
+
+    /* ── LEDE ── */
+    .lede {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--gray1);
+      margin-bottom: 56px;
+      border-left: 3px solid var(--copper);
+      padding-left: 28px;
+    }
+
+    /* ── SECTION HEADS ── */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin: 64px 0 20px;
+      line-height: 1;
+    }
+    h2 .acc { color: var(--copper); }
+
+    /* ── BODY COPY ── */
+    p {
+      font-size: 18px;
+      line-height: 1.82;
+      color: var(--gray1);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 56px 0;
+      padding: 36px 40px;
+      border-left: 4px solid var(--copper);
+      background: linear-gradient(135deg, rgba(212,136,92,0.06) 0%, rgba(15,80,200,0.04) 100%);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      font-style: normal;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin: 56px 0;
+    }
+    .stat-block {
+      background: var(--navy3);
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-block:first-child { border-radius: 8px 0 0 8px; }
+    .stat-block:last-child { border-radius: 0 8px 8px 0; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--copper);
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray2);
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      margin: 56px 0;
+      padding: 36px 40px;
+      background: var(--navy3);
+      border: 1px solid rgba(212,136,92,0.2);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .callout::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(212,136,92,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 16px;
+    }
+    .callout h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .callout p {
+      font-size: 16px;
+      color: var(--gray1);
+      margin: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--gray3);
+      margin: 64px 0;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      margin: 80px 0 40px;
+      padding: 56px 48px;
+      background: linear-gradient(135deg, var(--navy3) 0%, rgba(15,80,200,0.08) 100%);
+      border: 1px solid rgba(212,136,92,0.15);
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,136,92,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,136,92,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .cta-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .cta-block h2 {
+      margin: 0 0 16px;
+      font-size: clamp(32px, 4vw, 52px);
+      position: relative;
+    }
+    .cta-block p {
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--copper);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .cta-btn:hover {
+      background: #ffaa33;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212,136,92,0.3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gray3);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--copper); }
+    .footer-patent {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray2);
+      border: 1px solid var(--gray3);
+      padding: 6px 14px;
+      border-radius: 3px;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--gray2);
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 16px 24px; }
+      .hero { padding: 0 24px 64px; min-height: 80vh; }
+      .article-wrap { padding: 72px 24px 32px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .stat-block:first-child { border-radius: 8px 8px 0 0; }
+      .stat-block:last-child { border-radius: 0 0 8px 8px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .cta-block { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav-brand">AETHERUM<span>.</span></a>
+    <a href="https://aetherum.ai/blog" class="nav-back">← Back to Blog</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-orb-3"></div>
+    <div class="hero-inner">
+      <div class="hero-meta">
+        <span class="hero-tag">Payments &amp; Strategy</span>
+        <span class="hero-date">June 18, 2026</span>
+        <span class="hero-read">5 min read</span>
+      </div>
+      <h1 class="hero-title">
+        ONLY <span class="accent">6%</span> OF<br>
+        MERCHANTS ACCEPT<br>
+        STABLECOINS.<br>
+        <span class="accent">THAT'S THE</span><br>
+        <span class="accent">OPPORTUNITY.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <main class="article-wrap">
+
+    <p class="lede">
+      Six percent. That's the share of U.S. merchants who currently accept stablecoins directly at the point of sale. Read that number two ways: as a symptom of how early we are, and as a map of how much ground is still unclaimed.
+    </p>
+
+    <p>
+      The conventional take is that low merchant acceptance is a barrier to stablecoin adoption. That's true, as far as it goes. But it misses the more important story: the <em>infrastructure</em> enabling merchant acceptance is advancing faster than the merchant acceptance numbers suggest. Networks, processors, and regulators are all moving in the same direction at the same time. The 6% figure is a lagging indicator. The infrastructure buildout is the leading one.
+    </p>
+
+    <p>
+      For credit unions, the question isn't whether stablecoin payments will reach mainstream merchant acceptance. The question is whether your institution will be part of the payment stack when it does — or whether your members will route around you to get there.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-num">6%</div>
+        <div class="stat-label">U.S. merchants accepting stablecoins at checkout today</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">$27T</div>
+        <div class="stat-label">Annual U.S. retail payment volume — the addressable market</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">140M</div>
+        <div class="stat-label">Credit union members with no stablecoin payment access from their CU</div>
+      </div>
+    </div>
+
+    <h2>WHY <span class="acc">ACCEPTANCE</span> IS STILL LOW</h2>
+
+    <p>
+      The 6% figure isn't a technology problem. It's a coordination problem. Merchants don't accept stablecoins because their point-of-sale systems weren't built for them. Their acquirers haven't offered the integration. Their accountants haven't figured out the reporting. Their banks haven't made it easy. Each friction point is solvable — but solving them requires someone to move first.
+    </p>
+
+    <p>
+      That dynamic is beginning to break. Mastercard announced its stablecoin settlement network in late 2025. Visa followed with its own USDC settlement infrastructure. Stripe re-enabled crypto payments and added stablecoin payout rails for platforms. PayPal's PYUSD is now accepted by over 35 million merchants through its existing network — not because those merchants made a decision about stablecoins, but because PayPal made the decision invisible.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The merchant doesn't have to think about stablecoins. They just have to accept PayPal — and stablecoins move underneath."</p>
+      <cite>— The emerging playbook for stablecoin payments adoption</cite>
+    </div>
+
+    <p>
+      This is the pattern that will drive stablecoin acceptance from 6% to 60%: not direct integration at the checkout terminal, but absorption into existing payment flows that merchants already use. The stablecoin is the settlement layer. The merchant experience is unchanged. That's how mainstream adoption happens — quietly, at the infrastructure level, before anyone calls it a trend.
+    </p>
+
+    <h2>WHERE <span class="acc">CREDIT UNIONS</span> FIT</h2>
+
+    <p>
+      Credit unions are not payment processors. They are not point-of-sale vendors. But they sit at a critical chokepoint in the payment value chain: the member's primary financial relationship. When a member wants to spend, save, or move money — digital or otherwise — they start with their credit union account.
+    </p>
+
+    <p>
+      That relationship is the asset. And it's under pressure from two directions simultaneously. From the merchant side, stablecoin acceptance is growing — slowly today, but the rails are being built. From the member side, stablecoin holdings are growing faster: <strong>1 in 4 American adults now holds some form of digital asset</strong>, and a meaningful share of that is in stablecoins. The member who holds USDC today and can't use their credit union to spend it tomorrow will find someone who can help them. That someone will not be their credit union.
+    </p>
+
+    <div class="callout">
+      <div class="callout-label">The Flywheel Logic</div>
+      <h3>More Acceptance → More Utility → More Demand</h3>
+      <p>
+        Stablecoin payment adoption follows a flywheel: more merchant acceptance creates more utility for holders, which creates more demand for stablecoins, which attracts more merchant integrations. Credit unions that build the member-side infrastructure now — custody, wallets, on/off ramps — will be positioned to capture both sides of the flywheel as it accelerates. The ones that wait will find the flywheel already spinning without them.
+      </p>
+    </div>
+
+    <h2>THE <span class="acc">INFRASTRUCTURE</span> LAYER IS THE MOVE</h2>
+
+    <p>
+      You don't need to build a payment network to participate in this shift. You need to be the institution your members trust to hold, manage, and move their digital dollars — including stablecoins — when the payment moment arrives. That means three things built in the right order.
+    </p>
+
+    <p>
+      <strong>First: custody and access.</strong> Members need somewhere to hold stablecoins that isn't a crypto exchange. Their credit union — an NCUA-regulated, insured, trusted institution — is the obvious choice. Building or partnering on compliant custody infrastructure is the foundational move.
+    </p>
+
+    <p>
+      <strong>Second: lending against digital assets.</strong> The member who holds USDC or Bitcoin doesn't necessarily want to spend their position. They often want liquidity without liquidation. A crypto-collateralized loan — structured by their credit union, compliant with NCUA guidelines, and denominated in dollars — gives them exactly that. This is available today, without a PPSI license, without a CUSO restructuring.
+    </p>
+
+    <p>
+      <strong>Third: payment rails, when ready.</strong> As network integrations mature and merchant acceptance climbs, the credit unions with established digital asset infrastructure will be first in line to offer stablecoin payment and settlement services to their members. This is a 2027–2028 play — but the foundation has to be laid now.
+    </p>
+
+    <h2>THE <span class="acc">WINDOW</span> IS MEASURED IN MONTHS</h2>
+
+    <p>
+      The GENIUS Act is law. The NCUA's implementing rules are weeks from final. The network integrations are live. The member demand is documented. What's missing — in most credit unions — is a decision.
+    </p>
+
+    <p>
+      The 6% merchant acceptance figure will not stay at 6%. Every major payments network is working to move it. When it reaches 20%, 30%, 40%, the credit unions that haven't built the member-side infrastructure will find themselves in the same position they were with mobile banking in 2012: technically capable of catching up, but already behind in the metric that matters — member trust and relationship depth.
+    </p>
+
+    <div class="pull-quote">
+      <p>The opportunity in stablecoin payments isn't in the 6% who accept them today. It's in the 94% who will — and the 140 million credit union members who will need their institution to be ready when they do.</p>
+    </div>
+
+    <p>
+      Low merchant acceptance is a feature of this moment, not a bug. It means the infrastructure decision is still yours to make on your timeline, with your members, before the market forces the decision for you. That window is measured in months, not years. The credit unions that move now will define what the cooperative financial model looks like in a stablecoin-native economy. The ones that wait will be managing the member attrition instead.
+    </p>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-label">Built for Credit Unions</div>
+      <h2>READY TO <span class="acc">MOVE?</span></h2>
+      <p>Aetherum is the crypto-collateralized lending infrastructure built exclusively for NCUA-regulated credit unions. See how we integrate with your core and serve your members from day one.</p>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn">Schedule a Conversation</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">AETHERUM<span>.</span></div>
+    <div class="footer-patent">8 Patents Pending &nbsp;·&nbsp; DACS™ Risk Assessment</div>
+    <div class="footer-copy">&copy; 2026 Aetherum, Inc. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

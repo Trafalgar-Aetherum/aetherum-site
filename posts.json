@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/stablecoin-merchant-acceptance",
+    "title": "Only 6% of Merchants Accept Stablecoins. That's the Opportunity.",
+    "excerpt": "Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns.",
+    "date": "June 18, 2026",
+    "readTime": "5 min read",
+    "icon": "🏪",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/when-visa-open-sources-your-thesis",
     "title": "When Visa Open-Sources Your Thesis",
     "excerpt": "A top-5 payments network just published the principle we built Aetherum on — AI reasoning inside a governed pipeline, every finding traceable to policy. So we forked their open-source security harness and extended it with three lenses of our own.",
     "date": "June 11, 2026",
     "readTime": "5 min read",
     "icon": "🛡️",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
