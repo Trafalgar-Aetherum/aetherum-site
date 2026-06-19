@@ -64,9 +64,10 @@
     "title": "Why We Built Our Own AI Underwriting Engine — And What It Knows",
     "excerpt": "General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is.",
     "date": "June 1, 2026",
-    "category": "Technology",
     "readTime": "6 min read",
-    "isNew": false
+    "icon": "🤖",
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/erc-7943-credit-union-compliance/",
