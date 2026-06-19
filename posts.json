@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/cu-owned-identity-infrastructure",
+    "title": "Your Members' Crypto Eligibility Is Now Owned by Your Credit Union — On-Chain",
+    "excerpt": "Aetherum now deploys per-credit-union identity contracts on Base mainnet. The CU owns them. Aetherum is the software layer. Here's what that means for your examiner.",
+    "date": "June 18, 2026",
+    "readTime": "5 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/stablecoin-merchant-acceptance",
     "title": "Only 6% of Merchants Accept Stablecoins. That's the Opportunity.",
     "excerpt": "Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns.",
     "date": "June 18, 2026",
     "readTime": "5 min read",
     "icon": "🏪",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {

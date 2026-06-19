@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Members' Crypto Eligibility Is Now Owned by Your Credit Union — On-Chain — Aetherum Blog</title>
+  <meta name="description" content="Aetherum now deploys per-credit-union identity contracts on Base mainnet. The CU owns them. Aetherum is the software layer. Here's what that means for your examiner." />
+  <meta property="og:title" content="Your Members' Crypto Eligibility Is Now Owned by Your Credit Union — On-Chain" />
+  <meta property="og:description" content="Aetherum now deploys per-credit-union identity contracts on Base mainnet. The CU owns them. Aetherum is the software layer. Here's what that means for your examiner." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aetherum.ai/blog/cu-owned-identity-infrastructure" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0b1a2f;
+      --bg2:     #091522;
+      --bg3:     #122040;
+      --orange:  #F7931A;
+      --orange2: #e07d10;
+      --text:    #c8d8ec;
+      --muted:   #6b82a0;
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,26,47,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: luminosity;
+    }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .deck {
+      font-size: 1.15rem;
+      color: #8fa8c4;
+      font-style: italic;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+    .meta-row .tag {
+      background: rgba(247,147,26,0.12);
+      color: var(--orange);
+      border: 1px solid rgba(247,147,26,0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+    .stats-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--orange);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* BODY CONTENT */
+    .body-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .body-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin: 3rem 0 1rem;
+    }
+    .body-content p {
+      margin-bottom: 1.4rem;
+      color: var(--text);
+    }
+    .body-content strong { color: #fff; font-weight: 600; }
+
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 3px solid var(--orange);
+      margin: 2.5rem 0;
+      padding: 1.2rem 1.8rem;
+      background: var(--bg3);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #a0bcd8;
+      line-height: 1.65;
+    }
+
+    /* ARCHITECTURE DIAGRAM */
+    .arch-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .arch-box .arch-title {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+    .arch-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .arch-row:last-child { border-bottom: none; }
+    .arch-num {
+      color: var(--orange);
+      font-size: 11px;
+      min-width: 24px;
+      padding-top: 2px;
+    }
+    .arch-label { color: #fff; font-size: 13px; line-height: 1.5; }
+    .arch-sub { color: var(--muted); font-size: 11px; margin-top: 2px; }
+    .badge-live {
+      display: inline-block;
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #4ade80;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-patent {
+      display: inline-block;
+      background: rgba(247,147,26,0.12);
+      border: 1px solid rgba(247,147,26,0.25);
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* EXAMINER BOX */
+    .examiner-box {
+      background: var(--bg3);
+      border: 1px solid rgba(247,147,26,0.2);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .examiner-box .ex-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .examiner-box .ex-q {
+      font-style: italic;
+      color: #8fa8c4;
+      margin-bottom: 0.5rem;
+    }
+    .examiner-box .ex-a {
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .examiner-box .ex-a:last-child { margin-bottom: 0; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0 0;
+      text-align: center;
+    }
+    .cta-section .cta-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-section h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #0b1a2f;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange2); }
+
+    /* TAGS */
+    .tags-row {
+      margin: 2.5rem 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag-chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 9px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/Trafalgar-Aetherum/aetherum-site/main/images/logo.jpeg"
+         alt="Aetherum"
+         style="height:44px;width:auto;display:block;mix-blend-mode:luminosity;" />
+  </a>
+  <a href="/blog" class="nav-back">← Back to Blog</a>
+</nav>
+
+<article>
+
+  <div class="hero">
+    <div class="eyebrow">Infrastructure · Compliance · June 18, 2026</div>
+    <h1>Your Members' Crypto Eligibility Is Now <span>Owned by Your Credit Union</span> — On-Chain</h1>
+    <p class="deck">
+      Aetherum now deploys identity contracts directly on Base mainnet — one per credit union, owned by the credit union. Here's what that means for your compliance posture, your examiner, and your members.
+    </p>
+    <div class="meta-row">
+      <span>Founder, Aetherum</span>
+      <span>·</span>
+      <span>5 min read</span>
+      <span>·</span>
+      <span class="tag">LIVE ON BASE</span>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">$0</span>
+        <span class="stat-label">Gas cost to the credit union</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">CU-owned contract ownership</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">017</span>
+        <span class="stat-label">AETHERUM-017 — Patent pending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-content">
+
+    <p>
+      When a member walks into your branch and asks to borrow against their Bitcoin, the first question your compliance officer asks is not about LTV. It's about identity: <strong>how do we prove this member is who they say they are, and that they've cleared your KYC process, in a way that holds up to examination?</strong>
+    </p>
+
+    <p>
+      Until now, that answer lived in your core system. It was a flag in a database — mutable, auditable only through your own logs, and entirely dependent on Aetherum's backend to enforce at the moment of lending.
+    </p>
+
+    <p>
+      As of tonight, that answer lives on the blockchain. And the contract that holds it is owned by your credit union — not Aetherum.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      Every credit union that onboards to Aetherum now gets two smart contracts deployed on Base mainnet at no cost. A <strong>ClaimIssuer</strong> — the on-chain authority that attests member eligibility — and an <strong>IdFactory</strong> — the registry that provisions a unique digital identity for each member.
+    </p>
+
+    <p>
+      Both contracts are owned by the credit union. Not Aetherum. The contract ownership address is yours. The audit trail written to the blockchain is yours. If you ever terminate your relationship with Aetherum, you keep the infrastructure.
+    </p>
+
+    <div class="arch-box">
+      <div class="arch-title">How It Works — At Onboarding</div>
+      <div class="arch-row">
+        <div class="arch-num">01</div>
+        <div>
+          <div class="arch-label">ClaimIssuer contract deployed on Base mainnet <span class="badge-live">LIVE</span></div>
+          <div class="arch-sub">Owner: your credit union's wallet. Aetherum holds a claim-signing key only.</div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-num">02</div>
+        <div>
+          <div class="arch-label">IdFactory contract deployed on Base mainnet <span class="badge-live">LIVE</span></div>
+          <div class="arch-sub">Provisions a unique ONCHAINID for each member at loan origination. Silent — member never sees it.</div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-num">03</div>
+        <div>
+          <div class="arch-label">Ownership held in escrow until CU wallet is ready</div>
+          <div class="arch-sub">If your CU doesn't have a blockchain wallet yet, Aetherum holds the owner key in encrypted escrow — documented in your MSA. Transfer happens on your timeline.</div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-num">04</div>
+        <div>
+          <div class="arch-label">KYC clearance → on-chain claim, silently</div>
+          <div class="arch-sub">When your existing KYC provider clears a member, Aetherum translates that clearance into a cryptographic claim on the member's ONCHAINID. No new workflow for your team.</div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-num">05</div>
+        <div>
+          <div class="arch-label">Every event generates a compliance receipt <span class="badge-live">LIVE</span></div>
+          <div class="arch-sub">Claim issued. Claim revoked. Ownership transferred. Every identity lifecycle event produces a tamper-evident receipt, logged to MongoDB and anchored on-chain.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>The Custody Analogy That Matters Here</h2>
+
+    <p>
+      We've always operated on the principle that the credit union owns the asset — not Aetherum. Your members' crypto sits in wallets your institution controls directly. Aetherum is the software layer: we connect the pieces, enforce the policy, and generate the audit trail. We never hold custody.
+    </p>
+
+    <p>
+      The same principle now applies to identity. <strong>Your credit union is the on-chain authority for your members' lending eligibility.</strong> Aetherum holds only a narrowly scoped signing key — purpose 3, claim issuance only — that lets us attach KYC clearance as a cryptographic claim on behalf of your institution. That key cannot transfer contract ownership. It cannot modify your contracts. It cannot move funds. And you can revoke it at any time.
+    </p>
+
+    <blockquote>
+      "Aetherum is the software layer. The way Jack Henry processes core banking on behalf of credit unions without owning the member relationship — that's exactly our model for on-chain identity."
+    </blockquote>
+
+    <h2>What Your Examiner Will See</h2>
+
+    <p>
+      NCUA's supervisory priorities have been explicit: digital asset activities and third-party vendor relationships are examination focus areas. The question examiners ask when a credit union uses an outside vendor for compliance-critical infrastructure is always the same: <em>who is ultimately responsible?</em>
+    </p>
+
+    <div class="examiner-box">
+      <div class="ex-label">Examiner Q&amp;A — How This Looks in Practice</div>
+      <p class="ex-q">"Who issues identity claims for your crypto lending members?"</p>
+      <p class="ex-a">We do. Our ClaimIssuer contract at [address] on Base mainnet.</p>
+      <p class="ex-q">"Who controls that contract?"</p>
+      <p class="ex-a">We do. The owner wallet is held by our institution.</p>
+      <p class="ex-q">"Who signs the claims day to day?"</p>
+      <p class="ex-a">Aetherum, as our authorized technology vendor — under a documented MSA, with a signing key we can revoke at any time. Same model as any other core banking vendor relationship.</p>
+    </div>
+
+    <p>
+      That last answer — "same model as any other core banking vendor relationship" — is the answer that closes the examination conversation. Credit unions understand vendor relationships. NCUA understands vendor relationships. The model is familiar. The audit trail is just better.
+    </p>
+
+    <h2>What This Means for Members</h2>
+
+    <p>
+      Nothing changes for the member. They apply for a loan. They get approved. The KYC they completed when they opened their account is automatically translated into on-chain eligibility behind the scenes.
+    </p>
+
+    <p>
+      No new app. No new wallet. No new onboarding step. The digital identity infrastructure is provisioned silently at loan origination — a member ONCHAINID deployed to Base, a KYC claim attached, the loan collateral gate cleared. From the member's perspective, it looks identical to any other loan approval.
+    </p>
+
+    <p>
+      From your institution's perspective, it looks like something new: <strong>compliance enforced at the chain level, not the application level.</strong> A member without a valid KYC claim on their ONCHAINID cannot receive a collateral credit event from your institution — the smart contract prevents it. Not your backend. The chain itself.
+    </p>
+
+    <h2>The Patent</h2>
+
+    <p>
+      The system we deployed tonight is covered by AETHERUM-017, filed June 18, 2026. The invention is not the contracts — those are open standards (ERC-734, ERC-735). The invention is the governance architecture: per-institution contract ownership at deployment, cryptographic escrow-to-transfer for institutions without existing blockchain wallets, and scoped revocable vendor signing authority designed specifically for NCUA-regulated financial institutions.
+    </p>
+
+    <p>
+      That combination — ownership separated from operations at the contract level, with a documented transfer protocol and a permanently revocable vendor key — is what makes this an audit-native system rather than a vendor-managed one. It's the difference between a vendor who promises to keep good records and a vendor whose architecture prevents them from doing otherwise.
+    </p>
+
+    <div class="tags-row">
+      <span class="tag-chip">#IdentityInfrastructure</span>
+      <span class="tag-chip">#OnChainCompliance</span>
+      <span class="tag-chip">#CreditUnions</span>
+      <span class="tag-chip">#NCUA</span>
+      <span class="tag-chip">#ERC734</span>
+      <span class="tag-chip">#BaseMainnet</span>
+      <span class="tag-chip">#AuditNative</span>
+      <span class="tag-chip">#PatentPending</span>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-eyebrow">For Credit Unions</div>
+      <h3>SEE IT IN ACTION</h3>
+      <p>Your institution's identity infrastructure can be live on Base mainnet in under two minutes. Book a call to see a real deployment — and what your examiner would see.</p>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn">Book a 30-min Call</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <p>
+    <a href="/">Aetherum</a> &nbsp;·&nbsp;
+    © 2026 Aetherum &nbsp;·&nbsp;
+    <a href="https://aetherum.ai">aetherum.ai</a>
+    <br /><br />
+    17 Patents Pending
+  </p>
+</footer>
+
+</body>
+</html>
