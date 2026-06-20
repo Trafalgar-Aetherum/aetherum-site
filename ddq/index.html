@@ -28,7 +28,6 @@
   --tag-text: #7EB3E0;
   --green: #22C55E;
   --red: #EF4444;
-  --amber: #F59E0B;
 }
 html,body { height:100%; overflow:hidden; background:var(--navy); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; }
 .app { display:grid; grid-template-rows:52px 1fr auto; grid-template-columns:200px 1fr; height:100vh; overflow:hidden; }
@@ -116,7 +115,6 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 /* RESULT CARD */
 .result-card { background:var(--navy-card); border:1px solid var(--card-border); border-radius:8px; animation:fadeUp 0.28s ease; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-.result-card.flagged { border-left:3px solid var(--amber); }
 .result-header { padding:12px 16px; border-bottom:1px solid var(--card-border); display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .result-q { font-size:15px; color:#E2EAF4; line-height:1.5; flex:1; }
 .result-q strong { color:#FFFFFF; font-weight:500; }
@@ -133,8 +131,6 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 .result-footer { padding:10px 16px; border-top:1px solid var(--card-border); display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
 .source-tag { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:4px; background:var(--tag-bg); border:1px solid var(--tag-border); font-size:11px; color:var(--tag-text); }
 .source-tag::before { content:'◆'; font-size:7px; }
-.compliance-tag { width:100%; padding:8px 10px; border-radius:4px; background:rgba(245,158,11,0.07); border:1px solid rgba(245,158,11,0.18); font-size:12px; color:var(--amber); line-height:1.5; display:flex; gap:8px; }
-.compliance-tag::before { content:'⚠'; flex-shrink:0; }
 
 /* ERROR */
 .error-card { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.18); border-radius:8px; padding:13px 16px; font-size:13px; color:var(--red); display:flex; gap:10px; align-items:flex-start; }
@@ -474,14 +470,12 @@ async function ask() {
 }
 
 function renderResult(question, data) {
-  const hasC = data.compliance_notes && data.compliance_notes.length > 0;
   const card = document.createElement('div');
-  card.className = 'result-card' + (hasC ? ' flagged' : '');
+  card.className = 'result-card';
   const cid = 'c'+Date.now();
 
   const srcs = (data.sources||[]).map(s=>`<span class="source-tag">${esc(s)}</span>`).join('');
-  const comp = hasC ? data.compliance_notes.map(n=>`<div class="compliance-tag">${esc(n)}</div>`).join('') : '';
-  const footer = (srcs||comp) ? `<div class="result-footer">${srcs}${comp}</div>` : '';
+  const footer = srcs ? `<div class="result-footer">${srcs}</div>` : '';
 
   card.innerHTML = `
     <div class="result-header">
