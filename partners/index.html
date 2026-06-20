@@ -447,14 +447,13 @@
 
   /* ── ERC-3643 FEATURED CARD ── */
   .compliance-wrap {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    flex-wrap: wrap;
   }
 
   .partner-card--featured {
-    max-width: 420px;
+    max-width: none;
     width: 100%;
     background: rgba(212,136,92,0.06);
     border: 1px solid rgba(212,136,92,0.50);
