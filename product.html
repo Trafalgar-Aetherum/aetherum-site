@@ -36,23 +36,23 @@
   .hint{ position:fixed; bottom:22px; left:26px; z-index:70; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; color:rgba(141,163,192,.55);}
 
   .deck{ display:flex; height:100vh; width:100vw; transition:transform .65s cubic-bezier(.66,0,.2,1); will-change:transform;}
-  .slide{ flex:0 0 100vw; width:100vw; height:100vh; overflow-y:auto; overflow-x:hidden; padding:clamp(2rem,7vh,4.5rem) clamp(1.6rem,6vw,6rem); display:flex; flex-direction:column; justify-content:center;}
-  .slide--dense{ justify-content:flex-start; padding-top:clamp(4.2rem,9vh,5.5rem);}
-  .inner{ width:100%; max-width:1180px; margin:0 auto;}
+  .slide{ flex:0 0 100vw; width:100vw; height:100vh; overflow-y:auto; overflow-x:hidden; padding:clamp(8rem,13vh,9.5rem) clamp(1.6rem,6vw,6rem) clamp(2rem,7vh,4.5rem); display:flex; flex-direction:column; justify-content:center;}
+  .slide--dense{ justify-content:flex-start; padding-top:clamp(8.5rem,13vh,10rem);}
+  .inner{ width:100%; max-width:1280px; margin:0 auto;}
   .slide .inner > *{ opacity:0; transform:translateY(14px); transition:opacity .55s ease,transform .55s ease;}
   .slide.active .inner > *{ opacity:1; transform:none;}
   .slide.active .inner > *:nth-child(2){transition-delay:.06s;}
   .slide.active .inner > *:nth-child(3){transition-delay:.12s;}
   .slide.active .inner > *:nth-child(4){transition-delay:.18s;}
 
-  .eyebrow{ font-family:var(--mono); font-size:clamp(.66rem,1vw,.78rem); letter-spacing:.26em; color:var(--muteDk); display:flex; align-items:center; gap:14px; margin-bottom:clamp(1rem,3vh,2rem);}
+  .eyebrow{ font-family:var(--mono); font-size:clamp(.76rem,1.15vw,.9rem); letter-spacing:.26em; color:var(--muteDk); display:flex; align-items:center; gap:14px; margin-bottom:clamp(1rem,3vh,2rem);}
   .eyebrow .num{ color:var(--gold);}
   .eyebrow .dash{ width:34px; height:1.5px; background:var(--gold); display:inline-block;}
-  h1.hero{ font-family:var(--slab); font-weight:700; font-size:clamp(2.4rem,6vw,5rem); line-height:1.02; margin:.2em 0 .55em; letter-spacing:-.01em;}
-  h2.title{ font-family:var(--slab); font-weight:700; font-size:clamp(1.7rem,3.7vw,3rem); line-height:1.08; margin:0 0 .7em; letter-spacing:-.01em;}
+  h1.hero{ font-family:var(--slab); font-weight:700; font-size:clamp(2.76rem,6.9vw,5.75rem); line-height:1.02; margin:.2em 0 .55em; letter-spacing:-.01em;}
+  h2.title{ font-family:var(--slab); font-weight:700; font-size:clamp(1.96rem,4.26vw,3.45rem); line-height:1.08; margin:0 0 .7em; letter-spacing:-.01em;}
   .gold-i{ color:var(--goldSoft); font-style:italic;}
-  .lead{ font-size:clamp(.98rem,1.3vw,1.18rem); line-height:1.55; color:var(--mute); max-width:64ch;}
-  .sub{ font-size:clamp(.95rem,1.2vw,1.12rem); color:var(--mute); line-height:1.5; max-width:60ch; margin-bottom:clamp(1.4rem,4vh,2.4rem);}
+  .lead{ font-size:clamp(1.13rem,1.5vw,1.36rem); line-height:1.55; color:var(--mute); max-width:64ch;}
+  .sub{ font-size:clamp(1.09rem,1.38vw,1.29rem); color:var(--mute); line-height:1.5; max-width:60ch; margin-bottom:clamp(1.4rem,4vh,2.4rem);}
 
   .grid{ display:grid; gap:clamp(.7rem,1.4vw,1.05rem);}
   .g3{ grid-template-columns:repeat(3,1fr);}
@@ -60,9 +60,9 @@
   .g2{ grid-template-columns:repeat(2,1fr);}
   .card{ background:var(--card); border:1px solid var(--line); border-radius:7px; padding:clamp(.85rem,1.5vw,1.25rem); display:flex; flex-direction:column;}
   .card.hl{ background:var(--cardHL); border-color:var(--gold);}
-  .ckicker{ font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; color:var(--gold); margin-bottom:.6em; text-transform:uppercase;}
-  .ctitle{ font-family:var(--slab); font-weight:700; font-size:clamp(.95rem,1.25vw,1.18rem); color:var(--cream); line-height:1.12; margin-bottom:.45em;}
-  .cbody{ font-size:clamp(.74rem,.92vw,.88rem); color:var(--mute); line-height:1.44;}
+  .ckicker{ font-family:var(--mono); font-size:.67rem; letter-spacing:.16em; color:var(--gold); margin-bottom:.6em; text-transform:uppercase;}
+  .ctitle{ font-family:var(--slab); font-weight:700; font-size:clamp(1.09rem,1.44vw,1.36rem); color:var(--cream); line-height:1.12; margin-bottom:.45em;}
+  .cbody{ font-size:clamp(.85rem,1.06vw,1.01rem); color:var(--mute); line-height:1.44;}
   .pill{ align-self:flex-start; margin-top:.7em; font-family:var(--mono); font-size:.54rem; letter-spacing:.12em; padding:3px 9px; border-radius:20px; border:1px solid var(--gold); color:var(--gold);}
   .pill.live{ border-color:var(--green); color:var(--green);}
 
@@ -77,29 +77,29 @@
 
   .pillars{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.55rem,1vw,.8rem);}
   .pillar{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(.6rem,1vw,.85rem); display:flex; gap:9px; align-items:flex-start;}
-  .pillar .pidx{ font-family:var(--slab); font-weight:700; font-size:1rem; color:var(--gold); line-height:1; min-width:18px;}
-  .pillar .ptxt{ font-size:clamp(.66rem,.85vw,.8rem); color:var(--cream); line-height:1.22; font-weight:500;}
-  .pillar .ptag{ display:block; font-family:var(--mono); font-size:.48rem; letter-spacing:.08em; color:var(--gold); margin-top:3px;}
+  .pillar .pidx{ font-family:var(--slab); font-weight:700; font-size:1.15rem; color:var(--gold); line-height:1; min-width:18px;}
+  .pillar .ptxt{ font-size:clamp(.76rem,.98vw,.92rem); color:var(--cream); line-height:1.22; font-weight:500;}
+  .pillar .ptag{ display:block; font-family:var(--mono); font-size:.55rem; letter-spacing:.08em; color:var(--gold); margin-top:3px;}
 
-  .quote{ border-left:2px solid var(--gold); padding-left:20px; font-family:var(--slab); font-style:italic; font-size:clamp(1rem,1.5vw,1.35rem); color:var(--cream); line-height:1.45; margin:0 0 clamp(1.2rem,3vh,2rem); max-width:62ch;}
+  .quote{ border-left:2px solid var(--gold); padding-left:20px; font-family:var(--slab); font-style:italic; font-size:clamp(1.15rem,1.73vw,1.55rem); color:var(--cream); line-height:1.45; margin:0 0 clamp(1.2rem,3vh,2rem); max-width:62ch;}
 
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.7rem,1.4vw,1.05rem);}
   .step{ background:var(--card); border:1px solid var(--line); border-radius:7px; padding:clamp(.9rem,1.5vw,1.25rem);}
-  .step .sn{ font-family:var(--slab); font-weight:700; font-size:1.6rem; color:var(--gold); line-height:1; margin-bottom:.4em;}
-  .step .st{ font-size:clamp(.76rem,.95vw,.9rem); color:var(--mute); line-height:1.42;}
+  .step .sn{ font-family:var(--slab); font-weight:700; font-size:1.84rem; color:var(--gold); line-height:1; margin-bottom:.4em;}
+  .step .st{ font-size:clamp(.87rem,1.09vw,1.04rem); color:var(--mute); line-height:1.42;}
 
   .intg{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.55rem,1vw,.85rem);}
   .ichip{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(.6rem,1vw,.85rem);}
-  .ichip .in{ font-weight:600; font-size:clamp(.82rem,1vw,.95rem); color:var(--cream);}
-  .ichip .id{ font-size:clamp(.68rem,.85vw,.8rem); color:var(--mute); margin-top:.3em; line-height:1.35;}
+  .ichip .in{ font-weight:600; font-size:clamp(.94rem,1.15vw,1.09rem); color:var(--cream);}
+  .ichip .id{ font-size:clamp(.78rem,.98vw,.92rem); color:var(--mute); margin-top:.3em; line-height:1.35;}
 
   .rev-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(.6rem,1.2vw,.9rem);}
   .rrow{ display:flex; gap:12px; align-items:baseline; padding:clamp(.5rem,1.2vh,.8rem) 0; border-bottom:1px solid rgba(39,69,102,.5);}
   .rrow .rk{ font-family:var(--mono); font-size:.6rem; color:var(--gold); min-width:18px;}
-  .rrow .rt{ font-size:clamp(.82rem,1vw,.96rem); color:var(--mute);}
+  .rrow .rt{ font-size:clamp(.94rem,1.15vw,1.1rem); color:var(--mute);}
   .cta{ background:var(--cardHL); border:1px solid var(--gold); border-radius:9px; padding:clamp(1.3rem,2.6vw,2rem); text-align:center;}
-  .cta .lt{ font-family:var(--slab); font-weight:700; font-size:clamp(1.3rem,2vw,1.8rem); margin:0 0 .4em;}
-  .cta p{ color:var(--mute); font-size:clamp(.82rem,1vw,.95rem); line-height:1.5; margin:0 0 1.2em;}
+  .cta .lt{ font-family:var(--slab); font-weight:700; font-size:clamp(1.5rem,2.3vw,2.07rem); margin:0 0 .4em;}
+  .cta p{ color:var(--mute); font-size:clamp(.94rem,1.15vw,1.09rem); line-height:1.5; margin:0 0 1.2em;}
   .cta .contact{ font-family:var(--mono); font-size:.64rem; letter-spacing:.08em; color:var(--muteDk); margin-top:1.1rem;}
 
   @media (max-width:880px){
@@ -216,7 +216,7 @@
         <div class="card hl"><div class="ckicker">Receipts</div><div class="ctitle">On-Chain Compliance Receipts</div><div class="cbody">SHA-256 hash of every decision written to Ethereum. Examiners receive a verification URL per decision; sensitive data stays off-chain. No other lending infrastructure provides this.</div></div>
         <div class="card"><div class="ckicker">Explainability</div><div class="ctitle">DACS Explainability Layer</div><div class="cbody">Auto-generated record after every scoring run — factor breakdowns, risk tier, peer comparison, plain-language rationale, and 12 CFR Part 723 citation. PDF export for NCUA submission.</div><span class="pill">PATENT PENDING</span></div>
         <div class="card"><div class="ckicker">Supervisory</div><div class="ctitle">Supervisory Control &amp; Audit</div><div class="cbody">Documented human-in-the-loop control over every position — NCUA-aligned event types, officer attribution, on-chain attestation, CSV examination export with Etherscan links.</div><span class="pill">PATENT PENDING</span></div>
-        <div class="card"><div class="ckicker">Diligence</div><div class="ctitle">DDQ Engine</div><div class="cbody">342-entry security knowledge base spanning NCUA guidance, custody, BSA/AML, and the full SIG framework. A CU IT team can complete a full vendor security review without a call.</div><span class="pill live">LIVE</span></div>
+        <div class="card"><div class="ckicker">Diligence</div><div class="ctitle">DDQ Engine</div><div class="cbody">379-entry security knowledge base spanning NCUA guidance, custody, BSA/AML, and the full SIG framework. A CU IT team can complete a full vendor security review without a call.</div><span class="pill live">LIVE</span></div>
       </div>
     </div>
   </section>
