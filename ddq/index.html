@@ -188,6 +188,8 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('How does Aetherum document AI underwriting decisions for regulatory examination?')">AI underwriting documentation?</button>
       <button class="quick-q" onclick="setQ('How does Aetherum demonstrate human oversight of automated collateral management to NCUA examiners?')">Human oversight / supervisory control?</button>
       <button class="quick-q" onclick="setQ('How many patents does Aetherum have?')">How many patents?</button>
+      <button class="quick-q" onclick="setQ('Does Aetherum support card issuance for credit union members?')">Card issuance for members?</button>
+      <button class="quick-q" onclick="setQ('What is the status of Aetherum\'s card partner relationships?')">Card partner status?</button>
     </div>
     <div class="sidebar-top" style="border-top:1px solid var(--border);">
       <div class="s-label">Security Review</div>
@@ -307,6 +309,38 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 const API = 'https://aetherum-backend-production.up.railway.app';
 let token = null;
 let sessionId = null;
+
+// Local KB supplement — entries added here are matched client-side before hitting the backend
+const LOCAL_KB = [
+  {
+    question_patterns: ['Does Aetherum support card issuance for credit union members', 'card issuance', 'card funding', 'borrow disburse spend', 'spend loop'],
+    title: 'Card Funding Bridge — card issuance for members',
+    answer: "Yes. Aetherum's Card Funding Bridge triggers white-label payment card issuance upon loan disbursement confirmation, completing the borrow→disburse→spend loop. The card is funded by the USDC stablecoin disbursement and issued under the credit union's brand via a regulated card program partner. Card partner agreements are in place (Rain, MNDA signed; Nium, sandbox live, 200 OK confirmed). This capability is covered by AETHERUM-018 (patent pending).",
+    sources: ['Card Funding Bridge', 'AETHERUM-018']
+  },
+  {
+    question_patterns: ['What is the status of Aetherum\'s card partner relationships', 'card partner', 'Nium', 'Rain', 'card program partner'],
+    title: 'Card partner relationships — Rain & Nium',
+    answer: "Rain (MNDA signed, Visa Principal Member). Nium (sandbox live, 200 OK confirmed, CFSB as US licensor). The Card Funding Bridge is built and live in sandbox with real API credentials.",
+    sources: ['Card Funding Bridge', 'AETHERUM-018', 'Partner Stack']
+  },
+  {
+    question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
+    title: 'Patent count — 18 patents pending',
+    answer: "Aetherum has 18 provisional patent applications filed with the USPTO covering the full platform — including risk assessment (DACS™, FHE-DACS, DACS-LTV), tax intelligence (TPSOE™), on-chain compliance (On-Chain Compliance Receipts, Supervisory Control, DACS Explainability), identity infrastructure (CUMember, CU-Owned On-Chain Identity — AETHERUM-017), collateral management, and card disbursement (Card Funding Bridge — AETHERUM-018, patent pending).",
+    sources: ['IP & Patents', 'AETHERUM-018']
+  }
+];
+
+function matchLocalKb(question) {
+  const q = question.toLowerCase();
+  for (const entry of LOCAL_KB) {
+    if (entry.question_patterns.some(p => q.includes(p.toLowerCase()))) {
+      return entry;
+    }
+  }
+  return null;
+}
 
 async function init() {
   try {
@@ -447,6 +481,14 @@ async function ask() {
   document.getElementById('results').prepend(lel);
 
   try {
+    const localMatch = matchLocalKb(q);
+    if (localMatch) {
+      document.getElementById(lid)?.remove();
+      renderResult(q, { answer: localMatch.answer, sources: localMatch.sources });
+      document.getElementById('q-input').value = '';
+      btn.disabled = false; btn.textContent = 'Ask →';
+      return;
+    }
     const h = {'Content-Type':'application/json'};
     if(token) h['Authorization'] = `Bearer ${token}`;
     const r = await fetch(`${API}/ddq/ask`, {
