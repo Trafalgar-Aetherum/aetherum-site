@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/arc-transaction-memos/",
+    "title": "A Transaction Hash Is Not an Audit Trail",
+    "excerpt": "Credit unions need more than settlement speed. They need an audit trail the examiner can read without trusting the vendor. Here's what that looks like at the infrastructure layer.",
+    "date": "June 22, 2026",
+    "readTime": "5 min read",
+    "icon": "🔗",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/cu-owned-identity-infrastructure",
     "title": "Your Members' Crypto Eligibility Is Now Owned by Your Credit Union — On-Chain",
     "excerpt": "Aetherum now deploys per-credit-union identity contracts on Base mainnet. The CU owns them. Aetherum is the software layer. Here's what that means for your examiner.",
