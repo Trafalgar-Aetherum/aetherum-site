@@ -50,28 +50,26 @@
       border-bottom: 1px solid var(--border);
     }
 
-    nav .logo img {
-      height: 44px;
-      mix-blend-mode: luminosity;
-    }
-
-    nav .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    nav .nav-links a {
+    .nav-logo {
       font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      color: var(--orange);
       text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
       color: var(--muted);
+      text-transform: uppercase;
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav .nav-links a:hover { color: var(--white); }
+    .nav-link:hover { color: var(--white); }
 
     /* HERO */
     .hero {
@@ -310,8 +308,7 @@
     }
 
     @media (max-width: 640px) {
-      nav .nav-links { display: none; }
-      .hero { padding: 100px 1.25rem 60px; }
+.hero { padding: 100px 1.25rem 60px; }
       .article { padding: 0 1.25rem 80px; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
@@ -321,15 +318,8 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="logo">
-    <img src="https://raw.githubusercontent.com/Trafalgar-Aetherum/aetherum-site/main/assets/logo.png" alt="Aetherum" onerror="this.style.display='none'" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="/#platform">Platform</a></li>
-    <li><a href="/#compliance">Compliance</a></li>
-    <li><a href="/blog/">Blog</a></li>
-    <li><a href="https://calendly.com/jbailey-aetherum/30min">Request Demo</a></li>
-  </ul>
+  <a href="/" class="nav-logo">Aetherum</a>
+  <a href="/blog" class="nav-link">&larr; Back to Blog</a>
 </nav>
 
 <!-- HERO -->
