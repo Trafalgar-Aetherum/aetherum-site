@@ -49,29 +49,49 @@ const VIEWPORT = { width: 1280, height: 720, deviceScaleFactor: 2 };
 
   const screenshots = [];
   for (let idx = 0; idx < slideCount; idx++) {
+    // Pin slide, measure its natural scroll height, then scale to fit 720px
     await page.evaluate((i) => {
-      // Hide all slides
       document.querySelectorAll('#deck .slide').forEach(s => { s.style.display = 'none'; });
-      // Pin the target slide to fill viewport
       const slide = document.querySelectorAll('#deck .slide')[i];
-      if (slide) {
-        slide.style.display = 'flex';
-        slide.style.position = 'fixed';
-        slide.style.top = '0';
-        slide.style.left = '0';
-        slide.style.width = '100vw';
-        slide.style.height = '100vh';
-        slide.style.maxHeight = '100vh';
-        slide.style.overflow = 'hidden';
-        slide.style.zIndex = '9999';
-        slide.style.transform = 'none';
-      }
+      if (!slide) return;
+      // Pin at natural size first so we can measure
+      slide.style.display = 'flex';
+      slide.style.position = 'fixed';
+      slide.style.top = '0';
+      slide.style.left = '0';
+      slide.style.width = '1280px';
+      slide.style.height = 'auto';
+      slide.style.maxHeight = 'none';
+      slide.style.overflow = 'visible';
+      slide.style.zIndex = '9999';
+      slide.style.transform = 'none';
+      slide.style.transformOrigin = 'top left';
     }, idx);
 
+    // Measure natural height
+    const naturalHeight = await page.evaluate((i) => {
+      const slide = document.querySelectorAll('#deck .slide')[i];
+      return slide ? slide.scrollHeight : 720;
+    }, idx);
+
+    // Compute scale so the content fits within 720px
+    const scale = Math.min(1, 720 / naturalHeight);
+
+    // Apply scale transform and clamp viewport content
+    await page.evaluate((i, s) => {
+      const slide = document.querySelectorAll('#deck .slide')[i];
+      if (!slide) return;
+      slide.style.transform = `scale(${s})`;
+      slide.style.transformOrigin = 'top left';
+      slide.style.height = `${Math.round(720 / s)}px`;
+      slide.style.maxHeight = 'none';
+      slide.style.overflow = 'hidden';
+    }, idx, scale);
+
     await new Promise(r => setTimeout(r, 300));
-    const buf = await page.screenshot({ type: 'png' });
+    const buf = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: 1280, height: 720 } });
     screenshots.push(buf);
-    console.log(`  captured slide ${idx + 1}/${slideCount}`);
+    console.log(`  captured slide ${idx + 1}/${slideCount} (scale: ${scale.toFixed(3)})`);
 
     // Unpin slide
     await page.evaluate((i) => {
@@ -86,6 +106,8 @@ const VIEWPORT = { width: 1280, height: 720, deviceScaleFactor: 2 };
         slide.style.maxHeight = '';
         slide.style.overflow = '';
         slide.style.zIndex = '';
+        slide.style.transform = '';
+        slide.style.transformOrigin = '';
       }
     }, idx);
   }
