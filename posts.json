@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/audit-native-ethereum-credit-unions/",
+    "title": "What the GL1 Programmable Compliance Paper Gets Right — And What It Misses for Credit Unions",
+    "excerpt": "The STAR framework is the right architecture. But it was written for banks, VASPs, and central bank corridors. Here's what it misses for 140 million credit union members — and why Ethereum closes the gap.",
+    "date": "June 22, 2026",
+    "readTime": "8 min read",
+    "icon": "📋",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/arc-transaction-memos/",
     "title": "A Transaction Hash Is Not an Audit Trail",
     "excerpt": "Credit unions need more than settlement speed. They need an audit trail the examiner can read without trusting the vendor. Here's what that looks like at the infrastructure layer.",
     "date": "June 22, 2026",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -16,7 +26,7 @@
     "date": "June 18, 2026",
     "readTime": "5 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {

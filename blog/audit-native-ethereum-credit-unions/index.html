@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What the GL1 Programmable Compliance Paper Gets Right — And What It Misses for Credit Unions — Aetherum Blog</title>
+  <meta name="description" content="The STAR framework is the right architecture. But it was written for banks, VASPs, and central bank corridors. Here's what it misses for 140 million credit union members — and why Ethereum closes the gap." />
+  <meta property="og:title" content="What the GL1 Programmable Compliance Paper Gets Right — And What It Misses for Credit Unions" />
+  <meta property="og:description" content="The STAR framework is the right architecture. But it was written for banks, VASPs, and central bank corridors. Here's what it misses for 140 million credit union members — and why Ethereum closes the gap." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aetherum.ai/blog/audit-native-ethereum-credit-unions/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0b1a2f;
+      --bg2:     #091522;
+      --bg3:     #122040;
+      --orange:  #F7931A;
+      --orange2: #e07d10;
+      --text:    #c8d8ec;
+      --muted:   #6b82a0;
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,26,47,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: luminosity;
+    }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .deck {
+      font-size: 1.15rem;
+      color: #8fa8c4;
+      font-style: italic;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+    .meta-row .tag {
+      background: rgba(247,147,26,0.12);
+      color: var(--orange);
+      border: 1px solid rgba(247,147,26,0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+    .stats-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--orange);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* BODY CONTENT */
+    .body-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .body-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin: 3rem 0 1rem;
+    }
+    .body-content p {
+      margin-bottom: 1.4rem;
+      color: var(--text);
+    }
+    .body-content strong { color: #fff; font-weight: 600; }
+    .body-content em { color: #a0bcd8; font-style: italic; }
+
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 3px solid var(--orange);
+      margin: 2.5rem 0;
+      padding: 1.2rem 1.8rem;
+      background: var(--bg3);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #a0bcd8;
+      line-height: 1.65;
+    }
+
+    /* DISTINCTION BOX */
+    .distinction-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .distinction-box .box-title {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+    .distinction-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .distinction-row:last-child { border-bottom: none; }
+    .distinction-term {
+      color: #fff;
+      font-size: 13px;
+      min-width: 160px;
+      line-height: 1.5;
+    }
+    .distinction-def { color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+    /* REQUIREMENT LIST */
+    .req-list {
+      background: var(--bg3);
+      border: 1px solid rgba(247,147,26,0.15);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .req-list .req-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .req-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .req-item:last-child { margin-bottom: 0; }
+    .req-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      min-width: 24px;
+      padding-top: 2px;
+    }
+    .req-text { font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+    .req-text strong { color: #fff; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0 0;
+      text-align: center;
+    }
+    .cta-section .cta-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-section h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #0b1a2f;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange2); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .distinction-term { min-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/Trafalgar-Aetherum/aetherum-site/main/logo.jpg" alt="Aetherum" />
+  </a>
+  <a href="/blog/" class="nav-back">← All Posts</a>
+</nav>
+
+<article>
+  <div class="hero">
+    <div class="eyebrow">Infrastructure &nbsp;·&nbsp; June 22, 2026</div>
+    <h1>What the GL1 Programmable Compliance Paper Gets Right —<br /><span>And What It Misses for Credit Unions</span></h1>
+    <p class="deck">The STAR framework is the right architecture. But it was written for banks, VASPs, and central bank corridors. Here's what it misses for 140 million credit union members — and why Ethereum closes the gap.</p>
+    <div class="meta-row">
+      <span class="tag">Infrastructure</span>
+      <span>Founder, Aetherum</span>
+      <span>June 22, 2026</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">4,600</span>
+        <span class="stat-label">Federally Regulated Credit Unions</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">140M</span>
+        <span class="stat-label">American Credit Union Members</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">33</span>
+        <span class="stat-label">Pages in GL1 Paper — Zero on Credit Unions</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-content">
+
+    <p>
+      The Global Layer One initiative published a significant paper this month: <em>Programmable Compliance: Compliance Architecture for Regulated Tokenised Assets</em>. Contributors include the Monetary Authority of Singapore, the IMF, Banque de France, Standard Chartered, and Kinexys by J.P. Morgan. Chainlink's Automated Compliance Engine is featured as a reference implementation. ERC-3643 and the T-REX protocol are cited as the leading modular composable compliance standard.
+    </p>
+
+    <p>
+      This is not an academic exercise. It is the institutional financial system publishing its blueprint for how regulated activity will run on programmable infrastructure.
+    </p>
+
+    <p>
+      I've read it closely. The architecture is sound. The STAR framework — Status, Transaction, Asset, Reporting — is the right way to decompose compliance obligations in a tokenised environment. The Transaction Envelope concept, the separation of policy from execution, the Compliance Attestation as an immutable execution-time record: all of it points in the right direction.
+    </p>
+
+    <p>
+      But the paper has a blind spot. A significant one.
+    </p>
+
+    <p>
+      It was written entirely for banks, Virtual Asset Service Providers, and central bank digital currency corridors. Nowhere in its 33 pages does it address the 4,600 federally regulated credit unions serving 140 million Americans — institutions that operate under a distinct regulatory regime, serve individual members rather than institutional counterparties, and answer to examiners who need to <em>read</em> the compliance trail, not simply trust that it ran.
+    </p>
+
+    <blockquote>
+      That gap is not a footnote. It is a fundamentally different design requirement. And Ethereum — not a bespoke permissioned chain — is the right infrastructure to close it.
+    </blockquote>
+
+    <h2>Why the GL1 Model Assumes a World Credit Unions Don't Live In</h2>
+
+    <p>
+      The GL1 architecture is elegant precisely because it assumes certain things about its participants: they are legal entities, they operate or co-own the underlying ledger infrastructure, they have compliance teams capable of configuring Policy Managers, and their regulators operate at the institutional level.
+    </p>
+
+    <p>
+      Credit unions break all four assumptions.
+    </p>
+
+    <p>
+      <strong>They cannot afford bespoke ledger infrastructure.</strong> The GL1 model implicitly assumes that participants either operate shared institutional infrastructure or have the capital to build toward it. The average U.S. credit union has under $500 million in assets. Many have under $50 million. They cannot co-own a permissioned chain with J.P. Morgan. They need to plug into existing infrastructure that already works — and Ethereum, with its mature token standards, developer ecosystem, and institutional adoption curve, is that infrastructure.
+    </p>
+
+    <p>
+      <strong>Their compliance obligation runs to members, not entities.</strong> The GL1 Identity Management Module is designed around legal entity identifiers — vLEIs, LEIs, institutional KYC. The NCUA's compliance framework runs all the way down to the individual member: their income, their creditworthiness, their beneficial ownership, their investor eligibility. The GL1 paper's Party Packets accommodate "Entity-to-Entity, Entity-to-VASP, VASP-to-Entity, and VASP-to-VASP" patterns. There is no member-to-institution pattern. That is not an oversight for the paper's intended audience. For credit unions, it is the entire use case.
+    </p>
+
+    <p>
+      <strong>Their regulator is in the room.</strong> The GL1 governance model is well-designed for institutional self-governance — policy artefacts, trust dependency governance, execution governance, independent assurance. What it does not design for is a third party with statutory examination authority who arrives periodically and needs to reconstruct the compliance story from the chain. The NCUA examiner is not a downstream consumer of a Compliance Attestation. They are the reason the Compliance Attestation exists.
+    </p>
+
+    <h2>Audit-Native Is Not Audit-Capable</h2>
+
+    <p>
+      This is the distinction the GL1 paper comes closest to but never quite makes.
+    </p>
+
+    <p>
+      The paper is careful to note that Compliance Attestations "are not equivalent to regulatory filing obligations such as suspicious activity reports, transaction reports, or other regulatory returns." That's accurate and honest. But it leaves an important question unanswered: what does it take for programmable compliance outputs to be <em>directly readable</em> by a regulator, not just technically available?
+    </p>
+
+    <p>
+      For banks, the answer involves transformation — taking the on-chain evidentiary record and feeding it into existing reporting infrastructure. The compliance attestation is an input to a process that produces regulatory outputs.
+    </p>
+
+    <p>
+      For credit unions, the NCUA examiner arrives and looks at your loan files. They want to understand: how was this member's creditworthiness assessed? What collateral was held? Who approved the loan? What happened to the collateral position over time? These are not institutional reporting questions. They are member-level narrative questions that require a legible, auditable chain of custody from origination through repayment or liquidation.
+    </p>
+
+    <div class="distinction-box">
+      <div class="box-title">The Distinction That Matters</div>
+      <div class="distinction-row">
+        <div class="distinction-term">Audit-Capable</div>
+        <div class="distinction-def">The data exists somewhere and could theoretically be retrieved and interpreted.</div>
+      </div>
+      <div class="distinction-row">
+        <div class="distinction-term">Audit-Native</div>
+        <div class="distinction-def">The infrastructure produces human-readable, examiner-facing compliance evidence as a first-class output of every transaction — not as an afterthought, not as a downstream transformation, but as a design requirement baked into the execution layer itself.</div>
+      </div>
+    </div>
+
+    <p>
+      The GL1 model is audit-capable. Credit union infrastructure needs to be audit-native.
+    </p>
+
+    <h2>Why Ethereum Is the Right Stack</h2>
+
+    <p>
+      This is where the GL1 paper's institutional framing creates an implicit assumption worth challenging: that programmable compliance for regulated finance requires permissioned infrastructure.
+    </p>
+
+    <p>
+      The paper acknowledges the tension. It notes that "broader market developments point toward increasing interaction with public or open ledger networks" and that "future programmable compliance frameworks may therefore need to operate across hybrid environments." But it stops short of advocating for public chain deployment for regulated activity.
+    </p>
+
+    <p>
+      Ethereum's maturity changes that calculus, particularly for credit unions.
+    </p>
+
+    <p>
+      <strong>ERC-3643 and ONCHAINID already solve the identity problem.</strong> ERC-3643 — the T-REX protocol cited in the GL1 paper — was designed around modular compliance modules linked to on-chain identity. ONCHAINID, built on ERC-734 and ERC-735, implements a claim-based identity system where issuers attach verifiable credentials to wallet addresses. This is not a theoretical architecture. It is deployed, audited, and in production.
+    </p>
+
+    <p>
+      For credit unions, ONCHAINID maps naturally to the member relationship. Each credit union deploys its own ClaimIssuer contract. Each member's on-chain identity is owned by the member, attested by the credit union, and verifiable by any counterparty or examiner with appropriate access. The credit union holds a revocable purpose-limited signing key — not custody of the member's identity, but the authority to attest to it. This preserves the member relationship that defines the credit union charter while enabling programmable compliance at the transaction layer.
+    </p>
+
+    <p>
+      <strong>ERC-3643 compliance modules implement the STAR framework natively.</strong> The GL1 STAR framework — Status, Transaction, Asset, Reporting — maps to ERC-3643's modular architecture in a way that is not coincidental. Status checks run through identity-linked claim verification. Transaction checks run through transfer restriction modules. Asset-level controls run through the token contract's administrative functions. Reporting runs through on-chain event emission that produces an immutable, timestamped audit trail.
+    </p>
+
+    <p>
+      The difference is that ERC-3643 was designed for deployment on public Ethereum — which means the audit trail is not held by any single institution, is not subject to any single institution's data governance, and is not dependent on any single institution's infrastructure uptime. For an NCUA examiner, that is not a liability. It is a feature.
+    </p>
+
+    <p>
+      <strong>Base mainnet provides the execution environment.</strong> Deploying on Base — Coinbase's Ethereum L2 — provides the cost economics that make credit union deployment viable. Transaction costs that would be prohibitive on Ethereum mainnet become operationally manageable. The security model inherits from Ethereum. The tooling inherits from the entire EVM ecosystem. And the institutional legitimacy of Coinbase's infrastructure provides a bridge to the regulatory conversations that credit unions need to have.
+    </p>
+
+    <h2>The Member Layer the GL1 Model Skips</h2>
+
+    <p>
+      The GL1 Transaction Envelope is designed to travel with a transaction, accumulating context and approvals as it moves through the system. Party Packets represent the actors involved. The Identity Manager enriches those packets with entity-level attributes and attestations.
+    </p>
+
+    <p>
+      This is the right model. But it assumes the parties are institutions.
+    </p>
+
+    <p>
+      For credit union lending, the transaction originates with a member who wants to borrow against their crypto holdings. That member is not a VASP. They are not a legal entity with an LEI. They are an individual with a credit union membership, a crypto wallet, a collateral position, and a loan application that needs to be evaluated, approved, and documented in a way that an NCUA examiner can reconstruct two years later.
+    </p>
+
+    <p>The member layer requires:</p>
+
+    <div class="req-list">
+      <div class="req-label">Member Layer Requirements</div>
+      <div class="req-item">
+        <div class="req-num">01</div>
+        <div class="req-text"><strong>Member-level on-chain identity.</strong> Not just a whitelisted wallet address — a verifiable credential structure that attests to KYC completion, membership status, creditworthiness assessment, and investor eligibility where relevant. ONCHAINID/ERC-734/ERC-735 provides this. Each member's ClaimHolder contract accumulates attestations from the credit union's ClaimIssuer. Those attestations are verifiable on-chain, revocable by the issuer, and readable by any examiner with appropriate access — without exposing the underlying personal data on a public ledger.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">02</div>
+        <div class="req-text"><strong>Loan-level audit receipts.</strong> Every material event in the loan lifecycle — origination, collateral lock, disbursement, LTV monitoring, margin call, repayment, liquidation — should generate an on-chain compliance receipt. Not a log entry buried in contract state. A structured, human-readable record that documents what happened, when, why, and under which policy version. This is the audit-native requirement made concrete.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">03</div>
+        <div class="req-text"><strong>The NCUA examiner endpoint.</strong> A read interface — authenticated, permissioned, designed specifically for examination workflows — that allows an NCUA examiner to reconstruct the complete compliance story for any loan, any member, any time period, without requiring technical knowledge of smart contract state or blockchain explorers. The examiner should be able to see what a loan officer sees, in the language regulators use, with the evidentiary structure they expect.</div>
+      </div>
+    </div>
+
+    <h2>The Risk and Governance Questions That Change for Credit Unions</h2>
+
+    <p>
+      The GL1 paper's risk section is thorough. Oracle dependency, smart contract rigidity, stale compliance states, cross-jurisdiction alignment, privacy and immutability tensions — these are all real. But several of them manifest differently in the credit union context.
+    </p>
+
+    <p>
+      <strong>Oracle dependency is more acute.</strong> Credit union collateral is crypto — which means real-time price feeds are not a nice-to-have, they are a safety and soundness requirement. LTV ratios need to be monitored continuously. Margin calls need to trigger automatically. Liquidation mechanisms need to execute reliably. The oracle infrastructure that supports this is not a background dependency — it is core to the risk model that the NCUA cares most about.
+    </p>
+
+    <p>
+      <strong>Smart contract rigidity creates examination risk.</strong> If a compliance rule is wrong and it is embedded in an immutable contract, the error may not surface until examination. The GL1 paper's solution — separate policy from execution so that policy can be updated without redeploying the asset — is the right answer. For credit unions, this is not optional. NCUA examination cycles mean that a compliance error may persist for 18 months before it is discovered. The architecture must support policy updates that are themselves auditable — timestamped, versioned, attributable to a specific governance action.
+    </p>
+
+    <p>
+      <strong>Administrative intervention needs explicit legal grounding.</strong> The GL1 paper discusses asset freezes, forced transfers, and recovery mechanisms as governance features. For credit unions, these are not architectural choices — they are legal obligations. A credit union that takes a crypto-collateralized loan to charge-off may be legally required to liquidate the collateral. The on-chain administrative control that enables that liquidation needs to be documented, governed, and auditable in a way that would survive legal scrutiny. The architecture needs to make that easy, not just possible.
+    </p>
+
+    <h2>What This Means for the Credit Union Ecosystem</h2>
+
+    <p>
+      The GL1 paper concludes with a call for further development in two areas: technical standards for heterogeneous ledger environments, and institutional and regulatory engagement on questions of policy precedence and evidentiary standards.
+    </p>
+
+    <p>
+      For credit unions, both of those conversations need to happen in parallel — and they need a reference implementation to anchor them.
+    </p>
+
+    <p>
+      The NCUA is not hostile to innovation. The GENIUS Act's stablecoin provisions signal that Congress is taking digital asset infrastructure seriously at the federal level. The question is not whether credit unions will eventually need programmable compliance infrastructure. The question is whether that infrastructure will be designed with their regulatory regime in mind, or whether they will be left to adapt institutional bank infrastructure that was never built for them.
+    </p>
+
+    <p>
+      Ethereum — with ERC-3643, ONCHAINID, Base mainnet, and the audit-native design principles that the GL1 paper points toward but does not fully articulate — is the right foundation. The architecture exists. The standards are mature. The regulatory conversation is underway.
+    </p>
+
+    <p>
+      What has been missing is an implementation purpose-built for credit unions: one that treats the NCUA examiner as a first-class stakeholder, the member as the primary identity primitive, and audit-native compliance as a design requirement rather than a feature.
+    </p>
+
+    <blockquote>
+      That is what we are building at Aetherum.
+    </blockquote>
+
+    <div class="cta-section">
+      <div class="cta-eyebrow">For Credit Unions</div>
+      <h3>LEARN MORE</h3>
+      <p>Aetherum is building audit-native crypto-collateralized lending infrastructure for NCUA-regulated credit unions. Learn more at aetherum.ai.</p>
+      <a href="https://aetherum.ai" class="cta-btn">Visit Aetherum.ai</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <p>
+    <a href="/">Aetherum</a> &nbsp;·&nbsp;
+    © 2026 Aetherum &nbsp;·&nbsp;
+    <a href="https://aetherum.ai">aetherum.ai</a>
+    <br /><br />
+    17 Patents Pending
+  </p>
+</footer>
+
+</body>
+</html>
