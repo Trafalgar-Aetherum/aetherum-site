@@ -587,13 +587,13 @@
   });
 
   // wheel: horizontal intent or shift+wheel advances; vertical scroll inside dense slides still works
-  var wheelLock=false;
+  var isNavigating=false;
   deck.addEventListener('wheel', function(e){
     var s=slides[i];
     var canScroll = s.scrollHeight > s.clientHeight + 4;
     if(canScroll && Math.abs(e.deltaY) > Math.abs(e.deltaX)) return; // let dense slide scroll
     if(Math.abs(e.deltaX) > Math.abs(e.deltaY)){
-      if(wheelLock) return; wheelLock=true; setTimeout(function(){wheelLock=false;},700);
+      if(isNavigating) return; isNavigating=true; setTimeout(function(){isNavigating=false;},600);
       go(e.deltaX>0 ? i+1 : i-1);
     }
   }, {passive:true});
@@ -603,7 +603,7 @@
   deck.addEventListener('touchstart', function(e){ x0=e.touches[0].clientX; }, {passive:true});
   deck.addEventListener('touchend', function(e){
     if(x0===null) return; var dx=e.changedTouches[0].clientX-x0;
-    if(Math.abs(dx)>50){ go(dx<0 ? i+1 : i-1); } x0=null;
+    if(Math.abs(dx)>50){ if(isNavigating) return; isNavigating=true; setTimeout(function(){isNavigating=false;},600); go(dx<0 ? i+1 : i-1); } x0=null;
   }, {passive:true});
 
   window.addEventListener('resize', render);
