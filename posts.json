@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/every-transaction-decoded",
+    "title": "Every Transaction, Decoded. Every Policy, Enforced. Before the Signature.",
+    "excerpt": "Before any transaction reaches a signing key at Aetherum, it's decoded, policy-checked, and logged. Here's why we built that — and what it means for credit unions.",
+    "date": "June 2026",
+    "readTime": "6 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/audit-native-ethereum-credit-unions/",
     "title": "What the GL1 Programmable Compliance Paper Gets Right — And What It Misses for Credit Unions",
     "excerpt": "The STAR framework is the right architecture. But it was written for banks, VASPs, and central bank corridors. Here's what it misses for 140 million credit union members — and why Ethereum closes the gap.",
     "date": "June 22, 2026",
     "readTime": "8 min read",
     "icon": "📋",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
