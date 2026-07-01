@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/rest-of-finance-2026-execution",
+    "title": "The Rest of Finance Just Declared 2026 the Year of Execution. Credit Unions Weren't in the Room.",
+    "excerpt": "A new industry outlook from one of the world's largest fund administrators lays out 2026 as the year digital asset infrastructure stops being optional. Credit unions and their 140M members don't appear anywhere in it — which is exactly the point.",
+    "date": "July 1, 2026",
+    "readTime": "5 min read",
+    "icon": "📊",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/every-transaction-decoded",
     "title": "Every Transaction, Decoded. Every Policy, Enforced. Before the Signature.",
     "excerpt": "Before any transaction reaches a signing key at Aetherum, it's decoded, policy-checked, and logged. Here's why we built that — and what it means for credit unions.",
     "date": "June 2026",
     "readTime": "6 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
