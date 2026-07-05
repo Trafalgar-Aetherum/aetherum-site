@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/governance-is-the-product-not-the-chain/",
+    "title": "Governance Is the Product, Not the Chain",
+    "excerpt": "The Ethereum Foundation just told governments to judge blockchains by governance, not branding. Credit unions should be asking crypto-lending vendors the same question.",
+    "date": "July 5, 2026",
+    "readTime": "6 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/rest-of-finance-2026-execution",
     "title": "The Rest of Finance Just Declared 2026 the Year of Execution. Credit Unions Weren't in the Room.",
     "excerpt": "A new industry outlook from one of the world's largest fund administrators lays out 2026 as the year digital asset infrastructure stops being optional. Credit unions and their 140M members don't appear anywhere in it — which is exactly the point.",
     "date": "July 1, 2026",
     "readTime": "5 min read",
     "icon": "📊",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
