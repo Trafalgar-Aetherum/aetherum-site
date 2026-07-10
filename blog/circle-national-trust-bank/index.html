@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circle Just Moved Under Direct Federal Oversight. Here's Why That Matters for Credit Unions. | Aetherum</title>
+<meta name="description" content="Circle received final OCC approval to charter a national trust bank. For an industry regulated by examiners who live and die on federal oversight, that's not a footnote — it's a signal." />
+<meta property="og:title" content="Circle Just Moved Under Direct Federal Oversight. Here's Why That Matters for Credit Unions." />
+<meta property="og:description" content="Circle received final OCC approval to charter a national trust bank. For an industry regulated by examiners who live and die on federal oversight, that's not a footnote — it's a signal." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aetherum.ai/blog/circle-national-trust-bank/" />
+<link rel="icon" href="/favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #03060F;
+    --navy2:     #080D1C;
+    --navy3:     #0D1428;
+    --orange:    #F7931A;
+    --orange-dim: rgba(247,147,26,0.15);
+    --orange-border: rgba(247,147,26,0.3);
+    --text:      #F0F4FF;
+    --text-dim:  rgba(240,244,255,0.65);
+    --text-muted: rgba(240,244,255,0.38);
+    --border:    rgba(240,244,255,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(3,6,15,0.90);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+
+  .nav-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 60px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(247,147,26,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(240,244,255,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    border: 1px solid var(--orange-border);
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .hero-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .hero-new {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--navy);
+    background: var(--orange);
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 40px;
+  }
+
+  .hero-title .accent {
+    color: var(--orange);
+    font-style: italic;
+  }
+
+  .hero-lede {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--text-dim);
+    max-width: 680px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--orange);
+    opacity: 0.6;
+  }
+
+  /* ── ARTICLE ── */
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px 100px;
+  }
+
+  .article p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .article p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* ── BYLINE ── */
+  .byline {
+    margin-top: 60px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .byline span {
+    color: var(--text-dim);
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(240,244,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    margin-top: 72px;
+    padding: 56px 48px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(247,147,26,0.05) 0%, rgba(240,244,255,0.02) 100%);
+    text-align: center;
+  }
+
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .cta-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    line-height: 1.6;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+  }
+  .footer-logo span { color: var(--text-muted); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-links {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 110px 24px 72px; min-height: auto; }
+    .hero-title { font-size: clamp(54px, 13vw, 96px); }
+    .article { padding: 60px 24px 80px; }
+    .cta-block { padding: 40px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">AETHER<span>UM</span></a>
+  <a href="/blog" class="nav-back">&larr; Back to Blog</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-meta">
+      <span class="hero-tag">Infrastructure</span>
+      <span class="hero-date">July 10, 2026 &middot; 3 min read</span>
+      <span class="hero-new">New</span>
+    </div>
+
+    <h1 class="hero-title">
+      CIRCLE JUST MOVED<br>
+      UNDER DIRECT<br>
+      <span class="accent">FEDERAL OVERSIGHT.</span>
+    </h1>
+
+    <p class="hero-lede">
+      Here&rsquo;s why that matters for credit unions.
+    </p>
+
+    <div class="hero-divider"></div>
+
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p>
+    On July 10, 2026, Circle Internet Group received final approval from the U.S. Office of the Comptroller of the Currency to charter First National Digital Currency Bank, N.A. &mdash; operating as Circle National Trust. It places Circle&rsquo;s custody infrastructure under direct federal oversight by the same regulator that supervises national banks, and lays the groundwork for USDC reserve management to eventually move under that same federal umbrella.
+  </p>
+
+  <p>
+    Aetherum builds on Circle&rsquo;s infrastructure. We&rsquo;re part of Circle&rsquo;s partner ecosystem, and USDC runs through the core of our platform. So when the rails underneath us get pulled further into a federally regulated banking framework, it&rsquo;s worth explaining why that&rsquo;s not just Circle&rsquo;s news &mdash; it&rsquo;s relevant to every credit union thinking about what &ldquo;safe&rdquo; looks like in a digital-asset world.
+  </p>
+
+  <p>
+    Credit unions don&rsquo;t adopt new infrastructure because it&rsquo;s fast. They adopt it because an examiner can look at it and understand exactly what happened, when, and under whose authority. That&rsquo;s always been the premise Aetherum was built on: audit-native infrastructure, not infrastructure with audit trails bolted on after the fact. The market has been focused on speed for the institution. We think the harder, more durable problem is building something that explains itself &mdash; to the member, and to the examiner.
+  </p>
+
+  <p>
+    Circle&rsquo;s move doesn&rsquo;t change what Aetherum does. We&rsquo;re not a custody bank, and we&rsquo;re not trying to be. But it does reinforce the direction the entire stack is moving: stablecoin infrastructure consolidating under recognizable federal frameworks, not exotic ones. That&rsquo;s a tailwind for any credit union deciding whether crypto-collateralized lending belongs inside a regulated financial cooperative &mdash; and it&rsquo;s exactly the kind of validation our thesis was built to anticipate, not react to.
+  </p>
+
+  <p>
+    We&rsquo;ll keep watching how this develops, including what it means for reserve oversight down the line. For now, it&rsquo;s one more data point in a trend we&rsquo;ve been building toward since day one: the infrastructure layer growing up to meet the institutions it&rsquo;s meant to serve.
+  </p>
+
+  <div class="byline"><span>John Bailey II</span> &middot; Founder, Aetherum</div>
+
+  <div class="tags">
+    <span class="tag">#CreditUnions</span>
+    <span class="tag">#Circle</span>
+    <span class="tag">#USDC</span>
+    <span class="tag">#OCC</span>
+    <span class="tag">#FederalOversight</span>
+    <span class="tag">#Infrastructure</span>
+    <span class="tag">#Stablecoins</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">For Credit Unions</div>
+    <div class="cta-title">SCHEDULE A DEMO</div>
+    <p class="cta-sub">See how Aetherum&rsquo;s audit-native infrastructure fits inside a regulated credit union &mdash; in 30 minutes.</p>
+    <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn">Book a 30-min Call</a>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AETHER<span>UM</span></div>
+  <div class="footer-copy">&copy; 2026 Aetherum &middot; aetherum.ai</div>
+  <div class="footer-links">
+    <a href="/terms">Terms</a> &middot;
+    <a href="/privacy">Privacy</a> &middot;
+    <a href="/disclaimers">Disclaimers</a> &middot;
+    <a href="/help">Help</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/circle-national-trust-bank",
+    "title": "Circle Just Moved Under Direct Federal Oversight. Here's Why That Matters for Credit Unions.",
+    "excerpt": "Circle received final OCC approval to charter a national trust bank. For an industry regulated by examiners who live and die on federal oversight, that's not a footnote — it's a signal.",
+    "date": "2026-07-10",
+    "readTime": "3 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/who-owns-the-rails",
     "title": "Who Owns the Rails? What the Fiserv Debit Network Story Means for Credit Unions",
     "excerpt": "Big banks are exploring a buyout of Fiserv's debit network to dodge Durbin fee caps. For credit unions, it's a preview of what happens when you don't own your own infrastructure.",
     "date": "July 7, 2026",
     "readTime": "5 min read",
     "icon": "🔗",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
