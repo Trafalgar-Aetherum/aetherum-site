@@ -13,9 +13,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:      #03060F;
-    --navy2:     #080D1C;
-    --navy3:     #0D1428;
+    --navy:      #162848;
+    --navy-2:    #1A3055;
+    --navy-3:    #1E3660;
     --orange:    #F7931A;
     --orange-dim: rgba(247,147,26,0.15);
     --orange-border: rgba(247,147,26,0.3);
@@ -47,7 +47,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 60px;
-    background: rgba(3,6,15,0.90);
+    background: rgba(18,36,66,0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -75,10 +75,9 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 140px 60px 100px;
+    align-items: flex-start;
+    padding: 140px 60px 80px;
     position: relative;
     overflow: hidden;
   }
@@ -201,10 +200,6 @@
     text-transform: uppercase;
   }
 
-  .byline span {
-    color: var(--text-dim);
-  }
-
   /* ── TAGS ── */
   .tags {
     display: flex;
@@ -320,7 +315,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
-    .hero { padding: 110px 24px 72px; min-height: auto; }
+    .hero { padding: 110px 24px 64px; }
     .hero-title { font-size: clamp(54px, 13vw, 96px); }
     .article { padding: 60px 24px 80px; }
     .cta-block { padding: 40px 24px; }
@@ -384,7 +379,7 @@
     We&rsquo;ll keep watching how this develops, including what it means for reserve oversight down the line. For now, it&rsquo;s one more data point in a trend we&rsquo;ve been building toward since day one: the infrastructure layer growing up to meet the institutions it&rsquo;s meant to serve.
   </p>
 
-  <div class="byline"><span>John Bailey II</span> &middot; Founder, Aetherum</div>
+  <div class="byline">Founder, Aetherum</div>
 
   <div class="tags">
     <span class="tag">#CreditUnions</span>
