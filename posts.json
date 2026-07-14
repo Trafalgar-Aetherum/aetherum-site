@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/audit-native-debt-instruments",
+    "title": "Audit-Native Debt Instruments: The Missing Layer in Regulated Onchain Credit",
+    "excerpt": "The instruments exist. The rails exist. The demand exists. What regulated institutions still need to participate in onchain credit is the audit layer — and we built it.",
+    "date": "2026-07-14",
+    "readTime": "7 min read",
+    "icon": "📜",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/circle-national-trust-bank",
     "title": "Circle Just Moved Under Direct Federal Oversight. Here's Why That Matters for Credit Unions.",
     "excerpt": "Circle received final OCC approval to charter a national trust bank. For an industry regulated by examiners who live and die on federal oversight, that's not a footnote — it's a signal.",
     "date": "2026-07-10",
     "readTime": "3 min read",
     "icon": "🏛️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
