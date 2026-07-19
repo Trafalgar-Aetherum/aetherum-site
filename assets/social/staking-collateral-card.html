@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Aetherum — pledged collateral card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#162848;
+    --navy-deep:#0F1D35;
+    --ink:#F2F5FA;
+    --muted:#8FA3C0;
+    --line:#2B4066;
+    --live:#5EE6C0;
+    --hold:#E8A33D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#0A1220;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:24px;
+    font-family:'Archivo',system-ui,sans-serif;
+  }
+  .card{
+    width:1200px; height:627px; flex:0 0 auto;
+    background:var(--navy);
+    color:var(--ink);
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    padding:52px 64px 44px;
+  }
+  .card::after{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 60px);
+    pointer-events:none;
+  }
+  header{display:flex; align-items:baseline; justify-content:space-between; position:relative; z-index:1}
+  .wordmark{
+    font-size:21px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  main{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; position:relative; z-index:1}
+  h1{
+    font-size:62px; font-weight:600; line-height:1.02; letter-spacing:-.028em;
+    max-width:11.5ch;
+  }
+  h1 em{font-style:normal; color:var(--live)}
+  .sub{
+    margin-top:24px; font-size:19px; line-height:1.55; color:var(--muted);
+    max-width:32ch; font-weight:400;
+  }
+  .ledger{border-top:1px solid var(--line); padding-top:24px}
+  .ledger-title{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:22px;
+  }
+  .bar{height:52px; display:flex; border:1px solid var(--line); position:relative}
+  .seg{position:relative; display:flex; align-items:center; padding:0 14px}
+  .seg-loan{flex:0 0 46%; background:rgba(94,230,192,.14); border-right:1px solid var(--line)}
+  .seg-buffer{flex:0 0 32%; background:rgba(255,255,255,.04); border-right:1px solid var(--line)}
+  .seg-haircut{flex:1; background:repeating-linear-gradient(135deg, rgba(232,163,61,.22) 0 5px, transparent 5px 10px)}
+  .seg span{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink); opacity:.85;
+  }
+  .threshold{
+    position:absolute; top:-11px; bottom:-11px; left:78%; width:1px; background:var(--live);
+  }
+  .threshold::before{
+    content:""; position:absolute; top:-3px; left:-3px; width:7px; height:7px;
+    background:var(--live); border-radius:50%;
+  }
+  .legend{margin-top:28px; display:grid; gap:13px}
+  .row{display:flex; gap:12px; align-items:flex-start; font-size:14px; line-height:1.45}
+  .dot{width:9px; height:9px; margin-top:5px; flex:0 0 auto}
+  .d-live{background:var(--live)}
+  .d-hold{background:var(--hold)}
+  .d-mute{background:var(--muted)}
+  .row b{font-weight:500; color:var(--ink)}
+  .row i{font-style:normal; color:var(--muted)}
+  footer{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid var(--line); padding-top:22px; position:relative; z-index:1;
+  }
+  .footnote{font-size:13px; color:var(--muted); max-width:66ch; line-height:1.5}
+  .url{font-family:'IBM Plex Mono',monospace; font-size:14px; letter-spacing:.08em; color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="card">
+  <header>
+    <div class="wordmark">Aetherum</div>
+    <div class="eyebrow">Audit-native infrastructure</div>
+  </header>
+
+  <main>
+    <div>
+      <h1>Pledged collateral doesn't have to sit <em>still</em>.</h1>
+      <p class="sub">The member keeps the asset. The credit union keeps the liquidation path. The examiner gets the whole trail.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-title">How the risk stays bounded</div>
+      <div class="bar">
+        <div class="seg seg-loan"><span>Loan value</span></div>
+        <div class="seg seg-buffer"><span>Buffer</span></div>
+        <div class="seg seg-haircut"><span>Haircut</span></div>
+        <div class="threshold"></div>
+      </div>
+      <div class="legend">
+        <div class="row"><span class="dot d-live"></span><span><b>Liquid staking form</b> <i>— collateral stays redeemable while it earns.</i></span></div>
+        <div class="row"><span class="dot d-hold"></span><span><b>Explicit haircut</b> <i>— exit-queue latency and slashing priced in, versioned, visible.</i></span></div>
+        <div class="row"><span class="dot d-mute"></span><span><b>Policy-gated liquidation</b> <i>— every action emitted as an examiner-readable event.</i></span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footnote">Protocol rewards are variable and are not guaranteed by Aetherum or the credit union. Collateral remains subject to liquidation.</p>
+    <div class="url">aetherum.ai</div>
+  </footer>
+</div>
+</body>
+</html>
