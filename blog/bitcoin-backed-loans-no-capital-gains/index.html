@@ -18,7 +18,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #0B1A2E; --navy-mid: #080E1E; --navy-light: #0D1630;
+      --navy: #162848; --navy-mid: #080E1E; --navy-light: #0D1630;
       --copper: #D4885C; --copper-glow: #c97414;
       --white: #F0F4FF; --muted: #8A9BC4; --border: rgba(212,136,92,0.18);
     }
@@ -27,6 +27,7 @@
 
     nav { position: sticky; top: 0; z-index: 100; background: rgba(11,26,46,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--copper); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-logo span { color: #F7931A; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--copper); }
@@ -119,7 +120,7 @@
 <body>
 
   <nav>
-    <a class="nav-logo" href="https://aetherum.ai">AETHERUM</a>
+    <a class="nav-logo" href="https://aetherum.ai">AETHER<span>UM</span></a>
     <ul class="nav-links">
       <li><a href="https://aetherum.ai/blog">Blog</a></li>
       <li><a href="https://aetherum.ai/crypto-backed-loans-credit-unions/">CU Lending</a></li>

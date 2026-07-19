@@ -387,27 +387,47 @@
     <h2>How the Risk Actually Gets Resolved</h2>
 
     <p>
-      There are two defensible structures, and Aetherum supports both as policy choices the credit union makes — not defaults we impose.
+      There is one mechanism, not a menu of options. When collateral is pledged, an allocation engine splits it into a staked portion and a liquid buffer — automatically, on every loan, not as a member-facing choice.
     </p>
 
     <div class="distinction-box">
-      <div class="box-title">Two Policy Structures, Both Examinable</div>
+      <div class="box-title">The Allocation Split</div>
       <div class="distinction-row">
-        <div class="distinction-term">Unstaked by default</div>
-        <div class="distinction-def">Pledged collateral is held in its base form, fully liquid, with staking available only as an explicit member opt-in on a per-loan basis. Simplest to examine, simplest to explain, and the right starting posture for a first program.</div>
+        <div class="distinction-term">Staked portion</div>
+        <div class="distinction-def">The majority of pledged collateral — up to 80% under normal conditions — is staked for the life of the loan. That percentage is reduced automatically as loan-to-value rises or market volatility increases, so the system leans more conservative exactly when it needs to.</div>
       </div>
       <div class="distinction-row">
-        <div class="distinction-term">Liquid staking form</div>
-        <div class="distinction-def">Collateral is held in a liquid staking representation, which remains transferable and redeemable throughout the life of the loan. The asset continues to accrue protocol rewards while it serves as collateral, and the lender retains a liquidation path that does not depend on an exit queue clearing.</div>
+        <div class="distinction-term">Liquid buffer</div>
+        <div class="distinction-def">A minimum of 20% of pledged collateral is always held back unstaked and instantly available. That floor is a hard minimum, not a target — it exists so liquidation never has to wait on an unstaking period to execute.</div>
       </div>
     </div>
 
     <p>
-      In both structures, the loan-to-value engine applies an explicit haircut for exit-queue latency and slashing exposure. That haircut is a parameter, it is versioned, and it is visible. Liquidation is gated through a pre-signing transaction policy layer, so no liquidation executes outside the credit union's own written policy — and every attempt, permitted or blocked, is recorded.
+      Liquidation is buffer-first. If a loan's loan-to-value ratio breaches its threshold, the buffer is spent before anything else — the staked portion is only unstaked if the buffer isn't enough to cover the shortfall. The loan-to-value engine escalates through four defined tiers, each triggering a specific, examiner-visible action:
     </p>
 
+    <div class="req-list">
+      <div class="req-label">LTV Escalation Bands</div>
+      <div class="req-item">
+        <div class="req-num">48%</div>
+        <div class="req-text"><strong>Yellow.</strong> Early warning threshold — monitored, no action taken.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">54%</div>
+        <div class="req-text"><strong>Orange.</strong> Elevated risk — the position is watched more closely as it approaches a margin call.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">57%</div>
+        <div class="req-text"><strong>Red.</strong> Margin call triggered. The credit union's own written policy governs what happens next.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">65%</div>
+        <div class="req-text"><strong>Emergency.</strong> Automatic liquidation — buffer spent first, staked position unstaked only if the buffer is insufficient to cover it.</div>
+      </div>
+    </div>
+
     <p>
-      This is the part that is genuinely different. The staking mechanics are not novel; they are public infrastructure. What is novel is that every staking action, every reward accrual, every LTV recalculation, and every liquidation decision is emitted as a structured, examiner-readable event at the moment it happens. Not reconstructed at quarter-end from logs. Recorded as it occurs, because the system was built for the examiner as a first-class user.
+      This is the part that is genuinely different. The staking mechanics are not novel; they are public infrastructure. What is novel is that every allocation decision, every reward accrual, every LTV recalculation, and every liquidation action is emitted as a structured, examiner-readable event at the moment it happens. Not reconstructed at quarter-end from logs. Recorded as it occurs, because the system was built for the examiner as a first-class user.
     </p>
 
     <h2>The Regulatory Ground Has Moved</h2>
@@ -417,7 +437,7 @@
     </p>
 
     <p>
-      In May 2025, the SEC's Division of Corporation Finance issued a statement concluding that solo, delegated, and custodial protocol staking activities do not constitute the offer or sale of securities where the provider's role is administrative or ministerial. In August 2025, a follow-on statement extended that reasoning to certain liquid staking activities and staking receipt tokens — the precise structure that makes productive collateral viable. Both are staff statements rather than binding rules, and both draw a hard boundary: restaking, provider-managed returns, and guaranteed yields fall outside their scope and remain legally uncertain. Aetherum operates inside that boundary deliberately and structurally, not as a matter of policy that could quietly drift.
+      In May 2025, the SEC's Division of Corporation Finance issued a statement concluding that solo, delegated, and custodial protocol staking activities do not constitute the offer or sale of securities where the provider's role is administrative or ministerial — the precise category custodial protocol staking falls into. A follow-on statement in August 2025 extended similar reasoning to certain liquid staking activities and staking receipt tokens, a different structure than the one Aetherum operates on. Both are staff statements rather than binding rules, and both draw a hard boundary: restaking, provider-managed returns, and guaranteed yields fall outside their scope and remain legally uncertain. Aetherum operates inside that boundary deliberately and structurally, not as a matter of policy that could quietly drift.
     </p>
 
     <p>

@@ -64,19 +64,23 @@
   }
   .bar{height:52px; display:flex; border:1px solid var(--line); position:relative}
   .seg{position:relative; display:flex; align-items:center; padding:0 14px}
-  .seg-loan{flex:0 0 46%; background:rgba(94,230,192,.14); border-right:1px solid var(--line)}
-  .seg-buffer{flex:0 0 32%; background:rgba(255,255,255,.04); border-right:1px solid var(--line)}
-  .seg-haircut{flex:1; background:repeating-linear-gradient(135deg, rgba(232,163,61,.22) 0 5px, transparent 5px 10px)}
+  .seg-staked{flex:0 0 68%; background:rgba(94,230,192,.14); border-right:1px solid var(--line)}
+  .seg-buffer{flex:1; background:repeating-linear-gradient(135deg, rgba(232,163,61,.22) 0 5px, transparent 5px 10px)}
   .seg span{
     font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
     text-transform:uppercase; color:var(--ink); opacity:.85;
   }
   .threshold{
-    position:absolute; top:-11px; bottom:-11px; left:78%; width:1px; background:var(--live);
+    position:absolute; top:-11px; bottom:-11px; left:88%; width:1px; background:var(--live);
   }
   .threshold::before{
     content:""; position:absolute; top:-3px; left:-3px; width:7px; height:7px;
     background:var(--live); border-radius:50%;
+  }
+  .threshold-label{
+    position:absolute; top:100%; right:0; margin-top:8px; white-space:nowrap;
+    font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--live);
   }
   .legend{margin-top:28px; display:grid; gap:13px}
   .row{display:flex; gap:12px; align-items:flex-start; font-size:14px; line-height:1.45}
@@ -110,14 +114,13 @@
     <div class="ledger">
       <div class="ledger-title">How the risk stays bounded</div>
       <div class="bar">
-        <div class="seg seg-loan"><span>Loan value</span></div>
+        <div class="seg seg-staked"><span>Staked</span></div>
         <div class="seg seg-buffer"><span>Buffer</span></div>
-        <div class="seg seg-haircut"><span>Haircut</span></div>
-        <div class="threshold"></div>
+        <div class="threshold"><span class="threshold-label">Liquidation threshold</span></div>
       </div>
       <div class="legend">
-        <div class="row"><span class="dot d-live"></span><span><b>Liquid staking form</b> <i>— collateral stays redeemable while it earns.</i></span></div>
-        <div class="row"><span class="dot d-hold"></span><span><b>Explicit haircut</b> <i>— exit-queue latency and slashing priced in, versioned, visible.</i></span></div>
+        <div class="row"><span class="dot d-live"></span><span><b>Stake / buffer split</b> <i>— majority staked and earning, a liquid buffer held back for instant liquidation.</i></span></div>
+        <div class="row"><span class="dot d-hold"></span><span><b>Buffer-first liquidation</b> <i>— the buffer is spent before any staked position is touched.</i></span></div>
         <div class="row"><span class="dot d-mute"></span><span><b>Policy-gated liquidation</b> <i>— every action emitted as an examiner-readable event.</i></span></div>
       </div>
     </div>
