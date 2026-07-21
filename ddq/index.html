@@ -315,32 +315,38 @@ const LOCAL_KB = [
   {
     question_patterns: ['Does Aetherum support card issuance for credit union members', 'card issuance', 'card funding', 'borrow disburse spend', 'spend loop'],
     title: 'Card Funding Bridge — card issuance for members',
-    answer: "Yes. Aetherum's Card Funding Bridge triggers white-label payment card issuance upon loan disbursement confirmation, completing the borrow→disburse→spend loop. The card is funded by the USDC stablecoin disbursement and issued under the credit union's brand via a regulated card program partner. Card partner agreements are in place (Rain, MNDA signed; Nium, sandbox live, 200 OK confirmed). This capability is covered by AETHERUM-018 (patent pending).",
-    sources: ['Card Funding Bridge', 'AETHERUM-018']
+    answer: "Yes. Aetherum's Card Funding Bridge triggers white-label payment card issuance upon loan disbursement confirmation, completing the borrow→disburse→spend loop. The card is funded by the USDC stablecoin disbursement and issued under the credit union's brand via a regulated card program partner. Card partner agreements are in place (Rain, MNDA signed; Nium, sandbox live, 200 OK confirmed). This capability is covered (patent pending).",
+    sources: ['Card Funding Bridge']
   },
   {
     question_patterns: ['What is the status of Aetherum\'s card partner relationships', 'card partner', 'Nium', 'Rain', 'card program partner'],
     title: 'Card partner relationships — Rain & Nium',
     answer: "Rain (MNDA signed, Visa Principal Member). Nium (sandbox live, 200 OK confirmed, CFSB as US licensor). The Card Funding Bridge is built and live in sandbox with real API credentials.",
-    sources: ['Card Funding Bridge', 'AETHERUM-018', 'Partner Stack']
+    sources: ['Card Funding Bridge', 'Partner Stack']
   },
   {
     question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
-    title: 'Patent count — 20 patents pending',
-    answer: "Aetherum has 20 provisional patent applications filed with the USPTO covering the full platform — including risk assessment (DACS™, FHE-DACS, DACS-LTV), tax intelligence (TPSOE™), on-chain compliance (On-Chain Compliance Receipts, Supervisory Control, DACS Explainability), identity infrastructure (CUMember, CU-Owned On-Chain Identity — AETHERUM-017), collateral management, and card disbursement (Card Funding Bridge — AETHERUM-018, patent pending).",
-    sources: ['IP & Patents', 'AETHERUM-018']
+    title: 'Patent count — 21 patents pending',
+    answer: "Aetherum has 21 provisional patent applications filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
+    sources: ['IP & Patents']
   },
   {
-    question_patterns: ['What compliance and fraud infrastructure does Aetherum use', 'compliance infrastructure', 'fraud infrastructure', 'Sardine', 'BSA/AML', 'KYC verification', 'fraud detection', 'transaction monitoring'],
-    title: 'Compliance & fraud infrastructure — Sardine',
-    answer: "Aetherum integrates Sardine for BSA/AML compliance, KYC verification, fraud detection, and transaction monitoring. Sardine's consortium anonymization model provides cross-institution fraud signals without exposing member data. A fully executed MSA is in place.",
+    question_patterns: ['What compliance and fraud infrastructure does Aetherum use', 'compliance infrastructure', 'fraud infrastructure', 'BSA/AML', 'KYC verification', 'fraud detection', 'transaction monitoring'],
+    title: 'Compliance & fraud infrastructure',
+    answer: "Aetherum integrates a purpose-built compliance infrastructure provider for BSA/AML compliance, KYC verification, fraud detection, and transaction monitoring. The provider offers a consortium anonymization model providing cross-institution fraud signals without exposing member data. A fully executed MSA is in place.",
     sources: ['Compliance Layer', 'Partner Stack']
   },
   {
     question_patterns: ['How does Aetherum handle fraud detection and AML monitoring', 'fraud detection', 'AML monitoring', 'OFAC', 'sanctions', 'transaction screening', 'behavioral fraud'],
-    title: 'Fraud detection & AML monitoring — Sardine',
-    answer: "Fraud detection and AML monitoring are handled through Sardine, a compliance infrastructure provider purpose-built for fintech and digital asset platforms. Sardine covers real-time transaction screening, OFAC/sanctions checks, device intelligence, and behavioral fraud signals. Integration is live under a fully executed MSA with quarterly billing.",
+    title: 'Fraud detection & AML monitoring',
+    answer: "Fraud detection and AML monitoring are handled through a compliance infrastructure provider purpose-built for fintech and digital asset platforms. Coverage includes real-time transaction screening, OFAC/sanctions checks, device intelligence, and behavioral fraud signals. Integration is live under a fully executed MSA.",
     sources: ['Compliance Layer', 'Partner Stack']
+  },
+  {
+    question_patterns: ['staking', 'idle collateral', 'productive collateral', 'staking rewards', 'staking revenue', 'how does staking work', 'earn on collateral', 'yield on pledged', 'revenue split staking'],
+    title: 'Member staking on pledged collateral — mechanics and revenue',
+    answer: "When a member pledges digital assets against a loan, an allocation engine splits the collateral automatically: up to 80% is staked via a regulated institutional custody partner for the life of the loan, and a minimum 20% liquid buffer is always held back unstaked. The stake percentage reduces automatically as loan-to-value or market volatility rises. Liquidation is buffer-first: at LTV thresholds of 48% (yellow, monitored), 54% (orange, elevated risk), 57% (red, margin call issued with a 48-hour cure window), and 65% (emergency, automatic liquidation), the buffer is spent before any staked position is unstaked. Every allocation, reward accrual, LTV recalculation, and liquidation is emitted as a structured examiner-readable event at the moment it occurs. Staking rewards are split under the credit union's elected revenue model — the default 60/30/10 model shares 60% to the credit union, 30% to the borrower as an APR reduction, and 10% to Aetherum as a platform fee; credit unions may elect a 60/40 model that eliminates the Aetherum share. Protocol rewards are variable and are not guaranteed by Aetherum or by the credit union.",
+    sources: ['Member Staking Product', 'Allocation Engine', 'Risk Monitor']
   }
 ];
 
