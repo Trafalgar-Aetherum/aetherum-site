@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/flight-to-verifiability",
+    "title": "The Flight to Verifiability Has a Regulated Twin",
+    "excerpt": "Institutions just moved $7 billion to escape infrastructure that can't prove itself. Credit unions face the same question — with an examiner instead of an attacker.",
+    "date": "July 27, 2026",
+    "readTime": "7 min read",
+    "icon": "🛡️",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/staking-pledged-collateral",
     "title": "Idle Collateral Is a Design Choice: Staking, Pledged Digital Assets, and What It Means for Credit Unions",
     "excerpt": "Staking and collateralized lending pull against each other — unbonding queues and slashing versus the need to liquidate fast. Here's how that tension actually gets resolved, and why the regulatory ground moved in credit unions' favor.",
     "date": "July 19, 2026",
     "readTime": "7 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
