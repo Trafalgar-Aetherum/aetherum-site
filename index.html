@@ -1605,7 +1605,7 @@ fetch('/posts.json')
   .then(r => r.json())
   .then(posts => {
     const grid = document.getElementById('homepage-blog-grid');
-    grid.innerHTML = posts.map(post => {
+    grid.innerHTML = posts.slice(0, 10).map(post => {
       const parts = [post.date, post.readTime].filter(Boolean);
       const meta = parts.join(' · ');
       const badge = post.isNew ? ' <span class="blog-badge">New</span>' : '';

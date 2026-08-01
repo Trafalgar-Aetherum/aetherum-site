@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Member, Many Wallets: Persistent Identity for Credit Union Custody — Aetherum Blog</title>
+  <meta name="description" content="A credit union member shouldn't lose their compliance history because they switched custodians or replaced a lost key. Here's how we built persistent on-chain identity for CU custody — and why the audit trail is the hard part." />
+  <meta property="og:title" content="One Member, Many Wallets: Persistent Identity for Credit Union Custody" />
+  <meta property="og:description" content="A credit union member shouldn't lose their compliance history because they switched custodians or replaced a lost key. Here's how we built persistent on-chain identity for CU custody — and why the audit trail is the hard part." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aetherum.ai/blog/one-member-many-wallets/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #162848;
+      --bg2:     #101f3a;
+      --bg3:     #1b3054;
+      --orange:  #F7931A;
+      --orange2: #e07d10;
+      --text:    #c8d8ec;
+      --muted:   #8fa3c0;
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(22,40,72,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5.2vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .deck {
+      font-size: 1.15rem;
+      color: #8fa8c4;
+      font-style: italic;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .meta-row .tag {
+      background: rgba(247,147,26,0.12);
+      color: var(--orange);
+      border: 1px solid rgba(247,147,26,0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+    .stats-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--orange);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* BODY CONTENT */
+    .body-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .body-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin: 3rem 0 1rem;
+    }
+    .body-content p {
+      margin-bottom: 1.4rem;
+      color: var(--text);
+    }
+    .body-content strong { color: #fff; font-weight: 600; }
+    .body-content em { color: #a0bcd8; font-style: italic; }
+
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 3px solid var(--orange);
+      margin: 2.5rem 0;
+      padding: 1.2rem 1.8rem;
+      background: var(--bg3);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #a0bcd8;
+      line-height: 1.65;
+    }
+
+    /* CLOSING NOTE */
+    .closing-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0 0;
+      text-align: center;
+    }
+    .cta-section .cta-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-section h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #162848;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange2); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AETHER<span>UM</span></a>
+  <a href="/blog/" class="nav-back">← All Posts</a>
+</nav>
+
+<article>
+  <div class="hero">
+    <div class="eyebrow">Identity &nbsp;·&nbsp; July 31, 2026</div>
+    <h1>One Member, Many Wallets:<br />Persistent Identity for <span>Credit Union Custody</span></h1>
+    <p class="deck">A credit union member shouldn't lose their compliance history because they switched custodians or replaced a lost key. Here's how we built persistent on-chain identity for CU custody — and why the audit trail is the hard part.</p>
+    <div class="meta-row">
+      <span class="tag">Identity</span>
+      <span>Founder, Aetherum</span>
+      <span>July 31, 2026</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">140M</span>
+        <span class="stat-label">Credit Union Members With No Compliant Path to Borrow Against Digital Assets</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Persistent Identity Per Member, Linked to Many Approved Wallets</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Re-KYC Required to Switch Custodians, Rotate Keys, or Recover a Lost-Key Wallet</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-content">
+
+    <p>
+      There's a quiet assumption buried in most tokenization stacks: that the wallet <em>is</em> the member. Identity and eligibility get attached to a wallet address, so the moment that address changes, everything attached to it has to be rebuilt.
+    </p>
+
+    <p>
+      But wallets change constantly. An institution moves positions between custodians. A member replaces an address after losing a key. A treasury spreads holdings across several wallets. In every case the verified member is the same person — but if eligibility lives on the address, each new address spawns a fresh record to reconcile, and every reconciliation is another chance for ownership or compliance data to drift out of sync.
+    </p>
+
+    <p>
+      Joachim Lebrun, co-creator of ERC-3643, framed this precisely in a recent note on persistent identity accounts: the tokenized-securities world has to distinguish between the <em>investor</em> and the <em>wallet they use</em>. The verified investor should persist while wallets come and go.
+    </p>
+
+    <p>
+      For credit unions, the stakes aren't just records to reconcile. They're regulatory.
+    </p>
+
+    <h2>The Standard Already Solves Half of It</h2>
+
+    <p>
+      ERC-3643 and the ONCHAINID framework it builds on give you the mechanism: a persistent identity account linked to multiple approved wallets, with an Identity Registry that verifies the required claims before a transfer is allowed. We already deploy one of these per credit union, on-chain, on Base — the CU owns it, we're the software layer. What we added is the part Lebrun points at: a single member identity can now hold <em>many</em> approved wallets. Switch custodians, rotate keys, recover a lost-key wallet — the identity and its KYC claims stay intact, no rebuild, no re-KYC.
+    </p>
+
+    <p>
+      We didn't reinvent that binding. It's the open standard. We implemented it for a specific regulated reality.
+    </p>
+
+    <h2>The Hard Part Isn't the Linking. It's Proving It Happened.</h2>
+
+    <p>
+      This is where a credit union's needs split from a generic tokenization platform. An examiner doesn't just need the system to work — they need to <em>see</em> that it worked. When a member's wallet changes, that's a material event in a regulated lending relationship. Who authorized it? When? Was the identity's KYC claim still valid at that moment? Did eligibility carry over, or did someone quietly re-approve a wallet that shouldn't have qualified?
+    </p>
+
+    <p>
+      So every wallet change emits a compliance receipt — linked, unlinked, rotated — as a first-class output, not a log line. Each one captures the member identity, the wallet, the custodian, the on-chain transaction, and the timestamp. An examiner can pull the full binding history for any member and read the chain of custody in plain terms: this identity, these approved wallets, these changes, each attested.
+    </p>
+
+    <blockquote>
+      Every competitor is building faster pipes. We build the platform that explains itself to the examiner — and the explanation is the moat.
+    </blockquote>
+
+    <h2>The Self-Custody Handoff</h2>
+
+    <p>
+      One detail worth surfacing, because it's where custody models collide. Linking a wallet on-chain has to be authorized by a wallet already tied to the identity. When we hold the escrow key for a member, we can sign that. When a member holds their own wallet, we can't — and we shouldn't pretend to.
+    </p>
+
+    <p>
+      So in the self-custody case the system doesn't fail and it doesn't fake a link. It records the wallet as pending and hands back exactly what the member's own wallet needs to sign to complete the binding. Custodial where it should be, out of the way where it shouldn't be — and the compliance record reflects the true state either way: pending until the member signs, active once they do.
+    </p>
+
+    <h2>Why Credit Unions Need Both</h2>
+
+    <p>
+      140 million Americans belong to a credit union. The ones holding crypto have had no compliant path to borrow against it without selling and triggering a taxable event. Building that path means building custody flows regulated institutions can stand behind — which means custody changes can't be a black box.
+    </p>
+
+    <p>
+      Persistent identity is what lets a member's relationship with their credit union survive the messy reality of wallets. Examiner-readable evidence is what lets the credit union prove that relationship stayed compliant through every change. You need both.
+    </p>
+
+    <p class="closing-note">
+      <em>With thanks to Joachim Lebrun and the ERC-3643 / ONCHAINID community, whose work on persistent identity made this straightforward to build on.</em>
+    </p>
+
+    <div class="cta-section">
+      <div class="cta-eyebrow">For Credit Unions</div>
+      <h3>SEE IT FOR YOURSELF</h3>
+      <p>We'll walk through the risk assessment model live — the evidence it produces, the examiner-readable event trail, and what audit-native infrastructure looks like in practice.</p>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn" target="_blank" rel="noopener">Book a 30-Minute Demo &rarr;</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <p>
+    <a href="/">Aetherum</a> &nbsp;·&nbsp;
+    © 2026 Aetherum &nbsp;·&nbsp;
+    <a href="https://aetherum.ai">aetherum.ai</a>
+    <br /><br />
+    21 Patents Pending
+  </p>
+</footer>
+
+</body>
+</html>

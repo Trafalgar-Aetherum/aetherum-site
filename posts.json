@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/one-member-many-wallets/",
+    "title": "One Member, Many Wallets: Persistent Identity for Credit Union Custody",
+    "excerpt": "A credit union member shouldn't lose their compliance history because they switched custodians or replaced a lost key. Here's how we built persistent on-chain identity for CU custody — and why the audit trail is the hard part.",
+    "date": "July 31, 2026",
+    "readTime": "6 min read",
+    "icon": "🔑",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/flight-to-verifiability",
     "title": "The Flight to Verifiability Has a Regulated Twin",
     "excerpt": "Institutions just moved $7 billion to escape infrastructure that can't prove itself. Credit unions face the same question — with an examiner instead of an attacker.",
     "date": "July 27, 2026",
     "readTime": "7 min read",
     "icon": "🛡️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
