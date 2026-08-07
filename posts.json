@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/every-giant-builds-an-island/",
+    "title": "Every Giant Is Building an Island. Credit Unions Build the Bridge.",
+    "excerpt": "Every giant is minting its own stablecoin to keep the float home — and none of them can build the bridges between the loops. The one institution structurally built to connect them is the member-owned credit union.",
+    "date": "August 7, 2026",
+    "readTime": "5 min read",
+    "icon": "🌉",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/one-member-many-wallets/",
     "title": "One Member, Many Wallets: Persistent Identity for Credit Union Custody",
     "excerpt": "A credit union member shouldn't lose their compliance history because they switched custodians or replaced a lost key. Here's how we built persistent on-chain identity for CU custody — and why the audit trail is the hard part.",
     "date": "July 31, 2026",
     "readTime": "6 min read",
     "icon": "🔑",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
