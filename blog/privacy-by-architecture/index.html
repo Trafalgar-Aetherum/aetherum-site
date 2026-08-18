@@ -1,285 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy by Architecture: Why Ethereum Is Racing Toward What Credit Unions Need Today - Aetherum</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy by Architecture — Aetherum Blog</title>
+  <meta name="description" content="Ethereum is prioritizing privacy infrastructure for 2027. Credit unions can't wait — and they don't need secrecy. They need verifiable oversight." />
+  <meta property="og:title" content="Privacy by Architecture" />
+  <meta property="og:description" content="Ethereum is prioritizing privacy infrastructure for 2027. Credit unions can't wait — and they don't need secrecy. They need verifiable oversight." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aetherum.ai/blog/privacy-by-architecture/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --bg-primary: #162848;
-            --bg-secondary: #0d1a2f;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b8c4;
-            --accent-primary: #F7931A;
-            --accent-secondary: #c56d0d;
-            font-family: 'Fraunces', Georgia, serif;
-        }
+    :root {
+      --bg:      #162848;
+      --bg2:     #091522;
+      --bg3:     #122040;
+      --orange:  #F7931A;
+      --orange2: #e07d10;
+      --text:    #c8d8ec;
+      --muted:   #6b82a0;
+      --border:  rgba(255,255,255,0.07);
+    }
 
-        body {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
 
-        /* Grid Overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(247, 147, 26, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(247, 147, 26, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 1;
-        }
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,26,47,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: luminosity;
+    }
+    .nav-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 26, 47, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(247, 147, 26, 0.1);
-            padding: 1rem 2rem;
-            z-index: 100;
-        }
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--orange); }
+    .deck {
+      font-size: 1.15rem;
+      color: #8fa8c4;
+      font-style: italic;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .meta-row .tag {
+      background: rgba(247,147,26,0.12);
+      color: var(--orange);
+      border: 1px solid rgba(247,147,26,0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
 
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.05em;
-            font-size: 1.25rem;
-        }
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+    .stats-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--orange);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
 
-        nav a:hover {
-            color: var(--accent-primary);
-        }
+    /* BODY CONTENT */
+    .body-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .body-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin: 3rem 0 1rem;
+    }
+    .body-content p {
+      margin-bottom: 1.4rem;
+      color: var(--text);
+    }
+    .body-content strong { color: #fff; font-weight: 600; }
+    .body-content em { color: #a0bcd8; font-style: italic; }
 
-        /* Main Content */
-        main {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
-        }
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 3px solid var(--orange);
+      margin: 2.5rem 0;
+      padding: 1.2rem 1.8rem;
+      background: var(--bg3);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #a0bcd8;
+      line-height: 1.65;
+    }
 
-        /* Hero */
-        .hero {
-            margin-bottom: 3rem;
-        }
+    /* DISTINCTION BOX */
+    .distinction-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .distinction-box .box-title {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+    .distinction-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .distinction-row:last-child { border-bottom: none; }
+    .distinction-term {
+      color: #fff;
+      font-size: 13px;
+      min-width: 160px;
+      line-height: 1.5;
+    }
+    .distinction-def { color: var(--muted); font-size: 12px; line-height: 1.5; }
 
-        .hero-meta {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-        }
+    /* REQUIREMENT LIST */
+    .req-list {
+      background: var(--bg3);
+      border: 1px solid rgba(247,147,26,0.15);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .req-list .req-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .req-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .req-item:last-child { margin-bottom: 0; }
+    .req-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      min-width: 24px;
+      padding-top: 2px;
+    }
+    .req-text { font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+    .req-text strong { color: #fff; }
 
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
+    /* CLOSING NOTE */
+    .closing-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
+    /* CTA */
+    .cta-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 3rem 0 0;
+      text-align: center;
+    }
+    .cta-section .cta-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-section h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #0b1a2f;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--orange2); }
 
-        /* Article Body */
-        article {
-            font-size: 1rem;
-            line-height: 1.8;
-        }
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
 
-        article h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.75rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-        }
-
-        article h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.25rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
-
-        article p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        article strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        article em {
-            color: var(--accent-primary);
-            font-style: italic;
-        }
-
-        article ul, article ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        article li {
-            margin-bottom: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .divider {
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.3), transparent);
-            margin: 3rem 0;
-        }
-
-        .cta {
-            background: rgba(247, 147, 26, 0.1);
-            border-left: 3px solid var(--accent-primary);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .cta strong {
-            color: var(--text-primary);
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            z-index: 2;
-            border-top: 1px solid rgba(247, 147, 26, 0.1);
-            margin-top: 6rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-family: 'DM Mono', monospace;
-            font-size: 0.85rem;
-        }
-
-        footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            article h2 {
-                font-size: 1.5rem;
-            }
-
-            main {
-                padding: 6rem 1rem 2rem;
-            }
-        }
-    </style>
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .distinction-term { min-width: 120px; }
+    }
+  
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="/">AETHER<span style="font-weight: 700;">UM</span></a>
-    </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-meta">AUGUST 18, 2026 · 5 MIN READ · Founder, Aetherum</div>
-            <h1>Privacy by Architecture: Why Ethereum Is Racing Toward What Credit Unions Need Today</h1>
-            <p>Last week, Ethereum Foundation researchers announced a major priority for Hegotá: privacy infrastructure so intermediaries can't see what members borrow against. Credit unions don't have until 2027. And they shouldn't need privacy tech—they should need visibility.</p>
-        </section>
+<nav>
+  <a href="/" class="nav-logo">AETHER<span>UM</span></a>
+  <a href="/blog/" class="nav-back">← All Posts</a>
+</nav>
 
-        <article>
-            <h2>The Problem Ethereum Discovered</h2>
+<article>
+  <div class="hero">
+    <div class="eyebrow">Infrastructure &nbsp;·&nbsp; August 18, 2026</div>
+    <h1>Privacy by<br /><span>Architecture</span></h1>
+    <p class="deck">Ethereum is prioritizing privacy infrastructure for its 2027 upgrade. Credit unions can't wait that long — and they don't actually need secrecy. They need verifiable oversight.</p>
+    <div class="meta-row">
+      <span class="tag">Infrastructure</span>
+      <span>Founder, Aetherum</span>
+      <span>August 18, 2026</span>
+      <span>5 min read</span>
+    </div>
+  </div>
 
-            <p>When a credit union member borrows against crypto, every intermediary in the chain sees the position, rate, and repayment history. Custody providers. Settlement networks. Lending platforms. All see it.</p>
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">18 Mo</span>
+        <span class="stat-label">Building Audit-Native Infrastructure</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">140M</span>
+        <span class="stat-label">CU Members with Crypto Holdings</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">21</span>
+        <span class="stat-label">Patents Pending</span>
+      </div>
+    </div>
+  </div>
 
-            <p>For individuals, this is a privacy concern. For credit unions under NCUA regulation, it's a compliance risk. Credit unions are the custodians and stewards of member data. When that data flows through intermediaries, the CU's ability to guarantee that data stays secure depends entirely on promises—not control.</p>
+  <div class="body-content">
 
-            <p>Ethereum recognized this gap. <strong>Their 2027 solution: build privacy at the protocol level so intermediaries can't see the data in the first place.</strong> Developers are prioritizing Frame Transactions (EIP-8141) and Fork-Choice Enforced Inclusion Lists (FOCIL)—infrastructure that would let privacy pools pay their own transaction fees without exposing collateral data to anyone in the transaction chain.</p>
+    <p>
+      Last week, Ethereum Foundation researchers named their priority for Hegot&aacute;, the protocol's 2027 upgrade: privacy infrastructure that would let asset pools pay their own transaction fees without routing through intermediaries that can expose wallet activity. The proposals under consideration &mdash; Frame Transactions and Fork-Choice Enforced Inclusion Lists &mdash; are aimed at a specific problem. Every intermediary in a transaction chain sees more than it needs to.
+    </p>
 
-            <p>It's a landmark moment. But credit unions can't wait until 2027.</p>
+    <p>
+      That problem is real, and it is not abstract for credit unions. When a member borrows against digital assets, custody providers, settlement networks, and lending platforms each see some combination of position, rate, and repayment behavior. For an individual, that's a privacy concern. For an NCUA-regulated institution, it's a control problem.
+    </p>
 
-            <h2>Aetherum's Approach: Visibility, Not Secrecy</h2>
+    <p>
+      But the fix Ethereum is building &mdash; and the fix credit unions actually need &mdash; are not the same fix. Protocol-level privacy asks intermediaries to see less. A regulated lender has the opposite requirement: it has to be able to <strong>show an examiner everything</strong>. Secrecy is not the goal. Verifiability is.
+    </p>
 
-            <p>Aetherum's approach flips this entirely. Instead of asking intermediaries to protect member data, we built infrastructure where <strong>credit unions can verify what every intermediary actually does.</strong></p>
+    <blockquote>
+      The old model asks you to trust that intermediaries handle member data responsibly. The audit-native model doesn't ask. It verifies.
+    </blockquote>
 
-            <p>Here's how it works:</p>
+    <h2>What We Built Instead</h2>
 
-            <h3>1. Multi-Wallet Identity Binding</h3>
-            <p>A member has one persistent identity on-chain. That identity can link multiple wallets—self-custody, hardware wallet, recovery key in escrow. Members rotate keys, switch custodians, recover lost wallets without rebuilding their identity or re-KYCing.</p>
+    <p>
+      Aetherum's architecture starts from the assumption that a credit union should never have to take an intermediary's word for anything. Three pieces carry that weight.
+    </p>
 
-            <p>From the CU's perspective: one member, one identity, many wallets. From the member's perspective: they compartmentalize their collateral. Some assets in self-custody. Some with a custodian. Some in hardware. They move freely, and the credit union sees the aggregate identity—not the detailed wallet-by-wallet breakdown.</p>
+    <div class="req-list">
+      <div class="req-label">The Architecture</div>
+      <div class="req-item">
+        <div class="req-num">01</div>
+        <div class="req-text"><strong>Multi-wallet identity binding.</strong> A member holds one persistent on-chain identity linked to many approved wallets. They can rotate keys, switch custodians, or recover a lost-key wallet without rebuilding that identity or re-running KYC. The credit union sees one member and one clean audit trail, not a fragmented set of unrelated addresses.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">02</div>
+        <div class="req-text"><strong>AetherumTxGuard pre-signing verification.</strong> Before a transaction is signed, its terms are checked against policy &mdash; collateral value, LTV, custody arrangement, jurisdiction. The verification itself is recorded. The examiner gets the record; the intermediary gets only the instruction it needs to execute.</div>
+      </div>
+      <div class="req-item">
+        <div class="req-num">03</div>
+        <div class="req-text"><strong>DACS, our risk assessment model.</strong> It doesn't just produce an outcome. It produces the evidence behind the outcome &mdash; why the member qualified, which policy applied, what the examiner needs to validate the decision. Compliance evidence is a first-class output, not a report generated after the fact.</div>
+      </div>
+    </div>
 
-            <h3>2. AetherumTxGuard: Pre-Signing Verification</h3>
-            <p>Before a transaction touches the blockchain, every term is verified: collateral amount, LTV ratio, interest rate, custody arrangement, regulatory status. The verification itself becomes an auditable record for the examiner, not the intermediary.</p>
+    <div class="distinction-box">
+      <div class="box-title">The distinction worth drawing</div>
+      <div class="distinction-row">
+        <div class="distinction-term">Protocol privacy</div>
+        <div class="distinction-def">Reduces what intermediaries can observe. Valuable, and coming &mdash; on a 2027 timeline.</div>
+      </div>
+      <div class="distinction-row">
+        <div class="distinction-term">Audit-native design</div>
+        <div class="distinction-def">Reduces what a credit union has to take on faith. Available now, and the thing an examiner actually asks for.</div>
+      </div>
+    </div>
 
-            <p>The member's transaction never exposes their position to intermediaries in flight. It's verified, signed, locked, then submitted.</p>
+    <h2>Why It Matters Now</h2>
 
-            <h3>3. DACS: Audit-Native Risk Assessment</h3>
-            <p>Our risk assessment model generates compliance-readable evidence at every step: why this member qualifies, what safeguards are in place, what the examiner needs to see to validate the decision.</p>
+    <p>
+      The Ethereum roadmap is a useful signal. Vitalik Buterin has pushed privacy up the priority list alongside quantum resistance and scaling, and the fact that a protocol of that size is spending its 2027 budget here says something about where institutional expectations are heading. Members will expect it. Examiners will ask about it.
+    </p>
 
-            <p><strong>This is the architectural difference:</strong> Ethereum is building privacy so intermediaries can't see. We built infrastructure so regulators <em>can</em> see—and members' protection comes from CU oversight, not from hiding data.</p>
+    <p>
+      The question for a credit union isn't whether that shift is coming. It's whether the lending infrastructure it chooses today will still be defensible when it arrives. That means identity infrastructure that survives a custodian change, transaction verification that doesn't rest on an intermediary's promise, and an audit record that explains itself without a translation layer.
+    </p>
 
-            <h2>Why This Matters for Credit Unions Now</h2>
+    <p>
+      We built those because NCUA examination demanded them, not because a roadmap predicted them. The alignment is the point.
+    </p>
 
-            <p>The Ethereum roadmap signals that privacy infrastructure will be table-stakes. By 2027 or 2028, members will expect it. Regulators will demand it. Credit unions without it will lose members to institutions that do.</p>
+    <p class="closing-note">
+      Aetherum builds audit-native, crypto-collateralized lending infrastructure purpose-built for NCUA-regulated credit unions.
+    </p>
 
-            <p>But the question isn't whether privacy infrastructure is coming. It is. The question is whether your credit union will be ready when it arrives.</p>
+    <div class="cta-section">
+      <div class="cta-eyebrow">For Credit Unions</div>
+      <h3>SEE IT FOR YOURSELF</h3>
+      <p>We'll walk through the full architecture live &mdash; DACS, TxGuard, multi-wallet identity binding, and the NCUA examiner view that turns compliance into a feature.</p>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" class="cta-btn" target="_blank" rel="noopener">Book a 30-Minute Demo &rarr;</a>
+    </div>
 
-            <p>140 million credit union members hold digital assets today. The vast majority want a compliant path to borrow against them without selling and triggering taxes. That path requires:</p>
+  </div>
+</article>
 
-            <ul>
-                <li>Identity infrastructure that doesn't leak collateral data</li>
-                <li>Transaction verification that doesn't require intermediary trust</li>
-                <li>Audit records that explain the decision to regulators</li>
-                <li>Wallet flexibility that lets members own their keys</li>
-            </ul>
+<footer>
+  <p>
+    <a href="/">Aetherum</a> &nbsp;·&nbsp;
+    &copy; 2026 Aetherum &nbsp;·&nbsp;
+    <a href="https://aetherum.ai">aetherum.ai</a>
+    <br /><br />
+    21 Patents Pending
+  </p>
+</footer>
 
-            <p>Aetherum shipped these. Not in 2027. Today.</p>
-
-            <hr class="divider">
-
-            <p><strong>The gap between what members need and what infrastructure provides narrows when credit unions stop asking intermediaries to promise privacy—and build it into the platform instead.</strong></p>
-
-            <p>If you're ready to offer crypto-collateralized borrowing to your members with privacy and compliance built-in, <a href="https://calendly.com/jbailey-aetherum/new-meeting" style="color: var(--accent-primary);">let's talk</a>.</p>
-        </article>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Aetherum. Built for credit unions. <a href="/">Home</a></p>
-    </footer>
 </body>
 </html>
