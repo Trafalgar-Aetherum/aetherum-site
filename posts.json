@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/privacy-by-architecture",
+    "title": "Privacy by Architecture",
+    "excerpt": "Ethereum is prioritizing privacy infrastructure for its 2027 upgrade. Credit unions can't wait that long — and they don't actually need secrecy. They need verifiable oversight.",
+    "date": "August 18, 2026",
+    "readTime": "5 min read",
+    "icon": "🔒",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/why-build-a-moat-when-you-can-build-a-canal/",
     "title": "Why Build a Moat When You Can Build a Canal?",
     "excerpt": "Aetherum built audit-native infrastructure 18 months ago. Visa, Mastercard, JPMorgan, and regulators followed. Here's why compliance-first is the moat.",
     "date": "August 13, 2026",
     "readTime": "6 min read",
     "icon": "🏗️",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {

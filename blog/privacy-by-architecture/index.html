@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy by Architecture: Why Ethereum Is Racing Toward What Credit Unions Need Today - Aetherum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #162848;
+            --bg-secondary: #0d1a2f;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c4;
+            --accent-primary: #F7931A;
+            --accent-secondary: #c56d0d;
+            font-family: 'Fraunces', Georgia, serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grid Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(247, 147, 26, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(247, 147, 26, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 26, 47, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+            font-size: 1.25rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Article Body */
+        article {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        article h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+
+        article h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        article p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        article strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        article em {
+            color: var(--accent-primary);
+            font-style: italic;
+        }
+
+        article ul, article ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        article li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.3), transparent);
+            margin: 3rem 0;
+        }
+
+        .cta {
+            background: rgba(247, 147, 26, 0.1);
+            border-left: 3px solid var(--accent-primary);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .cta strong {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(247, 147, 26, 0.1);
+            margin-top: 6rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            article h2 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 6rem 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">AETHER<span style="font-weight: 700;">UM</span></a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-meta">AUGUST 18, 2026 · 5 MIN READ · Founder, Aetherum</div>
+            <h1>Privacy by Architecture: Why Ethereum Is Racing Toward What Credit Unions Need Today</h1>
+            <p>Last week, Ethereum Foundation researchers announced a major priority for Hegotá: privacy infrastructure so intermediaries can't see what members borrow against. Credit unions don't have until 2027. And they shouldn't need privacy tech—they should need visibility.</p>
+        </section>
+
+        <article>
+            <h2>The Problem Ethereum Discovered</h2>
+
+            <p>When a credit union member borrows against crypto, every intermediary in the chain sees the position, rate, and repayment history. Custody providers. Settlement networks. Lending platforms. All see it.</p>
+
+            <p>For individuals, this is a privacy concern. For credit unions under NCUA regulation, it's a compliance risk. Credit unions are the custodians and stewards of member data. When that data flows through intermediaries, the CU's ability to guarantee that data stays secure depends entirely on promises—not control.</p>
+
+            <p>Ethereum recognized this gap. <strong>Their 2027 solution: build privacy at the protocol level so intermediaries can't see the data in the first place.</strong> Developers are prioritizing Frame Transactions (EIP-8141) and Fork-Choice Enforced Inclusion Lists (FOCIL)—infrastructure that would let privacy pools pay their own transaction fees without exposing collateral data to anyone in the transaction chain.</p>
+
+            <p>It's a landmark moment. But credit unions can't wait until 2027.</p>
+
+            <h2>Aetherum's Approach: Visibility, Not Secrecy</h2>
+
+            <p>Aetherum's approach flips this entirely. Instead of asking intermediaries to protect member data, we built infrastructure where <strong>credit unions can verify what every intermediary actually does.</strong></p>
+
+            <p>Here's how it works:</p>
+
+            <h3>1. Multi-Wallet Identity Binding</h3>
+            <p>A member has one persistent identity on-chain. That identity can link multiple wallets—self-custody, hardware wallet, recovery key in escrow. Members rotate keys, switch custodians, recover lost wallets without rebuilding their identity or re-KYCing.</p>
+
+            <p>From the CU's perspective: one member, one identity, many wallets. From the member's perspective: they compartmentalize their collateral. Some assets in self-custody. Some with a custodian. Some in hardware. They move freely, and the credit union sees the aggregate identity—not the detailed wallet-by-wallet breakdown.</p>
+
+            <h3>2. AetherumTxGuard: Pre-Signing Verification</h3>
+            <p>Before a transaction touches the blockchain, every term is verified: collateral amount, LTV ratio, interest rate, custody arrangement, regulatory status. The verification itself becomes an auditable record for the examiner, not the intermediary.</p>
+
+            <p>The member's transaction never exposes their position to intermediaries in flight. It's verified, signed, locked, then submitted.</p>
+
+            <h3>3. DACS: Audit-Native Risk Assessment</h3>
+            <p>Our risk assessment model generates compliance-readable evidence at every step: why this member qualifies, what safeguards are in place, what the examiner needs to see to validate the decision.</p>
+
+            <p><strong>This is the architectural difference:</strong> Ethereum is building privacy so intermediaries can't see. We built infrastructure so regulators <em>can</em> see—and members' protection comes from CU oversight, not from hiding data.</p>
+
+            <h2>Why This Matters for Credit Unions Now</h2>
+
+            <p>The Ethereum roadmap signals that privacy infrastructure will be table-stakes. By 2027 or 2028, members will expect it. Regulators will demand it. Credit unions without it will lose members to institutions that do.</p>
+
+            <p>But the question isn't whether privacy infrastructure is coming. It is. The question is whether your credit union will be ready when it arrives.</p>
+
+            <p>140 million credit union members hold digital assets today. The vast majority want a compliant path to borrow against them without selling and triggering taxes. That path requires:</p>
+
+            <ul>
+                <li>Identity infrastructure that doesn't leak collateral data</li>
+                <li>Transaction verification that doesn't require intermediary trust</li>
+                <li>Audit records that explain the decision to regulators</li>
+                <li>Wallet flexibility that lets members own their keys</li>
+            </ul>
+
+            <p>Aetherum shipped these. Not in 2027. Today.</p>
+
+            <hr class="divider">
+
+            <p><strong>The gap between what members need and what infrastructure provides narrows when credit unions stop asking intermediaries to promise privacy—and build it into the platform instead.</strong></p>
+
+            <p>If you're ready to offer crypto-collateralized borrowing to your members with privacy and compliance built-in, <a href="https://calendly.com/jbailey-aetherum/new-meeting" style="color: var(--accent-primary);">let's talk</a>.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aetherum. Built for credit unions. <a href="/">Home</a></p>
+    </footer>
+</body>
+</html>
