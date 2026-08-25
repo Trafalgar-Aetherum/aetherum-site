@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/blockchains-fannie-mae-moment/",
+    "title": "Blockchain's Fannie Mae Moment",
+    "excerpt": "What happens when regulated loans become portable — without leaving their compliance behind — and what that could mean for credit union capital formation.",
+    "date": "August 25, 2026",
+    "readTime": "7 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/privacy-by-architecture",
     "title": "Privacy by Architecture",
     "excerpt": "Ethereum is prioritizing privacy infrastructure for its 2027 upgrade. Credit unions can't wait that long — and they don't actually need secrecy. They need verifiable oversight.",
     "date": "August 18, 2026",
     "readTime": "5 min read",
     "icon": "🔒",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
