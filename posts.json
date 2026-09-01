@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/banks-building-onchain-future-credit-unions/",
+    "title": "Banks Are Building Their On-Chain Future. Where Are Credit Unions?",
+    "excerpt": "Thirty-nine state banking associations are organizing around bank-owned blockchain infrastructure. Credit unions now face the same strategic decision.",
+    "date": "September 1, 2026",
+    "readTime": "5 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/blockchains-fannie-mae-moment/",
     "title": "Blockchain's Fannie Mae Moment",
     "excerpt": "What happens when regulated loans become portable — without leaving their compliance behind — and what that could mean for credit union capital formation.",
     "date": "August 25, 2026",
     "readTime": "7 min read",
     "icon": "🏦",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
