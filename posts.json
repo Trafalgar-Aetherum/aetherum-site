@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/your-member-identity-onchain/",
+    "title": "Your Member Shouldn't Lose Their Banking Relationship When Money Moves On-Chain",
+    "excerpt": "A wallet can authenticate a key. A credit union needs to know whether that member is eligible, authorized, current, and auditable. Here's why we built a patent-pending identity and authorization layer for regulated on-chain finance.",
+    "date": "",
+    "readTime": "6 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/banks-building-onchain-future-credit-unions/",
     "title": "Banks Are Building Their On-Chain Future. Where Are Credit Unions?",
     "excerpt": "Thirty-nine state banking associations are organizing around bank-owned blockchain infrastructure. Credit unions now face the same strategic decision.",
     "date": "September 1, 2026",
     "readTime": "5 min read",
     "icon": "🏦",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
