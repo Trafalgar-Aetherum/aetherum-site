@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/credit-unions-digital-asset-market-structure/",
+    "title": "Credit Unions Are Entering the Digital-Asset Market Structure Conversation",
+    "excerpt": "The latest CLARITY Act language raises a larger question for America's credit unions: who will control the infrastructure connecting trusted financial institutions to the digital-asset economy?",
+    "date": "September 13, 2026",
+    "readTime": "8 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/your-member-identity-onchain/",
     "title": "Your Member Shouldn't Lose Their Banking Relationship When Money Moves On-Chain",
     "excerpt": "A wallet can authenticate a key. A credit union needs to know whether that member is eligible, authorized, current, and auditable. Here's why we built a patent-pending identity and authorization layer for regulated on-chain finance.",
     "date": "",
     "readTime": "6 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
