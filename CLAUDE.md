@@ -40,7 +40,7 @@ Known remaining exceptions after the last audit (not bugs, just noted so they ar
 ## Public-content restrictions
 - Never name BitGo, Sardine, or Reap/Payward publicly. StraitsX, Mesh, Plaid, Circle are fine.
 - When Circle is named, never reference grants, cohorts, program names, or dollar figures.
-- Never publish patent application numbers, confirmation numbers, or filing dates. Count only; currently 21 as of July 14, 2026. When a new provisional is filed the count must be updated across every page carrying a footer badge — grep for `Patents Pending` site-wide, not just in `blog/`.
+- Never publish patent application numbers, confirmation numbers, or filing dates. Count only; currently 22 as of September 2026. When a new provisional is filed the count must be updated across every page carrying a footer badge — grep for `Patents Pending` site-wide, not just in `blog/`.
 - DACS is always a "risk assessment model", never "credit scoring" (Plaid compliance requirement).
 - Do not describe roadmap capabilities as shipped. Investor and partner diligence reads this site.
 
@@ -56,7 +56,7 @@ Known remaining exceptions after the last audit (not bugs, just noted so they ar
 4. byline "Founder, Aetherum"
 5. bg `#162848`
 6. nav wordmark is `AETHER<span>UM</span>`
-7. footer patent count matches current global value (21)
+7. footer patent count matches current global value (22)
 8. no patent numbers or filing dates
 9. no restricted vendor names
 10. no roadmap capability described as shipped
