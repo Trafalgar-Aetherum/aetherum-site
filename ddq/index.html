@@ -452,19 +452,26 @@ function renderKb(entries) {
   });
   sortedCats.forEach(([cat, items]) => {
     const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
-    const labelText = CAT_LABELS[cat] || cat.replace(/_/g,' ');
+    const isIpPortfolio = cat === 'ip_patents';
+    const labelText = isIpPortfolio ? 'IP Portfolio' : (CAT_LABELS[cat] || cat.replace(/_/g,' '));
+    const countText = isIpPortfolio ? 22 : items.length;
     if (collapsible) {
       html += `<div class="cat-group">`;
       html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
-      html += `${labelText}<span class="cat-count">${items.length}</span><span class="cat-chevron">&#9658;</span>`;
+      html += `${labelText}<span class="cat-count">${countText}</span><span class="cat-chevron">&#9658;</span>`;
       html += `</div>`;
       html += `<div class="cat-items" data-cat="${cat}" style="display:none">`;
     } else {
-      html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${items.length}</span></div>`;
+      html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${countText}</span></div>`;
+    }
+    if (isIpPortfolio) {
+      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">22 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
+      html += `<div class="demo-card-sub" style="margin-bottom:6px;">Recent additions include:</div>`;
     }
     items.forEach(it => {
       const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
-      html += `<div class="kb-item" onclick="setQ('${q}?')">${it.title}</div>`;
+      const displayTitle = isIpPortfolio ? it.title.replace(/\s*\(Patent Pending\)\s*$/, ' — Patent Pending') : it.title;
+      html += `<div class="kb-item" onclick="setQ('${q}?')">${displayTitle}</div>`;
     });
     if (collapsible) {
       html += `</div></div>`;
