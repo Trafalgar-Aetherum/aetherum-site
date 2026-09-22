@@ -739,6 +739,14 @@
   /* ─── BLOG ─── */
   .blog-section { background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%); }
 
+  .blog-heading-row { display:flex; align-items:center; gap:28px; flex-wrap:wrap; margin-bottom:56px; }
+  .blog-heading-row .section-title { margin-bottom:0; }
+  .blog-library-button { display:inline-flex; align-items:center; gap:14px; padding:16px 24px; border:1px solid rgba(212,136,92,.7); border-radius:14px; color:var(--text-primary); text-decoration:none; font-size:16px; font-weight:600; background:rgba(255,255,255,.015); transition:all .3s ease; white-space:nowrap; }
+  .blog-library-button:hover { border-color:var(--copper-light); background:rgba(212,136,92,.08); transform:translateY(-1px); }
+  .blog-library-button svg { width:22px; height:22px; color:var(--text-primary); }
+  .blog-library-button .arrow { font-size:22px; margin-left:2px; }
+  @media (max-width: 760px) { .blog-heading-row { align-items:flex-start; gap:20px; } .blog-library-button { width:fit-content; } }
+
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1553,7 +1561,13 @@
 <!-- BLOG -->
 <section class="section blog-section" id="blog">
   <div class="section-label">Inside Aetherum.ai</div>
-  <h2 class="section-title">Product News, Trends & Industry Insights</h2>
+  <div class="blog-heading-row">
+    <h2 class="section-title">Product News, Trends & Industry Insights</h2>
+    <a class="blog-library-button" href="/blog/library/" aria-label="Open the Aetherum Blog Library">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5.5h16v14H4z"/><path d="M8 5.5v14M12 5.5v14M16 5.5v14"/></svg>
+      Aetherum Blog Library <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
   <div class="blog-grid" id="homepage-blog-grid">
     <div style="color:var(--text-muted);padding:40px 0;grid-column:1/-1;">Loading posts…</div>
   </div>
