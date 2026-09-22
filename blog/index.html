@@ -150,6 +150,41 @@
     z-index: 2;
   }
 
+  .hero-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    max-width: 1100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .library-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    padding: 12px 18px;
+    border: 1px solid rgba(212,136,92,0.42);
+    border-radius: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.025);
+    transition: all 0.3s ease;
+  }
+
+  .library-button:hover {
+    color: var(--copper-light);
+    border-color: var(--copper);
+    background: rgba(212,136,92,0.08);
+    transform: translateY(-1px);
+  }
+
+  .library-button svg { width: 18px; height: 18px; }
+
   .blog-hero h1 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(36px, 4vw, 56px);
@@ -565,6 +600,8 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .blog-hero, .featured-section, .blog-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .hero-heading-row { align-items: flex-start; flex-direction: column; gap: 18px; }
+    .library-button { width: fit-content; }
     .blog-grid { grid-template-columns: 1fr; }
     .featured-body { padding: 32px 28px; }
     .cta-buttons { flex-direction: column; align-items: center; }
@@ -595,7 +632,13 @@
 <section class="blog-hero">
   <div class="grid-overlay"></div>
   <div class="section-label">Inside Aetherum.ai</div>
-  <h1>Product News, Trends & Industry Insights</h1>
+  <div class="hero-heading-row">
+    <h1>Product News, Trends & Industry Insights</h1>
+    <a class="library-button" href="/blog/library/" aria-label="Open the Aetherum Blog Library">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5.5h16v14H4z"/><path d="M8 5.5v14M12 5.5v14M16 5.5v14"/></svg>
+      Aetherum Blog Library <span aria-hidden="true">→</span>
+    </a>
+  </div>
   <p>Perspectives on crypto-collateralized lending, credit union innovation, institutional infrastructure, and the regulatory landscape shaping digital finance.</p>
 </section>
 
