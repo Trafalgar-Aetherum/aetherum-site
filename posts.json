@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/volume-is-not-liquidity/",
+    "title": "Volume Is Not Liquidity",
+    "excerpt": "Trading volume can tell an institution what happened. It cannot, by itself, tell an institution how much risk it is taking. The Kalshi perpetuals episode shows why credit unions need an intelligent control layer between digital-asset markets and the balance sheet.",
+    "date": "September 23, 2026",
+    "readTime": "6 min read",
+    "icon": "📊",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/clarity-stalled-credit-union-roadmap/",
     "title": "CLARITY Stalled. The Credit Union Roadmap Can't.",
     "excerpt": "The market-structure bill stalled. Digital-asset infrastructure did not. Credit unions now need a roadmap built around authority, governance, controls and examiner-ready evidence.",
     "date": "September 21, 2026",
     "readTime": "7 min read",
     "icon": "🧭",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
