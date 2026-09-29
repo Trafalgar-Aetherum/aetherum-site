@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/stablecoins-who-signs-off/",
+    "title": "Stablecoins Can Move in Seconds. Who Signs Off Before They Move?",
+    "excerpt": "Stablecoins solve the movement-of-value problem. Credit unions still need to prove who authorized the transaction, which policies were satisfied, what executed, and why. That is the control layer TxGuard was built to provide.",
+    "date": "September 29, 2026",
+    "readTime": "7 min read",
+    "icon": "🛡️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/volume-is-not-liquidity/",
     "title": "Volume Is Not Liquidity",
     "excerpt": "Trading volume can tell an institution what happened. It cannot, by itself, tell an institution how much risk it is taking. The Kalshi perpetuals episode shows why credit unions need an intelligent control layer between digital-asset markets and the balance sheet.",
     "date": "September 23, 2026",
     "readTime": "6 min read",
     "icon": "📊",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/clarity-stalled-credit-union-roadmap/",
@@ -17,7 +27,7 @@
     "readTime": "7 min read",
     "icon": "🧭",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/credit-unions-digital-asset-market-structure/",
@@ -27,7 +37,7 @@
     "readTime": "8 min read",
     "icon": "🏛️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/your-member-identity-onchain/",
@@ -37,7 +47,7 @@
     "readTime": "6 min read",
     "icon": "🔐",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/banks-building-onchain-future-credit-unions/",
@@ -67,7 +77,7 @@
     "readTime": "5 min read",
     "icon": "🔒",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/why-build-a-moat-when-you-can-build-a-canal/",
@@ -117,7 +127,7 @@
     "readTime": "7 min read",
     "icon": "🔐",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/audit-native-debt-instruments",
@@ -187,7 +197,7 @@
     "readTime": "8 min read",
     "icon": "📋",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/arc-transaction-memos/",
@@ -207,7 +217,7 @@
     "readTime": "5 min read",
     "icon": "🔐",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/stablecoin-merchant-acceptance",
@@ -217,7 +227,7 @@
     "readTime": "5 min read",
     "icon": "🏪",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/when-visa-open-sources-your-thesis",
@@ -227,7 +237,7 @@
     "readTime": "5 min read",
     "icon": "🛡️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/clarity-act-credit-union-custody",
@@ -237,7 +247,7 @@
     "readTime": "7 min read",
     "icon": "⚖️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/67-million-crypto-holders",
@@ -297,7 +307,7 @@
     "readTime": "5 min read",
     "icon": "⚖️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/sec-validated-infrastructure",
@@ -307,7 +317,7 @@
     "readTime": "5 min read",
     "icon": "🏛️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/circle-gateway-real-time/",
@@ -367,7 +377,7 @@
     "readTime": "9 min read",
     "icon": "🌐",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/your-members-cant-wait-ppsi",
@@ -407,7 +417,7 @@
     "readTime": "7 min read",
     "icon": "⚖️",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/telegram-payments-for-billions/",
@@ -427,7 +437,7 @@
     "readTime": "8 min read",
     "icon": "₿",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/why-we-build/",
