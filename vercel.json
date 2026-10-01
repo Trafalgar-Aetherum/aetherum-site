@@ -6,6 +6,10 @@
       "dest": "/api/ddq-auth.js"
     },
     {
+      "src": "/ddq/logout",
+      "dest": "/api/ddq-auth.js"
+    },
+    {
       "src": "/ddq/(.*)",
       "dest": "/api/ddq-auth.js"
     },
