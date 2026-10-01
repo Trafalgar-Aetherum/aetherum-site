@@ -3,11 +3,11 @@
   "routes": [
     {
       "src": "/ddq",
-      "dest": "/api/ddq-auth.js"
+      "dest": "/api/ddq-auth"
     },
     {
       "src": "/ddq/(.*)",
-      "dest": "/api/ddq-auth.js"
+      "dest": "/api/ddq-auth"
     },
     {
       "src": "/blog/crypto-as-collateral.html",
