@@ -1,16 +1,78 @@
 {
   "cleanUrls": true,
   "routes": [
-    { "src": "/blog/crypto-as-collateral.html", "headers": { "Location": "/blog/crypto-as-collateral/" }, "status": 301 },
-    { "src": "/blog/crypto-banks-are-back.html", "headers": { "Location": "/blog/crypto-banks-are-back/" }, "status": 301 },
-    { "src": "/blog/institutional-rails-tokenization.html", "headers": { "Location": "/blog/institutional-rails-tokenization/" }, "status": 301 },
-    { "src": "/blog/wealth-insurance-member-value.html", "headers": { "Location": "/blog/wealth-insurance-member-value/" }, "status": 301 },
-    { "src": "/blog/when-nasdaq-calls-crypto-infrastructure-ready.html", "headers": { "Location": "/blog/when-nasdaq-calls-crypto-infrastructure-ready/" }, "status": 301 },
-    { "src": "/blog/who-gets-left-out.html", "headers": { "Location": "/blog/who-gets-left-out/" }, "status": 301 },
-    { "src": "/blog/why-were-moving-into-rwa-tokenization.html", "headers": { "Location": "/blog/why-were-moving-into-rwa-tokenization/" }, "status": 301 },
-    { "src": "/deck", "dest": "/deck.html" },
-    { "src": "/product", "dest": "/product.html" },
-    { "src": "/blog/(.*)", "dest": "/blog/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/ddq",
+      "dest": "/api/ddq-auth.js"
+    },
+    {
+      "src": "/ddq/(.*)",
+      "dest": "/api/ddq-auth.js"
+    },
+    {
+      "src": "/blog/crypto-as-collateral.html",
+      "headers": {
+        "Location": "/blog/crypto-as-collateral/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/crypto-banks-are-back.html",
+      "headers": {
+        "Location": "/blog/crypto-banks-are-back/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/institutional-rails-tokenization.html",
+      "headers": {
+        "Location": "/blog/institutional-rails-tokenization/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/wealth-insurance-member-value.html",
+      "headers": {
+        "Location": "/blog/wealth-insurance-member-value/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/when-nasdaq-calls-crypto-infrastructure-ready.html",
+      "headers": {
+        "Location": "/blog/when-nasdaq-calls-crypto-infrastructure-ready/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/who-gets-left-out.html",
+      "headers": {
+        "Location": "/blog/who-gets-left-out/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/why-were-moving-into-rwa-tokenization.html",
+      "headers": {
+        "Location": "/blog/why-were-moving-into-rwa-tokenization/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/deck",
+      "dest": "/deck.html"
+    },
+    {
+      "src": "/product",
+      "dest": "/product.html"
+    },
+    {
+      "src": "/blog/(.*)",
+      "dest": "/blog/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
