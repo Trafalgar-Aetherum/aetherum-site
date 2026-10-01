@@ -89,7 +89,7 @@ module.exports = async (req, res) => {
     res.setHeader('Cache-Control', 'private, no-store');
     return res.end(loginPage(false));
   }
-  const file = path.join(process.cwd(), 'ddq', 'index.html');
+  const file = path.join(process.cwd(), '_ddq_private', 'content.html');
   const content = fs.readFileSync(file, 'utf8');
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
