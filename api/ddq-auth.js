@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
     return res.end('DDQ access is not configured. Set DDQ_ACCESS_PASSWORD_HASH and DDQ_SESSION_SECRET in Vercel.');
   }
   const session = getCookie(req, COOKIE_NAME);
-  if (req.method === 'GET' && req.url && req.url.split('?')[0].replace(/\\/$/, '') === '/ddq/logout') {
+  if (req.method === 'GET' && req.url && req.url.split('?')[0].replace(/\/$/, '') === '/ddq/logout') {
     res.statusCode = 303;
     res.setHeader('Set-Cookie', COOKIE_NAME + '=; Max-Age=0; Path=/ddq; HttpOnly; Secure; SameSite=Lax');
     res.setHeader('Location', '/ddq');
