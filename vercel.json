@@ -7,7 +7,7 @@
     },
     {
       "src": "/ddq/logout",
-      "dest": "/api/ddq-auth.js"
+      "dest": "/api/ddq-logout.js"
     },
     {
       "src": "/ddq/(.*)",
