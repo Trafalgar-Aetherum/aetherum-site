@@ -330,8 +330,8 @@ const LOCAL_KB = [
   },
   {
     question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
-    title: 'Patent count — 22 patents pending',
-    answer: "Aetherum has 22 provisional patent applications filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
+    title: 'Patent count — 23 patents pending',
+    answer: "Aetherum has 23 provisional patent applications filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
     sources: ['IP & Patents']
   },
   {
@@ -458,7 +458,7 @@ function renderKb(entries) {
     const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
     const isIpPortfolio = cat === 'ip_patents';
     const labelText = isIpPortfolio ? 'IP Portfolio' : (CAT_LABELS[cat] || cat.replace(/_/g,' '));
-    const countText = isIpPortfolio ? 22 : items.length;
+    const countText = isIpPortfolio ? 23 : items.length;
     if (collapsible) {
       html += `<div class="cat-group">`;
       html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
@@ -469,7 +469,7 @@ function renderKb(entries) {
       html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${countText}</span></div>`;
     }
     if (isIpPortfolio) {
-      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">22 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
+      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">23 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
       html += `<div class="demo-card-sub" style="margin-bottom:6px;">Recent additions include:</div>`;
     }
     items.forEach(it => {
