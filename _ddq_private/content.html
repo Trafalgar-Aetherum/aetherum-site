@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aetherum — DDQ Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #050D1A;
+  --navy-mid: #080F1E;
+  --navy-card: #0A1628;
+  --sidebar-bg: #0A1628;
+  --sidebar-card: #0F1F38;
+  --orange: #F7931A;
+  --orange-glow: rgba(247,147,26,0.10);
+  --orange-border: rgba(247,147,26,0.22);
+  --white: #EEF0F4;
+  --nav-text: #A8B8D0;
+  --muted: #6B7A96;
+  --border: rgba(255,255,255,0.06);
+  --card-border: #1A3050;
+  --input-border: #1E3A5F;
+  --placeholder: #4A6A8A;
+  --tag-bg: #112240;
+  --tag-border: #2A4A70;
+  --tag-text: #7EB3E0;
+  --green: #22C55E;
+  --red: #EF4444;
+}
+html,body { height:100%; overflow:hidden; background:var(--navy); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.app { display:grid; grid-template-rows:52px 1fr auto; grid-template-columns:200px 1fr; height:100vh; overflow:hidden; }
+
+/* HEADER */
+header { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; padding:0 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); position:relative; z-index:10; }
+header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0.35; }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; cursor:pointer; }
+.logo-hex { width:24px; height:24px; background:var(--orange); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); }
+.logo-name { font-family:'Fraunces',serif; font-size:15px; font-weight:600; letter-spacing:0.03em; }
+.logo-module { font-size:11px; color:var(--orange); letter-spacing:0.14em; text-transform:uppercase; margin-left:2px; opacity:0.8; }
+.header-right { display:flex; align-items:center; gap:14px; }
+.status-pill { display:flex; align-items:center; gap:6px; padding:3px 10px; border-radius:20px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.2); font-size:11px; color:var(--green); letter-spacing:0.08em; }
+.status-dot { width:5px; height:5px; border-radius:50%; background:var(--green); animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+/* SIDEBAR */
+.sidebar { background:var(--sidebar-bg); border-right:1px solid var(--border); display:flex; flex-direction:column; overflow-y:auto; height:100%; flex-shrink:0; }
+.sidebar::-webkit-scrollbar { width:3px; }
+.sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+.sidebar-top { padding:14px; border-bottom:1px solid var(--border); }
+.s-label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:10px; }
+.quick-q { display:block; width:100%; padding:8px 10px; margin-bottom:9px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:5px; color:var(--nav-text); font-family:'DM Mono',monospace; font-size:13px; text-align:left; cursor:pointer; transition:all 0.14s; line-height:1.4; }
+.quick-q:hover { border-color:var(--orange-border); color:var(--white); background:var(--orange-glow); }
+.kb-scroll { padding:14px; }
+.cat-group { margin-bottom:18px; }
+.cat-label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:8px; padding-bottom:5px; border-bottom:1px solid var(--orange-border); display:flex; align-items:center; gap:6px; }
+.cat-count { background:var(--orange-glow); border:1px solid var(--orange-border); border-radius:10px; padding:1px 5px; font-size:9px; color:var(--orange); }
+.kb-item { padding:6px 8px 6px 10px; border-radius:4px; cursor:pointer; font-size:13px; color:var(--nav-text); transition:all 0.14s; line-height:1.4; margin-bottom:6px; border-left:2px solid transparent; }
+.kb-item:hover { background:var(--orange-glow); color:var(--white); border-left-color:var(--orange); }
+.cat-label.collapsible { cursor:pointer; user-select:none; }
+.cat-chevron { display:inline-block; font-size:9px; color:var(--muted); margin-left:auto; transition:transform 0.18s; line-height:1; flex-shrink:0; }
+.cat-label.collapsible.expanded .cat-chevron { transform:rotate(90deg); }
+
+/* ARC TESTNET LIVE BLOCK */
+.arc-live-block { padding:12px 14px; border-bottom:1px solid var(--border); background:var(--sidebar-card); flex-shrink:0; }
+.arc-live-header { display:flex; align-items:center; gap:7px; margin-bottom:7px; }
+.arc-live-dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:blink 2s ease-in-out infinite; flex-shrink:0; }
+.arc-live-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); }
+.arc-contract-name { font-size:12px; color:var(--white); line-height:1.5; margin-bottom:3px; }
+.arc-contract-addr { font-size:10px; color:var(--nav-text); font-family:'DM Mono',monospace; word-break:break-all; margin-bottom:4px; }
+.arc-status { font-size:10px; color:var(--green); margin-bottom:4px; }
+.arc-link { font-size:10px; color:var(--orange); opacity:0.8; text-decoration:none; display:inline-block; }
+.arc-link:hover { opacity:1; text-decoration:underline; }
+
+.onchain-ref { padding:12px 14px; border-top:1px solid var(--border); background:var(--sidebar-bg); flex-shrink:0; }
+.ref-label { font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange); margin-bottom:8px; }
+.ref-row { display:flex; align-items:baseline; justify-content:space-between; gap:6px; margin-bottom:3px; }
+.ref-name { font-size:11px; color:var(--nav-text); white-space:nowrap; }
+.ref-addr { font-size:11px; color:var(--orange); text-decoration:none; font-family:'DM Mono',monospace; letter-spacing:0.02em; }
+.ref-addr:hover { text-decoration:underline; }
+.ref-net { font-size:10px; color:var(--muted); opacity:0.6; margin-top:5px; }
+
+/* MAIN */
+.main { display:flex; flex-direction:column; overflow:hidden; height:100%; }
+.input-panel { padding:18px 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); }
+.input-label { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.input-row { display:flex; gap:10px; }
+.question-box { flex:1; background:var(--navy-card); border:1px solid var(--input-border); border-radius:6px; padding:10px 13px; color:var(--white); font-family:'DM Mono',monospace; font-size:13px; resize:vertical; min-height:86px; transition:border-color 0.2s; outline:none; line-height:1.6; }
+.question-box::placeholder { color:var(--placeholder); }
+.question-box:focus { border-color:var(--orange-border); box-shadow:0 0 0 3px var(--orange-glow); }
+.btn-col { display:flex; flex-direction:column; gap:7px; }
+.ask-btn { background:var(--orange); color:var(--navy); border:none; border-radius:6px; padding:0 18px; height:44px; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.14s; white-space:nowrap; min-width:108px; }
+.ask-btn:hover { opacity:0.88; transform:translateY(-1px); }
+.ask-btn:active { transform:none; }
+.ask-btn:disabled { opacity:0.35; cursor:not-allowed; transform:none; }
+.clear-btn { background:transparent; color:var(--muted); border:1px solid var(--border); border-radius:6px; padding:0 18px; height:36px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:all 0.14s; }
+.clear-btn:hover { color:var(--white); border-color:rgba(255,255,255,0.12); }
+.hint { font-size:11px; color:var(--muted); margin-top:8px; }
+
+/* RESULTS */
+.results { flex:1; min-height:0; overflow-y:auto; padding:18px 20px; display:flex; flex-direction:column; gap:14px; }
+.results::-webkit-scrollbar { width:4px; }
+.results::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+.empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--muted); text-align:center; padding:40px; }
+.empty-title { font-family:'Fraunces',serif; font-size:18px; color:var(--white); font-weight:300; }
+.empty-sub { font-size:13px; line-height:1.75; max-width:360px; }
+
+/* LOADING */
+.loading-card { background:var(--navy-card); border:1px solid var(--card-border); border-radius:8px; padding:18px; display:flex; align-items:center; gap:13px; }
+.spinner { width:18px; height:18px; border-radius:50%; border:2px solid var(--border); border-top-color:var(--orange); animation:spin 0.8s linear infinite; flex-shrink:0; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading-text { font-size:13px; color:var(--muted); }
+
+/* RESULT CARD */
+.result-card { background:var(--navy-card); border:1px solid var(--card-border); border-radius:8px; animation:fadeUp 0.28s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.result-header { padding:12px 16px; border-bottom:1px solid var(--card-border); display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.result-q { font-size:15px; color:#E2EAF4; line-height:1.5; flex:1; }
+.result-q strong { color:#FFFFFF; font-weight:500; }
+.copy-btn { background:transparent; border:1px solid var(--border); border-radius:4px; padding:3px 10px; color:var(--muted); font-family:'DM Mono',monospace; font-size:11px; cursor:pointer; transition:all 0.14s; letter-spacing:0.06em; flex-shrink:0; }
+.copy-btn:hover { border-color:var(--orange-border); color:var(--orange); }
+.copy-btn.copied { border-color:var(--green); color:var(--green); }
+.result-body { padding:16px; }
+.answer-text { font-size:14px; line-height:1.7; color:#C8D8EC; }
+.answer-text strong, .answer-text b { color:#FFFFFF; }
+.answer-text p { margin:0 0 0.6em 0; }
+.answer-text p:last-child { margin-bottom:0; }
+.answer-text ul, .answer-text ol { margin:0.4em 0 0.6em 1.4em; padding:0; }
+.answer-text li { margin-bottom:0.25em; }
+.result-footer { padding:10px 16px; border-top:1px solid var(--card-border); display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
+.source-tag { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:4px; background:var(--tag-bg); border:1px solid var(--tag-border); font-size:11px; color:var(--tag-text); }
+.source-tag::before { content:'◆'; font-size:7px; }
+
+/* ERROR */
+.error-card { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.18); border-radius:8px; padding:13px 16px; font-size:13px; color:var(--red); display:flex; gap:10px; align-items:flex-start; }
+.error-card::before { content:'✕'; flex-shrink:0; font-weight:500; }
+
+/* KB VERSION BADGE */
+#kb-version-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.06em; color:var(--muted); background:var(--border); border-radius:4px; padding:3px 8px; white-space:nowrap; }
+
+/* DEMO CARD */
+.demo-card { position:sticky; bottom:0; background:var(--sidebar-card); border-top:1px solid var(--orange-border); padding:14px; flex-shrink:0; }
+.demo-card-title { font-size:13px; font-weight:500; color:var(--white); display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+.demo-card-sub { font-size:11px; color:var(--nav-text); line-height:1.55; margin-bottom:12px; }
+.demo-btn { display:block; width:100%; padding:9px 12px; background:var(--orange); color:var(--navy); border:none; border-radius:5px; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; text-align:center; text-decoration:none; cursor:pointer; transition:opacity 0.14s, transform 0.14s; }
+.demo-btn:hover { opacity:0.88; transform:translateY(-1px); }
+.demo-btn:active { transform:none; }
+
+/* DDQ FOOTER */
+.ddq-footer { grid-column:1/-1; font-size:11px; color:var(--muted); text-align:center; padding:16px 20px; border-top:1px solid var(--border); }
+.ddq-footer a { color:var(--muted); text-decoration:underline; }
+.ddq-footer a:hover { color:var(--white); }
+.back-home { color:var(--nav-text); text-decoration:none; font-size:12px; white-space:nowrap; transition:color .2s ease; margin-right:8px; }
+.back-home:hover { color:var(--orange); }
+.logout-btn { color:var(--nav-text); background:transparent; border:1px solid var(--border); border-radius:4px; padding:4px 9px; font-family:'DM Mono',monospace; font-size:11px; cursor:pointer; text-decoration:none; white-space:nowrap; transition:color .2s ease,border-color .2s ease; }
+.logout-btn:hover { color:var(--orange); border-color:var(--orange-border); }
+@media (max-width: 760px) { .back-home { font-size:11px; margin-right:4px; } .logout-btn { font-size:10px; padding:4px 7px; } }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="https://www.aetherum.ai" target="_blank" rel="noopener noreferrer">
+      <span class="logo-name">Aetherum</span>
+      <span class="logo-module">DDQ Engine</span>
+    </a>
+    <div class="header-right">
+      <a class="back-home" href="/">← Back to Aetherum.ai</a>
+      <a class="logout-btn" href="/ddq/logout">Log out</a>
+      <span id="kb-version-badge"></span>
+<div class="status-pill">
+        <div class="status-dot"></div>
+        <span>Live</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="s-label">Quick questions</div>
+      <button class="quick-q" onclick="setQ('Who holds the crypto assets and controls the private keys?')">Who holds the crypto / private keys?</button>
+      <button class="quick-q" onclick="setQ('How do you handle BSA/AML compliance and transaction monitoring?')">BSA / AML compliance?</button>
+      <button class="quick-q" onclick="setQ('What is your risk assessment model and how does it work?')">Risk assessment model?</button>
+      <button class="quick-q" onclick="setQ('price feed?')">Price feed &amp; oracles?</button>
+      <button class="quick-q" onclick="setQ('Where is member data stored and how is it protected?')">Data storage & security?</button>
+      <button class="quick-q" onclick="setQ('What is your regulatory status with the NCUA?')">Regulatory / NCUA status?</button>
+      <button class="quick-q" onclick="setQ('GENIUS Act?')">GENIUS Act / PPSI?</button>
+      <button class="quick-q" onclick="setQ('Do you have any patents or proprietary intellectual property?')">Patents & IP?</button>
+      <button class="quick-q" onclick="setQ('Can you process ACH transfers or move money on behalf of members?')">Payments / ACH capability?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum ensure the integrity of AI-assisted lending decisions for NCUA examination purposes?')">On-chain compliance receipts?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum document AI underwriting decisions for regulatory examination?')">AI underwriting documentation?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum demonstrate human oversight of automated collateral management to NCUA examiners?')">Human oversight / supervisory control?</button>
+      <button class="quick-q" onclick="setQ('How many patents does Aetherum have?')">How many patents?</button>
+      <button class="quick-q" onclick="setQ('Does Aetherum support card issuance for credit union members?')">Card issuance for members?</button>
+      <button class="quick-q" onclick="setQ('What is the status of Aetherum\'s card partner relationships?')">Card partner status?</button>
+    </div>
+    <div class="sidebar-top" style="border-top:1px solid var(--border);">
+      <div class="s-label">Security Review</div>
+      <button class="quick-q" onclick="setQ('How are signing keys and private keys managed? Do you have key rotation policies?')">Signing keys &amp; key management?</button>
+      <button class="quick-q" onclick="setQ('What is your incident response process for a security breach or system failure?')">Incident response process?</button>
+      <button class="quick-q" onclick="setQ('How is data encrypted at rest and in transit? What data do you store?')">Data encryption &amp; storage?</button>
+      <button class="quick-q" onclick="setQ('Who are your key subprocessors and third party vendors?')">Third party / subprocessors?</button>
+      <button class="quick-q" onclick="setQ('What is your business continuity and disaster recovery plan?')">Business continuity &amp; DR?</button>
+      <button class="quick-q" onclick="setQ('What is your change management and deployment process?')">Change management process?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum approach post-quantum cryptographic risk?')">Post-quantum cryptographic risk?</button>
+    </div>
+    <div class="sidebar-top" style="border-top:1px solid var(--border);">
+      <div class="s-label">Operations &amp; Procedures</div>
+      <button class="quick-q" onclick="setQ('signing flow?')">Signing flow &amp; authorization?</button>
+      <button class="quick-q" onclick="setQ('threshold configuration?')">Threshold configuration?</button>
+      <button class="quick-q" onclick="setQ('escalation runbook?')">Escalation runbook?</button>
+      <button class="quick-q" onclick="setQ('incident response?')">Incident response?</button>
+      <button class="quick-q" onclick="setQ('key rotation?')">Key rotation procedure?</button>
+      <button class="quick-q" onclick="setQ('freeze wallet?')">Freeze Key Governance?</button>
+    </div>
+    <div class="sidebar-top" style="border-top:1px solid var(--border);">
+      <div class="s-label">Blockchain &amp; Integrations</div>
+      <button class="quick-q" onclick="setQ('ERC-3643?')">ERC-3643 compliance modules?</button>
+      <button class="quick-q" onclick="setQ('ERC-7943?')">ERC-7943 support?</button>
+      <button class="quick-q" onclick="setQ('XRPL?')">XRPL / XRP support?</button>
+      <button class="quick-q" onclick="setQ('Paxos?')">Paxos / stablecoin settlement?</button>
+    </div>
+    <div class="arc-live-block">
+      <div class="arc-live-header">
+        <div class="arc-live-dot"></div>
+        <span class="arc-live-label">ARC Testnet · Live</span>
+      </div>
+      <div class="arc-contract-name">AetherumCollateralEscrow (ACE)</div>
+      <div class="arc-status">&#10003; COMPLETE</div>
+      <a href="https://testnet.arcscan.app/address/0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897" target="_blank" rel="noopener noreferrer" class="arc-link">↗ View on ArcScan</a>
+    </div>
+    <div class="arc-live-block">
+      <div class="arc-live-header">
+        <div class="arc-live-dot"></div>
+        <span class="arc-live-label">Ethereum Sepolia · Live</span>
+      </div>
+      <div class="arc-contract-name">AetherumCollateralToken (ERC-7943)</div>
+      <div class="arc-status">&#10003; COMPLETE</div>
+    </div>
+    <div class="arc-live-block">
+      <div class="arc-live-header">
+        <div class="arc-live-dot"></div>
+        <span class="arc-live-label">Ethereum Sepolia · Live</span>
+      </div>
+      <div class="arc-contract-name">ERC-3643 Compliance Modules (3)</div>
+      <div class="arc-contract-addr">USJurisdiction · CollateralLTV · CUMember</div>
+      <div class="arc-status">&#10003; COMPLETE</div>
+    </div>
+    <div class="arc-live-block">
+      <div class="arc-live-header">
+        <div class="arc-live-dot"></div>
+        <span class="arc-live-label">Base Sepolia · Live</span>
+      </div>
+      <div class="arc-contract-name">RLUSDDisbursementModule</div>
+      <div class="arc-status">&#10003; COMPLETE · Mainnet pending NYDFS approval</div>
+    </div>
+    <div class="kb-scroll" id="kb-list">
+      <div class="s-label">Knowledge base</div>
+      <div style="color:var(--muted);font-size:13px;">Loading...</div>
+    </div>
+    <div class="onchain-ref">
+      <div class="ref-label">On-Chain Reference</div>
+      <div class="ref-row">
+        <span class="ref-name">CollateralEscrow</span>
+        <a href="https://testnet.arcscan.app/address/0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897" target="_blank" class="ref-addr" title="0x1fF9a4c215de2c375D5639e1C115EEDe0c8B2897">0x1fF9…8897</a>
+      </div>
+      <div class="ref-net">Arc Testnet · Chain ID 5042002</div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-title">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><rect x="1" y="2" width="14" height="13" rx="2" stroke="#F7931A" stroke-width="1.4"/><path d="M1 6h14" stroke="#F7931A" stroke-width="1.4"/><path d="M5 1v2M11 1v2" stroke="#F7931A" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Request a Demo
+      </div>
+      <div class="demo-card-sub">Schedule a 30-minute walkthrough with the Aetherum team</div>
+      <a href="https://calendly.com/jbailey-aetherum/new-meeting" target="_blank" rel="noopener noreferrer" class="demo-btn">Book a time →</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="input-panel">
+      <div class="input-label">Ask a DDQ / security review question</div>
+      <div class="input-row">
+        <textarea class="question-box" id="q-input" placeholder="Paste a security question from a CU IT or risk team here..." onkeydown="handleKey(event)"></textarea>
+        <div class="btn-col">
+          <button class="ask-btn" id="ask-btn" onclick="ask()">Ask →</button>
+          <button class="clear-btn" onclick="newSession()">New Session</button>
+          <button class="clear-btn" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+      <div class="hint">Cmd+Enter to submit</div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="empty" id="empty-state">
+        <div class="empty-hex"></div>
+        <div class="empty-title">DDQ Engine ready</div>
+        <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ddq-footer">
+    Knowledge base maintained under documented review process. Formal operational security procedures available at:
+    <a href="https://aetherum.ai/docs/operational-security-procedures.pdf" target="_blank">Operational Security Procedures</a>
+    <span id="kb-footer-version-wrap" style="display:none">&nbsp;·&nbsp;<a href="https://aetherum.ai/ddq" target="_blank" id="kb-footer-version"></a></span>
+  </div>
+
+</div>
+
+<script>
+const API = 'https://aetherum-backend-production.up.railway.app';
+let token = null;
+let sessionId = null;
+
+// Local KB supplement — entries added here are matched client-side before hitting the backend
+const LOCAL_KB = [
+  {
+    question_patterns: ['Does Aetherum support card issuance for credit union members', 'card issuance', 'card funding', 'borrow disburse spend', 'spend loop'],
+    title: 'Card Funding Bridge — card issuance for members',
+    answer: "Yes. Aetherum's Card Funding Bridge triggers white-label payment card issuance upon loan disbursement confirmation, completing the borrow→disburse→spend loop. The card is funded by the USDC stablecoin disbursement and issued under the credit union's brand, delivered through a regulated card-program partner. This capability is covered (patent pending).",
+    sources: ['Card Funding Bridge']
+  },
+  {
+    question_patterns: ['What is the status of Aetherum\'s card partner relationships', 'card partner', 'card program partner'],
+    title: 'Card partner relationships',
+    answer: "Aetherum's card spend layer is delivered through a regulated card-program partner. The Card Funding Bridge is built and verified in the integration environment.",
+    sources: ['Card Funding Bridge', 'Partner Stack']
+  },
+  {
+    question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
+    title: 'Patent count — 23 patents pending',
+    answer: "Aetherum has 23 provisional patent applications filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
+    sources: ['IP & Patents']
+  },
+  {
+    question_patterns: ['What compliance and fraud infrastructure does Aetherum use', 'compliance infrastructure', 'fraud infrastructure', 'BSA/AML', 'KYC verification', 'fraud detection', 'transaction monitoring'],
+    title: 'Compliance & fraud infrastructure',
+    answer: "Aetherum integrates a purpose-built compliance infrastructure provider for BSA/AML compliance, KYC verification, fraud detection, and transaction monitoring. The provider offers a consortium anonymization model providing cross-institution fraud signals without exposing member data. A fully executed MSA is in place.",
+    sources: ['Compliance Layer', 'Partner Stack']
+  },
+  {
+    question_patterns: ['How does Aetherum handle fraud detection and AML monitoring', 'fraud detection', 'AML monitoring', 'OFAC', 'sanctions', 'transaction screening', 'behavioral fraud'],
+    title: 'Fraud detection & AML monitoring',
+    answer: "Fraud detection and AML monitoring are handled through a compliance infrastructure provider purpose-built for fintech and digital asset platforms. Coverage includes real-time transaction screening, OFAC/sanctions checks, device intelligence, and behavioral fraud signals. Integration is live under a fully executed MSA.",
+    sources: ['Compliance Layer', 'Partner Stack']
+  },
+  {
+    question_patterns: ['staking', 'idle collateral', 'productive collateral', 'staking rewards', 'staking revenue', 'how does staking work', 'earn on collateral', 'yield on pledged', 'revenue split staking'],
+    title: 'Member staking on pledged collateral — mechanics and revenue',
+    answer: "When enabled by the credit union and applicable regulated providers, pledged collateral may participate in approved staking or collateral-utilization programs while remaining subject to institution-defined liquidity, risk, supervisory, and liquidation controls. Aetherum continuously evaluates collateral conditions and records relevant lifecycle activity for audit and examination. Specific allocation ratios, LTV thresholds, cure periods, liquidation sequencing, automated adjustment logic, event mechanics, and revenue-sharing percentages are proprietary and are not disclosed through the public DDQ. Protocol rewards are variable and are not guaranteed by Aetherum or by the credit union.",
+    sources: ['Member Staking Product', 'Allocation Engine', 'Risk Monitor']
+  }
+];
+
+function matchLocalKb(question) {
+  const q = question.toLowerCase();
+  for (const entry of LOCAL_KB) {
+    if (entry.question_patterns.some(p => q.includes(p.toLowerCase()))) {
+      return entry;
+    }
+  }
+  return null;
+}
+
+async function init() {
+  try {
+    const r = await fetch(`${API}/auth/login`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email:'carol.williams@aetherum-demo.com', password:'DemoPass123!' })
+    });
+    const d = await r.json();
+    token = d.token || d.access_token || d.accessToken;
+  } catch(e) {}
+  try {
+    const r = await fetch(`${API}/ddq/new-session`, { method:'POST' });
+    const d = await r.json();
+    sessionId = d.sessionId;
+  } catch(e) {}
+  loadKb();
+  loadKbMeta();
+}
+
+async function newSession() {
+  try {
+    const r = await fetch(`${API}/ddq/new-session`, { method:'POST' });
+    const d = await r.json();
+    sessionId = d.sessionId;
+  } catch(e) {}
+  document.getElementById('results').innerHTML = `
+    <div class="empty" id="empty-state">
+      <div class="empty-title">DDQ Engine ready</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+    </div>`;
+  document.getElementById('q-input').value = '';
+}
+
+async function loadKbMeta() {
+  try {
+    const r = await fetch(`${API}/ddq/kb-meta`);
+    const meta = await r.json();
+    if (meta.version && meta.last_reviewed) {
+      const badge = document.getElementById('kb-version-badge');
+      if (badge) badge.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+      const footerLink = document.getElementById('kb-footer-version');
+      const footerWrap = document.getElementById('kb-footer-version-wrap');
+      if (footerLink && footerWrap) {
+        footerLink.textContent = `KB v${meta.version} · Reviewed ${meta.last_reviewed}`;
+        footerWrap.style.display = '';
+      }
+    }
+  } catch(e) {}
+}
+
+async function loadKb() {
+  try {
+    const h = {'Content-Type':'application/json'};
+    if(token) h['Authorization'] = `Bearer ${token}`;
+    const r = await fetch(`${API}/ddq/kb`, {headers:h});
+    const entries = await r.json();
+    renderKb(entries);
+  } catch(e) {
+    document.getElementById('kb-list').innerHTML = '<div class="s-label">Knowledge base</div><div style="color:var(--muted);font-size:13px;">Could not load.</div>';
+  }
+}
+
+const CAT_LABELS = {
+  arc_testnet:'Arc Testnet', risk_model:'Risk Model', compliance:'Compliance',
+  data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
+  blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)',
+  ops:'Operations & Procedures', cybersecurity_infrastructure:'Security & Infrastructure',
+  NCUA_LETTERS:'NCUA Letters'
+};
+
+const COLLAPSED_BY_DEFAULT = new Set(['ncua_letters']);
+
+function toggleCatGroup(cat) {
+  const label = document.querySelector(`.cat-label[data-cat="${cat}"]`);
+  const items = document.querySelector(`.cat-items[data-cat="${cat}"]`);
+  if (!label || !items) return;
+  const expanded = label.classList.toggle('expanded');
+  items.style.display = expanded ? '' : 'none';
+}
+
+function renderKb(entries) {
+  const cats = {};
+  entries.forEach(e => { if(!cats[e.category]) cats[e.category]=[]; cats[e.category].push(e); });
+  let html = '<div class="s-label">Knowledge base</div>';
+  const sortedCats = Object.entries(cats).sort(([a], [b]) => {
+    const aIsNcua = a.toLowerCase() === 'ncua_letters';
+    const bIsNcua = b.toLowerCase() === 'ncua_letters';
+    if (aIsNcua && !bIsNcua) return 1;
+    if (!aIsNcua && bIsNcua) return -1;
+    return 0;
+  });
+  sortedCats.forEach(([cat, items]) => {
+    const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
+    const isIpPortfolio = cat === 'ip_patents';
+    const labelText = isIpPortfolio ? 'IP Portfolio' : (CAT_LABELS[cat] || cat.replace(/_/g,' '));
+    const countText = isIpPortfolio ? 23 : items.length;
+    if (collapsible) {
+      html += `<div class="cat-group">`;
+      html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
+      html += `${labelText}<span class="cat-count">${countText}</span><span class="cat-chevron">&#9658;</span>`;
+      html += `</div>`;
+      html += `<div class="cat-items" data-cat="${cat}" style="display:none">`;
+    } else {
+      html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${countText}</span></div>`;
+    }
+    if (isIpPortfolio) {
+      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">23 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
+      html += `<div class="demo-card-sub" style="margin-bottom:6px;">Recent additions include:</div>`;
+    }
+    items.forEach(it => {
+      const q = (it.question_patterns[0]||it.title).replace(/'/g,"\\'");
+      const displayTitle = isIpPortfolio ? it.title.replace(/\s*\(Patent Pending\)\s*$/, ' — Patent Pending') : it.title;
+      html += `<div class="kb-item" onclick="setQ('${q}?')">${displayTitle}</div>`;
+    });
+    if (collapsible) {
+      html += `</div></div>`;
+    } else {
+      html += `</div>`;
+    }
+  });
+  document.getElementById('kb-list').innerHTML = html;
+}
+
+function setQ(q) {
+  document.getElementById('q-input').value = q;
+  document.getElementById('q-input').focus();
+}
+
+function handleKey(e) {
+  if(e.key==='Enter' && (e.metaKey||e.ctrlKey)) ask();
+}
+
+async function ask() {
+  const q = document.getElementById('q-input').value.trim();
+  if(!q) return;
+
+  const btn = document.getElementById('ask-btn');
+  btn.disabled = true; btn.textContent = '...';
+  document.getElementById('empty-state')?.remove();
+
+  const lid = 'l'+Date.now();
+  const lel = document.createElement('div');
+  lel.className = 'loading-card'; lel.id = lid;
+  lel.innerHTML = `<div class="spinner"></div><div class="loading-text">Searching knowledge base and generating answer...</div>`;
+  document.getElementById('results').prepend(lel);
+
+  try {
+    const localMatch = matchLocalKb(q);
+    if (localMatch) {
+      document.getElementById(lid)?.remove();
+      renderResult(q, { answer: localMatch.answer, sources: localMatch.sources });
+      document.getElementById('q-input').value = '';
+      btn.disabled = false; btn.textContent = 'Ask →';
+      return;
+    }
+    const h = {'Content-Type':'application/json'};
+    if(token) h['Authorization'] = `Bearer ${token}`;
+    const r = await fetch(`${API}/ddq/ask`, {
+      method:'POST', headers:h,
+      body: JSON.stringify({ question: q, sessionId })
+    });
+    const data = await r.json();
+    document.getElementById(lid)?.remove();
+    if(!r.ok) throw new Error(data.message||'Server error');
+    renderResult(q, data);
+    document.getElementById('q-input').value = '';
+  } catch(e) {
+    document.getElementById(lid)?.remove();
+    const el = document.createElement('div');
+    el.className = 'error-card';
+    el.textContent = e.message||'Request failed.';
+    document.getElementById('results').prepend(el);
+  }
+
+  btn.disabled = false; btn.textContent = 'Ask →';
+}
+
+function renderResult(question, data) {
+  const card = document.createElement('div');
+  card.className = 'result-card';
+  const cid = 'c'+Date.now();
+
+  const srcs = (data.sources||[]).map(s=>`<span class="source-tag">${esc(s)}</span>`).join('');
+  const footer = srcs ? `<div class="result-footer">${srcs}</div>` : '';
+
+  card.innerHTML = `
+    <div class="result-header">
+      <div class="result-q"><strong>Q:</strong> ${esc(question)}</div>
+      <button class="copy-btn" id="${cid}" onclick="copyText('${cid}',\`${escJs(data.answer)}\`)">Copy</button>
+    </div>
+    <div class="result-body"><div class="answer-text">${renderMd(data.answer)}</div></div>
+    ${footer}
+  `;
+  document.getElementById('results').prepend(card);
+}
+
+function copyText(id, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const b = document.getElementById(id);
+    b.textContent = 'Copied!'; b.classList.add('copied');
+    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2000);
+  });
+}
+
+const EMPTY_STATE_HTML = `
+    <div class="empty" id="empty-state">
+      <div class="empty-hex"></div>
+      <div class="empty-title">DDQ Engine ready</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+    </div>`;
+
+function clearAll() {
+  document.getElementById('q-input').value = '';
+  document.getElementById('results').innerHTML = EMPTY_STATE_HTML;
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escJs(s) { return String(s).replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$'); }
+
+// XSS-safe markdown renderer: escape HTML first, then apply only known patterns.
+function inlineMd(s) {
+  return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>');
+}
+function renderMd(raw) {
+  const s = esc(String(raw));
+  const lines = s.split('\n');
+  let html = '', inUl = false, inOl = false;
+  for (const line of lines) {
+    const ulM = line.match(/^[-*]\s+(.+)$/);
+    const olM = !ulM && line.match(/^\d+\.\s+(.+)$/);
+    if (ulM) {
+      if (inOl) { html += '</ol>'; inOl = false; }
+      if (!inUl) { html += '<ul>'; inUl = true; }
+      html += `<li>${inlineMd(ulM[1])}</li>`;
+    } else if (olM) {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (!inOl) { html += '<ol>'; inOl = true; }
+      html += `<li>${inlineMd(olM[1])}</li>`;
+    } else {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (inOl) { html += '</ol>'; inOl = false; }
+      if (line.trim()) html += `<p>${inlineMd(line)}</p>`;
+      else html += '<br>';
+    }
+  }
+  if (inUl) html += '</ul>';
+  if (inOl) html += '</ol>';
+  return html;
+}
+
+init();
+</script>
+</body>
+</html>
