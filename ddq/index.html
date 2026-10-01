@@ -32,27 +32,6 @@
 html,body { height:100%; overflow:hidden; background:var(--navy); color:var(--white); font-family:'DM Mono',monospace; font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; }
 .app { display:grid; grid-template-rows:52px 1fr auto; grid-template-columns:200px 1fr; height:100vh; overflow:hidden; }
 
-/* DDQ ACCESS GATE */
-#ddq-access-gate {
-  position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center;
-  background:#050D1A; color:#EEF0F4; font-family:'DM Mono',monospace;
-}
-#ddq-access-gate::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 35%,rgba(247,147,26,.08),transparent 42%); pointer-events:none; }
-.ddq-gate-card { position:relative; width:min(440px,calc(100vw - 36px)); padding:34px; background:#0A1628; border:1px solid #1A3050; border-radius:10px; box-shadow:0 24px 80px rgba(0,0,0,.45); }
-.ddq-gate-brand { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
-.ddq-gate-hex { width:25px; height:25px; background:#F7931A; clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
-.ddq-gate-name { font-family:'Fraunces',serif; font-size:17px; font-weight:600; }
-.ddq-gate-kicker { color:#F7931A; font-size:10px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
-.ddq-gate-title { font-family:'Fraunces',serif; font-size:29px; font-weight:300; line-height:1.2; margin-bottom:10px; }
-.ddq-gate-copy { color:#A8B8D0; font-size:12px; line-height:1.7; margin-bottom:22px; }
-.ddq-gate-row { display:flex; gap:8px; }
-#ddq-password { flex:1; min-width:0; background:#050D1A; color:#EEF0F4; border:1px solid #1E3A5F; border-radius:6px; padding:12px 13px; font:13px 'DM Mono',monospace; outline:none; }
-#ddq-password:focus { border-color:rgba(247,147,26,.5); box-shadow:0 0 0 3px rgba(247,147,26,.08); }
-#ddq-unlock { background:#F7931A; color:#050D1A; border:0; border-radius:6px; padding:0 18px; font:500 11px 'DM Mono',monospace; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
-#ddq-unlock:hover { opacity:.88; }
-.ddq-gate-error { min-height:18px; margin-top:10px; color:#EF4444; font-size:11px; }
-@media(max-width:520px){ .ddq-gate-card{padding:26px}.ddq-gate-row{flex-direction:column}.ddq-gate-row button{height:42px} }
-
 /* HEADER */
 header { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; padding:0 20px; background:var(--navy-mid); border-bottom:1px solid var(--border); position:relative; z-index:10; }
 header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0.35; }
@@ -178,22 +157,6 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
 </style>
 </head>
 <body>
-<div id="ddq-access-gate" role="dialog" aria-modal="true" aria-labelledby="ddq-gate-title">
-  <div class="ddq-gate-card">
-    <div class="ddq-gate-brand"><div class="ddq-gate-hex"></div><div class="ddq-gate-name">Aetherum</div></div>
-    <div class="ddq-gate-kicker">Due Diligence Questionnaire</div>
-    <div id="ddq-gate-title" class="ddq-gate-title">Authorized access only.</div>
-    <div class="ddq-gate-copy">Enter the access password provided by Aetherum to open the DDQ.</div>
-    <form id="ddq-access-form" autocomplete="off">
-      <div class="ddq-gate-row">
-        <input id="ddq-password" type="password" inputmode="text" placeholder="Access password" aria-label="Access password" autofocus>
-        <button id="ddq-unlock" type="submit">Unlock</button>
-      </div>
-      <div id="ddq-gate-error" class="ddq-gate-error" aria-live="polite"></div>
-    </form>
-  </div>
-</div>
-
 <div class="app">
 
   <!-- HEADER -->
@@ -651,48 +614,6 @@ function renderMd(raw) {
 }
 
 init();
-</script>
-<script>
-(function () {
-  const ACCESS_KEY = 'aetherum_ddq_access_v1';
-  const PASSWORD_DIGEST = 'a27709d1'; // placeholder replaced below
-  const gate = document.getElementById('ddq-access-gate');
-  const form = document.getElementById('ddq-access-form');
-  const input = document.getElementById('ddq-password');
-  const error = document.getElementById('ddq-gate-error');
-
-  function unlock() {
-    gate.style.display = 'none';
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-  }
-  function lock() {
-    gate.style.display = 'flex';
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-  }
-  async function digest(value) {
-    const bytes = new TextEncoder().encode(value);
-    const hash = await crypto.subtle.digest('SHA-256', bytes);
-    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
-  }
-  if (sessionStorage.getItem(ACCESS_KEY) === 'granted') unlock(); else lock();
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    error.textContent = '';
-    const value = input.value;
-    if (!value) { error.textContent = 'Enter the password provided by Aetherum.'; return; }
-    const hashed = await digest(value);
-    if (hashed === PASSWORD_DIGEST) {
-      sessionStorage.setItem(ACCESS_KEY, 'granted');
-      unlock();
-    } else {
-      error.textContent = 'Access denied. Please verify the password.';
-      input.select();
-    }
-  });
-})();
 </script>
 </body>
 </html>
