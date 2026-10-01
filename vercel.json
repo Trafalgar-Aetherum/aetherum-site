@@ -1,17 +1,16 @@
 {
-  "cleanUrls": true,
   "routes": [
     {
       "src": "/ddq",
-      "dest": "/api/ddq-auth.js"
+      "dest": "/api/ddq-auth"
     },
     {
       "src": "/ddq/logout",
-      "dest": "/api/ddq-logout.js"
+      "dest": "/api/ddq-logout"
     },
     {
       "src": "/ddq/(.*)",
-      "dest": "/api/ddq-auth.js"
+      "dest": "/api/ddq-auth"
     },
     {
       "src": "/blog/crypto-as-collateral.html",
