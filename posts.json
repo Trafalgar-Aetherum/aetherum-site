@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/wallet-is-not-identity/",
+    "title": "A Wallet Is Not an Identity",
+    "excerpt": "A wallet can prove where value sits. It cannot, by itself, prove who the member is, whether they are authorized, or why the institution allowed the transaction. Regulated digital-asset infrastructure needs persistent identity, policy and auditability around the wallet.",
+    "date": "September 30, 2026",
+    "readTime": "7 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/stablecoins-who-signs-off/",
     "title": "Stablecoins Can Move in Seconds. Who Signs Off Before They Move?",
     "excerpt": "Stablecoins solve the movement-of-value problem. Credit unions still need to prove who authorized the transaction, which policies were satisfied, what executed, and why. That is the control layer TxGuard was built to provide.",
     "date": "September 29, 2026",
     "readTime": "7 min read",
     "icon": "🛡️",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/volume-is-not-liquidity/",
