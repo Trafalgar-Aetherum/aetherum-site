@@ -70,6 +70,10 @@
       "dest": "/product.html"
     },
     {
+      "src": "/posts\\.json",
+      "dest": "/posts.json"
+    },
+    {
       "src": "/blog/(.*)",
       "dest": "/blog/$1"
     },
