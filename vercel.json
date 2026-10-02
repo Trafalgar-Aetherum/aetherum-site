@@ -74,6 +74,14 @@
       "dest": "/posts.json"
     },
     {
+      "src": "/product\\.html",
+      "dest": "/product.html"
+    },
+    {
+      "src": "/partners(.*)",
+      "dest": "/partners$1"
+    },
+    {
       "src": "/blog/(.*)",
       "dest": "/blog/$1"
     },
