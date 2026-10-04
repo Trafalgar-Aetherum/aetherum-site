@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/smart-accounts-regulated-finance/",
+    "title": "Smart Accounts Are Not Enough: Bringing ERC-7579 Into Regulated Finance",
+    "excerpt": "ERC-7579-style modularity expands what a smart account can do. Regulated financial institutions still need institution-scoped policy, bounded authority, revocation and auditability before that power belongs in production finance.",
+    "date": "October 4, 2026",
+    "readTime": "7 min read",
+    "icon": "🧩",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/wallet-is-not-identity/",
     "title": "A Wallet Is Not an Identity",
     "excerpt": "A wallet can prove where value sits. It cannot, by itself, prove who the member is, whether they are authorized, or why the institution allowed the transaction. Regulated digital-asset infrastructure needs persistent identity, policy and auditability around the wallet.",
     "date": "September 30, 2026",
     "readTime": "7 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": true
   },
   {
