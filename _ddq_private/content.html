@@ -194,6 +194,13 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('How does Aetherum ensure the integrity of AI-assisted lending decisions for NCUA examination purposes?')">On-chain compliance receipts?</button>
       <button class="quick-q" onclick="setQ('How does Aetherum document AI underwriting decisions for regulatory examination?')">AI underwriting documentation?</button>
       <button class="quick-q" onclick="setQ('How does Aetherum demonstrate human oversight of automated collateral management to NCUA examiners?')">Human oversight / supervisory control?</button>
+      <button class="quick-q" onclick="setQ('Explain Aetherum Identity V4 and institution-scoped policy context resolution from a governance and examination perspective.')">Identity V4 / policy context?</button>
+      <button class="quick-q" onclick="setQ('How do Policy / Asset Controls govern which digital assets and operations are permitted for each institution?')">Policy / Asset Controls?</button>
+      <button class="quick-q" onclick="setQ('How does TxGuard enforce pre-execution policy and fail-closed behavior?')">TxGuard / fail-closed controls?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum govern ERC-7579-compatible modular smart accounts and delegated permissions?')">Modular smart-account governance?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum separate identity, policy decisioning, transaction authorization, and execution responsibilities?')">Control-plane separation?</button>
+      <button class="quick-q" onclick="setQ('What audit evidence does Aetherum preserve for policy decisions and digital-asset transaction execution?')">Audit evidence / decision receipts?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum manage model risk and human governance for AI-assisted underwriting?')">AI model risk governance?</button>
       <button class="quick-q" onclick="setQ('How many patents does Aetherum have?')">How many patents?</button>
       <button class="quick-q" onclick="setQ('Does Aetherum support card issuance for credit union members?')">Card issuance for members?</button>
       <button class="quick-q" onclick="setQ('What is the status of Aetherum\'s card partner relationships?')">Card partner status?</button>
@@ -206,6 +213,9 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('Who are your key subprocessors and third party vendors?')">Third party / subprocessors?</button>
       <button class="quick-q" onclick="setQ('What is your business continuity and disaster recovery plan?')">Business continuity &amp; DR?</button>
       <button class="quick-q" onclick="setQ('What is your change management and deployment process?')">Change management process?</button>
+      <button class="quick-q" onclick="setQ('What is Aetherum\'s fail-closed philosophy for authorization dependencies and degraded services?')">Fail-closed dependency handling?</button>
+      <button class="quick-q" onclick="setQ('How are privileged actions, policy changes, and administrative authority governed and audited?')">Privileged access / policy governance?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum prevent replay, duplicate execution, or inconsistent reconciliation in digital-asset workflows?')">Replay / idempotency / reconciliation?</button>
       <button class="quick-q" onclick="setQ('How does Aetherum approach post-quantum cryptographic risk?')">Post-quantum cryptographic risk?</button>
     </div>
     <div class="sidebar-top" style="border-top:1px solid var(--border);">
@@ -221,6 +231,9 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <div class="s-label">Blockchain &amp; Integrations</div>
       <button class="quick-q" onclick="setQ('ERC-3643?')">ERC-3643 compliance modules?</button>
       <button class="quick-q" onclick="setQ('ERC-7943?')">ERC-7943 support?</button>
+      <button class="quick-q" onclick="setQ('ERC-7579?')">ERC-7579 / modular smart accounts?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum use ONCHAINID and credit-union-owned identity infrastructure?')">ONCHAINID / CU-owned identity?</button>
+      <button class="quick-q" onclick="setQ('How does Polygon OMS fit into the current non-custodial architecture?')">Polygon OMS / wallets?</button>
       <button class="quick-q" onclick="setQ('XRPL?')">XRPL / XRP support?</button>
       <button class="quick-q" onclick="setQ('Paxos?')">Paxos / stablecoin settlement?</button>
     </div>
@@ -333,8 +346,8 @@ const LOCAL_KB = [
   },
   {
     question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
-    title: 'Patent count — 23 patents pending',
-    answer: "Aetherum has 23 provisional patent applications filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
+    title: 'Patent count — 26 patents pending',
+    answer: "Aetherum has 26 patent filings filed with the USPTO covering the full platform — including risk assessment, tax intelligence, on-chain compliance, identity infrastructure, collateral management, and card disbursement.",
     sources: ['IP & Patents']
   },
   {
@@ -348,6 +361,66 @@ const LOCAL_KB = [
     title: 'Fraud detection & AML monitoring',
     answer: "Fraud detection and AML monitoring are handled through a compliance infrastructure provider purpose-built for fintech and digital asset platforms. Coverage includes real-time transaction screening, OFAC/sanctions checks, device intelligence, and behavioral fraud signals. Integration is live under a fully executed MSA.",
     sources: ['Compliance Layer', 'Partner Stack']
+  },
+  {
+    question_patterns: ['Identity V4', 'policy context resolution', 'institution-scoped policy context', 'identity policy context'],
+    title: 'Identity V4 — institution-scoped policy-context resolution',
+    answer: "**Control objective.** Identity V4 establishes which regulated institution, member relationship, and authorization domain apply before a governed digital-asset operation is evaluated. It is designed to prevent a technically valid wallet or identity credential from being treated as sufficient authority outside the credit union context that owns the relationship.\n\n**Governance model.** The credit union remains the policy owner. Aetherum resolves the applicable institutional context and exposes a deterministic authorization input to downstream policy controls; it does not convert identity into blanket transaction authority. Institution identifiers are treated as opaque scoped identifiers rather than business-readable secrets.\n\n**Separation of duties.** Identity resolution, policy evaluation, transaction authorization, and execution are separate control stages. A failure or ambiguity in a required identity dependency is not interpreted as permission.\n\n**Auditability.** The control plane preserves sufficient metadata to reconstruct the institution context, policy version or rule set applied, decision outcome, and downstream transaction relationship without placing sensitive member records on-chain.\n\n**Regulatory relevance.** This supports least privilege, institution-level segregation, examiner reconstruction, and consistent application of credit-union policy across wallets, rails, and digital-asset products. Proprietary contract structure, signing internals, and claim-level mechanics are intentionally excluded from the DDQ.",
+    sources: ['Identity V4', 'Institution-Scoped Identity', 'Policy Governance']
+  },
+  {
+    question_patterns: ['Policy / Asset Controls', 'asset controls', 'asset-level governance', 'which assets are permitted', 'asset policy'],
+    title: 'Policy / Asset Controls — institution-scoped digital-asset governance',
+    answer: "**Control objective.** Policy / Asset Controls define whether a specific asset, operation type, product context, and applicable limit are permitted for a given institution before execution. The control is designed so that asset support is not equivalent to universal authorization.\n\n**Policy domains.** Depending on the workflow, policy can address asset eligibility, product eligibility, transaction class, member or account context, amount or exposure bounds, jurisdictional requirements, collateral constraints, and supervisory conditions. Policy is institution-scoped so one credit union's configuration does not become another institution's authorization basis.\n\n**Enforcement.** Required policy checks are evaluated before the transaction reaches the execution boundary. Missing mandatory context, an unavailable required dependency, an indeterminate result, or an explicit policy denial does not silently degrade into approval.\n\n**Change governance.** Policy changes are treated as controlled configuration changes. The governance objective is versioned, attributable policy with reviewable effective state rather than ad hoc runtime overrides.\n\n**Evidence.** Decision records can identify the governing institution context, evaluated policy domain, outcome, and transaction correlation information while minimizing disclosure of proprietary policy logic.\n\nSpecific rule thresholds, internal scoring formulas, signing topology, and implementation schemas are confidential and are not exposed through this DDQ.",
+    sources: ['Policy / Asset Controls', 'Institution Policy Engine', 'Audit-Native Controls']
+  },
+  {
+    question_patterns: ['TxGuard', 'fail-closed', 'pre-execution policy', 'pre-signing transaction', 'authorization dependency', 'degraded services'],
+    title: 'TxGuard — fail-closed pre-execution transaction control',
+    answer: "**Control objective.** TxGuard is Aetherum's pre-execution policy enforcement layer. Its purpose is to make authorization an explicit control decision before value moves rather than an inference made after signing or settlement.\n\n**Decision semantics.** Required checks resolve to an explicit authorization outcome. A positive authorization must be affirmatively produced; absence of a policy provider, dependency error, timeout, malformed response, or required-control failure is treated as a denial or non-authorized state rather than a pass. This is the core fail-closed property.\n\n**Control composition.** TxGuard can consume institution context, asset and transaction policy, identity assertions, and other required control inputs. Advisory telemetry may be collected separately, but a mandatory control is not downgraded to advisory because it is unavailable.\n\n**Evidence and traceability.** The platform preserves transaction correlation data, decision outcome, policy/control context, timing, and audit evidence sufficient to connect the pre-execution authorization to subsequent execution and reconciliation. Sensitive mechanics and secrets are excluded from the evidence layer.\n\n**Operational risk.** The control is intended to reduce fail-open behavior, authorization drift, untraceable exceptions, and the risk that a provider outage becomes an unintended permission path.\n\n**Examiner posture.** A reviewer should be able to distinguish: what was requested; which institution governed it; whether required controls were available; what decision was returned; whether execution occurred; and how the final provider/network state reconciled. Internal deny-code taxonomies and proprietary adapter mechanics are not disclosed through the DDQ.",
+    sources: ['TxGuard', 'Pre-Execution Policy', 'Audit Trail', 'Operational Resilience']
+  },
+  {
+    question_patterns: ['ERC-7579', 'modular smart account', 'modular smart-account', 'delegated permissions', 'session permissions', 'smart account governance'],
+    title: 'Modular smart-account governance — ERC-7579-compatible controls',
+    answer: "**Control objective.** Aetherum treats modular smart-account capability as a governed execution surface, not as unrestricted programmability. ERC-7579-compatible account architectures may support modular validation, execution, hooks, or delegated capabilities; Aetherum's control model places institution policy around those capabilities.\n\n**Bounded authority.** Delegated or session-based authority is intended to be purpose-bounded, time-bounded where appropriate, policy-bounded, and revocable. A valid cryptographic credential or module installation does not by itself establish that a transaction is institutionally permitted.\n\n**Policy separation.** The smart account is not the sole policy system. Institutional policy remains separable from account implementation so policy can evolve without requiring the institution to treat wallet code as the authoritative governance repository.\n\n**Lifecycle governance.** Material permission state, revocation, and policy-relevant account actions are designed to remain attributable and auditable. Required controls are evaluated at or before the execution boundary.\n\n**Vendor/standard portability.** The architecture is described as ERC-7579-compatible rather than dependent on a single implementation, preserving the ability to change wallet providers or standards while retaining institution-owned governance objectives.\n\nThe DDQ does not disclose module layout, credential construction, signer topology, proprietary session mechanics, or patent claim language.",
+    sources: ['Modular Smart Accounts', 'ERC-7579', 'Permission Governance', 'Policy Enforcement']
+  },
+  {
+    question_patterns: ['control-plane separation', 'separate identity policy execution', 'separation of responsibilities', 'separation of duties architecture'],
+    title: 'Control-plane separation and defense in depth',
+    answer: "Aetherum separates four functions that are often conflated in digital-asset systems: **identity context**, **policy determination**, **transaction authorization**, and **execution**. Identity V4 establishes the relevant institution/member context; Policy / Asset Controls determine the applicable governance rules; TxGuard produces the pre-execution authorization outcome; and the wallet/smart-account/settlement layer performs only the execution that remains permitted.\n\nThis separation supports defense in depth, minimizes the blast radius of a single component failure, and provides clearer examiner evidence. A technically valid signature is therefore not synonymous with policy approval, and an execution provider is not treated as the policy authority. The credit union retains the institutional policy and lending authority; Aetherum provides the control and orchestration layer; regulated third parties perform regulated functions where required.",
+    sources: ['Architecture Governance', 'Identity V4', 'Policy / Asset Controls', 'TxGuard']
+  },
+  {
+    question_patterns: ['audit evidence', 'decision receipts', 'policy decision evidence', 'examiner reconstruction', 'transaction audit evidence'],
+    title: 'Audit-native evidence for policy and transaction decisions',
+    answer: "Aetherum's audit objective is **reconstructability without unnecessary disclosure**. For material digital-asset and lending decisions, the platform is designed to preserve the relationship among the request, institution context, policy/control state, authorization outcome, actor or service attribution, transaction identifier, execution result, and reconciliation status.\n\nWhere blockchain anchoring is used, the system can preserve tamper-evident references or hashes while keeping sensitive member information and proprietary policy logic off-chain. Evidence is intended to support internal audit, vendor risk review, compliance testing, incident investigation, and examiner inquiry.\n\nAudit records are not used as a substitute for preventive controls: TxGuard and institution policy act before execution; audit evidence demonstrates what the preventive control evaluated and what happened afterward.",
+    sources: ['Audit-Native AI', 'Compliance Receipts', 'TxGuard Audit Trail', 'Examiner View']
+  },
+  {
+    question_patterns: ['model risk governance', 'AI model risk', 'AI underwriting governance', 'human governance AI', 'AI-assisted underwriting'],
+    title: 'AI-assisted underwriting and model-risk governance',
+    answer: "Aetherum treats AI-assisted underwriting as a governed decision-support capability, not an unaccountable autonomous lending authority. The credit union remains responsible for its credit policy and lending decisions.\n\n**Controls include:** structured model inputs and outputs; policy-bounded decision categories; explainability records showing material factors and rationale; human review or supervisory escalation where required by institutional policy; audit logging and model/version attribution; and separation between model recommendation and downstream transaction authorization.\n\nA model output does not bypass identity, asset eligibility, collateral, policy, or TxGuard controls. Where an institution requires adverse-action or other regulated decisioning procedures, implementation is configured around the institution's legal and compliance program. Aetherum does not represent that use of AI eliminates the institution's obligations under fair-lending, consumer-protection, model-risk, or record-retention requirements.",
+    sources: ['Smart Review AI', 'Model Governance', 'Supervisory Control', 'DACS Explainability']
+  },
+  {
+    question_patterns: ['non-custodial architecture', 'who holds crypto', 'private keys', 'custody model', 'does Aetherum custody'],
+    title: 'Non-custodial architecture and key-control boundary',
+    answer: "Aetherum is designed as a **non-custodial orchestration and policy-control layer**. Aetherum does not position itself as the depository institution, custodian, or beneficial owner of member digital assets. The credit union retains the member relationship and institutional authority, while member-controlled wallet infrastructure and regulated third-party providers are used where custody, settlement, card, or other regulated functions require them.\n\nPrivate-key and signing authority are therefore treated as bounded execution capabilities rather than a substitute for institutional policy. Policy approval and transaction execution are separate control stages. A transaction must satisfy the applicable institution controls even when the underlying wallet can technically sign it.\n\nSpecific credential material, signer topology, key derivation, and recovery mechanics are security-sensitive and are provided only under controlled technical diligence when appropriate.",
+    sources: ['Non-Custodial Architecture', 'Wallet Governance', 'Third-Party Risk']
+  },
+  {
+    question_patterns: ['replay', 'duplicate execution', 'idempotency', 'reconciliation', 'provider status'],
+    title: 'Idempotency, replay resistance, and reconciliation controls',
+    answer: "Digital-asset execution workflows are designed to distinguish **request acceptance**, **authorization**, **submission**, **provider/network status**, and **final reconciliation**. Idempotency controls are used to reduce duplicate execution when clients retry after timeouts or ambiguous responses. Transaction correlation identifiers allow the system to reconcile asynchronous provider/network state back to the original governed request.\n\nA timeout is not treated as proof of failure or proof of success. The platform queries authoritative downstream status where available and records the reconciled provider/network state. This control is important for operational resilience because duplicate submission and false-finality assumptions can create financial loss even when the original policy decision was correct.\n\nInternal retry algorithms, provider-specific identifiers, and anti-replay implementation details are intentionally not exposed in the DDQ.",
+    sources: ['Execution Controls', 'Idempotency', 'Reconciliation', 'Operational Resilience']
+  },
+  {
+    question_patterns: ['Polygon OMS', 'OMS wallets', 'programmable wallets', 'wallet smart sessions'],
+    title: 'Polygon OMS — current wallet and settlement role',
+    answer: "Polygon OMS is used as part of Aetherum's current non-custodial wallet and programmable money-movement architecture. Aetherum applies institution governance, policy, compliance, and audit controls around wallet and settlement workflows rather than delegating institutional authorization to the wallet provider.\n\nProgrammable or delegated wallet capabilities are subject to bounded, revocable authority and the same policy-before-execution principle applied elsewhere in the platform. Provider availability, provider authorization, and blockchain settlement state are treated as separate operational states and are reconciled accordingly.\n\nAetherum's architecture is intentionally provider-portable: institution policy, audit evidence, and control objectives are not designed to depend on a single wallet vendor.",
+    sources: ['Polygon OMS', 'Wallet Infrastructure', 'Modular Smart Accounts']
   },
   {
     question_patterns: ['staking', 'idle collateral', 'productive collateral', 'staking rewards', 'staking revenue', 'how does staking work', 'earn on collateral', 'yield on pledged', 'revenue split staking'],
@@ -432,7 +505,7 @@ const CAT_LABELS = {
   arc_testnet:'Arc Testnet', risk_model:'Risk Model', compliance:'Compliance',
   data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
   blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)',
-  ops:'Operations & Procedures', cybersecurity_infrastructure:'Security & Infrastructure',
+  ops:'Operations & Procedures', cybersecurity_infrastructure:'Security & Infrastructure', governance_controls:'Governance & Control Plane', model_risk:'AI / Model Risk',
   NCUA_LETTERS:'NCUA Letters'
 };
 
@@ -461,7 +534,7 @@ function renderKb(entries) {
     const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
     const isIpPortfolio = cat === 'ip_patents';
     const labelText = isIpPortfolio ? 'IP Portfolio' : (CAT_LABELS[cat] || cat.replace(/_/g,' '));
-    const countText = isIpPortfolio ? 23 : items.length;
+    const countText = isIpPortfolio ? 26 : items.length;
     if (collapsible) {
       html += `<div class="cat-group">`;
       html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
@@ -472,7 +545,7 @@ function renderKb(entries) {
       html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${countText}</span></div>`;
     }
     if (isIpPortfolio) {
-      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">23 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
+      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">26 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
       html += `<div class="demo-card-sub" style="margin-bottom:6px;">Recent additions include:</div>`;
     }
     items.forEach(it => {
