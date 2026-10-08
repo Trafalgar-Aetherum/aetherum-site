@@ -202,6 +202,14 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
       <button class="quick-q" onclick="setQ('What audit evidence does Aetherum preserve for policy decisions and digital-asset transaction execution?')">Audit evidence / decision receipts?</button>
       <button class="quick-q" onclick="setQ('How does Aetherum manage model risk and human governance for AI-assisted underwriting?')">AI model risk governance?</button>
       <button class="quick-q" onclick="setQ('How many patents does Aetherum have?')">How many patents?</button>
+      <button class="quick-q" onclick="setQ('How does Aetherum tokenization work?')">Governed tokenization?</button>
+      <button class="quick-q" onclick="setQ('How does ERC-7943 work in Aetherum?')">ERC-7943 token controls?</button>
+      <button class="quick-q" onclick="setQ('What is the authoritative record for a tokenized asset?')">Tokenized asset system of record?</button>
+      <button class="quick-q" onclick="setQ('Does tokenization change whether an asset is a security?')">Tokenization / securities perimeter?</button>
+      <button class="quick-q" onclick="setQ('How does tokenization comply with BSA AML?')">Tokenization BSA / AML?</button>
+      <button class="quick-q" onclick="setQ('How does tokenization handle blockchain finality?')">Tokenization finality / reconciliation?</button>
+      <button class="quick-q" onclick="setQ('How are token smart contracts governed?')">Smart-contract governance?</button>
+      <button class="quick-q" onclick="setQ('What NCUA guidance applies to Aetherum tokenization?')">NCUA / tokenization diligence?</button>
       <button class="quick-q" onclick="setQ('Does Aetherum support card issuance for credit union members?')">Card issuance for members?</button>
       <button class="quick-q" onclick="setQ('What is the status of Aetherum\'s card partner relationships?')">Card partner status?</button>
     </div>
@@ -346,8 +354,8 @@ const LOCAL_KB = [
   },
   {
     question_patterns: ['How many patents does Aetherum have', 'patent count', 'how many patents', 'patents pending'],
-    title: 'Patent portfolio — 26 filings',
-    answer: "Aetherum maintains a 26-filing U.S. patent portfolio spanning digital-asset creditworthiness and DACS risk assessment, dynamic LTV and collateral controls, privacy-preserving underwriting, institution-scoped identity, policy-context resolution, asset-level governance, pre-execution transaction controls, audit-native compliance evidence, stablecoin and settlement orchestration, and modular smart-account enforcement. The portfolio includes both provisional and nonprovisional filings. Recent control-layer filings cover Identity V4 policy-context resolution, Policy / Asset Controls, TxGuard fail-closed pre-execution enforcement, and institution-scoped modular smart-account controls. The DDQ intentionally summarizes protected control domains without reproducing claim language, proprietary thresholds, signer topology, credential mechanics, or other implementation details that would increase security or IP risk.",
+    title: 'Patent portfolio — 28 filings',
+    answer: "Aetherum maintains a 28-filing U.S. patent portfolio spanning digital-asset credit and DACS risk assessment, dynamic LTV and collateral controls, privacy-preserving underwriting, institution-scoped identity, policy-context resolution, asset-level governance, pre-execution transaction controls, audit-native compliance evidence, stablecoin and settlement orchestration, modular smart-account enforcement, governed tokenization, and compliance-gated digital participation. The two newest publicly described filing domains cover the Governed Tokenization Control Plane and Compliance-Gated Digital Participation Tokens. The DDQ intentionally summarizes protected control domains without reproducing claim language, proprietary thresholds, signer topology, deployment/recovery mechanics, credential mechanics, or other implementation details that would increase security or IP risk. Patent application numbers and filing dates are not disclosed through the DDQ.",
     sources: ['IP & Patents']
   },
   {
@@ -427,6 +435,90 @@ const LOCAL_KB = [
     title: 'Member staking on pledged collateral — mechanics and revenue',
     answer: "When enabled by the credit union and applicable regulated providers, pledged collateral may participate in approved staking or collateral-utilization programs while remaining subject to institution-defined liquidity, risk, supervisory, and liquidation controls. Aetherum continuously evaluates collateral conditions and records relevant lifecycle activity for audit and examination. Specific allocation ratios, LTV thresholds, cure periods, liquidation sequencing, automated adjustment logic, event mechanics, and revenue-sharing percentages are proprietary and are not disclosed through the public DDQ. Protocol rewards are variable and are not guaranteed by Aetherum or by the credit union.",
     sources: ['Member Staking Product', 'Allocation Engine', 'Risk Monitor']
+  },
+  {
+    question_patterns: ['governed tokenization patent', 'tokenization patent', 'new tokenization patent', 'patent on tokenization control plane'],
+    title: 'Governed Tokenization Control Plane — Patent Pending',
+    answer: "Aetherum has filed patent protection around a governed tokenization control plane for regulated financial assets. The public DDQ describes the control domain — institution-authorized asset state, eligibility and policy controls, controlled on-chain lifecycle execution, reconciliation, and examiner-ready evidence — without disclosing claim language, cryptographic binding mechanics, deployment/recovery algorithms, signer topology, or other sensitive implementation details.",
+    sources: ['IP & Patents', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['compliance-gated participation token patent', 'participation token patent', 'institution-scoped token patent'],
+    title: 'Compliance-Gated Digital Participation Tokens — Patent Pending',
+    answer: "Aetherum has filed patent protection around institution-scoped deployment and administration of compliance-gated digital participation-token representations. The protected domain includes institution-specific identity and eligibility context, governed administrative authority, regulated lifecycle controls, and auditable operation. Deployment topology and claim-level mechanics are intentionally not disclosed through the DDQ.",
+    sources: ['IP & Patents', 'Participation Tokens']
+  },
+  {
+    question_patterns: ['what tokenization capability has Aetherum built', 'how does Aetherum tokenization work', 'governed tokenization control plane', 'does Aetherum support tokenization', 'describe the tokenization product'],
+    title: 'Governed Tokenization — product architecture and current status',
+    answer: "Aetherum has built a governed tokenization control plane that connects institution-authorized asset state to eligibility and policy evaluation, controlled on-chain execution, reconciliation, and audit evidence. The token layer uses ERC-7943-based regulated-asset controls so eligible operations are constrained by institutional policy rather than treated as unrestricted token transfers. The current Phase 2 implementation has completed controlled testnet deployment and backend activation; Aetherum does not represent testnet activation as production issuance of live-value instruments.",
+    sources: ['Governed Tokenization', 'ERC-7943', 'Phase 2']
+  },
+  {
+    question_patterns: ['what is the authoritative record for a tokenized asset', 'does the blockchain replace the credit union system of record', 'which record controls tokenized assets', 'is the token the legal record'],
+    title: 'Tokenization — authoritative record and legal-state separation',
+    answer: "Aetherum separates the authoritative institutional record for the underlying financial instrument from the governed on-chain representation. The credit union or other authorized institution remains responsible for legal, accounting, servicing, and product records. The blockchain represents controlled digital state associated with the instrument. Not every lifecycle event automatically becomes a blockchain transaction, and resulting on-chain state is reconciled back to the originating institutional context.",
+    sources: ['Governed Tokenization', 'Recordkeeping', 'Reconciliation']
+  },
+  {
+    question_patterns: ['how does ERC-7943 work in Aetherum', 'how are token transfers restricted', 'who can receive participation tokens', 'how is holder eligibility enforced', 'can token transfers be frozen or paused'],
+    title: 'ERC-7943 — eligibility and regulated transfer controls',
+    answer: "Aetherum uses ERC-7943-based regulated-token controls so the on-chain asset can enforce more than balance and signature validity. Before a governed issuance or transfer is permitted, the platform can apply institution-scoped eligibility and policy determinations plus applicable restriction or pause conditions. Raw KYC records and personally identifiable information do not need to be placed on-chain; the token layer consumes the minimum authorized eligibility or policy result necessary for enforcement.",
+    sources: ['ERC-7943', 'Institutional Eligibility', 'Policy Controls']
+  },
+  {
+    question_patterns: ['how does tokenization comply with BSA AML', 'how are sanctions handled for tokenized assets', 'does tokenization replace KYC', 'what AML controls apply to participation tokens', 'how is OFAC handled for token transfers'],
+    title: 'Tokenization — BSA/AML, KYC, sanctions, and eligibility',
+    answer: "Tokenization does not replace the credit union's BSA/AML, customer due diligence, KYC, sanctions, fraud, or other compliance obligations. Aetherum consumes authorized institution-scoped eligibility and compliance outcomes before governed token operations proceed while keeping sensitive compliance evidence off-chain except for minimum non-sensitive enforcement state. NCUA Letter 22-CU-07 identifies BSA/KYC/AML, identity management, smart-contract governance, recordkeeping, privacy, cybersecurity, and auditability as diligence considerations for credit unions using distributed-ledger technology.",
+    sources: ['NCUA 22-CU-07', 'BSA/AML', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['does tokenization change whether an asset is a security', 'are Aetherum tokens securities', 'does Aetherum act as a broker dealer', 'does Aetherum act as a transfer agent', 'what regulatory licenses are required for tokenization', 'how is a tokenized security classified'],
+    title: 'Tokenization — securities classification and regulatory perimeter',
+    answer: "Aetherum does not treat tokenization as changing the legal character of the underlying instrument. If an instrument is a security, representing it on-chain does not make securities-law obligations disappear. Aetherum is designed as software, policy, orchestration, and audit infrastructure and does not rely on token format to avoid broker-dealer, exchange, transfer-agent, custody, investor-protection, or other regulatory requirements. The sponsoring institution and qualified legal counsel determine the legal characterization, permissible structure, required registrations or exemptions, and regulated counterparties for each production product.",
+    sources: ['Regulatory Perimeter', 'SEC Tokenized Securities', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['what token lifecycle actions are supported', 'how are issuance and redemption governed', 'who can mint or burn tokens', 'how are token administrators separated', 'what lifecycle controls exist for tokenized assets'],
+    title: 'Tokenization — governed lifecycle and administrative separation',
+    answer: "Aetherum treats tokenization as a governed lifecycle rather than a one-time mint event. Depending on the instrument and approved policy, the control plane can support institution-authorized issuance, permitted transfers, restrictions, freezes or pauses, redemption, and other lifecycle outcomes. Privileged capabilities are separated by function so the production control model does not depend on one unrestricted universal administrator. Specific role identifiers, signer topology, and emergency-authority mechanics are intentionally excluded from the DDQ.",
+    sources: ['Governed Tokenization', 'Lifecycle Controls', 'Separation of Duties']
+  },
+  {
+    question_patterns: ['how does tokenization handle blockchain finality', 'is a transaction hash treated as settlement', 'what happens if a token transaction times out', 'how are ambiguous token transactions reconciled', 'how do you prevent duplicate token execution'],
+    title: 'Tokenization — reconciliation, finality, and ambiguous execution',
+    answer: "Aetherum does not treat transaction submission or a transaction hash as proof of final settlement. Governed token operations are reconciled against authoritative network results and expected state before the institutional workflow treats the operation as complete. If execution is ambiguous because of a timeout, delayed receipt, provider failure, or similar condition, the control objective is reconciliation rather than blind repetition. Internal retry algorithms and recovery mechanics are intentionally not disclosed through the DDQ.",
+    sources: ['Reconciliation', 'Operational Resilience', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['what happens if a token holder becomes ineligible', 'can an ineligible holder redeem', 'does revoked eligibility trap tokens', 'how is redemption handled after eligibility changes', 'what if KYC status changes after issuance'],
+    title: 'Tokenization — eligibility changes and controlled resolution',
+    answer: "Aetherum distinguishes ordinary holder permissions from institutionally governed resolution. If a holder later becomes ineligible under current policy, ordinary movement can be restricted without making legitimate institutional resolution impossible. An authorized redemption or other controlled resolution path can remain available subject to the institution's policy and legal requirements.",
+    sources: ['Eligibility Controls', 'Redemption', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['how are token smart contracts governed', 'how are smart contract upgrades controlled', 'what testing is performed before token deployment', 'how is token deployment change managed', 'who maintains the smart contracts'],
+    title: 'Tokenization — smart-contract governance, testing, and change management',
+    answer: "Aetherum treats smart-contract deployment and material changes as governed technology changes. The control objective is versioned code, documented testing, bounded administrative authority, deployment verification, and auditable change records before a regulated token configuration is relied upon by an institution. This aligns with NCUA Letter 22-CU-07 diligence questions concerning smart-contract testing, coding governance, identity credentials, and clarity over oversight, governance, and maintenance responsibility. Testnet credential practices are not represented as production controls.",
+    sources: ['NCUA 22-CU-07', 'Change Management', 'Smart Contracts']
+  },
+  {
+    question_patterns: ['what NCUA guidance applies to Aetherum tokenization', 'how should a credit union diligence the tokenization product', 'is Aetherum NCUA approved', 'is the tokenization platform NCUA certified', 'what third party risk controls apply to tokenization'],
+    title: 'Tokenization — NCUA DLT and third-party-risk alignment',
+    answer: "NCUA does not approve, certify, or endorse specific vendor technologies, and Aetherum does not claim otherwise. NCUA Letter 22-CU-07 states that federally insured credit unions may use distributed-ledger technology for permissible activities when they comply with applicable law and apply sound governance, risk management, due diligence, cybersecurity, smart-contract oversight, identity controls, BSA/AML controls, and audit practices. NCUA Letter 21-CU-16 similarly emphasizes due diligence and ongoing risk management for third parties providing digital-asset-related services. The credit union remains responsible for activity permissibility and vendor oversight.",
+    sources: ['NCUA 22-CU-07', 'NCUA 21-CU-16', 'Third-Party Risk']
+  },
+  {
+    question_patterns: ['does Aetherum custody tokenized assets', 'who holds tokenized assets', 'does Aetherum control member private keys for participation tokens', 'is tokenization custodial', 'who is responsible for custody'],
+    title: 'Tokenization — custody and key-control boundary',
+    answer: "Aetherum's role is the software, policy, orchestration, and audit layer; the tokenization feature is not intended to make Aetherum the custodian of member or institutional assets. Production custody and signing arrangements must be established through the institution's approved architecture and any required regulated counterparties. Test-environment signing credentials used for development or acceptance are not represented as the production custody model.",
+    sources: ['Custody Boundary', 'Governed Tokenization']
+  },
+  {
+    question_patterns: ['what member data is written on chain for tokenization', 'does tokenization put KYC data on blockchain', 'how is privacy protected in participation tokens', 'is PII stored on chain', 'what tokenization data is public'],
+    title: 'Tokenization — privacy and on-chain data minimization',
+    answer: "Aetherum's tokenization design does not require raw KYC records, personally identifiable information, or full compliance files to be published on-chain. Institution and compliance systems retain the sensitive supporting records. The on-chain layer receives only the minimum non-sensitive state or authorization result needed to enforce the governed operation and preserve audit correlation.",
+    sources: ['Privacy', 'Data Minimization', 'Governed Tokenization']
   }
 ];
 
@@ -503,7 +595,7 @@ async function loadKb() {
 
 const CAT_LABELS = {
   arc_testnet:'Arc Testnet', risk_model:'Risk Model', compliance:'Compliance',
-  data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents',
+  data_security:'Data Security', regulatory:'Regulatory', ip:'IP & Patents', tokenization:'Governed Tokenization',
   blockchain:'Blockchain', company:'Company', sig:'Security Review (SIG)',
   ops:'Operations & Procedures', cybersecurity_infrastructure:'Security & Infrastructure', governance_controls:'Governance & Control Plane', model_risk:'AI / Model Risk',
   NCUA_LETTERS:'NCUA Letters'
@@ -534,7 +626,7 @@ function renderKb(entries) {
     const collapsible = COLLAPSED_BY_DEFAULT.has(cat.toLowerCase());
     const isIpPortfolio = cat === 'ip_patents';
     const labelText = isIpPortfolio ? 'IP Portfolio' : (CAT_LABELS[cat] || cat.replace(/_/g,' '));
-    const countText = isIpPortfolio ? 26 : items.length;
+    const countText = isIpPortfolio ? 28 : items.length;
     if (collapsible) {
       html += `<div class="cat-group">`;
       html += `<div class="cat-label collapsible" data-cat="${cat}" onclick="toggleCatGroup('${cat}')">`;
@@ -545,7 +637,7 @@ function renderKb(entries) {
       html += `<div class="cat-group"><div class="cat-label">${labelText}<span class="cat-count">${countText}</span></div>`;
     }
     if (isIpPortfolio) {
-      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">26 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement and institutional infrastructure architecture.</div>`;
+      html += `<div class="demo-card-sub" style="margin:4px 0 10px;">28 patent filings / protected inventions across Aetherum’s digital-asset credit, identity, compliance, settlement, tokenization and institutional infrastructure architecture.</div>`;
       html += `<div class="demo-card-sub" style="margin-bottom:6px;">Recent additions include:</div>`;
     }
     items.forEach(it => {
