@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/tokenization-is-easy-governing-hard-part/",
+    "title": "Tokenization Is Easy. Governing It Is the Hard Part.",
+    "excerpt": "Minting a token is the easy part. Regulated institutions need identity, eligibility, policy, lifecycle controls, reconciliation and audit evidence around every on-chain state transition.",
+    "date": "October 8, 2026",
+    "readTime": "8 min read",
+    "icon": "⛓️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/smart-accounts-regulated-finance/",
     "title": "Smart Accounts Are Not Enough: Bringing ERC-7579 Into Regulated Finance",
     "excerpt": "ERC-7579-style modularity expands what a smart account can do. Regulated financial institutions still need institution-scoped policy, bounded authority, revocation and auditability before that power belongs in production finance.",
@@ -7,7 +17,7 @@
     "readTime": "7 min read",
     "icon": "🧩",
     "isNew": true,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/wallet-is-not-identity/",
@@ -17,7 +27,7 @@
     "readTime": "7 min read",
     "icon": "🔐",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/stablecoins-who-signs-off/",
