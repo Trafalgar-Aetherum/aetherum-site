@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/institutional-digital-asset-control-plane/",
+    "title": "The Control Plane for Institutional Digital Assets",
+    "excerpt": "Digital-asset rails move value. Regulated financial institutions need a control plane to govern authority, policy, execution, reconciliation and evidence across every financial workflow.",
+    "date": "October 11, 2026",
+    "readTime": "8 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/tokenization-is-easy-governing-hard-part/",
     "title": "Tokenization Is Easy. Governing It Is the Hard Part.",
     "excerpt": "Minting a token is the easy part. Regulated institutions need identity, eligibility, policy, lifecycle controls, reconciliation and audit evidence around every on-chain state transition.",
     "date": "October 8, 2026",
     "readTime": "8 min read",
     "icon": "⛓️",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/smart-accounts-regulated-finance/",
@@ -16,7 +26,7 @@
     "date": "October 4, 2026",
     "readTime": "7 min read",
     "icon": "🧩",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
