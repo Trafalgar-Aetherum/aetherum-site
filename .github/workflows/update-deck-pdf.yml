@@ -1,0 +1,44 @@
+name: Generate investor deck PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'deck/index.html'
+      - 'deck/gen-pdf.js'
+      - '.github/workflows/update-deck-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install PDF renderer
+        run: |
+          npm install --no-save --no-package-lock playwright@1.58.2 pdf-lib@1.17.1
+          npx playwright install --with-deps chromium
+      - name: Regenerate deck
+        run: node deck/gen-pdf.js
+      - name: Check PDF output
+        run: |
+          test -s deck/aetherum-deck.pdf
+          file deck/aetherum-deck.pdf
+      - name: Commit only generated PDF
+        run: |
+          if git diff --quiet -- deck/aetherum-deck.pdf; then
+            echo "PDF is already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deck/aetherum-deck.pdf
+          git commit -m "docs: regenerate institutional control-plane deck PDF"
+          git push
