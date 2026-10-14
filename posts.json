@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/clarity-act-failure-where-innovation-lives/",
+    "title": "The CLARITY Act's Failure Will Not Stop Innovation. It Decides Where Innovation Lives",
+    "excerpt": "Innovation will continue after the CLARITY Act's Senate setback. The question is whether regulatory uncertainty leaves U.S. credit unions and community banks behind.",
+    "date": "October 14, 2026",
+    "readTime": "8 min read",
+    "icon": "🏛️",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/institutional-digital-asset-control-plane/",
     "title": "The Control Plane for Institutional Digital Assets",
     "excerpt": "Digital-asset rails move value. Regulated financial institutions need a control plane to govern authority, policy, execution, reconciliation and evidence across every financial workflow.",
     "date": "October 11, 2026",
     "readTime": "8 min read",
     "icon": "🏛️",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/tokenization-is-easy-governing-hard-part/",
