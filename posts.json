@@ -120,7 +120,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/privacy-by-architecture",
+    "slug": "/blog/privacy-by-architecture/",
     "title": "Privacy by Architecture",
     "excerpt": "Ethereum is prioritizing privacy infrastructure for its 2027 upgrade. Credit unions can't wait that long — and they don't actually need secrecy. They need verifiable oversight.",
     "date": "August 18, 2026",
@@ -160,7 +160,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/flight-to-verifiability",
+    "slug": "/blog/flight-to-verifiability/",
     "title": "The Flight to Verifiability Has a Regulated Twin",
     "excerpt": "Institutions just moved $7 billion to escape infrastructure that can't prove itself. Credit unions face the same question — with an examiner instead of an attacker.",
     "date": "July 27, 2026",
@@ -170,7 +170,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/staking-pledged-collateral",
+    "slug": "/blog/staking-pledged-collateral/",
     "title": "Idle Collateral Is a Design Choice: Staking, Pledged Digital Assets, and What It Means for Credit Unions",
     "excerpt": "Staking and collateralized lending pull against each other — unbonding queues and slashing versus the need to liquidate fast. Here's how that tension actually gets resolved, and why the regulatory ground moved in credit unions' favor.",
     "date": "July 19, 2026",
@@ -180,7 +180,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/audit-native-debt-instruments",
+    "slug": "/blog/audit-native-debt-instruments/",
     "title": "Audit-Native Debt Instruments: The Missing Layer in Regulated Onchain Credit",
     "excerpt": "The instruments exist. The rails exist. The demand exists. What regulated institutions still need to participate in onchain credit is the audit layer — and we built it.",
     "date": "2026-07-14",
@@ -190,7 +190,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/circle-national-trust-bank",
+    "slug": "/blog/circle-national-trust-bank/",
     "title": "Circle Just Moved Under Direct Federal Oversight. Here's Why That Matters for Credit Unions.",
     "excerpt": "Circle received final OCC approval to charter a national trust bank. For an industry regulated by examiners who live and die on federal oversight, that's not a footnote — it's a signal.",
     "date": "2026-07-10",
@@ -200,7 +200,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/who-owns-the-rails",
+    "slug": "/blog/who-owns-the-rails/",
     "title": "Who Owns the Rails? What the Fiserv Debit Network Story Means for Credit Unions",
     "excerpt": "Big banks are exploring a buyout of Fiserv's debit network to dodge Durbin fee caps. For credit unions, it's a preview of what happens when you don't own your own infrastructure.",
     "date": "July 7, 2026",
@@ -220,7 +220,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/rest-of-finance-2026-execution",
+    "slug": "/blog/rest-of-finance-2026-execution/",
     "title": "The Rest of Finance Just Declared 2026 the Year of Execution. Credit Unions Weren't in the Room.",
     "excerpt": "A new industry outlook from one of the world's largest fund administrators lays out 2026 as the year digital asset infrastructure stops being optional. Credit unions and their 140M members don't appear anywhere in it — which is exactly the point.",
     "date": "July 1, 2026",
@@ -230,7 +230,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/every-transaction-decoded",
+    "slug": "/blog/every-transaction-decoded/",
     "title": "Every Transaction, Decoded. Every Policy, Enforced. Before the Signature.",
     "excerpt": "Before any transaction reaches a signing key at Aetherum, it's decoded, policy-checked, and logged. Here's why we built that — and what it means for credit unions.",
     "date": "June 2026",
@@ -260,7 +260,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/cu-owned-identity-infrastructure",
+    "slug": "/blog/cu-owned-identity-infrastructure/",
     "title": "Your Members' Crypto Eligibility Is Now Owned by Your Credit Union — On-Chain",
     "excerpt": "Aetherum now deploys per-credit-union identity contracts on Base mainnet. The CU owns them. Aetherum is the software layer. Here's what that means for your examiner.",
     "date": "June 18, 2026",
@@ -270,7 +270,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/stablecoin-merchant-acceptance",
+    "slug": "/blog/stablecoin-merchant-acceptance/",
     "title": "Only 6% of Merchants Accept Stablecoins. That's the Opportunity.",
     "excerpt": "Direct stablecoin acceptance at checkout remains rare. But the infrastructure layer is moving fast — and credit unions that act now will be positioned when the flywheel turns.",
     "date": "June 18, 2026",
@@ -280,7 +280,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/when-visa-open-sources-your-thesis",
+    "slug": "/blog/when-visa-open-sources-your-thesis/",
     "title": "When Visa Open-Sources Your Thesis",
     "excerpt": "A top-5 payments network just published the principle we built Aetherum on — AI reasoning inside a governed pipeline, every finding traceable to policy. So we forked their open-source security harness and extended it with three lenses of our own.",
     "date": "June 11, 2026",
@@ -290,7 +290,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/clarity-act-credit-union-custody",
+    "slug": "/blog/clarity-act-credit-union-custody/",
     "title": "The CLARITY Act Just Gave Credit Unions a Choice. Here's Why Both Answers Win.",
     "excerpt": "The CLARITY Act gives credit unions a clear path to custody digital assets — directly or through a partner. Both choices lead to the same strategic outcome: new revenue, younger members, and lasting relevance.",
     "date": "June 5, 2026",
@@ -300,7 +300,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/67-million-crypto-holders",
+    "slug": "/blog/67-million-crypto-holders/",
     "title": "67 Million Americans Own Crypto. Their Credit Union Still Doesn't Know What to Do With That.",
     "excerpt": "New data shows 1 in 4 American adults now holds cryptocurrency — and 76% want their credit union to help them manage it. The gap between member demand and CU readiness has never been wider.",
     "date": "June 2026",
@@ -310,7 +310,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/model-said-so",
+    "slug": "/blog/model-said-so/",
     "title": "Why \"The Model Said So\" Gets You a Fine",
     "excerpt": "Regulated finance doesn't need faster AI. It needs AI that can explain itself to an examiner. The market is finally starting to figure this out.",
     "date": "June 2026",
@@ -320,7 +320,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/ai-underwriting-engine",
+    "slug": "/blog/ai-underwriting-engine/",
     "title": "Why We Built Our Own AI Underwriting Engine — And What It Knows",
     "excerpt": "General-purpose AI models aren't trained on NCUA Letters to Credit Unions. Here's what went into building an underwriting model that is.",
     "date": "June 1, 2026",
@@ -340,7 +340,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/sofi-stablecoins-clear-and-present-danger",
+    "slug": "/blog/sofi-stablecoins-clear-and-present-danger/",
     "title": "SoFi, Stablecoins, and a Clear and Present Danger to Credit Union Relevance",
     "excerpt": "On May 27th, a nationally chartered U.S. bank put blockchain-native dollars in the hands of 15 million members. Credit unions serve 140 million. The window is open — but not forever.",
     "date": "May 28, 2026",
@@ -350,7 +350,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/genius-act-deposit-flight",
+    "slug": "/blog/genius-act-deposit-flight/",
     "title": "Stablecoins Don't Take Deposits. They Take Relationships.",
     "excerpt": "The GENIUS Act is now law. Credit unions have a new NCUA rule on their desk and a $6.6 trillion question they haven't answered yet.",
     "date": "May 21, 2026",
@@ -360,7 +360,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/sec-validated-infrastructure",
+    "slug": "/blog/sec-validated-infrastructure/",
     "title": "The SEC Just Validated the Infrastructure We Built On",
     "excerpt": "SEC Chairman Atkins cited ERC-3643 by name. The tokenized securities framework drops this week. Here's what credit unions need to understand before the wave arrives.",
     "date": "May 19, 2026",
@@ -420,7 +420,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/global-adoption-cu-bridge",
+    "slug": "/blog/global-adoption-cu-bridge/",
     "title": "140 Million Members, Zero On-Ramps",
     "excerpt": "Global crypto adoption just crossed an inflection point. New data shows 11% of Americans already hold digital assets. Credit unions serve 140 million of them — and most have no compliant path to borrow against what they own.",
     "date": "May 2026",
@@ -430,7 +430,7 @@
     "featured": false
   },
   {
-    "slug": "/blog/your-members-cant-wait-ppsi",
+    "slug": "/blog/your-members-cant-wait-ppsi/",
     "title": "Your Members Can't Wait for PPSI Clarity. They Don't Have To.",
     "excerpt": "The GENIUS Act's stablecoin framework is months from final rules. Crypto-collateralized lending is available to your credit union today — no license, no CUSO restructuring, no 1% cap headache.",
     "date": "April 23, 2026",
@@ -506,16 +506,6 @@
     "date": "March 25, 2026",
     "readTime": "7 min read",
     "icon": "👁️",
-    "isNew": false,
-    "featured": false
-  },
-  {
-    "slug": "/blog/erc-3643-credit-union-lending/",
-    "title": "Why Credit Unions Are the Missing Link in the ERC-3643 Ecosystem",
-    "excerpt": "The ERC-3643 standard is becoming the compliance backbone of institutional tokenization. Here's why credit unions — and their 140 million members — are the natural next frontier.",
-    "date": "March 20, 2026",
-    "readTime": "5 min read",
-    "icon": "🔗",
     "isNew": false,
     "featured": false
   },

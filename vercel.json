@@ -1,6 +1,27 @@
 {
   "routes": [
     {
+      "src": "/blog/?$",
+      "headers": {
+        "Location": "/blog/library/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/index\\.html$",
+      "headers": {
+        "Location": "/blog/library/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/blog/erc-3643-credit-union-lending/?$",
+      "headers": {
+        "Location": "/blog/erc3643-credit-unions/"
+      },
+      "status": 301
+    },
+    {
       "src": "/ddq",
       "dest": "/api/ddq-auth"
     },
