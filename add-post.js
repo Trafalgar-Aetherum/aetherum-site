@@ -81,26 +81,7 @@ posts.unshift(newPost);
 fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2) + '\n');
 console.log(`✓ Added to posts.json: "${title}"`);
 
-// ── Update sitemap.xml ───────────────────────────────────────────────────────
-const sitemap = fs.readFileSync(SITEMAP_FILE, 'utf8');
-const fullUrl = `https://aetherum.ai${slug}`;
+// ── Synchronize SEO manifest and static Library links ───────────────────────
+require('./scripts/sync-blog-seo.js').sync();
 
-if (sitemap.includes(fullUrl)) {
-  console.log(`  sitemap.xml already contains ${fullUrl} — skipped`);
-} else {
-  const entry = `  <url>
-    <loc>${fullUrl}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-`;
-  const updated = sitemap.replace('</urlset>', entry + '</urlset>');
-  fs.writeFileSync(SITEMAP_FILE, updated);
-  console.log(`✓ Added to sitemap.xml: ${fullUrl}`);
-}
-
-// ── Done ─────────────────────────────────────────────────────────────────────
-console.log('\nNext steps:');
-console.log(`  1. Create blog/index.html auto-renders from posts.json — nothing to do there.`);
-console.log(`  2. If you want a card on the homepage, manually add it to index.html blog grid.`);
-console.log(`  3. git add posts.json sitemap.xml && git commit -m "feat: add post" && git push`);
+console.log('New article registered. Review and commit updated files.');

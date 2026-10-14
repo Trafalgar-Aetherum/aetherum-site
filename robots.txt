@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api/
+Disallow: /ddq/
+
+Sitemap: https://aetherum.ai/sitemap.xml
