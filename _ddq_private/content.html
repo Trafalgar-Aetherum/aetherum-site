@@ -319,15 +319,15 @@ header::after { content:''; position:absolute; bottom:0; left:0; right:0; height
     <div class="results" id="results">
       <div class="empty" id="empty-state">
         <div class="empty-hex"></div>
-        <div class="empty-title">DDQ Engine ready</div>
-        <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+        <div class="empty-title">Institutional Control-Plane DDQ</div>
+        <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Review platform scope, institutional responsibilities, integration status, and supporting evidence. Deployment-specific controls require validation.</div>
       </div>
     </div>
   </main>
 
   <div class="ddq-footer">
-    Knowledge base maintained under documented review process. Formal operational security procedures available at:
-    <a href="https://aetherum.ai/docs/operational-security-procedures.pdf" target="_blank">Operational Security Procedures</a>
+    Knowledge base maintained under documented review process. Current architecture and diligence scope:
+    <a href="https://aetherum.ai/docs/institutional-control-plane-overview.pdf" target="_blank">Institutional Control-Plane Overview</a>
     <span id="kb-footer-version-wrap" style="display:none">&nbsp;·&nbsp;<a href="https://aetherum.ai/ddq" target="_blank" id="kb-footer-version"></a></span>
   </div>
 
@@ -340,18 +340,12 @@ let sessionId = null;
 
 // Local KB supplement — entries added here are matched client-side before hitting the backend
 const LOCAL_KB = [
-  {
-    question_patterns: ['Does Aetherum support card issuance for credit union members', 'card issuance', 'card funding', 'borrow disburse spend', 'spend loop'],
-    title: 'Card Funding Bridge — card issuance for members',
-    answer: "Yes. Aetherum's Card Funding Bridge triggers white-label payment card issuance upon loan disbursement confirmation, completing the borrow→disburse→spend loop. The card is funded by the USDC stablecoin disbursement and issued under the credit union's brand, delivered through a regulated card-program partner. This capability is covered (patent pending).",
-    sources: ['Card Funding Bridge']
-  },
-  {
-    question_patterns: ['What is the status of Aetherum\'s card partner relationships', 'card partner', 'card program partner'],
-    title: 'Card partner relationships',
-    answer: "Aetherum's card spend layer is delivered through a regulated card-program partner. The Card Funding Bridge is built and verified in the integration environment.",
-    sources: ['Card Funding Bridge', 'Partner Stack']
-  },
+{ question_patterns: ["who is aetherum", "tell me about the company", "what do you do", "what stage are you", "company overview", "what does aetherum do", "what is aetherum", "business model", "how is aetherum paid", "pricing", "commercial model", "product packaging"], title: "Institutional infrastructure and commercial scope", answer: "Aetherum.ai provides the digital-asset control plane for regulated financial institutions. Core Governance & Evidence combines institution-scoped identity, policy evaluation, pre-execution authorization, and linked audit records. Stablecoin Payments and DACS Lending are applications of the same platform; tokenized-asset governance follows readiness and commercial-scope review. The institution owns its financial products, customer relationship, policies, approvals, and authoritative financial records. Aetherum supplies software and orchestration; execution providers retain their contracted roles. The intended commercial model is recurring platform subscriptions, optional modules, scoped onboarding, and transparent usage tiers. Pricing and production availability are established in the specific contract, not inferred from demonstrations.", sources: ['Institutional Control Plane — Current Commercial Scope'] },
+{ question_patterns: ["pilot readiness", "production ready", "production readiness", "deployment timeline", "go live", "live integrations", "certified integrations"], title: "Readiness and pilot acceptance", answer: "Capabilities vary by provider, network, environment, and deployment. Demonstration code, testnet transactions, sandbox access, and commercial discussions do not establish production approval or certified core integration. The initial objective is one scoped paid institutional pilot with agreed owners, permitted activity, approved and denied policy paths, safe execution, confirmation/reconciliation, retrievable evidence, measured onboarding effort, and delivery economics. No universal production-readiness or fixed deployment-time guarantee is made.", sources: ['Institutional Control Plane — Current Commercial Scope'] },
+{ question_patterns: ["white-label", "white label", "card issuance", "card funding", "borrow disburse spend", "spend loop", "card partner", "card program"], title: "White-labeled card workflows and responsibility boundaries", answer: "Aetherum is developing software to connect institution-approved credit to a white-labeled card experience under the institution\u2019s brand. The credit union originates and funds credit under its own approval framework. A regulated issuer and contracted card-program providers would supply issuance and payment execution. Members may spend and repay in USD; stablecoin settlement is an optional backend path rather than a mandatory card-funding model. Sandbox access and integration work do not establish a live issuing program, signed production terms, or approval. Funding, reserves, authorization, settlement, servicing, and liability are confirmed in the final operating model.", sources: ['Institutional Control Plane — Current Commercial Scope'] },
+{ question_patterns: ["operational security procedures", "security procedures document", "signing runbook"], title: "Operational documentation and architecture scope", answer: "The older operational-security document describes a historical custody-based operating model and is not the current architecture authority. The current institutional overview describes responsibility boundaries and diligence scope. Deployment-specific signing, key management, incident response, recovery, control evidence, and provider responsibilities must be reviewed against the implemented environment and approved documentation. This overview does not certify security controls or substitute for a current runbook.", sources: ['Institutional Control Plane — Current Commercial Scope'] },
+
+
   {
     question_patterns: ['What is the Aetherum control plane', 'institutional digital asset control plane', 'how does the control plane work', 'control plane architecture', 'identity policy execution evidence'],
     title: 'Institutional digital-asset control plane — scope and responsibilities',
@@ -564,8 +558,8 @@ async function newSession() {
   } catch(e) {}
   document.getElementById('results').innerHTML = `
     <div class="empty" id="empty-state">
-      <div class="empty-title">DDQ Engine ready</div>
-      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+      <div class="empty-title">Institutional Control-Plane DDQ</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Review platform scope, institutional responsibilities, integration status, and supporting evidence. Deployment-specific controls require validation.</div>
     </div>`;
   document.getElementById('q-input').value = '';
 }
@@ -593,7 +587,7 @@ async function loadKb() {
     if(token) h['Authorization'] = `Bearer ${token}`;
     const r = await fetch(`${API}/ddq/kb`, {headers:h});
     const entries = await r.json();
-    renderKb(entries);
+    renderKb(entries.map(e => e.id === 'company-001' ? {...e, title: LOCAL_KB[0].title, answer: LOCAL_KB[0].answer, question_patterns: LOCAL_KB[0].question_patterns} : e));
   } catch(e) {
     document.getElementById('kb-list').innerHTML = '<div class="s-label">Knowledge base</div><div style="color:var(--muted);font-size:13px;">Could not load.</div>';
   }
@@ -744,8 +738,8 @@ function copyText(id, text) {
 const EMPTY_STATE_HTML = `
     <div class="empty" id="empty-state">
       <div class="empty-hex"></div>
-      <div class="empty-title">DDQ Engine ready</div>
-      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Every answer is grounded in Aetherum's approved compliance posture — never invented.</div>
+      <div class="empty-title">Institutional Control-Plane DDQ</div>
+      <div class="empty-sub">Paste any security review question from a credit union IT or risk team. Review platform scope, institutional responsibilities, integration status, and supporting evidence. Deployment-specific controls require validation.</div>
     </div>`;
 
 function clearAll() {

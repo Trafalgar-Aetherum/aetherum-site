@@ -83,8 +83,8 @@
       "status": 301
     },
     {
-      "src": "/deck",
-      "dest": "/deck.html"
+      "src": "/deck/?$",
+      "dest": "/deck/index.html"
     },
     {
       "src": "/product",
@@ -105,6 +105,40 @@
     {
       "src": "/blog/(.*)",
       "dest": "/blog/$1"
+    },
+    {
+      "src": "/investor(?:\\.html)?/?$",
+      "headers": {
+        "Location": "/deck/"
+      },
+      "status": 301
+    },
+    {
+      "src": "/aetherum-product\\.pdf$",
+      "dest": "/aetherum-product.pdf"
+    },
+    {
+      "src": "/deck/aetherum-deck\\.pdf$",
+      "dest": "/deck/aetherum-deck.pdf"
+    },
+    {
+      "src": "/(help|terms|privacy|disclaimers)(?:\\.html)?/?$",
+      "dest": "/$1.html"
+    },
+    {
+      "src": "/docs/institutional-control-plane-overview\\.pdf$",
+      "dest": "/docs/institutional-control-plane-overview.pdf"
+    },
+    {
+      "src": "/docs/operational-security-procedures\\.pdf$",
+      "headers": {
+        "Location": "/docs/institutional-control-plane-overview.pdf"
+      },
+      "status": 302
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
