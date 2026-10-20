@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/jpmorgan-jpm-coin-who-controls-what-happens-next/",
+    "title": "JPMorgan Is Putting Bank Deposits on Blockchain. Who Controls What Happens Next?",
+    "excerpt": "JPM Coin has reached Ethereum after Base, with Canton planned. The real opportunity for community banks and credit unions is institutional authority, policy-controlled execution and auditable evidence across digital-asset rails.",
+    "date": "October 20, 2026",
+    "readTime": "9 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/clarity-act-failure-where-innovation-lives/",
     "title": "The CLARITY Act's Failure Will Not Stop Innovation. It Decides Where Innovation Lives",
     "excerpt": "Innovation will continue after the CLARITY Act's Senate setback. The question is whether regulatory uncertainty leaves U.S. credit unions and community banks behind.",
     "date": "October 14, 2026",
     "readTime": "8 min read",
     "icon": "🏛️",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/institutional-digital-asset-control-plane/",
