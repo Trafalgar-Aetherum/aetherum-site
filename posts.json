@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/beyond-stablecoins-institutional-control-plane/",
+    "title": "Beyond Stablecoins: Why the Next Era of Digital Finance Needs an Institutional Control Plane",
+    "excerpt": "Circle's emerging internet financial system creates new possibilities for credit unions, community banks and members. The missing institutional question is how to govern authority, risk, execution and auditability.",
+    "date": "October 23, 2026",
+    "readTime": "8 min read",
+    "icon": "🌐",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/global-tax-changes-financial-institutions-members-2026/",
     "title": "The New Compliance Economy: Why Global Tax Changes Matter to Financial Institutions—and Their Members",
     "excerpt": "From global tax shifts to digital-asset collateral intelligence: how credit unions and community banks can strengthen controls and empower members.",
     "date": "October 22, 2026",
     "readTime": "7 min read",
     "icon": "🌐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
