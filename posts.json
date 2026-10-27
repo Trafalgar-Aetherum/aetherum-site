@@ -1,5 +1,15 @@
 [
   {
+    "slug": "/blog/occ-community-banks-stablecoin-control-plane/",
+    "title": "The OCC Is Opening the Door to Stablecoins. Community Banks Should Be Ready.",
+    "excerpt": "The OCC's invitation to community banks is about more than issuing stablecoins. Aetherum explores how institutions can govern identity, approvals, execution and audit while preserving customer relationships.",
+    "date": "October 27, 2026",
+    "readTime": "8 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/beyond-stablecoins-institutional-control-plane/",
     "title": "Beyond Stablecoins: Why the Next Era of Digital Finance Needs an Institutional Control Plane",
     "excerpt": "Circle's emerging internet financial system creates new possibilities for credit unions, community banks and members. The missing institutional question is how to govern authority, risk, execution and auditability.",
