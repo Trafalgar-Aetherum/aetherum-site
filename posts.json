@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/binance-breach-who-controls-the-transaction/",
+    "title": "The Binance Breach Raises a Bigger Question: Who Controls the Transaction?",
+    "excerpt": "The reported Binance breach shows why protecting private keys alone is not enough. Aetherum examines institution-owned authorization, fail-closed controls, execution integrity, and audit evidence.",
+    "date": "October 30, 2026",
+    "readTime": "8 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/occ-community-banks-stablecoin-control-plane/",
     "title": "The OCC Is Opening the Door to Stablecoins. Community Banks Should Be Ready.",
     "excerpt": "The OCC's invitation to community banks is about more than issuing stablecoins. Aetherum explores how institutions can govern identity, approvals, execution and audit while preserving customer relationships.",
     "date": "October 27, 2026",
     "readTime": "8 min read",
     "icon": "🏦",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -16,7 +26,7 @@
     "date": "October 23, 2026",
     "readTime": "8 min read",
     "icon": "🌐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
