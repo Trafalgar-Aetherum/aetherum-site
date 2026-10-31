@@ -141,6 +141,10 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/futuristic_fintech_compliance_boardroom\\.png$",
+      "dest": "/futuristic_fintech_compliance_boardroom.png"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
