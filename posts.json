@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/a-valid-signature-is-not-permission-to-act/",
+    "title": "A Valid Signature Is Not Permission to Act.",
+    "excerpt": "Cryptographic access is not institutional permission. Why regulated financial institutions need identity, policy, approvals, governed execution and auditable evidence across digital finance.",
+    "date": "October 31, 2026",
+    "readTime": "7 min read",
+    "icon": "🔐",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/binance-breach-who-controls-the-transaction/",
     "title": "The Binance Breach Raises a Bigger Question: Who Controls the Transaction?",
     "excerpt": "The reported Binance breach shows why protecting private keys alone is not enough. Aetherum examines institution-owned authorization, fail-closed controls, execution integrity, and audit evidence.",
     "date": "October 30, 2026",
     "readTime": "8 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
