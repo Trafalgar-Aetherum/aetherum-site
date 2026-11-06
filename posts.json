@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/bank-money-programmable-era/",
+    "title": "Bank Money Is Entering the Programmable Era",
+    "excerpt": "Tokenized deposits are moving from bank ledgers to shared networks and public blockchains. What programmable bank money means for credit unions, community banks, and financial institutions.",
+    "date": "November 6, 2026",
+    "readTime": "9 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": false
+  },
+  {
     "slug": "/blog/a-valid-signature-is-not-permission-to-act/",
     "title": "A Valid Signature Is Not Permission to Act.",
     "excerpt": "Cryptographic access is not institutional permission. Why regulated financial institutions need identity, policy, approvals, governed execution and auditable evidence across digital finance.",
     "date": "October 31, 2026",
     "readTime": "7 min read",
     "icon": "🔐",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
