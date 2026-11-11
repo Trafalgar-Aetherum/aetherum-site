@@ -1,12 +1,22 @@
 [
   {
+    "slug": "/blog/stablecoins-enter-banking-institutional-control/",
+    "title": "Stablecoins Are Entering the Banking System. Institutional Control Is the Next Frontier.",
+    "excerpt": "PNC and Coinbase are connecting Ethereum-based USDC payments to corporate bank deposits. Why institutional authorization, orchestration, reconciliation and auditability matter next.",
+    "date": "November 11, 2026",
+    "readTime": "7 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/bank-money-programmable-era/",
     "title": "Bank Money Is Entering the Programmable Era",
     "excerpt": "Tokenized deposits are moving from bank ledgers to shared networks and public blockchains. What programmable bank money means for credit unions, community banks, and financial institutions.",
     "date": "November 6, 2026",
     "readTime": "9 min read",
     "icon": "🏦",
-    "isNew": true,
+    "isNew": false,
     "featured": false
   },
   {
@@ -67,7 +77,7 @@
     "readTime": "9 min read",
     "icon": "🏦",
     "isNew": false,
-    "featured": true
+    "featured": false
   },
   {
     "slug": "/blog/clarity-act-failure-where-innovation-lives/",
