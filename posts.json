@@ -1,13 +1,23 @@
 [
   {
+    "slug": "/blog/when-payment-network-works-bank-doesnt/",
+    "title": "When the Payment Network Is Working, but the Bank Isn't",
+    "excerpt": "The November 16 Chase disruption shows why payment-network uptime alone cannot guarantee reliable institutional execution, reconciliation or recovery.",
+    "date": "November 17, 2026",
+    "readTime": "7 min read",
+    "icon": "🏦",
+    "isNew": true,
+    "featured": true
+  },
+  {
     "slug": "/blog/stablecoins-enter-banking-institutional-control/",
     "title": "Stablecoins Are Entering the Banking System. Institutional Control Is the Next Frontier.",
     "excerpt": "PNC and Coinbase are connecting Ethereum-based USDC payments to corporate bank deposits. Why institutional authorization, orchestration, reconciliation and auditability matter next.",
     "date": "November 11, 2026",
     "readTime": "7 min read",
     "icon": "🏦",
-    "isNew": true,
-    "featured": true
+    "isNew": false,
+    "featured": false
   },
   {
     "slug": "/blog/bank-money-programmable-era/",
