@@ -15,7 +15,7 @@ const path = require('path');
     });
     await page.evaluate(() => document.fonts.ready);
     const count = await page.locator('.slide').count();
-    if (count !== 11) throw new Error('Expected 11 slides; found ' + count);
+    if (count !== 13) throw new Error('Expected 13 slides; found ' + count);
     const pdf = await PDFDocument.create();
     for (let i = 0; i < count; i++) {
       await page.evaluate(idx => {
